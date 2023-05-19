@@ -72,6 +72,20 @@
     "@ledgerhq/hw-transport-webhid": "6.27.10",
     "@ledgerhq/cryptoassets": "7.3.0",
     "@ledgerhq/hw-app-eth": "6.30.5",
-    "@ledgerhq/hw-app-btc": "9.1.2"
+    "@ledgerhq/hw-app-btc": "9.1.2",
+    "@chainify/bitcoin": "file:/home/chaunguyen/liq/chainify/packages/bitcoin",
+    "@chainify/bitcoin-ledger": "file:/home/chaunguyen/liq/chainify/packages/bitcoin-ledger",
+    "@chainify/client": "file:/home/chaunguyen/liq/chainify/packages/client",
+    "@chainify/errors": "file:/home/chaunguyen/liq/chainify/packages/errors",
+    "@chainify/evm": "file:/home/chaunguyen/liq/chainify/packages/evm",
+    "@chainify/evm-contracts": "file:/home/chaunguyen/liq/chainify/packages/evm-contracts",
+    "@chainify/evm-ledger": "file:/home/chaunguyen/liq/chainify/packages/evm-ledger",
+    "@chainify/hw-ledger": "file:/home/chaunguyen/liq/chainify/packages/hw-ledger",
+    "@chainify/logger": "file:/home/chaunguyen/liq/chainify/packages/logger",
+    "@chainify/near": "file:/home/chaunguyen/liq/chainify/packages/near",
+    "@chainify/solana": "file:/home/chaunguyen/liq/chainify/packages/solana",
+    "@chainify/terra": "file:/home/chaunguyen/liq/chainify/packages/terra",
+    "@chainify/types": "file:/home/chaunguyen/liq/chainify/packages/types",
+    "@chainify/utils": "file:/home/chaunguyen/liq/chainify/packages/utils"
   }
 }

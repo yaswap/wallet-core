@@ -108,6 +108,12 @@ const config: WalletCoreConfig = {
   },
   swapProviders: {
     testnet: {
+      [SwapProviderType.Liquality]: {
+        name: 'Liquality',
+        icon: 'liquality.svg',
+        type: SwapProviderType.Liquality,
+        agent: 'http://192.168.0.220:3030',
+      },
       [SwapProviderType.UniswapV2]: {
         name: 'Uniswap V2',
         icon: 'uniswap.svg',
