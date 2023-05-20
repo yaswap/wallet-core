@@ -7,4 +7,4 @@ export { dappChains } from './dapps';
 export { IAsset } from './interfaces/IAsset';
 export { IChain } from './interfaces/IChain';
 export { AssetType, AssetTypes, ChainId } from './types';
-export { currencyToUnit, unitToCurrency } from './utils';
+export { currencyToUnit, unitToCurrency, remove0x, ensure0x } from './utils';

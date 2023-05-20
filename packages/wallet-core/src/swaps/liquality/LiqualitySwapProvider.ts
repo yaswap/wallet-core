@@ -2,7 +2,7 @@ import { BitcoinBaseWalletProvider, BitcoinEsploraApiProvider } from '@chainify/
 import { Client, HttpClient } from '@chainify/client';
 import { Transaction } from '@chainify/types';
 import { sha256 } from '@chainify/utils';
-import { currencyToUnit, getChain, unitToCurrency } from '@liquality/cryptoassets';
+import { currencyToUnit, getChain, unitToCurrency, remove0x } from '@liquality/cryptoassets';
 import BN, { BigNumber } from 'bignumber.js';
 import { mapValues } from 'lodash';
 import { v4 as uuidv4 } from 'uuid';
@@ -271,7 +271,7 @@ export class LiqualitySwapProvider extends EvmSwapProvider {
       {
         fromAddress: order.fromAddress,
         toAddress: order.toAddress,
-        fromFundHash: order.fromFundHash,
+        fromFundHash: remove0x(order.fromFundHash),
         secretHash: order.secretHash,
       },
       { headers }
@@ -312,6 +312,7 @@ export class LiqualitySwapProvider extends EvmSwapProvider {
     store: ActionContext,
     { network, walletId, swap }: NextSwapActionRequest<LiqualitySwapHistoryItem>
   ) {
+    console.log('TACA ===> [wallet-core] LiqualitySwapProvider.ts, performNextSwapAction: swap.status = ', swap.status)
     switch (swap.status) {
       case 'WAITING_FOR_APPROVE_CONFIRMATIONS_LSP':
         return withInterval(async () => this.waitForApproveConfirmations({ swap, network, walletId }));
@@ -538,7 +539,13 @@ export class LiqualitySwapProvider extends EvmSwapProvider {
       return { status: 'WAITING_FOR_REFUND' };
     }
 
-    await this.updateOrder(swap);
+    console.log('TACA ===> [wallet-core] LiqualitySwapProvider.ts, reportInitiation, calling updateOrder, swap = ', swap)
+    try {
+      await this.updateOrder(swap);
+    } catch (err) {
+      console.log('TACA ===> [wallet-core] LiqualitySwapProvider.ts, reportInitiation, failed to updateOrder, err = ', err)
+      throw err
+    }
 
     return {
       status: 'INITIATION_REPORTED',
@@ -580,6 +587,7 @@ export class LiqualitySwapProvider extends EvmSwapProvider {
     const asset = { ...toAsset, isNative: toAsset.type === 'native' } as any; //ChainifyAsset;
 
     try {
+      console.log('TACA ===> [wallet-core] LiqualitySwapProvider.ts, findCounterPartyInitiation, calling findInitiateSwapTransaction')
       const tx = await toClient.swap.findInitiateSwapTransaction({
         asset,
         value: new BN(swap.toAmount),
@@ -592,6 +600,7 @@ export class LiqualitySwapProvider extends EvmSwapProvider {
       if (tx) {
         const toFundHash = tx.hash;
 
+        console.log('TACA ===> [wallet-core] LiqualitySwapProvider.ts, findCounterPartyInitiation, calling verifyInitiateSwapTransaction')
         const isVerified = await toClient.swap.verifyInitiateSwapTransaction(
           {
             asset,
@@ -673,25 +682,33 @@ export class LiqualitySwapProvider extends EvmSwapProvider {
     await this.sendLedgerNotification(swap.toAccountId, 'Signing required to claim the swap.');
 
     const asset = assetsAdapter(swap.to)[0];
-    const toClaimTx = await toClient.swap.claimSwap(
-      {
-        asset,
-        value: new BN(swap.toAmount),
-        recipientAddress: swap.toAddress,
-        refundAddress: swap.toCounterPartyAddress,
-        secretHash: swap.secretHash,
-        expiration: swap.nodeSwapExpiration,
-      },
-      swap.toFundHash,
-      swap.secret,
-      swap.claimFee
-    );
+    console.log('TACA ===> [wallet-core] LiqualitySwapProvider.ts, claimSwap, calling claimSwap')
 
-    return {
-      toClaimHash: toClaimTx.hash,
-      toClaimTx,
-      status: 'WAITING_FOR_CLAIM_CONFIRMATIONS',
-    };
+    try {
+      const toClaimTx = await toClient.swap.claimSwap(
+        {
+          asset,
+          value: new BN(swap.toAmount),
+          recipientAddress: swap.toAddress,
+          refundAddress: swap.toCounterPartyAddress,
+          secretHash: swap.secretHash,
+          expiration: swap.nodeSwapExpiration,
+        },
+        swap.toFundHash,
+        swap.secret,
+        swap.claimFee
+      );
+      console.log('TACA ===> [wallet-core] LiqualitySwapProvider.ts, claimSwap, toClaimTx = ', toClaimTx)
+
+      return {
+        toClaimHash: toClaimTx.hash,
+        toClaimTx,
+        status: 'WAITING_FOR_CLAIM_CONFIRMATIONS',
+      };
+    } catch (err) {
+      console.log('TACA ===> [wallet-core] LiqualitySwapProvider.ts, claimSwap, err = ', err)    
+      throw err
+    }
   }
 
   private async hasQuoteExpired(swap: LiqualitySwapHistoryItem) {

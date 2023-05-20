@@ -3,6 +3,7 @@ import {
   EIP1559FeeProvider,
   EvmChainProvider,
   EvmWalletProvider,
+  EvmSwapProvider,
   OptimismChainProvider,
   RpcFeeProvider,
 } from '@chainify/evm';
@@ -25,7 +26,15 @@ export function createEvmClient(
 ): Client<Chain<any, Network>, Wallet<any, any>, Swap<any, any, Wallet<any, any>>> {
   const chainProvider = getEvmProvider(chain, settings);
   const walletProvider = getEvmWalletProvider(settings.chainifyNetwork, accountInfo, chainProvider, mnemonic);
-  const client = new Client().connect(walletProvider);
+
+  // Add EVM swap provider
+  // const { chainifyNetwork } = settings;
+  const swapProvider = new EvmSwapProvider({
+    // contractAddress: undefined, // TODO for other ERC20 networks
+    scraperUrl: 'http://192.168.0.220:8080' // TODO pass from chainifyNetwork.scraperUrl
+  });
+  swapProvider.setWallet(walletProvider);
+  const client = new Client().connect(swapProvider);
 
   if (chain.nftProviderType) {
     const nftProvider = getNftProvider(chain.nftProviderType, walletProvider, settings.chainifyNetwork.isTestnet);
