@@ -1,12 +1,13 @@
 import { ChainId, getChain } from '@liquality/cryptoassets';
 import { CUSTOM_ERRORS, createInternalError } from '@liquality/error-parser';
 import { AccountInfo, ClientSettings } from '../../store/types';
-import { createBtcClient, createNearClient, createSolanaClient, createTerraClient } from './clients';
+import { createBtcClient, createYacClient, createNearClient, createSolanaClient, createTerraClient } from './clients';
 import { createEvmClient } from './evm';
 import { Network as ChainifyNetwork } from '@chainify/types';
 import { NearTypes } from '@chainify/near';
 import { TerraTypes } from '@chainify/terra';
 import { BitcoinTypes } from '@chainify/bitcoin';
+import { YacoinTypes } from '@chainify/yacoin';
 
 export const createClient = ({
   chainId,
@@ -28,6 +29,9 @@ export const createClient = ({
     switch (chainId) {
       case ChainId.Bitcoin:
         client = createBtcClient(settings as ClientSettings<BitcoinTypes.BitcoinNetwork>, mnemonic, accountInfo);
+        break;
+      case ChainId.Yacoin:
+        client = createYacClient(settings as ClientSettings<YacoinTypes.YacoinNetwork>, mnemonic, accountInfo);
         break;
       case ChainId.Near:
         client = createNearClient(settings as ClientSettings<NearTypes.NearNetwork>, mnemonic, accountInfo);

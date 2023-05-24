@@ -24,10 +24,18 @@ export interface WalletCoreConfig {
   supportedBridgeAssets: Asset[];
   discordUrl: string;
   infuraApiKey: string;
-  exploraApis: {
+  yacEsploraApis: {
+    esploraUrl: {
+      [key in Network]: string;
+    },
+    esploraSwapUrl: {
+      [key in Network]: string;
+    }
+  };
+  btcEsploraApis: {
     [key in Network]: string;
   };
-  batchEsploraApis: {
+  btcBatchEsploraApis: {
     [key in Network]: string;
   };
   nameResolvers: {
@@ -42,6 +50,7 @@ export interface WalletCoreConfig {
 const config: WalletCoreConfig = {
   defaultAssets: {
     mainnet: [
+      'YAC',
       'BTC',
       'ETH',
       'DAI',
@@ -78,6 +87,7 @@ const config: WalletCoreConfig = {
       'TELEBTC',
     ],
     testnet: [
+      'YAC',
       'BTC',
       'ETH',
       'DAI',
@@ -98,11 +108,21 @@ const config: WalletCoreConfig = {
     ],
   },
   infuraApiKey: 'da99ebc8c0964bb8bb757b6f8cc40f1f',
-  exploraApis: {
+  yacEsploraApis: {
+    esploraUrl: {
+      testnet: 'https://yaswap.yacoin.org:3001/api',
+      mainnet: 'https://yaswap.yacoin.org:3001/api'
+    },
+    esploraSwapUrl: {
+      testnet: 'https://yaswap.yacoin.org:3001',
+      mainnet: 'https://yaswap.yacoin.org:3001'
+    }
+  },
+  btcEsploraApis: {
     testnet: 'https://electrs-testnet-api.liq-chainhub.net/',
     mainnet: 'https://electrs-mainnet-api.liq-chainhub.net/',
   },
-  batchEsploraApis: {
+  btcBatchEsploraApis: {
     testnet: 'https://electrs-batch-testnet-api.liq-chainhub.net/',
     mainnet: 'https://electrs-batch-mainnet-api.liq-chainhub.net/',
   },
@@ -112,7 +132,7 @@ const config: WalletCoreConfig = {
         name: 'Liquality',
         icon: 'liquality.svg',
         type: SwapProviderType.Liquality,
-        agent: 'http://192.168.0.220:3030',
+        agent: 'http://yaswap.yacoin.org:3030',
       },
       [SwapProviderType.UniswapV2]: {
         name: 'Uniswap V2',

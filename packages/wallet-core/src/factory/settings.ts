@@ -24,8 +24,16 @@ export const defaultChainSettings: Record<Network, Record<ChainId, ChainifyNetwo
       if (currChain === ChainId.Bitcoin) {
         chainifyNetwork = {
           ...chainifyNetwork,
-          scraperUrl: buildConfig.exploraApis[currNetwork],
-          batchScraperUrl: buildConfig.batchEsploraApis[currNetwork],
+          scraperUrl: buildConfig.btcEsploraApis[currNetwork],
+          batchScraperUrl: buildConfig.btcBatchEsploraApis[currNetwork],
+          feeProviderUrl: 'https://liquality.io/swap/mempool/v1/fees/recommended',
+        };
+      }
+      if (currChain === ChainId.Yacoin) {
+        chainifyNetwork = {
+          ...chainifyNetwork,
+          yacoinEsploraApis: buildConfig.yacEsploraApis.esploraUrl[currNetwork],
+          yacoinEsploraSwapApis: buildConfig.yacEsploraApis.esploraSwapUrl[currNetwork],
           feeProviderUrl: 'https://liquality.io/swap/mempool/v1/fees/recommended',
         };
       }

@@ -27,6 +27,8 @@ export interface WalletOptions {
 }
 
 export interface ChainifyNetwork extends Network {
+  yacoinEsploraApis?: string;
+  yacoinEsploraSwapApis?: string;
   scraperUrl?: string;
   batchScraperUrl?: string;
   feeProviderUrl?: string;

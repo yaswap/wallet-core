@@ -6,6 +6,13 @@ import {
   BitcoinSwapEsploraProvider,
   BitcoinTypes,
 } from '@chainify/bitcoin';
+import {
+  YacoinEsploraApiProvider,
+  YacoinFeeApiProvider,
+  YacoinHDWalletProvider,
+  YacoinSwapEsploraProvider,
+  YacoinTypes,
+} from '@chainify/yacoin';
 import { BitcoinLedgerProvider, CreateBitcoinLedgerApp } from '@chainify/bitcoin-ledger';
 import { ChainifyNetwork } from '../../types';
 import { NearChainProvider, NearSwapProvider, NearTypes, NearWalletProvider } from '@chainify/near';
@@ -74,6 +81,40 @@ export function createBtcClient(
     const walletProvider = new BitcoinHDWalletProvider(walletOptions, chainProvider);
     swapProvider.setWallet(walletProvider);
   }
+
+  return new Client().connect(swapProvider);
+}
+
+export function createYacClient(
+  settings: ClientSettings<ChainifyNetwork>,
+  mnemonic: string,
+  accountInfo: AccountInfo
+): Client<Chain<any, Network>, Wallet<any, any>, Swap<any, any, Wallet<any, any>>> {
+  const isMainnet = settings.network === 'mainnet';
+  const { chainifyNetwork } = settings;
+  const chainProvider = new YacoinEsploraApiProvider({
+    url: chainifyNetwork.yacoinEsploraApis!,
+    network: chainifyNetwork as YacoinTypes.YacoinNetwork,
+    numberOfBlockConfirmation: 1,
+  });
+
+  if (isMainnet) {
+    const feeProvider = new YacoinFeeApiProvider(chainifyNetwork.feeProviderUrl);
+    chainProvider.setFeeProvider(feeProvider);
+  }
+
+  const swapProvider = new YacoinSwapEsploraProvider({
+    network: chainifyNetwork as YacoinTypes.YacoinNetwork,
+    scraperUrl: chainifyNetwork.yacoinEsploraSwapApis,
+  });
+
+  const walletOptions = {
+    network: chainifyNetwork as YacoinTypes.YacoinNetwork,
+    baseDerivationPath: accountInfo.derivationPath,
+    mnemonic,
+  };
+  const walletProvider = new YacoinHDWalletProvider(walletOptions, chainProvider);
+  swapProvider.setWallet(walletProvider);
 
   return new Client().connect(swapProvider);
 }
