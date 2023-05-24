@@ -686,6 +686,31 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@chainify/yacoin@file:/home/chaunguyen/liq/chainify/packages/yacoin::locator=liquality%40workspace%3A.":
+  version: 1.0.0
+  resolution: "@chainify/yacoin@file:/home/chaunguyen/liq/chainify/packages/yacoin#/home/chaunguyen/liq/chainify/packages/yacoin::hash=fe8e10&locator=liquality%40workspace%3A."
+  dependencies:
+    "@chainify/client": "workspace:*"
+    "@chainify/errors": "workspace:*"
+    "@chainify/types": "workspace:*"
+    "@chainify/utils": "workspace:*"
+    "@types/bip32": ^2.0.0
+    "@types/bip39": ^3.0.0
+    "@types/bitcoinjs-lib": ^5.0.0
+    "@types/lodash": ^4.14.178
+    "@types/memoizee": ^0.4.7
+    "@yaswap/yacoinjs-lib": ^v1.1.0
+    bip174: ^2.0.1
+    bip32: 2.0.6
+    bip39: ^3.0.4
+    bitcoinjs-message: 2.2.0
+    coinselect: ^3.1.12
+    lodash: 4.17.21
+    memoizee: ^0.4.15
+  checksum: 49e4ef4af9971eaca5e7b494aceb65eaa57c1fa7692ed3df33791c933520b8076b29f3cdf336d4cf0fb2cd16af50c5cf61786c3675603c3b409c3f83213acdee
+  languageName: node
+  linkType: hard
+
 "@changesets/apply-release-plan@npm:^6.0.4":
   version: 6.0.4
   resolution: "@changesets/apply-release-plan@npm:6.0.4"
@@ -2682,11 +2707,13 @@ __metadata:
   dependencies:
     "@ethersproject/address": 5.7.0
     "@types/bs58": 4.0.1
+    base58-js: ^1.0.0
     bignumber.js: ^9.0.2
     bitcoin-address-validation: 2.2.1
     bs58: 5.0.0
     ethereumjs-util: 7.1.5
     lodash: 4.17.21
+    sha256-uint8array: ^0.10.3
   languageName: unknown
   linkType: soft
 
@@ -2732,6 +2759,7 @@ __metadata:
     "@chainify/terra": 2.2.0
     "@chainify/types": 2.3.0
     "@chainify/utils": 2.3.0
+    "@chainify/yacoin": 1.0.0
     "@eth-optimism/sdk": 1.1.5
     "@ethersproject/abstract-provider": 5.7.0
     "@ethersproject/abstract-signer": 5.7.0
@@ -3968,6 +3996,29 @@ __metadata:
   peerDependencies:
     bignumber.js: 9.x
   checksum: 991e1b2cfdeb76efe758540589fb96b034fe35df3cd5414c0d2f45146cb1e7438ee27ef5f1a7173249d31bf795c7c4ec8b10cafa10179c3fa77d4e06ea14d616
+  languageName: node
+  linkType: hard
+
+"@yaswap/yacoinjs-lib@npm:^v1.1.0":
+  version: 1.1.0
+  resolution: "@yaswap/yacoinjs-lib@npm:1.1.0"
+  dependencies:
+    bech32: ^1.1.2
+    bip174: ^2.0.1
+    bip32: ^2.0.4
+    bip66: ^1.1.0
+    bitcoin-ops: ^1.4.0
+    bs58check: ^2.0.0
+    create-hash: ^1.1.0
+    create-hmac: ^1.1.3
+    merkle-lib: ^2.0.10
+    pushdata-bitcoin: ^1.0.1
+    randombytes: ^2.0.1
+    tiny-secp256k1: ^1.1.1
+    typeforce: ^1.11.3
+    varuint-bitcoin: ^1.0.4
+    wif: ^2.0.1
+  checksum: cad40bcc7d068821656edf8b66e6b893434b1bbfc3225487eaacd25b99926cbcab8d6a60eed1ceca738cf979c5d017aeec6c754faa42a15bf773a5f6948a6c19
   languageName: node
   linkType: hard
 

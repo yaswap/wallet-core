@@ -13,12 +13,12 @@
   "dependencies": {
     "@ethersproject/address": "5.7.0",
     "@types/bs58": "4.0.1",
+    "base58-js": "^1.0.0",
     "bignumber.js": "^9.0.2",
     "bitcoin-address-validation": "2.2.1",
     "bs58": "5.0.0",
     "ethereumjs-util": "7.1.5",
     "lodash": "4.17.21",
-    "base58-js": "^1.0.0",
     "sha256-uint8array": "^0.10.3"
   },
   "scripts": {

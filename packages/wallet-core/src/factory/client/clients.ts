@@ -93,6 +93,7 @@ export function createYacClient(
   const isMainnet = settings.network === 'mainnet';
   const { chainifyNetwork } = settings;
   const chainProvider = new YacoinEsploraApiProvider({
+    batchUrl: chainifyNetwork.yacoinEsploraApis!,
     url: chainifyNetwork.yacoinEsploraApis!,
     network: chainifyNetwork as YacoinTypes.YacoinNetwork,
     numberOfBlockConfirmation: 1,
