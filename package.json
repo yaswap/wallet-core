@@ -86,6 +86,7 @@
     "@chainify/solana": "file:/home/chaunguyen/liq/chainify/packages/solana",
     "@chainify/terra": "file:/home/chaunguyen/liq/chainify/packages/terra",
     "@chainify/types": "file:/home/chaunguyen/liq/chainify/packages/types",
-    "@chainify/utils": "file:/home/chaunguyen/liq/chainify/packages/utils"
+    "@chainify/utils": "file:/home/chaunguyen/liq/chainify/packages/utils",
+    "@chainify/yacoin": "file:/home/chaunguyen/liq/chainify/packages/yacoin"
   }
 }
