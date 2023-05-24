@@ -9,6 +9,7 @@ export enum AssetTypes {
 export type AssetType = AssetTypes.native | AssetTypes.erc20;
 
 export enum ChainId {
+  Yacoin = 'yacoin',
   Bitcoin = 'bitcoin',
   Ethereum = 'ethereum',
   Rootstock = 'rsk',
