@@ -6,6 +6,7 @@ import EventEmitter from 'events';
 import { findKey, mapKeys, mapValues, random } from 'lodash';
 import cryptoassets from '../utils/cryptoassets';
 import { Asset, AssetInfo, CurrenciesInfo, Network, RootState, WalletId } from './types';
+import buildConfig from '../build.config'
 
 export const clientCache: { [key: string]: Client } = {};
 
@@ -89,6 +90,12 @@ export const shouldApplyRskLegacyDerivation = async (
   const balances = await chainProvider.getBalance(addresses, rskERC20Assets as any);
   return balances.some((amount) => amount.isGreaterThan(0));
 };
+
+export async function getYacPrices() {
+  const yacoinExploraSwapApis = buildConfig.yacEsploraApis.esploraSwapUrl['mainnet']
+  const { data } = await HttpClient.get(`${yacoinExploraSwapApis}/getprice`)
+  return data['price']
+}
 
 export async function getPrices(baseCurrencies: string[], toCurrency: string) {
   const coindIds = baseCurrencies

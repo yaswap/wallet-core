@@ -1,10 +1,11 @@
 import { ActionContext, rootActionContext } from '..';
 import { Asset, FiatRates } from '../types';
-import { getPrices } from '../utils';
+import { getPrices, getYacPrices } from '../utils'
 
 export const updateFiatRates = async (context: ActionContext, { assets }: { assets: Asset[] }): Promise<FiatRates> => {
   const { commit } = rootActionContext(context);
-  const fiatRates = await getPrices(assets, 'usd');
+  let fiatRates = await getPrices(assets, 'usd')
+  fiatRates['YAC'] = await getYacPrices()
 
   commit.UPDATE_FIAT_RATES({ fiatRates });
 
