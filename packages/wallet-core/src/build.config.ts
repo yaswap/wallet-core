@@ -110,12 +110,12 @@ const config: WalletCoreConfig = {
   infuraApiKey: 'da99ebc8c0964bb8bb757b6f8cc40f1f',
   yacEsploraApis: {
     esploraUrl: {
-      testnet: 'https://yaswap.yacoin.org:3001/api',
-      mainnet: 'https://yaswap.yacoin.org:3001/api'
+      testnet: 'https://yaswap.yacoin.org/api',
+      mainnet: 'https://yaswap.yacoin.org/api'
     },
     esploraSwapUrl: {
-      testnet: 'https://yaswap.yacoin.org:3001',
-      mainnet: 'https://yaswap.yacoin.org:3001'
+      testnet: 'https://yaswap.yacoin.org',
+      mainnet: 'https://yaswap.yacoin.org'
     }
   },
   btcEsploraApis: {
