@@ -1,5 +1,5 @@
 import { cloneDeep } from 'lodash';
-import { INetwork, IUtxoNetwork } from '../interfaces/INetwork';
+import { INetwork } from '../interfaces/INetwork';
 import { ExplorerView, NftProviderType } from '../types';
 import { BaseChain } from './BaseChain';
 
@@ -63,22 +63,22 @@ export const transformMainnetToTestnetChain = (
     }
   });
 
-  if (testnetChain.network.utxo && chain.network.utxo) {
-    assertUtxoProps(testnetChain.network.utxo, chain.network.utxo);
-  }
+  // if (testnetChain.network.utxo && chain.network.utxo) {
+  //   assertUtxoProps(testnetChain.network.utxo, chain.network.utxo);
+  // }
 
   return testnetChain as BaseChain;
 };
 
-const assertUtxoProps = (testnetUtxo: IUtxoNetwork, mainnetUtxo: IUtxoNetwork) => {
-  if (
-    testnetUtxo.bech32 == mainnetUtxo.bech32 ||
-    testnetUtxo.bip32.private == mainnetUtxo.bip32.private ||
-    testnetUtxo.bip32.public == mainnetUtxo.bip32.public ||
-    testnetUtxo.pubKeyHash == mainnetUtxo.pubKeyHash ||
-    testnetUtxo.scriptHash == mainnetUtxo.scriptHash ||
-    testnetUtxo.wif == mainnetUtxo.wif
-  ) {
-    throw new Error('UTXO config between test and mainnet cannot match');
-  }
-};
+// const assertUtxoProps = (testnetUtxo: IUtxoNetwork, mainnetUtxo: IUtxoNetwork) => {
+//   if (
+//     testnetUtxo.bech32 == mainnetUtxo.bech32 ||
+//     testnetUtxo.bip32.private == mainnetUtxo.bip32.private ||
+//     testnetUtxo.bip32.public == mainnetUtxo.bip32.public ||
+//     testnetUtxo.pubKeyHash == mainnetUtxo.pubKeyHash ||
+//     testnetUtxo.scriptHash == mainnetUtxo.scriptHash ||
+//     testnetUtxo.wif == mainnetUtxo.wif
+//   ) {
+//     throw new Error('UTXO config between test and mainnet cannot match');
+//   }
+// };

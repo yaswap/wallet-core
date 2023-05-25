@@ -1,4 +1,5 @@
 import { BitcoinNetworks } from '@chainify/bitcoin';
+import { YacoinNetworks } from '@chainify/yacoin';
 import { NearNetworks } from '@chainify/near';
 import { SolanaNetworks } from '@chainify/solana';
 import { TerraNetworks } from '@chainify/terra';
@@ -16,7 +17,10 @@ export const ChainNetworks: ChainNetworksType = {
     testnet: BitcoinNetworks.bitcoin_testnet,
     mainnet: BitcoinNetworks.bitcoin,
   },
-
+  [ChainId.Yacoin]: {
+    testnet: YacoinNetworks.yacoin_testnet,
+    mainnet: YacoinNetworks.yacoin,
+  },
   [ChainId.Near]: {
     testnet: NearNetworks.near_testnet,
     mainnet: {
