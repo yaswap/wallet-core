@@ -1,4 +1,5 @@
 import { BitcoinBaseWalletProvider, BitcoinEsploraApiProvider } from '@chainify/bitcoin';
+import { YacoinBaseWalletProvider, YacoinEsploraApiProvider } from '@chainify/yacoin';
 import { Client, HttpClient } from '@chainify/client';
 import { Transaction } from '@chainify/types';
 import { sha256 } from '@chainify/utils';
@@ -218,6 +219,17 @@ export class LiqualitySwapProvider extends EvmSwapProvider {
       const client = this.getClient(network, walletId, asset, quote.fromAccountId) as Client<
         BitcoinEsploraApiProvider,
         BitcoinBaseWalletProvider
+      >;
+      const value = max ? undefined : new BN(quote.fromAmount);
+      const txs = feePrices.map((fee) => ({ to: '', value, fee }));
+      const totalFees = await client.wallet.getTotalFees(txs, max);
+      return mapValues(totalFees, (f) => unitToCurrency(cryptoassets[asset], f));
+    }
+
+    if (txType === this._txTypes().SWAP_INITIATION && asset === 'YAC') {
+      const client = this.getClient(network, walletId, asset, quote.fromAccountId) as Client<
+        YacoinEsploraApiProvider,
+        YacoinBaseWalletProvider
       >;
       const value = max ? undefined : new BN(quote.fromAmount);
       const txs = feePrices.map((fee) => ({ to: '', value, fee }));
@@ -803,6 +815,7 @@ export class LiqualitySwapProvider extends EvmSwapProvider {
       ERC20: 110_000,
       ARBETH: 680_000,
       AVAX: 90_000,
+      YAC: 11,
     },
   };
 }
