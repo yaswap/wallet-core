@@ -154,35 +154,55 @@ export async function getCurrenciesInfo(baseCurrencies: string[]): Promise<Curre
   }, {});
 }
 
+export function getPriority(chain: string) {
+    switch (chain) {
+      case 'yacoin':
+        return 3
+      case 'bitcoin':
+        return 2
+      case 'ethereum':
+        return 1
+      default:
+        return 0
+    }
+}
 /*
   Sort chains
-
-  First criteria: Total fiat balance - descending
-  Second criteria: Market cap of their native asset - descending
-  Third criteria: Alphabetical - (A - Z)
+  Always display first 3 coins: YAC, BTC, ETH. Other coins will be displayed based on following conditions:
+    First criteria: Total fiat balance - descending
+    Second criteria: Market cap of their native asset - descending
+    Third criteria: Alphabetical - (A - Z)
 */
 
 export const orderChains = (
   firstChain: { totalFiatBalance: BN; nativeAssetMarketCap: BN; chain: string },
   secondChain: { totalFiatBalance: BN; nativeAssetMarketCap: BN; chain: string }
 ) => {
-  if (firstChain.totalFiatBalance.gt(secondChain.totalFiatBalance)) {
-    return -1;
-  }
 
-  if (secondChain.totalFiatBalance.gt(firstChain.totalFiatBalance)) {
-    return 1;
-  }
+  const firstPriority = getPriority(firstChain.chain)
+  const secondPriority = getPriority(secondChain.chain)
+  const difference = secondPriority - firstPriority
+  if (difference != 0) {
+    return difference
+  } else {
+    if (firstChain.totalFiatBalance.gt(secondChain.totalFiatBalance)) {
+      return -1;
+    }
 
-  if (firstChain.nativeAssetMarketCap.gt(secondChain.nativeAssetMarketCap)) {
-    return -1;
-  }
+    if (secondChain.totalFiatBalance.gt(firstChain.totalFiatBalance)) {
+      return 1;
+    }
 
-  if (secondChain.nativeAssetMarketCap.gt(firstChain.nativeAssetMarketCap)) {
-    return 1;
-  }
+    if (firstChain.nativeAssetMarketCap.gt(secondChain.nativeAssetMarketCap)) {
+      return -1;
+    }
 
-  return firstChain.chain < secondChain.chain ? -1 : 1;
+    if (secondChain.nativeAssetMarketCap.gt(firstChain.nativeAssetMarketCap)) {
+      return 1;
+    }
+
+    return firstChain.chain < secondChain.chain ? -1 : 1;
+  }
 };
 
 /*
