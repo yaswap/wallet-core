@@ -132,7 +132,7 @@ const config: WalletCoreConfig = {
         name: 'Liquality',
         icon: 'liquality.svg',
         type: SwapProviderType.Liquality,
-        agent: 'http://yaswap.yacoin.org:3030',
+        agent: 'http://192.168.0.220:3030',
       },
       [SwapProviderType.UniswapV2]: {
         name: 'Uniswap V2',
