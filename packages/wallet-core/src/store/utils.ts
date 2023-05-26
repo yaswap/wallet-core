@@ -93,8 +93,8 @@ export const shouldApplyRskLegacyDerivation = async (
 
 export async function getYacPrices() {
   const yacoinExploraSwapApis = buildConfig.yacEsploraApis.esploraSwapUrl['mainnet']
-  const { data } = await HttpClient.get(`${yacoinExploraSwapApis}/getprice`)
-  return data['price']
+  const { price } = await HttpClient.get(`${yacoinExploraSwapApis}/getprice`)
+  return price
 }
 
 export async function getPrices(baseCurrencies: string[], toCurrency: string) {

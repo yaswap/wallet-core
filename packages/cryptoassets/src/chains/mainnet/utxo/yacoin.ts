@@ -47,7 +47,7 @@ export default new YacoinChain({
   explorerViews: [
     {
       tx: 'https://yaswap.yacoin.org/tx/{hash}',
-      address: 'https://yaswap.yacoin.org/address/{hash}',
+      address: 'https://yaswap.yacoin.org/address/{address}',
     },
   ],
   multicallSupport: false,
