@@ -476,7 +476,7 @@ __metadata:
 
 "@chainify/bitcoin-ledger@file:/home/chaunguyen/liq/chainify/packages/bitcoin-ledger::locator=liquality%40workspace%3A.":
   version: 2.4.1
-  resolution: "@chainify/bitcoin-ledger@file:/home/chaunguyen/liq/chainify/packages/bitcoin-ledger#/home/chaunguyen/liq/chainify/packages/bitcoin-ledger::hash=fce0ad&locator=liquality%40workspace%3A."
+  resolution: "@chainify/bitcoin-ledger@file:/home/chaunguyen/liq/chainify/packages/bitcoin-ledger#/home/chaunguyen/liq/chainify/packages/bitcoin-ledger::hash=167d4b&locator=liquality%40workspace%3A."
   dependencies:
     "@chainify/bitcoin": "workspace:*"
     "@chainify/client": "workspace:*"
@@ -487,13 +487,13 @@ __metadata:
     "@ledgerhq/hw-app-btc": 9.1.2
     bip32: 2.0.6
     bitcoinjs-lib: 5.2.0
-  checksum: 453383a1dbd377dcf0b5c257625a4e3ab48e0b6ac786221030ad6171c94178620233e073da2dfbef7d6dd33189494dcdff910f62dd9c9a7401f717d250401cf1
+  checksum: 4c4988e3ab50a251c79eff876a0bf61d5ef459fa3a8d0df53e97679c528f89f6592cfbf69244e7231e5aed2fa51a8434e2426c35014225f4ccb293d4c85a6db7
   languageName: node
   linkType: hard
 
 "@chainify/bitcoin@file:/home/chaunguyen/liq/chainify/packages/bitcoin::locator=liquality%40workspace%3A.":
   version: 2.3.0
-  resolution: "@chainify/bitcoin@file:/home/chaunguyen/liq/chainify/packages/bitcoin#/home/chaunguyen/liq/chainify/packages/bitcoin::hash=ae985f&locator=liquality%40workspace%3A."
+  resolution: "@chainify/bitcoin@file:/home/chaunguyen/liq/chainify/packages/bitcoin#/home/chaunguyen/liq/chainify/packages/bitcoin::hash=c9af7e&locator=liquality%40workspace%3A."
   dependencies:
     "@chainify/client": "workspace:*"
     "@chainify/errors": "workspace:*"
@@ -512,20 +512,20 @@ __metadata:
     coinselect: ^3.1.12
     lodash: 4.17.21
     memoizee: ^0.4.15
-  checksum: 17d5b5635db9dbf3ba90a564816fed82b8fe64ba82c69a06e792672a951b2d840f0f11bec4e3779dc33a54ec16e3ef709fba226c27b4ecebeaf437bcd663f8fe
+  checksum: c178791ac5679cd42b8a2deb92cd2ffff0a7a2cf3fa64079619fc701786374c9d5fe55f8210f7b73a341069fa6b33e500c2c08cb93a95f94defc75dfe7dee9f9
   languageName: node
   linkType: hard
 
 "@chainify/client@file:/home/chaunguyen/liq/chainify/packages/client::locator=liquality%40workspace%3A.":
   version: 2.2.1
-  resolution: "@chainify/client@file:/home/chaunguyen/liq/chainify/packages/client#/home/chaunguyen/liq/chainify/packages/client::hash=8110fa&locator=liquality%40workspace%3A."
+  resolution: "@chainify/client@file:/home/chaunguyen/liq/chainify/packages/client#/home/chaunguyen/liq/chainify/packages/client::hash=24d86a&locator=liquality%40workspace%3A."
   dependencies:
     "@chainify/errors": "workspace:*"
     "@chainify/logger": "workspace:*"
     "@chainify/types": "workspace:*"
     "@chainify/utils": "workspace:*"
     axios: ^0.25.0
-  checksum: d87e8deff5f4156d1cf916fd687d5ab0427865af00a438cc9f63a25d1df01daecfa04e6eb0f6184b69b74309b3ca6fd92a8f11aa37dcab9c072fdc2b2ebd385a
+  checksum: 4bffd5e204e88a2a6cbd64eb4f858b02d594a71cbf500a70e7fe20ab76e9e02bea9f21b0f04cabe6e5a11959e3d549656a46ed1a5b0fa371f2713641325008dd
   languageName: node
   linkType: hard
 
@@ -540,7 +540,7 @@ __metadata:
 
 "@chainify/evm-ledger@file:/home/chaunguyen/liq/chainify/packages/evm-ledger::locator=liquality%40workspace%3A.":
   version: 2.4.2
-  resolution: "@chainify/evm-ledger@file:/home/chaunguyen/liq/chainify/packages/evm-ledger#/home/chaunguyen/liq/chainify/packages/evm-ledger::hash=76806e&locator=liquality%40workspace%3A."
+  resolution: "@chainify/evm-ledger@file:/home/chaunguyen/liq/chainify/packages/evm-ledger#/home/chaunguyen/liq/chainify/packages/evm-ledger::hash=abceef&locator=liquality%40workspace%3A."
   dependencies:
     "@chainify/client": "workspace:*"
     "@chainify/errors": "workspace:*"
@@ -558,13 +558,13 @@ __metadata:
     "@ethersproject/strings": 5.7.0
     "@ethersproject/transactions": 5.7.0
     "@ledgerhq/hw-app-eth": 6.30.5
-  checksum: ebb7004a66944d539ad8e9552e96b161954d428c6dd19309d5f67d9eab7e7fb4b562ba258d2c2e783d0659984954a758d8d80f6bfe389350d8fa9679fb949044
+  checksum: ab22a479ef37674959bf689f8598b2d7ecb30072f61a35f42a0f2cfe83e5b49384b5c8cd0c9c9065b1608663d59521261b3f318d2cb1cfe841f32acb36a39d0f
   languageName: node
   linkType: hard
 
 "@chainify/evm@file:/home/chaunguyen/liq/chainify/packages/evm::locator=liquality%40workspace%3A.":
   version: 2.4.0
-  resolution: "@chainify/evm@file:/home/chaunguyen/liq/chainify/packages/evm#/home/chaunguyen/liq/chainify/packages/evm::hash=b93add&locator=liquality%40workspace%3A."
+  resolution: "@chainify/evm@file:/home/chaunguyen/liq/chainify/packages/evm#/home/chaunguyen/liq/chainify/packages/evm::hash=e9ceb3&locator=liquality%40workspace%3A."
   dependencies:
     "@chainify/client": "workspace:*"
     "@chainify/errors": "workspace:*"
@@ -584,7 +584,7 @@ __metadata:
     "@liquality/fee-suggestions": 2.0.2
     "@metamask/eth-sig-util": 4.0.1
     ethers: 5.7.0
-  checksum: 427b67ce7eaab7b9426902e07fbb7c5daf3f9160e01230e2b600744933909dfe62d4aea8f3ea1a66960d60a534ded3a5cfad6048eac448d4bfee0f19db630092
+  checksum: f5aa12ef72c3ddb74d7c9411f0e0dfcc3a1b2f13303dd09a264b1fdcff079db028c5fd796077b81ec77abfd89fc9e93ae4a89693826b97b52fd0152b3d82de5d
   languageName: node
   linkType: hard
 
@@ -611,7 +611,7 @@ __metadata:
 
 "@chainify/near@file:/home/chaunguyen/liq/chainify/packages/near::locator=liquality%40workspace%3A.":
   version: 2.3.0
-  resolution: "@chainify/near@file:/home/chaunguyen/liq/chainify/packages/near#/home/chaunguyen/liq/chainify/packages/near::hash=7cf179&locator=liquality%40workspace%3A."
+  resolution: "@chainify/near@file:/home/chaunguyen/liq/chainify/packages/near#/home/chaunguyen/liq/chainify/packages/near::hash=b2c0b6&locator=liquality%40workspace%3A."
   dependencies:
     "@chainify/client": "workspace:*"
     "@chainify/errors": "workspace:*"
@@ -620,13 +620,13 @@ __metadata:
     bn.js: ^5.2.0
     near-api-js: ^0.44.2
     near-seed-phrase: ^0.2.0
-  checksum: fdcea5583d2b3a231a8e8bde97edd1aa43a31a9076d898c76107b281c84cce2c4667a056872f2f0c5258f7791e1db22eadb7ed79867a42992f974f8ffa034c33
+  checksum: 70938d2eaec33b28a8e343bdd89b1d59976b2ccd06a67ad0480c8f1020795551d48a2c2572a2413414c87bd710dae8dc5326e498b946d19f476d0de52a6db6c7
   languageName: node
   linkType: hard
 
 "@chainify/solana@file:/home/chaunguyen/liq/chainify/packages/solana::locator=liquality%40workspace%3A.":
   version: 2.4.1
-  resolution: "@chainify/solana@file:/home/chaunguyen/liq/chainify/packages/solana#/home/chaunguyen/liq/chainify/packages/solana::hash=27f4ec&locator=liquality%40workspace%3A."
+  resolution: "@chainify/solana@file:/home/chaunguyen/liq/chainify/packages/solana#/home/chaunguyen/liq/chainify/packages/solana::hash=0f60d5&locator=liquality%40workspace%3A."
   dependencies:
     "@chainify/client": "workspace:*"
     "@chainify/errors": "workspace:*"
@@ -639,13 +639,13 @@ __metadata:
     bip39: ^3.0.4
     ed25519-hd-key: ^1.2.0
     tweetnacl: ^1.0.3
-  checksum: be7a4d17a5ff033510d9f2ba961cfaeecbd7cdc0bb519ee430d6d236ab3b286e6c76d3d8f4e1839f4615f2ff2d6b848eea923b680ed661c34476631593b6dd92
+  checksum: 4fe48d72c071ab89f9be609e1e994480518bc46dd8b910835582de129aba9152c8abf85f7095b1c315e9b31c108ebab2141bcb5b2d2f8d7071c815a9f99f9d65
   languageName: node
   linkType: hard
 
 "@chainify/terra@file:/home/chaunguyen/liq/chainify/packages/terra::locator=liquality%40workspace%3A.":
   version: 2.3.0
-  resolution: "@chainify/terra@file:/home/chaunguyen/liq/chainify/packages/terra#/home/chaunguyen/liq/chainify/packages/terra::hash=525a9b&locator=liquality%40workspace%3A."
+  resolution: "@chainify/terra@file:/home/chaunguyen/liq/chainify/packages/terra#/home/chaunguyen/liq/chainify/packages/terra::hash=b690ec&locator=liquality%40workspace%3A."
   dependencies:
     "@chainify/client": "workspace:*"
     "@chainify/errors": "workspace:*"
@@ -656,7 +656,7 @@ __metadata:
     "@types/luxon": ^2.0.9
     lodash: 4.17.21
     luxon: ^2.3.1
-  checksum: 34538f4f07d105f40adb434c089497025b3fdadff5dd8c5014e0832e6cb51aee1473e35d54f27916ff04c6bbfd100fe1902e14357f4c45b2d9829753014e1e73
+  checksum: a3df840bb6d6dcae9ebbf8f95359bc0aa15233f498c044fb69d1f58556dfa7b6ca8202ff5756825e6b61fbb0f08c48ed0331d124881226224c4d49bd1f839970
   languageName: node
   linkType: hard
 
@@ -688,7 +688,7 @@ __metadata:
 
 "@chainify/yacoin@file:/home/chaunguyen/liq/chainify/packages/yacoin::locator=liquality%40workspace%3A.":
   version: 1.0.0
-  resolution: "@chainify/yacoin@file:/home/chaunguyen/liq/chainify/packages/yacoin#/home/chaunguyen/liq/chainify/packages/yacoin::hash=fe8e10&locator=liquality%40workspace%3A."
+  resolution: "@chainify/yacoin@file:/home/chaunguyen/liq/chainify/packages/yacoin#/home/chaunguyen/liq/chainify/packages/yacoin::hash=9d99af&locator=liquality%40workspace%3A."
   dependencies:
     "@chainify/client": "workspace:*"
     "@chainify/errors": "workspace:*"
@@ -707,7 +707,7 @@ __metadata:
     coinselect: ^3.1.12
     lodash: 4.17.21
     memoizee: ^0.4.15
-  checksum: 49e4ef4af9971eaca5e7b494aceb65eaa57c1fa7692ed3df33791c933520b8076b29f3cdf336d4cf0fb2cd16af50c5cf61786c3675603c3b409c3f83213acdee
+  checksum: a527f0f9ac62f7121dcde75ea42d2f09a414c5c53dba2c7c2236b510e2539ac5c105f21503283403b0049bff0324aaeca3acce62a42e14563c1e2a81a0336a12
   languageName: node
   linkType: hard
 
