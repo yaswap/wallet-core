@@ -136,8 +136,8 @@ export class LiqualitySwapProvider extends EvmSwapProvider {
   }
 
   public async newSwap(swapRequest: SwapRequest<LiqualitySwapHistoryItem>) {
-    const approveTx = await this.approve(swapRequest, true);
-    const updates = approveTx || (await this.initiateSwap(swapRequest));
+    // const approveTx = await this.approve(swapRequest, true);
+    const updates = await this.initiateSwap(swapRequest);
     return { id: uuidv4(), ...updates };
   }
 
