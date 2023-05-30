@@ -24,6 +24,7 @@ export const createClient = ({
   const chain = getChain(settings.network, chainId);
 
   if (chain.isEVM) {
+    console.log("TACA ===> [wallet-core] createClient, create client for chain = ", chain)
     client = createEvmClient(chain, settings, mnemonic, accountInfo);
   } else {
     switch (chainId) {

@@ -185,7 +185,7 @@ export class LiqualitySwapProvider extends EvmSwapProvider {
     const secretHash = sha256(secret);
     const asset = assetsAdapter(quote.from)[0];
 
-    console.log('TACA ===> [wallet-core] LiqualitySwapProvider.ts, initiateSwap, calling chainify initiateSwap')
+    console.log('TACA ===> [wallet-core] LiqualitySwapProvider.ts, initiateSwap, calling chainify initiateSwap with asset = ', asset)
     const fromFundTx = await fromClient.swap.initiateSwap(
       {
         asset,
