@@ -16,6 +16,7 @@ import { assetsAdapter } from '../../utils/chainify';
 import { prettyBalance } from '../../utils/coinFormatter';
 import cryptoassets from '../../utils/cryptoassets';
 import { getTxFee } from '../../utils/fees';
+import { isERC20 } from '../../utils/asset';
 import { EvmSwapHistoryItem, EvmSwapProvider, EvmSwapProviderConfig } from '../EvmSwapProvider';
 import {
   EstimateFeeRequest,
@@ -343,6 +344,11 @@ export class LiqualitySwapProvider extends EvmSwapProvider {
         return withInterval(async () => this.confirmInitiation({ swap, network, walletId }));
 
       case 'INITIATION_CONFIRMED':
+        return withLock(store, { item: swap, network, walletId, asset: swap.from },
+          async () => this.fundSwap({ swap, network, walletId })
+        )
+
+      case 'FUNDED':
         return withInterval(async () => this.findCounterPartyInitiation({ swap, network, walletId }));
 
       case 'CONFIRM_COUNTER_PARTY_INITIATION':
@@ -394,7 +400,11 @@ export class LiqualitySwapProvider extends EvmSwapProvider {
         label: 'Locking {from}',
         filterStatus: 'PENDING',
       },
-
+      FUNDED: {
+        step: 2,
+        label: 'Locking {to}',
+        filterStatus: 'PENDING'
+      },
       CONFIRM_COUNTER_PARTY_INITIATION: {
         step: 2,
         label: 'Locking {to}',
@@ -591,6 +601,37 @@ export class LiqualitySwapProvider extends EvmSwapProvider {
     }
   }
 
+  public async fundSwap({ swap, network, walletId }: NextSwapActionRequest<LiqualitySwapHistoryItem>) {
+    if (await this.hasQuoteExpired(swap)) {
+      return { status: 'WAITING_FOR_REFUND' };
+    }
+
+    if (!isERC20(swap.from)) return { status: 'FUNDED' } // Skip. Only ERC20 swaps need funding
+
+    const asset = assetsAdapter(swap.from)[0];
+    const fromClient = this.getClient(network, walletId, swap.from, swap.fromAccountId)
+
+    await this.sendLedgerNotification(swap.fromAccountId, 'Signing required to fund the swap.')
+
+    const fundTx = await fromClient.swap.fundSwap(
+      {
+        asset,
+        value: BN(swap.fromAmount),
+        recipientAddress: swap.fromCounterPartyAddress,
+        refundAddress: swap.fromAddress,
+        secretHash: swap.secretHash,
+        expiration: swap.swapExpiration
+      },
+      swap.fromFundHash,
+      swap.fee
+    )
+
+    return {
+      fundTxHash: fundTx?.hash,
+      status: 'FUNDED'
+    }
+  }
+
   private async findCounterPartyInitiation({
     swap,
     network,
@@ -627,7 +668,31 @@ export class LiqualitySwapProvider extends EvmSwapProvider {
           toFundHash
         );
 
-        if (isVerified) {
+        // ERC20 swaps have separate funding tx. Ensures funding tx has enough confirmations
+        console.log('TACA ===> [wallet-core] LiqualitySwapProvider.ts, findCounterPartyInitiation, calling findFundSwapTransaction')
+        const fundingTransaction = await toClient.swap.findFundSwapTransaction(
+          {
+            asset,
+            value: BN(swap.toAmount),
+            recipientAddress: swap.toAddress,
+            refundAddress: swap.toCounterPartyAddress,
+            secretHash: swap.secretHash,
+            expiration: swap.nodeSwapExpiration
+          },
+          toFundHash
+        )
+
+        let fundingConfirmed = false;
+        if (fundingTransaction) { // Handle ERC20 tokens
+          if (fundingTransaction.confirmations && fundingTransaction.confirmations >=
+            getChain(network, cryptoassets[swap.to].chain).safeConfirmations) {
+              fundingConfirmed = true
+            }
+        } else {
+          fundingConfirmed = true
+        }
+
+        if (isVerified && fundingConfirmed) {
           return {
             toFundHash,
             status: 'CONFIRM_COUNTER_PARTY_INITIATION',

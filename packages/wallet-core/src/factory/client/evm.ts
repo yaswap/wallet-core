@@ -30,7 +30,7 @@ export function createEvmClient(
   // Add EVM swap provider
   // const { chainifyNetwork } = settings;
   const swapProvider = new EvmSwapProvider({
-    // contractAddress: undefined, // TODO for other ERC20 networks
+    // contractAddress: undefined, // TODO Deploy a specialized contract address used for atomic swap
     scraperUrl: 'http://192.168.0.220:8080' // TODO pass from chainifyNetwork.scraperUrl
   });
   swapProvider.setWallet(walletProvider);
