@@ -138,6 +138,7 @@ export class LiqualitySwapProvider extends EvmSwapProvider {
 
   public async newSwap(swapRequest: SwapRequest<LiqualitySwapHistoryItem>) {
     // const approveTx = await this.approve(swapRequest, true);
+    console.log("TACA ===> LiqualitySwapProvider.ts, newSwap, swapRequest = ", swapRequest)
     const updates = await this.initiateSwap(swapRequest);
     return { id: uuidv4(), ...updates };
   }
@@ -366,9 +367,12 @@ export class LiqualitySwapProvider extends EvmSwapProvider {
         return withInterval(async () => this.waitForRefund({ swap, network, walletId }));
 
       case 'GET_REFUND':
-        return withLock(store, { item: swap, network, walletId, asset: swap.from }, async () =>
+        return withInterval(async () =>
           this.refundSwap({ swap, network, walletId })
-        );
+        )
+        // return withLock(store, { item: swap, network, walletId, asset: swap.from }, async () =>
+        //   this.refundSwap({ swap, network, walletId })
+        // );
 
       case 'WAITING_FOR_REFUND_CONFIRMATIONS':
         return withInterval(async () => this.waitForRefundConfirmations({ swap, network, walletId }));
@@ -538,24 +542,29 @@ export class LiqualitySwapProvider extends EvmSwapProvider {
     const fromClient = this.getClient(network, walletId, swap.from, swap.fromAccountId);
     await this.sendLedgerNotification(swap.fromAccountId, 'Signing required to refund the swap.');
     const asset = assetsAdapter(swap.from)[0];
-    const refundTx = await fromClient.swap.refundSwap(
-      {
-        asset,
-        value: new BN(swap.fromAmount),
-        recipientAddress: swap.fromCounterPartyAddress,
-        refundAddress: swap.fromAddress,
-        secretHash: swap.secretHash,
-        expiration: swap.swapExpiration,
-      },
-      swap.fromFundHash,
-      swap.fee
-    );
+    try {
+      const refundTx = await fromClient.swap.refundSwap(
+        {
+          asset,
+          value: new BN(swap.fromAmount),
+          recipientAddress: swap.fromCounterPartyAddress,
+          refundAddress: swap.fromAddress,
+          secretHash: swap.secretHash,
+          expiration: swap.swapExpiration,
+        },
+        swap.fromFundHash,
+        swap.fee
+      );
 
-    return {
-      refundHash: refundTx.hash,
-      refundTx,
-      status: 'WAITING_FOR_REFUND_CONFIRMATIONS',
-    };
+      return {
+        refundHash: refundTx.hash,
+        refundTx,
+        status: 'WAITING_FOR_REFUND_CONFIRMATIONS',
+      };
+    } catch (e) {
+      if (e.name === 'TxNotFoundError') console.warn(e);
+      else throw e;
+    }
   }
 
   private async reportInitiation(swap: LiqualitySwapHistoryItem) {
@@ -710,6 +719,7 @@ export class LiqualitySwapProvider extends EvmSwapProvider {
       network,
       walletId,
     });
+    console.log("TACA ===> [wallet-core] LiqualitySwapProvider.ts, findCounterPartyInitiation, expirationUpdates = ", expirationUpdates)
 
     if (expirationUpdates) {
       return expirationUpdates;
@@ -791,6 +801,7 @@ export class LiqualitySwapProvider extends EvmSwapProvider {
   }
 
   private async hasQuoteExpired(swap: LiqualitySwapHistoryItem) {
+    console.log("TACA ===> [wallet-core] LiqualitySwapProvider.ts, hasQuoteExpired, swap.expiresAt = ", swap.expiresAt, ", current timestamp() = ", timestamp())
     return timestamp() >= swap.expiresAt;
   }
 
@@ -827,6 +838,7 @@ export class LiqualitySwapProvider extends EvmSwapProvider {
   }
 
   private async canRefund({ network, walletId, swap }: NextSwapActionRequest<LiqualitySwapHistoryItem>) {
+    console.log("TACA ===> [wallet-core] LiqualitySwapProvider.ts, canRefund, swap.swapExpiration = ", swap.swapExpiration, ", current timestamp() = ", timestamp())
     return this.hasChainTimePassed({
       network,
       walletId,
@@ -837,6 +849,7 @@ export class LiqualitySwapProvider extends EvmSwapProvider {
   }
 
   private async hasSwapExpired({ network, walletId, swap }: NextSwapActionRequest<LiqualitySwapHistoryItem>) {
+    console.log("TACA ===> [wallet-core] LiqualitySwapProvider.ts, hasSwapExpired, swap.nodeSwapExpiration = ", swap.nodeSwapExpiration, ", current timestamp() = ", timestamp())
     return this.hasChainTimePassed({
       network,
       walletId,

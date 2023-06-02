@@ -540,7 +540,7 @@ __metadata:
 
 "@chainify/evm-ledger@file:/home/chaunguyen/liq/chainify/packages/evm-ledger::locator=liquality%40workspace%3A.":
   version: 2.4.2
-  resolution: "@chainify/evm-ledger@file:/home/chaunguyen/liq/chainify/packages/evm-ledger#/home/chaunguyen/liq/chainify/packages/evm-ledger::hash=69fb39&locator=liquality%40workspace%3A."
+  resolution: "@chainify/evm-ledger@file:/home/chaunguyen/liq/chainify/packages/evm-ledger#/home/chaunguyen/liq/chainify/packages/evm-ledger::hash=fcd22d&locator=liquality%40workspace%3A."
   dependencies:
     "@chainify/client": "workspace:*"
     "@chainify/errors": "workspace:*"
@@ -558,13 +558,13 @@ __metadata:
     "@ethersproject/strings": 5.7.0
     "@ethersproject/transactions": 5.7.0
     "@ledgerhq/hw-app-eth": 6.30.5
-  checksum: 0c348799bca83fb1da688b152a7d8d99bbf36cbc7f6de31a1f7ea09362bda8a80a4e1baceb07e42e928e805b62eadfebde9d96a9afdba3ec35fc425c28b64bf7
+  checksum: 08f3f9184e6a023419cfaa5f06353520c6603dbbe9383ae0eddd580515dc58b3600a119a019fd534534b4a43c2599bddcd348b2c19e531f7100429fc2cc45f8e
   languageName: node
   linkType: hard
 
 "@chainify/evm@file:/home/chaunguyen/liq/chainify/packages/evm::locator=liquality%40workspace%3A.":
   version: 2.4.0
-  resolution: "@chainify/evm@file:/home/chaunguyen/liq/chainify/packages/evm#/home/chaunguyen/liq/chainify/packages/evm::hash=e34468&locator=liquality%40workspace%3A."
+  resolution: "@chainify/evm@file:/home/chaunguyen/liq/chainify/packages/evm#/home/chaunguyen/liq/chainify/packages/evm::hash=524641&locator=liquality%40workspace%3A."
   dependencies:
     "@chainify/client": "workspace:*"
     "@chainify/errors": "workspace:*"
@@ -584,7 +584,7 @@ __metadata:
     "@liquality/fee-suggestions": 2.0.2
     "@metamask/eth-sig-util": 4.0.1
     ethers: 5.7.0
-  checksum: e61cd04452bbd7109745f6af0ba032be1fbcd3f088532e05876a9cd3951f288cdc1d0970981ea7c5bdfb46f6d7b2dbbd0d289cbb55898f63a73058abf904acf7
+  checksum: 8b686ad1c6103b284f09dc81dc42d20af58e127d5edd1c1eb2e65d0250a9717967214387c29ff79e9bf9554bb7e8280eb121c4d2cb1c6aafe303fdc39024f1e8
   languageName: node
   linkType: hard
 
