@@ -20,7 +20,6 @@ export const performNextAction = async (
     if (item.type === TransactionType.Swap) {
       const swapProvider = getSwapProvider(network, item.provider);
 
-      console.log('TACA ===> [wallet-core] actions: performNextSwapAction')
       // TODO: should it take typed context?
       updates = await swapProvider.performNextSwapAction(context, {
         network,

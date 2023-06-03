@@ -138,7 +138,6 @@ export class LiqualitySwapProvider extends EvmSwapProvider {
 
   public async newSwap(swapRequest: SwapRequest<LiqualitySwapHistoryItem>) {
     // const approveTx = await this.approve(swapRequest, true);
-    console.log("TACA ===> LiqualitySwapProvider.ts, newSwap, swapRequest = ", swapRequest)
     const updates = await this.initiateSwap(swapRequest);
     return { id: uuidv4(), ...updates };
   }
@@ -182,12 +181,10 @@ export class LiqualitySwapProvider extends EvmSwapProvider {
     ].join('\n');
 
     const messageHex = Buffer.from(message, 'utf8').toString('hex');
-    console.log('TACA ===> [wallet-core] LiqualitySwapProvider.ts, initiateSwap, calling chainify generateSecret')
     const secret = await fromClient.swap.generateSecret(messageHex);
     const secretHash = sha256(secret);
     const asset = assetsAdapter(quote.from)[0];
 
-    console.log('TACA ===> [wallet-core] LiqualitySwapProvider.ts, initiateSwap, calling chainify initiateSwap with asset = ', asset)
     const fromFundTx = await fromClient.swap.initiateSwap(
       {
         asset,
@@ -328,7 +325,6 @@ export class LiqualitySwapProvider extends EvmSwapProvider {
     store: ActionContext,
     { network, walletId, swap }: NextSwapActionRequest<LiqualitySwapHistoryItem>
   ) {
-    console.log('TACA ===> [wallet-core] LiqualitySwapProvider.ts, performNextSwapAction: swap.status = ', swap.status)
     switch (swap.status) {
       case 'WAITING_FOR_APPROVE_CONFIRMATIONS_LSP':
         return withInterval(async () => this.waitForApproveConfirmations({ swap, network, walletId }));
@@ -572,13 +568,7 @@ export class LiqualitySwapProvider extends EvmSwapProvider {
       return { status: 'WAITING_FOR_REFUND' };
     }
 
-    console.log('TACA ===> [wallet-core] LiqualitySwapProvider.ts, reportInitiation, calling updateOrder, swap = ', swap)
-    try {
-      await this.updateOrder(swap);
-    } catch (err) {
-      console.log('TACA ===> [wallet-core] LiqualitySwapProvider.ts, reportInitiation, failed to updateOrder, err = ', err)
-      throw err
-    }
+    await this.updateOrder(swap);
 
     return {
       status: 'INITIATION_REPORTED',
@@ -651,7 +641,6 @@ export class LiqualitySwapProvider extends EvmSwapProvider {
     const asset = { ...toAsset, isNative: toAsset.type === 'native' } as any; //ChainifyAsset;
 
     try {
-      console.log('TACA ===> [wallet-core] LiqualitySwapProvider.ts, findCounterPartyInitiation, calling findInitiateSwapTransaction')
       const tx = await toClient.swap.findInitiateSwapTransaction({
         asset,
         value: new BN(swap.toAmount),
@@ -664,7 +653,6 @@ export class LiqualitySwapProvider extends EvmSwapProvider {
       if (tx) {
         const toFundHash = tx.hash;
 
-        console.log('TACA ===> [wallet-core] LiqualitySwapProvider.ts, findCounterPartyInitiation, calling verifyInitiateSwapTransaction')
         const isVerified = await toClient.swap.verifyInitiateSwapTransaction(
           {
             asset,
@@ -678,7 +666,6 @@ export class LiqualitySwapProvider extends EvmSwapProvider {
         );
 
         // ERC20 swaps have separate funding tx. Ensures funding tx has enough confirmations
-        console.log('TACA ===> [wallet-core] LiqualitySwapProvider.ts, findCounterPartyInitiation, calling findFundSwapTransaction')
         const fundingTransaction = await toClient.swap.findFundSwapTransaction(
           {
             asset,
@@ -719,7 +706,6 @@ export class LiqualitySwapProvider extends EvmSwapProvider {
       network,
       walletId,
     });
-    console.log("TACA ===> [wallet-core] LiqualitySwapProvider.ts, findCounterPartyInitiation, expirationUpdates = ", expirationUpdates)
 
     if (expirationUpdates) {
       return expirationUpdates;
@@ -771,37 +757,29 @@ export class LiqualitySwapProvider extends EvmSwapProvider {
     await this.sendLedgerNotification(swap.toAccountId, 'Signing required to claim the swap.');
 
     const asset = assetsAdapter(swap.to)[0];
-    console.log('TACA ===> [wallet-core] LiqualitySwapProvider.ts, claimSwap, calling claimSwap')
 
-    try {
-      const toClaimTx = await toClient.swap.claimSwap(
-        {
-          asset,
-          value: new BN(swap.toAmount),
-          recipientAddress: swap.toAddress,
-          refundAddress: swap.toCounterPartyAddress,
-          secretHash: swap.secretHash,
-          expiration: swap.nodeSwapExpiration,
-        },
-        swap.toFundHash,
-        swap.secret,
-        swap.claimFee
-      );
-      console.log('TACA ===> [wallet-core] LiqualitySwapProvider.ts, claimSwap, toClaimTx = ', toClaimTx)
+    const toClaimTx = await toClient.swap.claimSwap(
+      {
+        asset,
+        value: new BN(swap.toAmount),
+        recipientAddress: swap.toAddress,
+        refundAddress: swap.toCounterPartyAddress,
+        secretHash: swap.secretHash,
+        expiration: swap.nodeSwapExpiration,
+      },
+      swap.toFundHash,
+      swap.secret,
+      swap.claimFee
+    );
 
-      return {
-        toClaimHash: toClaimTx.hash,
-        toClaimTx,
-        status: 'WAITING_FOR_CLAIM_CONFIRMATIONS',
-      };
-    } catch (err) {
-      console.log('TACA ===> [wallet-core] LiqualitySwapProvider.ts, claimSwap, err = ', err)    
-      throw err
-    }
+    return {
+      toClaimHash: toClaimTx.hash,
+      toClaimTx,
+      status: 'WAITING_FOR_CLAIM_CONFIRMATIONS',
+    };
   }
 
   private async hasQuoteExpired(swap: LiqualitySwapHistoryItem) {
-    console.log("TACA ===> [wallet-core] LiqualitySwapProvider.ts, hasQuoteExpired, swap.expiresAt = ", swap.expiresAt, ", current timestamp() = ", timestamp())
     return timestamp() >= swap.expiresAt;
   }
 
@@ -838,7 +816,6 @@ export class LiqualitySwapProvider extends EvmSwapProvider {
   }
 
   private async canRefund({ network, walletId, swap }: NextSwapActionRequest<LiqualitySwapHistoryItem>) {
-    console.log("TACA ===> [wallet-core] LiqualitySwapProvider.ts, canRefund, swap.swapExpiration = ", swap.swapExpiration, ", current timestamp() = ", timestamp())
     return this.hasChainTimePassed({
       network,
       walletId,
@@ -849,7 +826,6 @@ export class LiqualitySwapProvider extends EvmSwapProvider {
   }
 
   private async hasSwapExpired({ network, walletId, swap }: NextSwapActionRequest<LiqualitySwapHistoryItem>) {
-    console.log("TACA ===> [wallet-core] LiqualitySwapProvider.ts, hasSwapExpired, swap.nodeSwapExpiration = ", swap.nodeSwapExpiration, ", current timestamp() = ", timestamp())
     return this.hasChainTimePassed({
       network,
       walletId,

@@ -30,7 +30,6 @@ export abstract class EvmSwapProvider extends SwapProvider {
   async requiresApproval(swapRequest: SwapRequest, approvalAddress?: string) {
     const { quote, network, walletId } = swapRequest;
     const fromAsset = assetsAdapter(quote.from)[0];
-    console.log('TACA ===> [wallet-core] LiqualitySwapProvider.ts, requiresApproval, fromAsset = ', fromAsset)
 
     // only ERC20 tokens allowed
     if (!fromAsset.contractAddress) {

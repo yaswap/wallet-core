@@ -37,7 +37,6 @@ export const newSwap = async (
 
   const swapProvider = getSwapProvider(network, swap.provider!);
 
-  console.log('TACA ===> [wallet-core] actions newSwap.ts, calling newSwap')
   const initiationParams = await swapProvider.newSwap({
     network,
     walletId,
@@ -51,14 +50,12 @@ export const newSwap = async (
     claimFeeLabel,
   };
 
-  console.log('TACA ===> [wallet-core] actions newSwap.ts, commit newSwap')
   commit.NEW_SWAP({
     network,
     walletId,
     swap: createdSwap,
   });
 
-  console.log('TACA ===> [wallet-core] actions newSwap.ts, calling performNextAction')
   dispatch.performNextAction({
     network,
     walletId,
