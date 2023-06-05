@@ -12,8 +12,8 @@
   ],
   "dependencies": {
     "@yac-swap/client": "2.0.0",
-    "@yac-swap/errors": "2.0.0",
     "@yac-swap/cryptoassets": "workspace:*",
+    "@yac-swap/errors": "2.0.0",
     "randombytes": "^2.1.0"
   },
   "devDependencies": {
