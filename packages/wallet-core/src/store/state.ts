@@ -1,4 +1,4 @@
-import { ChainId } from '@liquality/cryptoassets';
+import { ChainId } from '@yac-swap/cryptoassets';
 import { LATEST_VERSION } from './migrations';
 import { Network, RootState } from './types';
 

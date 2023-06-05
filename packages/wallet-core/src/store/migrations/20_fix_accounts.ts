@@ -1,4 +1,4 @@
-import { ChainId, getAsset, getChain } from '@liquality/cryptoassets';
+import { ChainId, getAsset, getChain } from '@yac-swap/cryptoassets';
 import { buildConfig } from '../..';
 import { accountCreator, getNextAccountColor } from '../../utils/accounts';
 import { AccountType } from '../types';

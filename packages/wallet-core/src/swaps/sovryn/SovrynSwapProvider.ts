@@ -2,10 +2,10 @@ import SovrynSwapNetworkABI from '@blobfishkate/sovryncontracts/abi/abiSovrynSwa
 import RBTCWrapperProxyABI from '@blobfishkate/sovryncontracts/abi/abiWrapperProxy_new.json';
 import SovrynMainnetAddresses from '@blobfishkate/sovryncontracts/contracts-mainnet.json';
 import SovrynTestnetAddresses from '@blobfishkate/sovryncontracts/contracts-testnet.json';
-import { Client } from '@chainify/client';
-import { EvmChainProvider, EvmTypes } from '@chainify/evm';
-import { Transaction, TxStatus } from '@chainify/types';
-import { AssetTypes, ChainId, currencyToUnit, getChain, unitToCurrency } from '@liquality/cryptoassets';
+import { Client } from '@yac-swap/client';
+import { EvmChainProvider, EvmTypes } from '@yac-swap/evm';
+import { Transaction, TxStatus } from '@yac-swap/types';
+import { AssetTypes, ChainId, currencyToUnit, getChain, unitToCurrency } from '@yac-swap/cryptoassets';
 import { isTransactionNotFoundError } from '../../utils/isTransactionNotFoundError';
 import ERC20 from '@uniswap/v2-core/build/ERC20.json';
 import BN from 'bignumber.js';
@@ -28,7 +28,7 @@ import {
   SwapRequest,
   SwapStatus,
 } from '../types';
-import { CUSTOM_ERRORS, createInternalError } from '@liquality/error-parser';
+import { CUSTOM_ERRORS, createInternalError } from '@yac-swap/error-parser';
 
 // use WRBTC address for RBTC native token
 const wrappedRbtcAddress: { [key: string]: string } = {

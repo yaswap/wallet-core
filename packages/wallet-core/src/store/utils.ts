@@ -1,6 +1,6 @@
-import { Client, HttpClient } from '@chainify/client';
-import { EvmChainProvider, EvmWalletProvider } from '@chainify/evm';
-import { AssetTypes, ChainId, getChain } from '@liquality/cryptoassets';
+import { Client, HttpClient } from '@yac-swap/client';
+import { EvmChainProvider, EvmWalletProvider } from '@yac-swap/evm';
+import { AssetTypes, ChainId, getChain } from '@yac-swap/cryptoassets';
 import BN from 'bignumber.js';
 import EventEmitter from 'events';
 import { findKey, mapKeys, mapValues, random } from 'lodash';

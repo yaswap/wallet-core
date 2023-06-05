@@ -1,15 +1,15 @@
-import { BitcoinBaseWalletProvider, BitcoinEsploraApiProvider } from '@chainify/bitcoin';
-import { Client } from '@chainify/client';
-import { EvmUtils } from '@chainify/evm';
-import { ChainId, EIP1559Fee, FeeDetail, FeeDetails, FeeType } from '@chainify/types';
+import { BitcoinBaseWalletProvider, BitcoinEsploraApiProvider } from '@yac-swap/bitcoin';
+import { Client } from '@yac-swap/client';
+import { EvmUtils } from '@yac-swap/evm';
+import { ChainId, EIP1559Fee, FeeDetail, FeeDetails, FeeType } from '@yac-swap/types';
 import {
   currencyToUnit,
   getAssetSendGasLimit,
   getAssetSendL1GasLimit,
   getNativeAssetCode,
   unitToCurrency,
-} from '@liquality/cryptoassets';
-import { CUSTOM_ERRORS, createInternalError } from '@liquality/error-parser';
+} from '@yac-swap/cryptoassets';
+import { CUSTOM_ERRORS, createInternalError } from '@yac-swap/error-parser';
 import BN from 'bignumber.js';
 import store from '../store';
 import { Account, AccountId, Asset, Network, NFT } from '../store/types';

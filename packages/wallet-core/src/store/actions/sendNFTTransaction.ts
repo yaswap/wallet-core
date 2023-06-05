@@ -1,5 +1,5 @@
-import { Transaction } from '@chainify/types';
-import { getChain } from '@liquality/cryptoassets';
+import { Transaction } from '@yac-swap/types';
+import { getChain } from '@yac-swap/cryptoassets';
 import { v4 as uuidv4 } from 'uuid';
 import { ActionContext, rootActionContext } from '..';
 import { createHistoryNotification } from '../broker/notification';

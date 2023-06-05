@@ -1,4 +1,4 @@
-import { LiqualityErrorJSON, updateErrorReporterConfig } from '@liquality/error-parser';
+import { LiqualityErrorJSON, updateErrorReporterConfig } from '@yac-swap/error-parser';
 import buildConfig from './build.config';
 import store from './store';
 import * as migrations from './store/migrations';

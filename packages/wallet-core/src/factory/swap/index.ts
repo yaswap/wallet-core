@@ -1,4 +1,4 @@
-import { CUSTOM_ERRORS, createInternalError } from '@liquality/error-parser';
+import { CUSTOM_ERRORS, createInternalError } from '@yac-swap/error-parser';
 import buildConfig from '../../build.config';
 import { Network, SwapProviderType } from '../../store/types';
 import { AstroportSwapProvider } from '../../swaps/astroport/AstroportSwapProvider';

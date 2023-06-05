@@ -1,4 +1,4 @@
-import { ChainId } from '@liquality/cryptoassets';
+import { ChainId } from '@yac-swap/cryptoassets';
 import { ActionContext, rootActionContext } from '..';
 import { AccountId, Network, WalletId } from '../types';
 

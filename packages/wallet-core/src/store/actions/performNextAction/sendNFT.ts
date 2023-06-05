@@ -1,4 +1,4 @@
-import { TxStatus } from '@chainify/types';
+import { TxStatus } from '@yac-swap/types';
 import { isTransactionNotFoundError } from '../../../utils/isTransactionNotFoundError';
 import { ActionContext, rootActionContext } from '../..';
 import { Network, NFTSendHistoryItem, SendStatus, WalletId } from '../../types';

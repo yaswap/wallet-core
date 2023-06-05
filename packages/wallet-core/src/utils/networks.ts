@@ -1,11 +1,11 @@
-import { BitcoinNetworks } from '@chainify/bitcoin';
-import { YacoinNetworks } from '@chainify/yacoin';
-import { NearNetworks } from '@chainify/near';
-import { SolanaNetworks } from '@chainify/solana';
-import { TerraNetworks } from '@chainify/terra';
-import { Network as ChainifyNetwork } from '@chainify/types';
-import { ChainId, getChain } from '@liquality/cryptoassets';
-import { CUSTOM_ERRORS, createInternalError } from '@liquality/error-parser';
+import { BitcoinNetworks } from '@yac-swap/bitcoin';
+import { YacoinNetworks } from '@yac-swap/yacoin';
+import { NearNetworks } from '@yac-swap/near';
+import { SolanaNetworks } from '@yac-swap/solana';
+import { TerraNetworks } from '@yac-swap/terra';
+import { Network as ChainifyNetwork } from '@yac-swap/types';
+import { ChainId, getChain } from '@yac-swap/cryptoassets';
+import { CUSTOM_ERRORS, createInternalError } from '@yac-swap/error-parser';
 import { Network } from '../store/types';
 
 export const Networks = [Network.Mainnet, Network.Testnet];

@@ -1,4 +1,4 @@
-import { unitToCurrency } from '@liquality/cryptoassets';
+import { unitToCurrency } from '@yac-swap/cryptoassets';
 import { BigNumber } from 'bignumber.js';
 import { Asset } from '../store/types';
 import cryptoassets from './cryptoassets';

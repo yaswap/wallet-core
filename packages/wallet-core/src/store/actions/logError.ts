@@ -1,4 +1,4 @@
-import { LiqualityErrorJSON } from '@liquality/error-parser';
+import { LiqualityErrorJSON } from '@yac-swap/error-parser';
 import { ActionContext, rootActionContext } from '..';
 
 export const logError = (context: ActionContext, error: LiqualityErrorJSON) => {

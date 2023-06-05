@@ -1,5 +1,5 @@
-import { TerraNetworks, TerraTypes } from '@chainify/terra';
-import { Transaction, TxStatus } from '@chainify/types';
+import { TerraNetworks, TerraTypes } from '@yac-swap/terra';
+import { Transaction, TxStatus } from '@yac-swap/types';
 import {
   AssetTypes,
   ChainId,
@@ -7,7 +7,7 @@ import {
   getNativeAssetCode,
   IAsset,
   unitToCurrency,
-} from '@liquality/cryptoassets';
+} from '@yac-swap/cryptoassets';
 import { LCDClient } from '@terra-money/terra.js';
 import BN, { BigNumber } from 'bignumber.js';
 import { v4 as uuidv4 } from 'uuid';
@@ -34,7 +34,7 @@ import {
   getRateNativeToAsset,
 } from './queries';
 import { isTransactionNotFoundError } from '../../utils/isTransactionNotFoundError';
-import { CUSTOM_ERRORS, createInternalError } from '@liquality/error-parser';
+import { CUSTOM_ERRORS, createInternalError } from '@yac-swap/error-parser';
 
 interface RateResponse {
   amount: number;

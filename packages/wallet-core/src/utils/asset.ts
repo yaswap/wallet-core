@@ -1,5 +1,5 @@
-import { AssetTypes, ChainId, getChain, getNativeAssetCode, isEvmChain } from '@liquality/cryptoassets';
-import { CUSTOM_ERRORS, createInternalError } from '@liquality/error-parser';
+import { AssetTypes, ChainId, getChain, getNativeAssetCode, isEvmChain } from '@yac-swap/cryptoassets';
+import { CUSTOM_ERRORS, createInternalError } from '@yac-swap/error-parser';
 import * as ethers from 'ethers';
 import { Asset, Network } from '../store/types';
 import cryptoassets from './cryptoassets';

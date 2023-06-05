@@ -1,7 +1,7 @@
-import { Client } from '@chainify/client';
-import { EvmChainProvider, EvmTypes } from '@chainify/evm';
-import { Address, AddressType, BigNumber } from '@chainify/types';
-import { ChainId, getChain } from '@liquality/cryptoassets';
+import { Client } from '@yac-swap/client';
+import { EvmChainProvider, EvmTypes } from '@yac-swap/evm';
+import { Address, AddressType, BigNumber } from '@yac-swap/types';
+import { ChainId, getChain } from '@yac-swap/cryptoassets';
 import Bluebird from 'bluebird';
 import { chunk } from 'lodash';
 import { ActionContext, rootActionContext } from '..';

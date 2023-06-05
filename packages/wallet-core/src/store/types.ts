@@ -1,9 +1,9 @@
-import { FeeDetails, NFTAsset, Nullable, Transaction } from '@chainify/types';
-import { ChainId } from '@liquality/cryptoassets';
+import { FeeDetails, NFTAsset, Nullable, Transaction } from '@yac-swap/types';
+import { ChainId } from '@yac-swap/cryptoassets';
 import { Step } from '@lifi/sdk';
 import { SwapProviderError } from '../swaps/types';
 import BN from 'bignumber.js';
-import { LiqualityErrorJSON } from '@liquality/error-parser';
+import { LiqualityErrorJSON } from '@yac-swap/error-parser';
 import { ChainifyNetwork } from '../types';
 export type NetworkWalletIdMap<T> = Partial<Record<Network, Record<WalletId, T>>>;
 export type WalletIdNetworkMap<T> = Partial<Record<WalletId, Record<Network, T>>>;

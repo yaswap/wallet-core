@@ -1,7 +1,7 @@
-import { UnsupportedMethodError } from '@chainify/errors';
-import { Nullable, TokenDetails } from '@chainify/types';
-import { ChainId } from '@liquality/cryptoassets';
-import { LiqualityError } from '@liquality/error-parser';
+import { UnsupportedMethodError } from '@yac-swap/errors';
+import { Nullable, TokenDetails } from '@yac-swap/types';
+import { ChainId } from '@yac-swap/cryptoassets';
+import { LiqualityError } from '@yac-swap/error-parser';
 import { ActionContext, rootActionContext } from '..';
 import { Network, WalletId } from '../types';
 

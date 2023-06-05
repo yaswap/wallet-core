@@ -1,6 +1,6 @@
-import { BitcoinTypes } from '@chainify/bitcoin';
-import { ChainId, getChain } from '@liquality/cryptoassets';
-import { CUSTOM_ERRORS, createInternalError } from '@liquality/error-parser';
+import { BitcoinTypes } from '@yac-swap/bitcoin';
+import { ChainId, getChain } from '@yac-swap/cryptoassets';
+import { CUSTOM_ERRORS, createInternalError } from '@yac-swap/error-parser';
 import { AccountType, Network } from '../store/types';
 import { BTC_ADDRESS_TYPE_TO_PREFIX } from './address';
 import { LEDGER_BITCOIN_OPTIONS } from './ledger';

@@ -1,8 +1,8 @@
-import { Client } from '@chainify/client';
-import { EvmChainProvider, EvmTypes, Typechain } from '@chainify/evm';
-import { toEthereumTxRequest } from '@chainify/evm/dist/lib/utils';
-import { Transaction, TxStatus } from '@chainify/types';
-import { getChain } from '@liquality/cryptoassets';
+import { Client } from '@yac-swap/client';
+import { EvmChainProvider, EvmTypes, Typechain } from '@yac-swap/evm';
+import { toEthereumTxRequest } from '@yac-swap/evm/dist/lib/utils';
+import { Transaction, TxStatus } from '@yac-swap/types';
+import { getChain } from '@yac-swap/cryptoassets';
 import { isTransactionNotFoundError } from '../utils/isTransactionNotFoundError';
 import * as ethers from 'ethers';
 import { SwapHistoryItem } from '../store/types';

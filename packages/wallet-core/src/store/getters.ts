@@ -1,9 +1,9 @@
-import { Client } from '@chainify/client';
-import { FeeDetails, EIP1559Fee, Nullable } from '@chainify/types';
+import { Client } from '@yac-swap/client';
+import { FeeDetails, EIP1559Fee, Nullable } from '@yac-swap/types';
 import cryptoassets from '../utils/cryptoassets';
 import { ChainifyNetwork } from '../types';
-import { AssetTypes, ChainId, getAllAssets, IAsset, unitToCurrency, getNativeAssetCode } from '@liquality/cryptoassets';
-import { CUSTOM_ERRORS, createInternalError } from '@liquality/error-parser';
+import { AssetTypes, ChainId, getAllAssets, IAsset, unitToCurrency, getNativeAssetCode } from '@yac-swap/cryptoassets';
+import { CUSTOM_ERRORS, createInternalError } from '@yac-swap/error-parser';
 import BN, { BigNumber } from 'bignumber.js';
 import { mapValues, orderBy, uniq } from 'lodash';
 import { defaultChainSettings } from '../factory/settings';

@@ -1,4 +1,4 @@
-import { unitToCurrency } from '@liquality/cryptoassets';
+import { unitToCurrency } from '@yac-swap/cryptoassets';
 import BN, { BigNumber } from 'bignumber.js';
 import { Network } from '../store/types';
 import { SwapQuote } from '../swaps/types';

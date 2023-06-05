@@ -1,7 +1,7 @@
-import { Client, HttpClient } from '@chainify/client';
-import { EvmChainProvider, EvmTypes } from '@chainify/evm';
-import { Transaction, TxStatus } from '@chainify/types';
-import { ChainId, currencyToUnit, getChain, unitToCurrency } from '@liquality/cryptoassets';
+import { Client, HttpClient } from '@yac-swap/client';
+import { EvmChainProvider, EvmTypes } from '@yac-swap/evm';
+import { Transaction, TxStatus } from '@yac-swap/types';
+import { ChainId, currencyToUnit, getChain, unitToCurrency } from '@yac-swap/cryptoassets';
 import { isTransactionNotFoundError } from '../../utils/isTransactionNotFoundError';
 import ERC20 from '@uniswap/v2-core/build/ERC20.json';
 import BN, { BigNumber } from 'bignumber.js';
@@ -31,7 +31,7 @@ import {
   OneInchSwapErrorParser,
   SlippageTooHighError,
   createInternalError,
-} from '@liquality/error-parser';
+} from '@yac-swap/error-parser';
 
 const NATIVE_ASSET_ADDRESS = '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee';
 

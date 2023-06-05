@@ -1,8 +1,8 @@
-import { BitcoinBaseWalletProvider, BitcoinEsploraApiProvider } from '@chainify/bitcoin';
-import { Client, HttpClient } from '@chainify/client';
-import { Transaction } from '@chainify/types';
-import { ChainId, currencyToUnit, getChain, unitToCurrency } from '@liquality/cryptoassets';
-import { getErrorParser, ThorchainAPIErrorParser } from '@liquality/error-parser';
+import { BitcoinBaseWalletProvider, BitcoinEsploraApiProvider } from '@yac-swap/bitcoin';
+import { Client, HttpClient } from '@yac-swap/client';
+import { Transaction } from '@yac-swap/types';
+import { ChainId, currencyToUnit, getChain, unitToCurrency } from '@yac-swap/cryptoassets';
+import { getErrorParser, ThorchainAPIErrorParser } from '@yac-swap/error-parser';
 import { isTransactionNotFoundError } from '../../utils/isTransactionNotFoundError';
 import { getDoubleSwapOutput, getSwapMemo, getValueOfAsset1InAsset2 } from '@thorchain/asgardex-util';
 import ERC20 from '@uniswap/v2-core/build/ERC20.json';
@@ -30,7 +30,7 @@ import {
   SwapRequest,
   SwapStatus,
 } from '../types';
-import { CUSTOM_ERRORS, createInternalError } from '@liquality/error-parser';
+import { CUSTOM_ERRORS, createInternalError } from '@yac-swap/error-parser';
 
 // Pool balances are denominated with 8 decimals
 const THORCHAIN_DECIMAL = 8;

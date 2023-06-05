@@ -1,4 +1,4 @@
-import { ChainId, getChain } from '@liquality/cryptoassets';
+import { ChainId, getChain } from '@yac-swap/cryptoassets';
 import { ActionContext, rootActionContext } from '..';
 import { accountCreator, getNextAccountColor } from '../../utils/accounts';
 import { AccountType, Asset, Network, WalletId } from '../types';

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import * as ChainifyErrors from '@chainify/errors';
+import * as ChainifyErrors from '@yac-swap/errors';
 import { LiqualityError } from '../../LiqualityErrors/LiqualityError';
 import { ErrorParser } from '../ErrorParser';
 import { ChainifyErrorSource } from '.';

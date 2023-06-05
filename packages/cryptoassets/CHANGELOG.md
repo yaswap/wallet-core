@@ -1,4 +1,4 @@
-# @liquality/cryptoassets
+# @yac-swap/cryptoassets
 
 ## 2.11.0
 

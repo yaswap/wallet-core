@@ -1,5 +1,5 @@
 {
-  "name": "@liquality/error-parser",
+  "name": "@yac-swap/error-parser",
   "version": "2.2.10",
   "description": "Error Parsing Library for liquality",
   "repository": "git@github.com:liquality/wallet-core.git",
@@ -11,9 +11,9 @@
     "dist/**"
   ],
   "dependencies": {
-    "@chainify/client": "2.0.0",
-    "@chainify/errors": "2.0.0",
-    "@liquality/cryptoassets": "workspace:*",
+    "@yac-swap/client": "2.0.0",
+    "@yac-swap/errors": "2.0.0",
+    "@yac-swap/cryptoassets": "workspace:*",
     "randombytes": "^2.1.0"
   },
   "devDependencies": {

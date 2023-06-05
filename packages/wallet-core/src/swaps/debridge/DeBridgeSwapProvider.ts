@@ -2,7 +2,7 @@ import axios from 'axios';
 import BN, { BigNumber } from 'bignumber.js';
 import { SwapProvider } from '../SwapProvider';
 import { v4 as uuidv4 } from 'uuid';
-import { currencyToUnit, getChain, unitToCurrency } from '@liquality/cryptoassets';
+import { currencyToUnit, getChain, unitToCurrency } from '@yac-swap/cryptoassets';
 import { withLock, withInterval } from '../../store/actions/performNextAction/utils';
 import { prettyBalance } from '../../utils/coinFormatter';
 import * as ethers from 'ethers';
@@ -21,12 +21,12 @@ import {
 import cryptoassets from '../../utils/cryptoassets';
 import { Asset, Network, SwapHistoryItem, WalletId } from '../../store/types';
 import { isChainEvmCompatible, isERC20 } from '../../utils/asset';
-import { Transaction } from '@chainify/types';
-import { EvmChainProvider, EvmTypes } from '@chainify/evm';
+import { Transaction } from '@yac-swap/types';
+import { EvmChainProvider, EvmTypes } from '@yac-swap/evm';
 import { ActionContext } from '../../store';
-import { Client } from '@chainify/client';
-import { getErrorParser, SlippageTooHighError } from '@liquality/error-parser';
-import { DebridgeAPIErrorParser } from '@liquality/error-parser';
+import { Client } from '@yac-swap/client';
+import { getErrorParser, SlippageTooHighError } from '@yac-swap/error-parser';
+import { DebridgeAPIErrorParser } from '@yac-swap/error-parser';
 import { isTransactionNotFoundError } from '../../utils/isTransactionNotFoundError';
 
 interface BuildSwapQuote extends SwapQuote {

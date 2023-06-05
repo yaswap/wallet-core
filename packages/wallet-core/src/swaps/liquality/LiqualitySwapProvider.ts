@@ -1,9 +1,9 @@
-import { BitcoinBaseWalletProvider, BitcoinEsploraApiProvider } from '@chainify/bitcoin';
-import { YacoinBaseWalletProvider, YacoinEsploraApiProvider } from '@chainify/yacoin';
-import { Client, HttpClient } from '@chainify/client';
-import { Transaction } from '@chainify/types';
-import { sha256 } from '@chainify/utils';
-import { currencyToUnit, getChain, unitToCurrency, remove0x } from '@liquality/cryptoassets';
+import { BitcoinBaseWalletProvider, BitcoinEsploraApiProvider } from '@yac-swap/bitcoin';
+import { YacoinBaseWalletProvider, YacoinEsploraApiProvider } from '@yac-swap/yacoin';
+import { Client, HttpClient } from '@yac-swap/client';
+import { Transaction } from '@yac-swap/types';
+import { sha256 } from '@yac-swap/utils';
+import { currencyToUnit, getChain, unitToCurrency, remove0x } from '@yac-swap/cryptoassets';
 import BN, { BigNumber } from 'bignumber.js';
 import { mapValues } from 'lodash';
 import { v4 as uuidv4 } from 'uuid';
@@ -27,7 +27,7 @@ import {
   SwapStatus,
 } from '../types';
 
-const VERSION_STRING = `Wallet ${pkg.version} (Chainify ${pkg.dependencies['@chainify/client']
+const VERSION_STRING = `Wallet ${pkg.version} (Chainify ${pkg.dependencies['@yac-swap/client']
   .replace('^', '')
   .replace('~', '')})`;
 

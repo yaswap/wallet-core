@@ -1,5 +1,5 @@
-import { TxNotFoundError } from '@chainify/errors';
-import { LiqualityError } from '@liquality/error-parser';
+import { TxNotFoundError } from '@yac-swap/errors';
+import { LiqualityError } from '@yac-swap/error-parser';
 
 export function isTransactionNotFoundError(error: Error): boolean {
   if (error instanceof LiqualityError) {

@@ -1,4 +1,4 @@
-import { FeeDetails } from '@chainify/types';
+import { FeeDetails } from '@yac-swap/types';
 import { ActionContext, rootActionContext } from '..';
 import { Asset } from '../types';
 

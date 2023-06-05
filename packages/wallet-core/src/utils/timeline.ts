@@ -1,5 +1,5 @@
-import { Client } from '@chainify/client';
-import { Transaction } from '@chainify/types';
+import { Client } from '@yac-swap/client';
+import { Transaction } from '@yac-swap/types';
 import { getSwapProvider } from '../factory';
 import { Asset, Network, SwapHistoryItem, WalletId } from '../store/types';
 import { LiqualitySwapHistoryItem } from '../swaps/liquality/LiqualitySwapProvider';

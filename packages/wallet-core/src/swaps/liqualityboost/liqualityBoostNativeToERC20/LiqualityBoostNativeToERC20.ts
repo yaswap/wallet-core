@@ -1,4 +1,4 @@
-import { getAsset, unitToCurrency } from '@liquality/cryptoassets';
+import { getAsset, unitToCurrency } from '@yac-swap/cryptoassets';
 import BN from 'bignumber.js';
 import { getSwapProvider } from '../../../factory';
 import { ActionContext } from '../../../store';

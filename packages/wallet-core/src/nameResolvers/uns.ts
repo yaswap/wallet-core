@@ -1,7 +1,7 @@
-import { HttpClient } from '@chainify/client';
-import { Nullable } from '@chainify/types';
-import { IAsset, AssetTypes, ChainId, getChain } from '@liquality/cryptoassets';
-import { Network } from '@liquality/cryptoassets/dist/src/types';
+import { HttpClient } from '@yac-swap/client';
+import { Nullable } from '@yac-swap/types';
+import { IAsset, AssetTypes, ChainId, getChain } from '@yac-swap/cryptoassets';
+import { Network } from '@yac-swap/cryptoassets/dist/src/types';
 import { Resolution, ResolutionResponse } from '@unstoppabledomains/resolution';
 import buildConfig from '../build.config';
 import { NameResolver } from './nameResolver';

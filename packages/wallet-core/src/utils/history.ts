@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { CUSTOM_ERRORS, createInternalError } from '@liquality/error-parser';
+import { CUSTOM_ERRORS, createInternalError } from '@yac-swap/error-parser';
 import { getSwapProvider } from '../factory/swap';
 import { HistoryItem, SendStatus, TransactionType } from '../store/types';
 

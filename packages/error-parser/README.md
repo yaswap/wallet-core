@@ -26,9 +26,9 @@ Error Parser is an Error formatting and reporting Library for Liquality. It's an
 
 ## How to Install
 
-`npm install @liquality/error-parser`
+`npm install @yac-swap/error-parser`
 
-`yarn add @liquality/error-parser`
+`yarn add @yac-swap/error-parser`
 
 ## How to Create a New Parser
 
@@ -52,7 +52,7 @@ The following Code snippets present four(4) different ways to use the error pars
 
   ```typescript
 
-  import { getParser, OneInchApproveErrorParser } from '@liquality/error-parser’;
+  import { getParser, OneInchApproveErrorParser } from '@yac-swap/error-parser’;
 
   // Instead of the snippet below
   // const callData = await this._httpClient.nodeGet(`/${chainId}/approve/transaction`, {
@@ -77,7 +77,7 @@ The following Code snippets present four(4) different ways to use the error pars
   You can parse an error returned from a call instead of wrapping the call.
 
   ```typescript
-  import { ChainifyErrorParser, CUSTOM_ERRORS, getErrorParser } from '@liquality/error-parser';
+  import { ChainifyErrorParser, CUSTOM_ERRORS, getErrorParser } from '@yac-swap/error-parser';
 
   const parser = getErrorParser(ChainifyErrorParser);
   try {
@@ -94,7 +94,7 @@ The following Code snippets present four(4) different ways to use the error pars
   You can throw a custom internal error by using one of the standard custom errors to express what went wrong. Rather than doing new InternalError(...) we use createInternalError helper so we can also report the error after creation before returning.
 
   ```typescript
-  import { CUSTOM_ERRORS, createInternalError } from '@liquality/error-parser';
+  import { CUSTOM_ERRORS, createInternalError } from '@yac-swap/error-parser';
 
   throw createInternalError(CUSTOM_ERRORS.NotFound.Account(accountId));
   ```
@@ -104,7 +104,7 @@ The following Code snippets present four(4) different ways to use the error pars
   The error translation files for Mobile is separated from that of Wallet Extension sake of possibility of copy differences. The translations follow the format of [i18n-js translation library](https://www.npmjs.com/package/i18n-js). Each error has a plain translation and a placeholder translation. Placeholder translation interpolates data in the message to make it more information while plain translation is a fallback translation in the event that no data is provided (See [here](src/LiqualityErrors/translations) to see the error translation copy) Here is how to get the translations from Error Parser:
 
   ```typescript
-  import { TRANSLATIONS } from '@liquality/error-parser';
+  import { TRANSLATIONS } from '@yac-swap/error-parser';
 
   errorTranslationsForWalletExtension = TRANSLATIONS.walletExtension; // {cb, en, es, ph, pt, zh}
   errorTranslationsForMobile = TRANSLATIONS.walletExtension; // {cb, en, es, ph, pt, zh}

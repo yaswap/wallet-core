@@ -1,5 +1,5 @@
-import { Asset as ChainifyAsset } from '@chainify/types';
-import { ChainId, IAsset } from '@liquality/cryptoassets';
+import { Asset as ChainifyAsset } from '@yac-swap/types';
+import { ChainId, IAsset } from '@yac-swap/cryptoassets';
 import cryptoassets from './cryptoassets';
 
 export function assetsAdapter(assets: string | string[]): ChainifyAsset[] {

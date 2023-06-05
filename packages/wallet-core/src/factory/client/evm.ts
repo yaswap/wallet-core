@@ -1,4 +1,4 @@
-import { Chain, Client, Swap, Wallet } from '@chainify/client';
+import { Chain, Client, Swap, Wallet } from '@yac-swap/client';
 import {
   EIP1559FeeProvider,
   EvmChainProvider,
@@ -6,17 +6,17 @@ import {
   EvmSwapProvider,
   OptimismChainProvider,
   RpcFeeProvider,
-} from '@chainify/evm';
-import { EvmLedgerProvider, CreateEvmLedgerApp } from '@chainify/evm-ledger';
-import { Address, Network } from '@chainify/types';
+} from '@yac-swap/evm';
+import { EvmLedgerProvider, CreateEvmLedgerApp } from '@yac-swap/evm-ledger';
+import { Address, Network } from '@yac-swap/types';
 import { ChainifyNetwork } from '../../types';
 import { JsonRpcProvider, StaticJsonRpcProvider } from '@ethersproject/providers';
 import { AccountInfo, AccountType, ClientSettings } from '../../store/types';
 import { walletOptionsStore } from '../../walletOptions';
 import { getNftProvider } from './nft';
-import { EvmChain } from '@liquality/cryptoassets';
+import { EvmChain } from '@yac-swap/cryptoassets';
 import { asL2Provider } from '@eth-optimism/sdk';
-import { CUSTOM_ERRORS, createInternalError } from '@liquality/error-parser';
+import { CUSTOM_ERRORS, createInternalError } from '@yac-swap/error-parser';
 
 export function createEvmClient(
   chain: EvmChain,

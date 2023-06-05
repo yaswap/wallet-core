@@ -1,53 +1,53 @@
-# @liquality/error-parser
+# @yac-swap/error-parser
 
 ## 2.2.10
 
 ### Patch Changes
 
 - Updated dependencies [2cce88d4]
-  - @liquality/cryptoassets@2.11.0
+  - @yac-swap/cryptoassets@2.11.0
 
 ## 2.2.9
 
 ### Patch Changes
 
 - Updated dependencies [2b5bb0a5]
-  - @liquality/cryptoassets@2.10.0
+  - @yac-swap/cryptoassets@2.10.0
 
 ## 2.2.8
 
 ### Patch Changes
 
 - Updated dependencies [5a03a948]
-  - @liquality/cryptoassets@2.9.0
+  - @yac-swap/cryptoassets@2.9.0
 
 ## 2.2.7
 
 ### Patch Changes
 
 - Updated dependencies [831f1e86]
-  - @liquality/cryptoassets@2.8.0
+  - @yac-swap/cryptoassets@2.8.0
 
 ## 2.2.6
 
 ### Patch Changes
 
 - Updated dependencies [217cbda8]
-  - @liquality/cryptoassets@2.7.0
+  - @yac-swap/cryptoassets@2.7.0
 
 ## 2.2.5
 
 ### Patch Changes
 
 - Updated dependencies [1058bc36]
-  - @liquality/cryptoassets@2.6.0
+  - @yac-swap/cryptoassets@2.6.0
 
 ## 2.2.4
 
 ### Patch Changes
 
 - Updated dependencies [5391ea28]
-  - @liquality/cryptoassets@2.5.0
+  - @yac-swap/cryptoassets@2.5.0
 
 ## 2.2.3
 
@@ -55,14 +55,14 @@
 
 - Updated dependencies [ef71d00]
 - Updated dependencies [8cbbaee]
-  - @liquality/cryptoassets@2.4.0
+  - @yac-swap/cryptoassets@2.4.0
 
 ## 2.2.1
 
 ### Patch Changes
 
 - Updated dependencies [3e6dd4e]
-  - @liquality/cryptoassets@2.3.0
+  - @yac-swap/cryptoassets@2.3.0
 
 ## 2.2.0
 
@@ -73,7 +73,7 @@
 ### Patch Changes
 
 - Updated dependencies [7f7f84f]
-  - @liquality/cryptoassets@2.2.0
+  - @yac-swap/cryptoassets@2.2.0
 
 ## 2.1.0
 
@@ -104,7 +104,7 @@
 - Updated dependencies [839c9eb]
 - Updated dependencies [594615f]
 - Updated dependencies [4b3b100]
-  - @liquality/cryptoassets@2.1.0
+  - @yac-swap/cryptoassets@2.1.0
 
 ## 2.0.1-next.3
 
@@ -119,7 +119,7 @@
 
 - 4b3b100: test: bump pre release version
 - Updated dependencies [4b3b100]
-  - @liquality/cryptoassets@2.1.0-next.2
+  - @yac-swap/cryptoassets@2.1.0-next.2
 
 ## 2.0.1-next.1
 
@@ -131,7 +131,7 @@
   fix: make chainify proxy work after transpilation. sendTransaction, an async function is made into a regular function and causes undesireable effects
 - a9110e3: fix: map more errors to PairNotSupportedError
 - Updated dependencies [839c9eb]
-  - @liquality/cryptoassets@2.1.0-next.1
+  - @yac-swap/cryptoassets@2.1.0-next.1
 
 ## 2.0.1-next.0
 
@@ -140,7 +140,7 @@
 - 594615f: test: bump versions
 - Updated dependencies [aa5fe04]
 - Updated dependencies [594615f]
-  - @liquality/cryptoassets@2.1.0-next.0
+  - @yac-swap/cryptoassets@2.1.0-next.0
 
 ## 2.0.0
 
@@ -148,7 +148,7 @@
 
 - 1673543: test: bump versions from master for 0.78.0 release
 - Updated dependencies [1673543]
-  - @liquality/cryptoassets@2.0.0
+  - @yac-swap/cryptoassets@2.0.0
 
 ## 2.0.0-next.6
 
@@ -156,7 +156,7 @@
 
 - 5bb19d0: bump version after fix
 - Updated dependencies [5bb19d0]
-  - @liquality/cryptoassets@2.0.0-next.6
+  - @yac-swap/cryptoassets@2.0.0-next.6
 
 ## 2.0.0-next.5
 
@@ -167,7 +167,7 @@
 ### Patch Changes
 
 - Updated dependencies [bc9b6a3]
-  - @liquality/cryptoassets@2.0.0-next.5
+  - @yac-swap/cryptoassets@2.0.0-next.5
 
 ## 1.1.4-next.4
 
@@ -175,7 +175,7 @@
 
 - b1dbb31: test: bump pre release version
 - Updated dependencies [b1dbb31]
-  - @liquality/cryptoassets@1.16.3-next.4
+  - @yac-swap/cryptoassets@1.16.3-next.4
 
 ## 1.1.4-next.3
 
@@ -183,7 +183,7 @@
 
 - 07bd108: test: bump pre release
 - Updated dependencies [07bd108]
-  - @liquality/cryptoassets@1.16.3-next.3
+  - @yac-swap/cryptoassets@1.16.3-next.3
 
 ## 1.1.4-next.2
 
@@ -191,8 +191,8 @@
 
 - 3c309e1: fix: covalent api key
 - Updated dependencies [3c309e1]
-  - @liquality/cryptoassets@1.16.3-next.2
-  - @liquality/wallet-core@1.31.4-next.2
+  - @yac-swap/cryptoassets@1.16.3-next.2
+  - @yac-swap/wallet-core@1.31.4-next.2
 
 ## 1.1.4-next.1
 
@@ -200,8 +200,8 @@
 
 - a156f8e: test: bump versions to next
 - Updated dependencies [a156f8e]
-  - @liquality/cryptoassets@1.16.3-next.1
-  - @liquality/wallet-core@1.31.4-next.1
+  - @yac-swap/cryptoassets@1.16.3-next.1
+  - @yac-swap/wallet-core@1.31.4-next.1
 
 ## 1.1.4-next.0
 
@@ -209,15 +209,15 @@
 
 - test: bump versions
 - Updated dependencies
-  - @liquality/cryptoassets@1.16.3-next.0
-  - @liquality/wallet-core@1.31.4-next.0
+  - @yac-swap/cryptoassets@1.16.3-next.0
+  - @yac-swap/wallet-core@1.31.4-next.0
 
 ## 1.1.3
 
 ### Patch Changes
 
 - Updated dependencies [2173cb9]
-  - @liquality/wallet-core@1.31.3
+  - @yac-swap/wallet-core@1.31.3
 
 ## 1.1.2
 
@@ -225,8 +225,8 @@
 
 - 2ecbc28: test: bump versions with toggle fix
 - Updated dependencies [2ecbc28]
-  - @liquality/cryptoassets@1.16.2
-  - @liquality/wallet-core@1.31.2
+  - @yac-swap/cryptoassets@1.16.2
+  - @yac-swap/wallet-core@1.31.2
 
 ## 1.1.1
 
@@ -234,8 +234,8 @@
 
 - 0dd1f89: test: bump versions from master
 - Updated dependencies [0dd1f89]
-  - @liquality/cryptoassets@1.16.1
-  - @liquality/wallet-core@1.31.1
+  - @yac-swap/cryptoassets@1.16.1
+  - @yac-swap/wallet-core@1.31.1
 
 ## 1.1.0
 
@@ -243,8 +243,8 @@
 
 - 17378a0: test: bump versions for 0.76.0 release
 - Updated dependencies [17378a0]
-  - @liquality/cryptoassets@1.16.0
-  - @liquality/wallet-core@1.31.0
+  - @yac-swap/cryptoassets@1.16.0
+  - @yac-swap/wallet-core@1.31.0
 
 ## 1.1.0-next.5
 
@@ -252,8 +252,8 @@
 
 - 840dbd8: chore: bump versions after lifi integration
 - Updated dependencies [840dbd8]
-  - @liquality/cryptoassets@1.16.0-next.5
-  - @liquality/wallet-core@1.31.0-next.5
+  - @yac-swap/cryptoassets@1.16.0-next.5
+  - @yac-swap/wallet-core@1.31.0-next.5
 
 ## 1.1.0-next.4
 
@@ -264,8 +264,8 @@
 ### Patch Changes
 
 - Updated dependencies [fa3595a]
-  - @liquality/cryptoassets@1.16.0-next.4
-  - @liquality/wallet-core@1.31.0-next.4
+  - @yac-swap/cryptoassets@1.16.0-next.4
+  - @yac-swap/wallet-core@1.31.0-next.4
 
 ## 1.1.0-next.3
 
@@ -276,8 +276,8 @@
 ### Patch Changes
 
 - Updated dependencies [7454432]
-  - @liquality/cryptoassets@1.16.0-next.3
-  - @liquality/wallet-core@1.31.0-next.3
+  - @yac-swap/cryptoassets@1.16.0-next.3
+  - @yac-swap/wallet-core@1.31.0-next.3
 
 ## 1.1.0-next.2
 
@@ -290,8 +290,8 @@
 
 - Updated dependencies [412e1d1]
 - Updated dependencies [412e1d1]
-  - @liquality/cryptoassets@1.16.0-next.2
-  - @liquality/wallet-core@1.31.0-next.2
+  - @yac-swap/cryptoassets@1.16.0-next.2
+  - @yac-swap/wallet-core@1.31.0-next.2
 
 ## 1.1.0-next.1
 
@@ -302,8 +302,8 @@
 ### Patch Changes
 
 - Updated dependencies [b9db052]
-  - @liquality/cryptoassets@1.16.0-next.1
-  - @liquality/wallet-core@1.31.0-next.1
+  - @yac-swap/cryptoassets@1.16.0-next.1
+  - @yac-swap/wallet-core@1.31.0-next.1
 
 ## 1.1.0-next.0
 
@@ -318,8 +318,8 @@
 - Updated dependencies [3d90aee]
 - Updated dependencies [e45d2cb]
 - Updated dependencies [61c228e]
-  - @liquality/cryptoassets@1.16.0-next.0
-  - @liquality/wallet-core@1.31.0-next.0
+  - @yac-swap/cryptoassets@1.16.0-next.0
+  - @yac-swap/wallet-core@1.31.0-next.0
 
 <<<<<<< HEAD
 
@@ -334,8 +334,8 @@
 
 - Updated dependencies [e80e6eb]
 - Updated dependencies [5e3607c]
-  - @liquality/cryptoassets@1.16.0-next.2
-  - @liquality/wallet-core@1.31.0-next.2
+  - @yac-swap/cryptoassets@1.16.0-next.2
+  - @yac-swap/wallet-core@1.31.0-next.2
 
 ## 1.1.0-next.1
 
@@ -348,8 +348,8 @@
 
 - Updated dependencies [31a975e]
 - Updated dependencies [eadd70c]
-  - @liquality/cryptoassets@1.16.0-next.1
-  - @liquality/wallet-core@1.31.0-next.1
+  - @yac-swap/cryptoassets@1.16.0-next.1
+  - @yac-swap/wallet-core@1.31.0-next.1
 
 ## 1.1.0-next.0
 
@@ -364,8 +364,8 @@
 
 - Updated dependencies [7fa751e]
 - Updated dependencies [cb2c60a]
-  - @liquality/wallet-core@1.31.0-next.0
-  - # @liquality/cryptoassets@1.16.0-next.0
+  - @yac-swap/wallet-core@1.31.0-next.0
+  - # @yac-swap/cryptoassets@1.16.0-next.0
 
 ## 1.0.12
 

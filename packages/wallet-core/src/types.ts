@@ -1,5 +1,5 @@
-import { TransportCreator } from '@chainify/hw-ledger';
-import { Network } from '@chainify/types';
+import { TransportCreator } from '@yac-swap/hw-ledger';
+import { Network } from '@yac-swap/types';
 import { RootState } from './store/types';
 
 export interface ParsedCipherText {
