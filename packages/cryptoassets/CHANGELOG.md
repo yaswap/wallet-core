@@ -1,5 +1,11 @@
 # @yaswap/cryptoassets
 
+## 2.0.1
+
+### Patch Changes
+
+- Rename Liquality to Yaswap
+
 ## 2.11.0
 
 ### Minor Changes

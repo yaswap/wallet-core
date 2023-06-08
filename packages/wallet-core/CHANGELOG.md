@@ -1,5 +1,14 @@
 # @yaswap/wallet-core
 
+## 2.0.1
+
+### Patch Changes
+
+- Rename Liquality to Yaswap
+- Updated dependencies
+  - @yaswap/cryptoassets@2.0.1
+  - @yaswap/error-parser@2.0.1
+
 ## 4.26.0
 
 ### Minor Changes

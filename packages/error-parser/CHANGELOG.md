@@ -1,5 +1,13 @@
 # @yaswap/error-parser
 
+## 2.0.1
+
+### Patch Changes
+
+- Rename Liquality to Yaswap
+- Updated dependencies
+  - @yaswap/cryptoassets@2.0.1
+
 ## 2.2.10
 
 ### Patch Changes
