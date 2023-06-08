@@ -18,7 +18,7 @@ Wallet Core is a cryptocurrency wallet library in Typescript. It provides an abs
 - State management
 - Seed management and security
 - Account management
-- Blockchain communication under a common interface, powered by [Chainify](https://github.com/liquality/chainify)
+- Blockchain communication under a common interface, powered by [Chainify](https://github.com/yaswap/chainabstractionlayer)
 - Retriving balances
 - Sending transactions
 - Intra and cross chain swaps supporting a host of decentralised exchanges - Liquality, Thorchain, Uniswap, 1inch, Sovryn, Astroport etc.
@@ -72,11 +72,11 @@ See `WalletOptions` in [types](src/types.ts)
 
 ## Examples
 
-- [Add Custom Token](https://github.com/liquality/wallet-core/blob/develop/packages/wallet-core/src/store/actions/addCustomToken.test.ts)
-- [Export Private Key](https://github.com/liquality/wallet-core/blob/develop/packages/wallet-core/src/store/actions/exportPrivateKey.test.ts)
-- [Send Transaction](https://github.com/liquality/wallet-core/blob/develop/packages/wallet-core/src/store/actions/sendTransaction.test.ts)
-- [Update Fees](https://github.com/liquality/wallet-core/blob/develop/packages/wallet-core/src/store/actions/updateFees.test.ts)
-- [Update Balance](https://github.com/liquality/wallet-core/blob/develop/packages/wallet-core/src/store/actions/updateBalances.test.ts)
+- [Add Custom Token](https://github.com/yaswap/wallet-core/blob/develop/packages/wallet-core/src/store/actions/addCustomToken.test.ts)
+- [Export Private Key](https://github.com/yaswap/wallet-core/blob/develop/packages/wallet-core/src/store/actions/exportPrivateKey.test.ts)
+- [Send Transaction](https://github.com/yaswap/wallet-core/blob/develop/packages/wallet-core/src/store/actions/sendTransaction.test.ts)
+- [Update Fees](https://github.com/yaswap/wallet-core/blob/develop/packages/wallet-core/src/store/actions/updateFees.test.ts)
+- [Update Balance](https://github.com/yaswap/wallet-core/blob/develop/packages/wallet-core/src/store/actions/updateBalances.test.ts)
 
 ## How to run tests
 
