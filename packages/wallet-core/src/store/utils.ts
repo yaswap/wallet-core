@@ -1,6 +1,6 @@
-import { Client, HttpClient } from '@yac-swap/client';
-import { EvmChainProvider, EvmWalletProvider } from '@yac-swap/evm';
-import { AssetTypes, ChainId, getChain } from '@yac-swap/cryptoassets';
+import { Client, HttpClient } from '@yaswap/client';
+import { EvmChainProvider, EvmWalletProvider } from '@yaswap/evm';
+import { AssetTypes, ChainId, getChain } from '@yaswap/cryptoassets';
 import BN from 'bignumber.js';
 import EventEmitter from 'events';
 import { findKey, mapKeys, mapValues, random } from 'lodash';

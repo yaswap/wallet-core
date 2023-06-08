@@ -1,4 +1,4 @@
-import { ChainId } from '@yac-swap/cryptoassets';
+import { ChainId } from '@yaswap/cryptoassets';
 import buildConfig from './build.config';
 import { setupWallet } from './index';
 import { LATEST_VERSION } from './store/migrations';

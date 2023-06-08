@@ -1,4 +1,4 @@
-import { ChainId } from '@yac-swap/cryptoassets';
+import { ChainId } from '@yaswap/cryptoassets';
 import { ActionContext, rootActionContext } from '..';
 import { AccountId } from '../types';
 

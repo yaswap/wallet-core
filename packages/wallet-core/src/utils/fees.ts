@@ -1,15 +1,15 @@
-import { BitcoinBaseWalletProvider, BitcoinEsploraApiProvider } from '@yac-swap/bitcoin';
-import { Client } from '@yac-swap/client';
-import { EvmUtils } from '@yac-swap/evm';
-import { ChainId, EIP1559Fee, FeeDetail, FeeDetails, FeeType } from '@yac-swap/types';
+import { BitcoinBaseWalletProvider, BitcoinEsploraApiProvider } from '@yaswap/bitcoin';
+import { Client } from '@yaswap/client';
+import { EvmUtils } from '@yaswap/evm';
+import { ChainId, EIP1559Fee, FeeDetail, FeeDetails, FeeType } from '@yaswap/types';
 import {
   currencyToUnit,
   getAssetSendGasLimit,
   getAssetSendL1GasLimit,
   getNativeAssetCode,
   unitToCurrency,
-} from '@yac-swap/cryptoassets';
-import { CUSTOM_ERRORS, createInternalError } from '@yac-swap/error-parser';
+} from '@yaswap/cryptoassets';
+import { CUSTOM_ERRORS, createInternalError } from '@yaswap/error-parser';
 import BN from 'bignumber.js';
 import store from '../store';
 import { Account, AccountId, Asset, Network, NFT } from '../store/types';

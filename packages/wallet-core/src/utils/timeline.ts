@@ -1,5 +1,5 @@
-import { Client } from '@yac-swap/client';
-import { Transaction } from '@yac-swap/types';
+import { Client } from '@yaswap/client';
+import { Transaction } from '@yaswap/types';
 import { getSwapProvider } from '../factory';
 import { Asset, Network, SwapHistoryItem, WalletId } from '../store/types';
 import { LiqualitySwapHistoryItem } from '../swaps/liquality/LiqualitySwapProvider';

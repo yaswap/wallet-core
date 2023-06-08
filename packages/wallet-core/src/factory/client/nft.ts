@@ -1,4 +1,4 @@
-import { CovalentNftProvider, EvmBaseWalletProvider, InfuraNftProvider, OpenSeaNftProvider } from '@yac-swap/evm';
+import { CovalentNftProvider, EvmBaseWalletProvider, InfuraNftProvider, OpenSeaNftProvider } from '@yaswap/evm';
 import { BaseProvider } from '@ethersproject/providers';
 import { NftProviderType } from '../../store/types';
 

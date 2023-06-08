@@ -1,4 +1,4 @@
-import { TxStatus } from '@yac-swap/types';
+import { TxStatus } from '@yaswap/types';
 import { ActionContext, rootActionContext } from '../..';
 import { Network, SendHistoryItem, SendStatus, WalletId } from '../../types';
 import { withInterval } from './utils';

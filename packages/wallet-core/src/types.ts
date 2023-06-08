@@ -1,5 +1,5 @@
-import { TransportCreator } from '@yac-swap/hw-ledger';
-import { Network } from '@yac-swap/types';
+import { TransportCreator } from '@yaswap/hw-ledger';
+import { Network } from '@yaswap/types';
 import { RootState } from './store/types';
 
 export interface ParsedCipherText {

@@ -1,29 +1,29 @@
-import { Chain, Client, Swap, Wallet } from '@yac-swap/client';
+import { Chain, Client, Swap, Wallet } from '@yaswap/client';
 import {
   BitcoinEsploraApiProvider,
   BitcoinFeeApiProvider,
   BitcoinHDWalletProvider,
   BitcoinSwapEsploraProvider,
   BitcoinTypes,
-} from '@yac-swap/bitcoin';
+} from '@yaswap/bitcoin';
 import {
   YacoinEsploraApiProvider,
   YacoinFeeApiProvider,
   YacoinHDWalletProvider,
   YacoinSwapEsploraProvider,
   YacoinTypes,
-} from '@yac-swap/yacoin';
-import { BitcoinLedgerProvider, CreateBitcoinLedgerApp } from '@yac-swap/bitcoin-ledger';
+} from '@yaswap/yacoin';
+import { BitcoinLedgerProvider, CreateBitcoinLedgerApp } from '@yaswap/bitcoin-ledger';
 import { ChainifyNetwork } from '../../types';
-import { NearChainProvider, NearSwapProvider, NearTypes, NearWalletProvider } from '@yac-swap/near';
-import { SolanaChainProvider, SolanaNftProvider, SolanaWalletProvider } from '@yac-swap/solana';
-import { TerraChainProvider, TerraSwapProvider, TerraTypes, TerraWalletProvider } from '@yac-swap/terra';
+import { NearChainProvider, NearSwapProvider, NearTypes, NearWalletProvider } from '@yaswap/near';
+import { SolanaChainProvider, SolanaNftProvider, SolanaWalletProvider } from '@yaswap/solana';
+import { TerraChainProvider, TerraSwapProvider, TerraTypes, TerraWalletProvider } from '@yaswap/terra';
 
 import { AccountInfo, ClientSettings } from '../../store/types';
 import { LEDGER_BITCOIN_OPTIONS } from '../../utils/ledger';
 import { walletOptionsStore } from '../../walletOptions';
-import { CUSTOM_ERRORS, createInternalError } from '@yac-swap/error-parser';
-import { Network } from '@yac-swap/types';
+import { CUSTOM_ERRORS, createInternalError } from '@yaswap/error-parser';
+import { Network } from '@yaswap/types';
 
 export function createBtcClient(
   settings: ClientSettings<ChainifyNetwork>,

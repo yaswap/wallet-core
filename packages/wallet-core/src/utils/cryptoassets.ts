@@ -1,4 +1,4 @@
-import { IAsset } from '@yac-swap/cryptoassets';
+import { IAsset } from '@yaswap/cryptoassets';
 import type { OriginalStore } from '../store';
 
 // Redefine the `cryptoassets` lib to pull from the getter - to include custom tokens

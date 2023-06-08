@@ -16,7 +16,7 @@ import uniswapInfo from './uniswap/info.json';
 import debridgeInfo from './debridge/info.json';
 import teleswapInfo from './teleswap/info.json';
 import { LiqualitySwapProvider } from './liquality/LiqualitySwapProvider';
-import { CUSTOM_ERRORS, createInternalError } from '@yac-swap/error-parser';
+import { CUSTOM_ERRORS, createInternalError } from '@yaswap/error-parser';
 
 const swapProviderInfo = {
   [SwapProviderType.Liquality]: liqualityInfo,

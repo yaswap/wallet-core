@@ -8,7 +8,7 @@
 |__/|__/\__,_/_/_/\___/\__/   \____/\____/_/   \___/ 
 </pre>
 
-![](https://img.shields.io/npm/v/@yac-swap/wallet-core?label=wallet-core)
+![](https://img.shields.io/npm/v/@yaswap/wallet-core?label=wallet-core)
 ![master](https://github.com/liquality/wallet-core/actions/workflows/build-test.yml/badge.svg?branch=master)
 
 Wallet Core is a cryptocurrency wallet library in Typescript. It provides an abstracted interface that handles all the necessary internals of a muilti chain wallet.
@@ -26,15 +26,15 @@ Wallet Core is a cryptocurrency wallet library in Typescript. It provides an abs
 
 # Install
 
-`npm install @yac-swap/wallet-core`
+`npm install @yaswap/wallet-core`
 
-`yarn add @yac-swap/wallet-core`
+`yarn add @yaswap/wallet-core`
 
 ## Usage
 
 ```typescript
-import { setupWallet } from '@yac-swap/wallet-core';
-import defaultOptions from '@yac-swap/wallet-core/dist/src/walletOptions/defaultOptions'; // Default options
+import { setupWallet } from '@yaswap/wallet-core';
+import defaultOptions from '@yaswap/wallet-core/dist/src/walletOptions/defaultOptions'; // Default options
 
 const wallet = setupWallet({
   ...defaultOptions,

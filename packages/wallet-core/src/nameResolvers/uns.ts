@@ -1,7 +1,7 @@
-import { HttpClient } from '@yac-swap/client';
-import { Nullable } from '@yac-swap/types';
-import { IAsset, AssetTypes, ChainId, getChain } from '@yac-swap/cryptoassets';
-import { Network } from '@yac-swap/cryptoassets/dist/src/types';
+import { HttpClient } from '@yaswap/client';
+import { Nullable } from '@yaswap/types';
+import { IAsset, AssetTypes, ChainId, getChain } from '@yaswap/cryptoassets';
+import { Network } from '@yaswap/cryptoassets/dist/src/types';
 import { Resolution, ResolutionResponse } from '@unstoppabledomains/resolution';
 import buildConfig from '../build.config';
 import { NameResolver } from './nameResolver';

@@ -1,4 +1,4 @@
-import { ChainId } from '@yac-swap/cryptoassets';
+import { ChainId } from '@yaswap/cryptoassets';
 
 // Add network to custom tokens
 export const addNetworkCustomTokens = {

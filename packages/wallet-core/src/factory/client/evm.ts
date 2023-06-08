@@ -1,4 +1,4 @@
-import { Chain, Client, Swap, Wallet } from '@yac-swap/client';
+import { Chain, Client, Swap, Wallet } from '@yaswap/client';
 import {
   EIP1559FeeProvider,
   EvmChainProvider,
@@ -6,17 +6,17 @@ import {
   EvmSwapProvider,
   OptimismChainProvider,
   RpcFeeProvider,
-} from '@yac-swap/evm';
-import { EvmLedgerProvider, CreateEvmLedgerApp } from '@yac-swap/evm-ledger';
-import { Address, Network } from '@yac-swap/types';
+} from '@yaswap/evm';
+import { EvmLedgerProvider, CreateEvmLedgerApp } from '@yaswap/evm-ledger';
+import { Address, Network } from '@yaswap/types';
 import { ChainifyNetwork } from '../../types';
 import { JsonRpcProvider, StaticJsonRpcProvider } from '@ethersproject/providers';
 import { AccountInfo, AccountType, ClientSettings } from '../../store/types';
 import { walletOptionsStore } from '../../walletOptions';
 import { getNftProvider } from './nft';
-import { EvmChain } from '@yac-swap/cryptoassets';
+import { EvmChain } from '@yaswap/cryptoassets';
 import { asL2Provider } from '@eth-optimism/sdk';
-import { CUSTOM_ERRORS, createInternalError } from '@yac-swap/error-parser';
+import { CUSTOM_ERRORS, createInternalError } from '@yaswap/error-parser';
 
 export function createEvmClient(
   chain: EvmChain,

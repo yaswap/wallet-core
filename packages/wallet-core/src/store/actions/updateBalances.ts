@@ -1,7 +1,7 @@
-import { Client } from '@yac-swap/client';
-import { EvmChainProvider, EvmTypes } from '@yac-swap/evm';
-import { Address, AddressType, BigNumber } from '@yac-swap/types';
-import { ChainId, getChain } from '@yac-swap/cryptoassets';
+import { Client } from '@yaswap/client';
+import { EvmChainProvider, EvmTypes } from '@yaswap/evm';
+import { Address, AddressType, BigNumber } from '@yaswap/types';
+import { ChainId, getChain } from '@yaswap/cryptoassets';
 import Bluebird from 'bluebird';
 import { chunk } from 'lodash';
 import { ActionContext, rootActionContext } from '..';

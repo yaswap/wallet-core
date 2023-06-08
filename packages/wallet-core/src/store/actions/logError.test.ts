@@ -1,4 +1,4 @@
-import { createInternalError } from '@yac-swap/error-parser';
+import { createInternalError } from '@yaswap/error-parser';
 import { setupWallet } from '../../index';
 import defaultWalletOptions from '../../walletOptions/defaultOptions';
 

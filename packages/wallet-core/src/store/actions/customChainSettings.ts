@@ -1,6 +1,6 @@
 import { ActionContext, rootActionContext } from '..';
-import { ChainId } from '@yac-swap/cryptoassets';
-import { Network as ChainifyNetwork } from '@yac-swap/types';
+import { ChainId } from '@yaswap/cryptoassets';
+import { Network as ChainifyNetwork } from '@yaswap/types';
 import { WalletId, Network } from '../types';
 import { clientCache } from '../utils';
 

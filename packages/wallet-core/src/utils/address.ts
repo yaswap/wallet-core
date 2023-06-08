@@ -1,4 +1,4 @@
-import { BitcoinTypes } from '@yac-swap/bitcoin';
+import { BitcoinTypes } from '@yaswap/bitcoin';
 
 export function shortenAddress(address: string) {
   const prefix = address.startsWith('0x') ? '0x' : '';

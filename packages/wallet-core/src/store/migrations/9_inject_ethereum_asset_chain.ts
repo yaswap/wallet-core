@@ -1,4 +1,4 @@
-import { ChainId, getAsset } from '@yac-swap/cryptoassets';
+import { ChainId, getAsset } from '@yaswap/cryptoassets';
 
 export const injectEthereumAssetChain = {
   // Inject ethereum asset -> chain

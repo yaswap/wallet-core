@@ -1,11 +1,11 @@
-import { FeeDetails, Nullable, Network as ChainifyNetwork } from '@yac-swap/types';
-import { ChainId } from '@yac-swap/cryptoassets';
+import { FeeDetails, Nullable, Network as ChainifyNetwork } from '@yaswap/types';
+import { ChainId } from '@yaswap/cryptoassets';
 import {
   CUSTOM_ERRORS,
   createInternalError,
   updateErrorReporterConfig,
   LiqualityErrorJSON,
-} from '@yac-swap/error-parser';
+} from '@yaswap/error-parser';
 import Vue from 'vue';
 import store from '.';
 import {

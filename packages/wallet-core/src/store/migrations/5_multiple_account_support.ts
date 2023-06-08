@@ -1,4 +1,4 @@
-import { ChainId, getAllAssets, getAsset, getChain } from '@yac-swap/cryptoassets';
+import { ChainId, getAllAssets, getAsset, getChain } from '@yaswap/cryptoassets';
 import buildConfig from '../../build.config';
 import { accountCreator, getNextAccountColor } from '../../utils/accounts';
 import { AccountType, Network } from '../types';

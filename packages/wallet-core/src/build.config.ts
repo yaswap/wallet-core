@@ -1,6 +1,6 @@
 import SovrynMainnetAddresses from '@blobfishkate/sovryncontracts/contracts-mainnet.json';
 import SovrynTestnetAddresses from '@blobfishkate/sovryncontracts/contracts-testnet.json';
-import { ChainId } from '@yac-swap/cryptoassets';
+import { ChainId } from '@yaswap/cryptoassets';
 import { Asset, Network, SwapProviderType } from './store/types';
 
 export interface SwapProviderDefinition {

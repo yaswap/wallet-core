@@ -1,5 +1,5 @@
-//import { BitcoinLedgerProvider } from '@yac-swap/bitcoin-ledger';
-import { ChainId, getAllAssets, getChain } from '@yac-swap/cryptoassets';
+//import { BitcoinLedgerProvider } from '@yaswap/bitcoin-ledger';
+import { ChainId, getAllAssets, getChain } from '@yaswap/cryptoassets';
 import BN from 'bignumber.js';
 import { ActionContext, rootActionContext } from '../..';
 import { getDerivationPath } from '../../../utils/derivationPath';

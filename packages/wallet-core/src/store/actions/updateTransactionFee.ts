@@ -1,5 +1,5 @@
-import { Transaction } from '@yac-swap/types';
-import { CUSTOM_ERRORS, createInternalError } from '@yac-swap/error-parser';
+import { Transaction } from '@yaswap/types';
+import { CUSTOM_ERRORS, createInternalError } from '@yaswap/error-parser';
 import { isObject } from 'lodash';
 import { ActionContext, rootActionContext } from '..';
 import { getSwapProvider } from '../../factory/swap';

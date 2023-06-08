@@ -1,4 +1,4 @@
-import { CUSTOM_ERRORS, createInternalError } from '@yac-swap/error-parser';
+import { CUSTOM_ERRORS, createInternalError } from '@yaswap/error-parser';
 import BigNumber from 'bignumber.js';
 import store, { ActionContext } from '../store';
 import { createNotification } from '../store/broker/notification';

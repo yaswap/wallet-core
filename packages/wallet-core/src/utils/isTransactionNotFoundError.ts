@@ -1,5 +1,5 @@
-import { TxNotFoundError } from '@yac-swap/errors';
-import { LiqualityError } from '@yac-swap/error-parser';
+import { TxNotFoundError } from '@yaswap/errors';
+import { LiqualityError } from '@yaswap/error-parser';
 
 export function isTransactionNotFoundError(error: Error): boolean {
   if (error instanceof LiqualityError) {

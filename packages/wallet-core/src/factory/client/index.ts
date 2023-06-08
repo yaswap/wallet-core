@@ -1,13 +1,13 @@
-import { ChainId, getChain } from '@yac-swap/cryptoassets';
-import { CUSTOM_ERRORS, createInternalError } from '@yac-swap/error-parser';
+import { ChainId, getChain } from '@yaswap/cryptoassets';
+import { CUSTOM_ERRORS, createInternalError } from '@yaswap/error-parser';
 import { AccountInfo, ClientSettings } from '../../store/types';
 import { createBtcClient, createYacClient, createNearClient, createSolanaClient, createTerraClient } from './clients';
 import { createEvmClient } from './evm';
-import { Network as ChainifyNetwork } from '@yac-swap/types';
-import { NearTypes } from '@yac-swap/near';
-import { TerraTypes } from '@yac-swap/terra';
-import { BitcoinTypes } from '@yac-swap/bitcoin';
-import { YacoinTypes } from '@yac-swap/yacoin';
+import { Network as ChainifyNetwork } from '@yaswap/types';
+import { NearTypes } from '@yaswap/near';
+import { TerraTypes } from '@yaswap/terra';
+import { BitcoinTypes } from '@yaswap/bitcoin';
+import { YacoinTypes } from '@yaswap/yacoin';
 
 export const createClient = ({
   chainId,

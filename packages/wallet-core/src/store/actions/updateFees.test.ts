@@ -1,4 +1,4 @@
-import { getNativeAssetCode } from '@yac-swap/cryptoassets';
+import { getNativeAssetCode } from '@yaswap/cryptoassets';
 import { setupWallet } from '../../index';
 import defaultWalletOptions from '../../walletOptions/defaultOptions';
 import { Network } from '../types';

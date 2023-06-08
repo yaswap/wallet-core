@@ -1,4 +1,4 @@
-import { TxStatus } from '@yac-swap/types';
+import { TxStatus } from '@yaswap/types';
 import { isTransactionNotFoundError } from '../../../utils/isTransactionNotFoundError';
 import { ActionContext, rootActionContext } from '../..';
 import { Network, NFTSendHistoryItem, SendStatus, WalletId } from '../../types';

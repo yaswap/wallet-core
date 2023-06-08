@@ -1,11 +1,11 @@
-import { BitcoinNetworks } from '@yac-swap/bitcoin';
-import { YacoinNetworks } from '@yac-swap/yacoin';
-import { NearNetworks } from '@yac-swap/near';
-import { SolanaNetworks } from '@yac-swap/solana';
-import { TerraNetworks } from '@yac-swap/terra';
-import { Network as ChainifyNetwork } from '@yac-swap/types';
-import { ChainId, getChain } from '@yac-swap/cryptoassets';
-import { CUSTOM_ERRORS, createInternalError } from '@yac-swap/error-parser';
+import { BitcoinNetworks } from '@yaswap/bitcoin';
+import { YacoinNetworks } from '@yaswap/yacoin';
+import { NearNetworks } from '@yaswap/near';
+import { SolanaNetworks } from '@yaswap/solana';
+import { TerraNetworks } from '@yaswap/terra';
+import { Network as ChainifyNetwork } from '@yaswap/types';
+import { ChainId, getChain } from '@yaswap/cryptoassets';
+import { CUSTOM_ERRORS, createInternalError } from '@yaswap/error-parser';
 import { Network } from '../store/types';
 
 export const Networks = [Network.Mainnet, Network.Testnet];

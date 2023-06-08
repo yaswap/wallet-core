@@ -1,4 +1,4 @@
-import { ChainId, getChain } from '@yac-swap/cryptoassets';
+import { ChainId, getChain } from '@yaswap/cryptoassets';
 import { accountCreator, getNextAccountColor } from '../../utils/accounts';
 import { getDerivationPath } from '../../utils/derivationPath';
 import { Networks } from '../../utils/networks';

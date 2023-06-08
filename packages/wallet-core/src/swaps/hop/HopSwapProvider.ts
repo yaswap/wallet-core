@@ -1,7 +1,7 @@
-import { EIP1559Fee } from '@yac-swap/types';
-import { ensure0x } from '@yac-swap/utils';
+import { EIP1559Fee } from '@yaswap/types';
+import { ensure0x } from '@yaswap/utils';
 import { Chain, Hop, HopBridge, TToken } from '@hop-protocol/sdk';
-import { ChainId, currencyToUnit, getChain, getNativeAssetCode, IAsset, unitToCurrency } from '@yac-swap/cryptoassets';
+import { ChainId, currencyToUnit, getChain, getNativeAssetCode, IAsset, unitToCurrency } from '@yaswap/cryptoassets';
 import { isTransactionNotFoundError } from '../../utils/isTransactionNotFoundError';
 import BN from 'bignumber.js';
 import { ethers, Wallet } from 'ethers';
@@ -25,7 +25,7 @@ import {
   SwapStatus,
 } from '../types';
 import { getDestinationTxGQL, getTransferIdByTxHash } from './queries';
-import { CUSTOM_ERRORS, createInternalError } from '@yac-swap/error-parser';
+import { CUSTOM_ERRORS, createInternalError } from '@yaswap/error-parser';
 
 export interface HopSwapProviderConfig extends BaseSwapProviderConfig {
   graphqlBaseURL: string;

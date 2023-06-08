@@ -1,4 +1,4 @@
-import { ChainId } from '@yac-swap/cryptoassets';
+import { ChainId } from '@yaswap/cryptoassets';
 import { Account } from '../types';
 
 export const rskFishToken = {

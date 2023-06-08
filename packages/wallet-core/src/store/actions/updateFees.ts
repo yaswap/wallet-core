@@ -1,4 +1,4 @@
-import { FeeDetails } from '@yac-swap/types';
+import { FeeDetails } from '@yaswap/types';
 import { ActionContext, rootActionContext } from '..';
 import { Asset } from '../types';
 

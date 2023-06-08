@@ -1,9 +1,9 @@
-import { BitcoinBaseWalletProvider, BitcoinEsploraApiProvider, BitcoinTypes } from '@yac-swap/bitcoin';
-import { Client } from '@yac-swap/client';
-import { EvmChainProvider, EvmTypes, EvmWalletProvider } from '@yac-swap/evm';
-import { Transaction } from '@yac-swap/types';
+import { BitcoinBaseWalletProvider, BitcoinEsploraApiProvider, BitcoinTypes } from '@yaswap/bitcoin';
+import { Client } from '@yaswap/client';
+import { EvmChainProvider, EvmTypes, EvmWalletProvider } from '@yaswap/evm';
+import { Transaction } from '@yaswap/types';
 import { JsonRpcProvider } from '@ethersproject/providers';
-import { ChainId, currencyToUnit, getChain, unitToCurrency } from '@yac-swap/cryptoassets';
+import { ChainId, currencyToUnit, getChain, unitToCurrency } from '@yaswap/cryptoassets';
 import { isTransactionNotFoundError } from '../../utils/isTransactionNotFoundError';
 import BN from 'bignumber.js';
 import * as ethers from 'ethers';
@@ -25,7 +25,7 @@ import {
   SwapStatus,
 } from '../types';
 import { BitcoinTransferStatus, BRIDGE_CONTRACT_ABI } from './fastBtcBridgeContract';
-import { CUSTOM_ERRORS, createInternalError } from '@yac-swap/error-parser';
+import { CUSTOM_ERRORS, createInternalError } from '@yaswap/error-parser';
 
 export interface FastBtcWithdrawSwapHistoryItem extends SwapHistoryItem {
   transferId: string;

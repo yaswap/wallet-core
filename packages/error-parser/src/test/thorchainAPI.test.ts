@@ -2,7 +2,7 @@ import { FAKE_ERROR, getError, getErrorAsync } from '.';
 import { LiqualityError } from '../LiqualityErrors/LiqualityError';
 import { getErrorParser, ThirdPartyError, ThorchainAPIErrorParser } from '..';
 import { THORCHAIN_ERRORS } from '../parsers/Thorchain';
-import { NodeError } from '@yac-swap/errors';
+import { NodeError } from '@yaswap/errors';
 
 describe('ThorchainAPI parser', () => {
   const parser = getErrorParser(ThorchainAPIErrorParser);

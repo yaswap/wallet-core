@@ -1,4 +1,4 @@
-import { errorToLiqualityErrorString } from '@yac-swap/error-parser/dist/src/utils';
+import { errorToLiqualityErrorString } from '@yaswap/error-parser/dist/src/utils';
 import { ActionContext, rootActionContext } from '../..';
 import { getSwapProvider } from '../../../factory/swap';
 import { createHistoryNotification } from '../../broker/notification';

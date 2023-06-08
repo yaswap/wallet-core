@@ -1,4 +1,4 @@
-import { ChainId } from '@yac-swap/cryptoassets';
+import { ChainId } from '@yaswap/cryptoassets';
 import { ActionContext, rootActionContext } from '..';
 
 export const setEthereumInjectionChain = async (context: ActionContext, { chain }: { chain: ChainId }) => {

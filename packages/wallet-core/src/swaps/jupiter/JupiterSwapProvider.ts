@@ -1,5 +1,5 @@
-import { TxStatus } from '@yac-swap/types';
-import { ChainId, currencyToUnit, getNativeAssetCode, unitToCurrency } from '@yac-swap/cryptoassets';
+import { TxStatus } from '@yaswap/types';
+import { ChainId, currencyToUnit, getNativeAssetCode, unitToCurrency } from '@yaswap/cryptoassets';
 import { isTransactionNotFoundError } from '../../utils/isTransactionNotFoundError';
 import { Transaction } from '@solana/web3.js';
 import axios from 'axios';
@@ -19,7 +19,7 @@ import {
   SwapRequest,
   SwapStatus,
 } from '../types';
-import { CUSTOM_ERRORS, createInternalError } from '@yac-swap/error-parser';
+import { CUSTOM_ERRORS, createInternalError } from '@yaswap/error-parser';
 
 const SOL_MINT_ADDRESS = 'So11111111111111111111111111111111111111112';
 export interface JupiterSwapHistoryItem extends SwapHistoryItem {

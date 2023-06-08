@@ -1,7 +1,7 @@
-import { Client } from '@yac-swap/client';
-import { EvmChainProvider, EvmTypes } from '@yac-swap/evm';
-import { Transaction, TxStatus } from '@yac-swap/types';
-import { ChainId, currencyToUnit, getChain, unitToCurrency } from '@yac-swap/cryptoassets';
+import { Client } from '@yaswap/client';
+import { EvmChainProvider, EvmTypes } from '@yaswap/evm';
+import { Transaction, TxStatus } from '@yaswap/types';
+import { ChainId, currencyToUnit, getChain, unitToCurrency } from '@yaswap/cryptoassets';
 import { isTransactionNotFoundError } from '../../utils/isTransactionNotFoundError';
 import { CurrencyAmount, Fraction, Percent, Token, TradeType, WETH9 } from '@uniswap/sdk-core';
 import ERC20 from '@uniswap/v2-core/build/ERC20.json';
@@ -31,7 +31,7 @@ import {
   SwapRequest,
   SwapStatus,
 } from '../types';
-import { CUSTOM_ERRORS, createInternalError, errorName, ERROR_NAMES } from '@yac-swap/error-parser';
+import { CUSTOM_ERRORS, createInternalError, errorName, ERROR_NAMES } from '@yaswap/error-parser';
 
 const SWAP_DEADLINE = 30 * 60; // 30 minutes
 

@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { ChainId } from '@yac-swap/cryptoassets';
+import { ChainId } from '@yaswap/cryptoassets';
 import { AccountType, Network } from '../store/types';
 import { getDerivationPath } from './derivationPath';
 

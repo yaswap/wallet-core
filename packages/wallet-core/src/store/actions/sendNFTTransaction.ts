@@ -1,5 +1,5 @@
-import { Transaction } from '@yac-swap/types';
-import { getChain } from '@yac-swap/cryptoassets';
+import { Transaction } from '@yaswap/types';
+import { getChain } from '@yaswap/cryptoassets';
 import { v4 as uuidv4 } from 'uuid';
 import { ActionContext, rootActionContext } from '..';
 import { createHistoryNotification } from '../broker/notification';

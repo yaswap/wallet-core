@@ -1,8 +1,8 @@
-import { Client } from '@yac-swap/client';
-import { EvmChainProvider, EvmTypes, Typechain } from '@yac-swap/evm';
-import { toEthereumTxRequest } from '@yac-swap/evm/dist/lib/utils';
-import { Transaction, TxStatus } from '@yac-swap/types';
-import { getChain } from '@yac-swap/cryptoassets';
+import { Client } from '@yaswap/client';
+import { EvmChainProvider, EvmTypes, Typechain } from '@yaswap/evm';
+import { toEthereumTxRequest } from '@yaswap/evm/dist/lib/utils';
+import { Transaction, TxStatus } from '@yaswap/types';
+import { getChain } from '@yaswap/cryptoassets';
 import { isTransactionNotFoundError } from '../utils/isTransactionNotFoundError';
 import * as ethers from 'ethers';
 import { SwapHistoryItem } from '../store/types';

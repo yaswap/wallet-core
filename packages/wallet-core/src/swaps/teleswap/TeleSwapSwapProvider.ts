@@ -1,7 +1,7 @@
-import { BitcoinBaseWalletProvider, BitcoinEsploraApiProvider } from '@yac-swap/bitcoin';
-import { Client } from '@yac-swap/client';
-import { ChainId, currencyToUnit, getChain, unitToCurrency } from '@yac-swap/cryptoassets';
-import { Transaction } from '@yac-swap/types';
+import { BitcoinBaseWalletProvider, BitcoinEsploraApiProvider } from '@yaswap/bitcoin';
+import { Client } from '@yaswap/client';
+import { ChainId, currencyToUnit, getChain, unitToCurrency } from '@yaswap/cryptoassets';
+import { Transaction } from '@yaswap/types';
 import { isTransactionNotFoundError } from '../../utils/isTransactionNotFoundError';
 import ERC20 from '@uniswap/v2-core/build/ERC20.json';
 import UniswapV2Factory from '@uniswap/v2-core/build/UniswapV2Factory.json';
@@ -29,7 +29,7 @@ import {
   SwapRequest,
   SwapStatus,
 } from '../types'; // SwapQuote
-import { CUSTOM_ERRORS, createInternalError } from '@yac-swap/error-parser';
+import { CUSTOM_ERRORS, createInternalError } from '@yaswap/error-parser';
 
 const SUPPORTED_CHAINS = [
   [ChainId.Bitcoin, ChainId.Polygon, 'testnet'],

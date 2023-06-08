@@ -1,4 +1,4 @@
-import { ChainId, getAsset, getChain } from '@yac-swap/cryptoassets';
+import { ChainId, getAsset, getChain } from '@yaswap/cryptoassets';
 import { v4 as uuidv4 } from 'uuid';
 import { ActionContext, rootActionContext } from '..';
 import buildConfig from '../../build.config';

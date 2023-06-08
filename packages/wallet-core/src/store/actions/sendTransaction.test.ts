@@ -1,4 +1,4 @@
-import { ChainId } from '@yac-swap/cryptoassets';
+import { ChainId } from '@yaswap/cryptoassets';
 import BN from 'bignumber.js';
 import * as Process from 'process';
 import { setupWallet } from '../../index';

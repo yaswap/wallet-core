@@ -1,5 +1,5 @@
-import { ChainId } from '@yac-swap/cryptoassets';
-import { CUSTOM_ERRORS, createInternalError } from '@yac-swap/error-parser';
+import { ChainId } from '@yaswap/cryptoassets';
+import { CUSTOM_ERRORS, createInternalError } from '@yaswap/error-parser';
 import Bluebird from 'bluebird';
 import cryptoassets from '../../utils/cryptoassets';
 import { ActionContext, rootActionContext } from '..';

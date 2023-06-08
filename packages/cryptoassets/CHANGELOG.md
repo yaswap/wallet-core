@@ -1,4 +1,4 @@
-# @yac-swap/cryptoassets
+# @yaswap/cryptoassets
 
 ## 2.11.0
 

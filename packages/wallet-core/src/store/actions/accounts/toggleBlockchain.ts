@@ -1,4 +1,4 @@
-import { ChainId } from '@yac-swap/cryptoassets';
+import { ChainId } from '@yaswap/cryptoassets';
 import { ActionContext, rootActionContext } from '../..';
 import buildConfig from '../../../build.config';
 import { Network, WalletId } from '../../types';

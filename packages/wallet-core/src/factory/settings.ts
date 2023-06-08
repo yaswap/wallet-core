@@ -1,4 +1,4 @@
-import { ChainId, getChain } from '@yac-swap/cryptoassets';
+import { ChainId, getChain } from '@yaswap/cryptoassets';
 import { ChainNetworks } from '../utils/networks';
 import buildConfig from '../build.config';
 import { Network } from '../store/types';

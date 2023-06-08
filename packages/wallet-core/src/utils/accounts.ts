@@ -1,5 +1,5 @@
-import { ChainId, getChain } from '@yac-swap/cryptoassets';
-import { CUSTOM_ERRORS, createInternalError } from '@yac-swap/error-parser';
+import { ChainId, getChain } from '@yaswap/cryptoassets';
+import { CUSTOM_ERRORS, createInternalError } from '@yaswap/error-parser';
 import { v4 as uuidv4 } from 'uuid';
 import { Account, AccountDefinition, Network, WalletId } from '../store/types';
 import { getDerivationPath } from './derivationPath';

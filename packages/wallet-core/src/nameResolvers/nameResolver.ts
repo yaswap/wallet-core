@@ -1,5 +1,5 @@
-import { Nullable } from '@yac-swap/types';
-import { IAsset } from '@yac-swap/cryptoassets';
+import { Nullable } from '@yaswap/types';
+import { IAsset } from '@yaswap/cryptoassets';
 
 export interface NameResolver {
   reverseLookup(address: string): Promise<Nullable<string>>;

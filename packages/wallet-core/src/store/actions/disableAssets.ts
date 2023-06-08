@@ -1,4 +1,4 @@
-import { CUSTOM_ERRORS, createInternalError } from '@yac-swap/error-parser';
+import { CUSTOM_ERRORS, createInternalError } from '@yaswap/error-parser';
 import { ActionContext, rootActionContext } from '..';
 import { Asset, Network, WalletId } from '../types';
 
