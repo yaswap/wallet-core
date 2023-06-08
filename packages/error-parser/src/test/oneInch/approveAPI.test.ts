@@ -1,6 +1,6 @@
 import { OneInchError, ONE_INCH_ERRORS } from '../../parsers/OneInchAPI';
 import { FAKE_ERROR, getError } from '..';
-import { LiqualityError } from '../../LiqualityErrors/LiqualityError';
+import { YaswapError } from '../../YaswapErrors/YaswapError';
 import RandExp = require('randexp');
 import {
   getErrorParser,
@@ -46,7 +46,7 @@ describe('OneInchApproveAPI parser', () => {
       name: 'NodeError',
     };
 
-    const error: LiqualityError = getError(() => {
+    const error: YaswapError = getError(() => {
       parser.wrap(() => {
         throw validError;
       }, null);
@@ -69,7 +69,7 @@ describe('OneInchApproveAPI parser', () => {
       name: errorName,
     };
 
-    const error: LiqualityError = getError(() => {
+    const error: YaswapError = getError(() => {
       parser.wrap(() => {
         throw validError;
       }, null);
@@ -99,7 +99,7 @@ describe('OneInchApproveAPI parser', () => {
     ],
   ];
   it.each(wrongErrors)('Should return unknown error when %s', (_test, error) => {
-    const liqError: LiqualityError = getError(() => {
+    const liqError: YaswapError = getError(() => {
       parser.wrap(() => {
         throw error;
       }, null);

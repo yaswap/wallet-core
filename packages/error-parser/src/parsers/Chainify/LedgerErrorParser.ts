@@ -6,17 +6,17 @@ import {
   LedgerDeviceLockedError,
   LedgerDeviceNotUpdatedError,
   LedgerDeviceSmartContractTransactionDisabledError,
-  LiqualityError,
+  YaswapError,
   UnknownError,
   UserDeclinedError,
-} from '../../LiqualityErrors';
+} from '../../YaswapErrors';
 import { LEDGER_ERROR_SOURCE_NAME, LEDGER_ERRORS } from '.';
 import { ErrorParser } from '../ErrorParser';
 export class LedgerErrorParser extends ErrorParser<Error, LedgerParserDataType> {
   public static readonly errorSource = LEDGER_ERROR_SOURCE_NAME;
 
-  protected _parseError(error: Error): LiqualityError {
-    let liqError: LiqualityError;
+  protected _parseError(error: Error): YaswapError {
+    let liqError: YaswapError;
     switch (error.message) {
       case LEDGER_ERRORS.APP_MISMATCH_ERROR:
       case LEDGER_ERRORS.APP_NOT_SELECTED_ERROR:

@@ -1,5 +1,5 @@
 import { FAKE_ERROR, getError, getErrorAsync } from '.';
-import { LiqualityError } from '../LiqualityErrors/LiqualityError';
+import { YaswapError } from '../YaswapErrors/YaswapError';
 import { getErrorParser, ThirdPartyError, ThorchainAPIErrorParser } from '..';
 import { THORCHAIN_ERRORS } from '../parsers/Thorchain';
 import { NodeError } from '@yaswap/errors';
@@ -33,7 +33,7 @@ describe('ThorchainAPI parser', () => {
       name: NodeError.prototype.name,
     };
 
-    const error: LiqualityError = getError(() => {
+    const error: YaswapError = getError(() => {
       parser.wrap(() => {
         throw validError;
       }, {});
@@ -43,7 +43,7 @@ describe('ThorchainAPI parser', () => {
     expect(error.source).toBe(ThorchainAPIErrorParser.errorSource);
     expect(error.rawError).toBe(validError);
 
-    const error1: LiqualityError = await getErrorAsync(async () => {
+    const error1: YaswapError = await getErrorAsync(async () => {
       await parser.wrapAsync(async () => {
         throw validError;
       }, {});

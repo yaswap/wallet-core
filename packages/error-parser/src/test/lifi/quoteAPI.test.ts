@@ -1,6 +1,6 @@
 import { LifiQuoteError, LIFI_QUOTE_ERRORS, ToolErrorCode } from '../../parsers/LifiAPI';
 import { getError } from '..';
-import { LiqualityError } from '../../LiqualityErrors/LiqualityError';
+import { YaswapError } from '../../YaswapErrors/YaswapError';
 import RandExp = require('randexp');
 import {
   getErrorParser,
@@ -57,7 +57,7 @@ describe('LifiQuoteAPI parser', () => {
       errors: errors as any[],
     };
 
-    const error: LiqualityError = getError(() => {
+    const error: YaswapError = getError(() => {
       parser.wrap(() => {
         throw validError;
       }, emptyContext);

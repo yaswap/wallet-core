@@ -47,7 +47,7 @@ export const createClient = ({
     }
   }
 
-  // Proxify Client so that chainify errors are parsed and rethrown as Liquality Errors.
+  // Proxify Client so that chainify errors are parsed and rethrown as Yaswap Errors.
   // if (client.chain) client.chain = proxify(client.chain);
   // if (client.swap) client.swap = proxify(client.swap);
   // if (client.nft) client.nft = proxify(client.nft);

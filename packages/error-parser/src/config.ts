@@ -7,7 +7,7 @@ export const ERROR_NAMES = {
   InsufficientLiquidityError: 'InsufficientLiquidityError',
   InternalError: 'InternalError',
   LedgerDeviceConnectionError: 'LedgerDeviceConnectionError',
-  LiqualityError: 'LiqualityError',
+  YaswapError: 'YaswapError',
   LowSpeedupFeeError: 'LowSpeedupFeeError',
   NoActiveWalletError: 'NoActiveWalletError',
   PairNotSupportedError: 'PairNotSupportedError',

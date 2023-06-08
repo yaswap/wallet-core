@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { LiqualityError, ThirdPartyError, UnknownError } from '../../LiqualityErrors';
+import { YaswapError, ThirdPartyError, UnknownError } from '../../YaswapErrors';
 import { THORCHAIN_ERROR_SOURCE_NAME, THORCHAIN_ERRORS } from '.';
 import { ErrorParser } from '../ErrorParser';
 export class ThorchainAPIErrorParser extends ErrorParser<Error, ThorchainAPIErrorParserDataType> {
   public static readonly errorSource = THORCHAIN_ERROR_SOURCE_NAME;
 
-  protected _parseError(error: Error, data?: ThorchainAPIErrorParserDataType): LiqualityError {
-    let liqError: LiqualityError;
+  protected _parseError(error: Error, data?: ThorchainAPIErrorParserDataType): YaswapError {
+    let liqError: YaswapError;
     let desc = '';
     switch (error.message) {
       case THORCHAIN_ERRORS.NETWORK_ERROR:

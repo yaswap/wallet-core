@@ -1,8 +1,8 @@
 import { FAKE_ERROR, getError, getErrorAsync } from '..';
-import { LiqualityError } from '../../LiqualityErrors/LiqualityError';
+import { YaswapError } from '../../YaswapErrors/YaswapError';
 import { getErrorParser } from '../..';
 import { ChainifyErrorParser, UniswapV2SwapErroParser } from '../../parsers';
-import { ValidationError } from '../../LiqualityErrors/ValidationError';
+import { ValidationError } from '../../YaswapErrors/ValidationError';
 
 describe('UniswapV2Error parser', () => {
   const parser = getErrorParser(ChainifyErrorParser);
@@ -36,7 +36,7 @@ describe('UniswapV2Error parser', () => {
       name: 'NodeError',
     };
 
-    const error: LiqualityError = getError(() => {
+    const error: YaswapError = getError(() => {
       parser.wrap(() => {
         throw validError;
       }, null);
@@ -46,7 +46,7 @@ describe('UniswapV2Error parser', () => {
     expect(error.source).toBe(UniswapV2SwapErroParser.errorSource);
     expect(error.rawError).toBe(validError);
 
-    const error1: LiqualityError = await getErrorAsync(async () => {
+    const error1: YaswapError = await getErrorAsync(async () => {
       await parser.wrapAsync(async () => {
         throw validError;
       }, null);

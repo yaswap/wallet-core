@@ -3,5 +3,5 @@
   "description": "Popular DEX for Ethereum tokens only.",
   "pros": ["High liquidity", "Many pairs", "Fast"],
   "cons": ["Slippage", "Ethereum tokens only", "Few pairs"],
-  "fees": ["0.3% liquidity provider fee", "Slippage (up to 0.5% in Liquality)"]
+  "fees": ["0.3% liquidity provider fee", "Slippage (up to 0.5% in Yaswap)"]
 }

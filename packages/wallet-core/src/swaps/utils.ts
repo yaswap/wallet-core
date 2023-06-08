@@ -6,27 +6,27 @@ import fastbtcInfo from './fastbtc/info.json';
 import hopInfo from './hop/info.json';
 import lifiInfo from './lifi/info.json';
 import jupiterInfo from './jupiter/info.json';
-import liqualityInfo from './liquality/info.json';
-import liqualityBoostERC20toNativeInfo from './liqualityboost/liqualityBoostERC20toNative/info.json';
-import liqualityBoostNativeToERC20Info from './liqualityboost/liqualityBoostNativeToERC20/info.json';
+import yaswapInfo from './yaswap/info.json';
+import yaswapBoostERC20toNativeInfo from './yaswapboost/yaswapBoostERC20toNative/info.json';
+import yaswapBoostNativeToERC20Info from './yaswapboost/yaswapBoostNativeToERC20/info.json';
 import oneinchInfo from './oneinch/info.json';
 import sovrynInfo from './sovryn/info.json';
 import thorchainInfo from './thorchain/info.json';
 import uniswapInfo from './uniswap/info.json';
 import debridgeInfo from './debridge/info.json';
 import teleswapInfo from './teleswap/info.json';
-import { LiqualitySwapProvider } from './liquality/LiqualitySwapProvider';
+import { YaswapSwapProvider } from './yaswap/YaswapSwapProvider';
 import { CUSTOM_ERRORS, createInternalError } from '@yaswap/error-parser';
 
 const swapProviderInfo = {
-  [SwapProviderType.Liquality]: liqualityInfo,
+  [SwapProviderType.Yaswap]: yaswapInfo,
   [SwapProviderType.UniswapV2]: uniswapInfo,
   [SwapProviderType.OneInch]: oneinchInfo,
   [SwapProviderType.Thorchain]: thorchainInfo,
   [SwapProviderType.FastBTCDeposit]: fastbtcInfo,
   [SwapProviderType.FastBTCWithdraw]: fastbtcInfo,
-  [SwapProviderType.LiqualityBoostNativeToERC20]: liqualityBoostNativeToERC20Info,
-  [SwapProviderType.LiqualityBoostERC20ToNative]: liqualityBoostERC20toNativeInfo,
+  [SwapProviderType.YaswapBoostNativeToERC20]: yaswapBoostNativeToERC20Info,
+  [SwapProviderType.YaswapBoostERC20ToNative]: yaswapBoostERC20toNativeInfo,
   [SwapProviderType.Sovryn]: sovrynInfo,
   [SwapProviderType.Astroport]: astroportInfo,
   [SwapProviderType.Hop]: hopInfo,
@@ -48,16 +48,16 @@ function getSwapProviderInfo(network: Network, providerId: SwapProviderType) {
   return swapProviderInfo[config.type];
 }
 
-const getLiqualityLiquidityForAsset = async ({
+const getYaswapLiquidityForAsset = async ({
   asset,
   network,
 }: {
   asset: string;
   network: Network;
 }): Promise<number> => {
-  const swapProvider = getSwapProvider(network, SwapProviderType.Liquality) as LiqualitySwapProvider;
+  const swapProvider = getSwapProvider(network, SwapProviderType.Yaswap) as YaswapSwapProvider;
 
   return swapProvider.getAssetLiquidity(asset);
 };
 
-export { getSwapProviderConfig, getSwapProviderInfo, getLiqualityLiquidityForAsset };
+export { getSwapProviderConfig, getSwapProviderInfo, getYaswapLiquidityForAsset };

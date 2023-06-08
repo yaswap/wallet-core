@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { LiqualityError, UserActivity } from '../../LiqualityErrors/LiqualityError';
+import { YaswapError, UserActivity } from '../../YaswapErrors/YaswapError';
 import { ErrorParser } from '../ErrorParser';
 import { oneInchInternalErrReason, OneInchError, ONE_INCH_ERRORS, oneInchApproveSourceName } from '.';
-import { InternalError, PairNotSupportedError, ThirdPartyError, UnknownError } from '../../LiqualityErrors';
+import { InternalError, PairNotSupportedError, ThirdPartyError, UnknownError } from '../../YaswapErrors';
 import { is1001ValidationError, is1006NotFoundError } from '../../utils';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
 export class OneInchApproveErrorParser extends ErrorParser<OneInchError, null> {
   public static readonly errorSource = oneInchApproveSourceName;
 
-  protected _parseError(error: OneInchError): LiqualityError {
-    let liqError: LiqualityError;
+  protected _parseError(error: OneInchError): YaswapError {
+    let liqError: YaswapError;
     let devDesc = '';
 
     if (is1001ValidationError(error) || is1006NotFoundError(error)) {

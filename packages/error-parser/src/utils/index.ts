@@ -1,34 +1,34 @@
-import { CUSTOM_ERRORS, InternalError, LiqualityError } from '../LiqualityErrors';
-import { reportLiqualityError } from '../reporters';
-import { LiqualityErrorJSON } from '../types';
+import { CUSTOM_ERRORS, InternalError, YaswapError } from '../YaswapErrors';
+import { reportYaswapError } from '../reporters';
+import { YaswapErrorJSON } from '../types';
 
-export function isLiqualityErrorString(error: string): boolean {
-  return error.startsWith(LIQUALITY_ERROR_STRING_STARTER);
+export function isYaswapErrorString(error: string): boolean {
+  return error.startsWith(YASWAP_ERROR_STRING_STARTER);
 }
 
-export function liqualityErrorStringToJson(error: string): LiqualityErrorJSON {
-  return JSON.parse(error.replace(LIQUALITY_ERROR_STRING_STARTER, ''));
+export function yaswapErrorStringToJson(error: string): YaswapErrorJSON {
+  return JSON.parse(error.replace(YASWAP_ERROR_STRING_STARTER, ''));
 }
 
-export const LIQUALITY_ERROR_STRING_STARTER = 'LIQUALITY_ERROR_FROM_ERROR_PARSER_PACKAGE';
+export const YASWAP_ERROR_STRING_STARTER = 'YASWAP_ERROR_FROM_ERROR_PARSER_PACKAGE';
 
 export function createInternalError(customError: any): InternalError {
   const internalError = new InternalError(customError);
-  reportLiqualityError(internalError);
+  reportYaswapError(internalError);
   return internalError;
 }
 
-export function errorToLiqualityErrorString(error: any): string {
-  if (error instanceof LiqualityError) return error.toString();
-  else if (error instanceof Error && isLiqualityErrorString(error.message)) return error.message;
+export function errorToYaswapErrorString(error: any): string {
+  if (error instanceof YaswapError) return error.toString();
+  else if (error instanceof Error && isYaswapErrorString(error.message)) return error.message;
   else return createInternalError(CUSTOM_ERRORS.Unknown(error)).toString();
 }
 
-/// @dev gets the name of the error if it's a liquality error and returns '' otherwise
+/// @dev gets the name of the error if it's a yaswap error and returns '' otherwise
 export function errorName(error: any): string {
-  if (error instanceof LiqualityError) return error.name;
-  else if (error instanceof Error && isLiqualityErrorString(error.message))
-    return liqualityErrorStringToJson(error.message).name;
+  if (error instanceof YaswapError) return error.name;
+  else if (error instanceof Error && isYaswapErrorString(error.message))
+    return yaswapErrorStringToJson(error.message).name;
   else return '';
 }
 

@@ -1,13 +1,13 @@
-import { InternalError, CUSTOM_ERRORS } from '../LiqualityErrors';
-import { errorToLiqualityErrorString, isLiqualityErrorString, liqualityErrorStringToJson } from '../utils';
-import { LiqualityError } from '../LiqualityErrors/LiqualityError';
-import { LiqualityErrorJSON, ReportTargets } from '../types';
+import { InternalError, CUSTOM_ERRORS } from '../YaswapErrors';
+import { errorToYaswapErrorString, isYaswapErrorString, yaswapErrorStringToJson } from '../utils';
+import { YaswapError } from '../YaswapErrors/YaswapError';
+import { YaswapErrorJSON, ReportTargets } from '../types';
 import { reportToConsole } from './console';
 import { reportToDiscord } from './discord';
 
 const reporterConfig = new (class ReporterConfig {
   public useReporter: boolean;
-  public callback: (error: LiqualityErrorJSON) => any;
+  public callback: (error: YaswapErrorJSON) => any;
 
   constructor() {
     this.useReporter = false;
@@ -20,7 +20,7 @@ export function updateErrorReporterConfig({
   callback,
 }: {
   useReporter?: boolean;
-  callback?: (error: LiqualityErrorJSON) => any;
+  callback?: (error: YaswapErrorJSON) => any;
 }) {
   if (typeof useReporter !== 'undefined') reporterConfig.useReporter = useReporter;
   if (callback) {
@@ -28,22 +28,22 @@ export function updateErrorReporterConfig({
   }
 }
 
-export function reportLiqualityError(error: any) {
+export function reportYaswapError(error: any) {
   if (reporterConfig.useReporter) {
-    const liqualityError = errorToLiqualityErrorObj(error);
-    if (!liqualityError.reportable || liqualityError.reported) return;
+    const yaswapError = errorToYaswapErrorObj(error);
+    if (!yaswapError.reportable || yaswapError.reported) return;
     const reportTargets = process.env.VUE_APP_REPORT_TARGETS;
-    if (reportTargets?.includes(ReportTargets.Console)) reportToConsole(liqualityError);
-    if (reportTargets?.includes(ReportTargets.Discord)) reportToDiscord(liqualityError);
+    if (reportTargets?.includes(ReportTargets.Console)) reportToConsole(yaswapError);
+    if (reportTargets?.includes(ReportTargets.Discord)) reportToDiscord(yaswapError);
 
-    liqualityError.reported = true;
+    yaswapError.reported = true;
   }
-  reporterConfig.callback && reporterConfig.callback(liqualityErrorStringToJson(errorToLiqualityErrorString(error)));
+  reporterConfig.callback && reporterConfig.callback(yaswapErrorStringToJson(errorToYaswapErrorString(error)));
 }
 
-function errorToLiqualityErrorObj(error: any): LiqualityError | LiqualityErrorJSON {
-  if (error instanceof LiqualityError) return error;
-  else if (error instanceof Error && isLiqualityErrorString(error.message))
-    return liqualityErrorStringToJson(error.message);
+function errorToYaswapErrorObj(error: any): YaswapError | YaswapErrorJSON {
+  if (error instanceof YaswapError) return error;
+  else if (error instanceof Error && isYaswapErrorString(error.message))
+    return yaswapErrorStringToJson(error.message);
   else return new InternalError(CUSTOM_ERRORS.Unknown(error));
 }

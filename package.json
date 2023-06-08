@@ -1,8 +1,8 @@
 {
-  "name": "liquality",
+  "name": "yaswap",
   "version": "1.6.0",
-  "description": "Common library for liquality wallet",
-  "repository": "git@github.com:liquality/wallet-core.git",
+  "description": "Common library for yaswap wallet",
+  "repository": "git@github.com:yaswap/wallet-core.git",
   "author": "monokh <mnokhb@gmail.com>",
   "license": "MIT",
   "devDependencies": {

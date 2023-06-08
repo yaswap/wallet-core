@@ -77,7 +77,7 @@ export abstract class EvmSwapProvider extends SwapProvider {
   public async approve(swapRequest: SwapRequest, approveMax = true, approvalAddress?: string) {
     const approveTxData = await this.buildApprovalTx(swapRequest, approveMax, approvalAddress);
     const { quote, network, walletId } = swapRequest;
-    const isLSP = swapRequest.quote.provider === SwapProviderType.Liquality;
+    const isLSP = swapRequest.quote.provider === SwapProviderType.Yaswap;
 
     if (approveTxData) {
       const client = this.getClient(network, walletId, quote.from, quote.fromAccountId) as Client<EvmChainProvider>;
@@ -99,7 +99,7 @@ export abstract class EvmSwapProvider extends SwapProvider {
     const { swap, network, walletId } = swapRequest;
     const client = this.getClient(network, walletId, swap.from, swap.fromAccountId);
 
-    const isLSP = swapRequest.swap.provider === SwapProviderType.Liquality;
+    const isLSP = swapRequest.swap.provider === SwapProviderType.Yaswap;
 
     try {
       const tx = await client.chain.getTransactionByHash(swap.approveTxHash);

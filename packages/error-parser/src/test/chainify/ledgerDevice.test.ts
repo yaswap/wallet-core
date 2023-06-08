@@ -1,5 +1,5 @@
 import { FAKE_ERROR, getError, getErrorAsync } from '..';
-import { LiqualityError } from '../../LiqualityErrors/LiqualityError';
+import { YaswapError } from '../../YaswapErrors/YaswapError';
 import {
   getErrorParser,
   LedgerAppMismatchError,
@@ -51,7 +51,7 @@ describe('Ledger parser', () => {
       name: 'WalletError',
     };
 
-    const error: LiqualityError = getError(() => {
+    const error: YaswapError = getError(() => {
       parser.wrap(() => {
         throw validError;
       }, null);
@@ -61,7 +61,7 @@ describe('Ledger parser', () => {
     expect(error.source).toBe(LedgerErrorParser.errorSource);
     expect(error.rawError).toBe(validError);
 
-    const error1: LiqualityError = await getErrorAsync(async () => {
+    const error1: YaswapError = await getErrorAsync(async () => {
       await parser.wrapAsync(async () => {
         throw validError;
       }, null);

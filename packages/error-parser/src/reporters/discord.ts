@@ -1,8 +1,8 @@
-import { LiqualityError } from '../LiqualityErrors/LiqualityError';
+import { YaswapError } from '../YaswapErrors/YaswapError';
 import { HttpClient } from '@yaswap/client';
-import { LiqualityErrorJSON } from '../types';
+import { YaswapErrorJSON } from '../types';
 
-export const reportToDiscord = async (error: LiqualityError | LiqualityErrorJSON) => {
+export const reportToDiscord = async (error: YaswapError | YaswapErrorJSON) => {
   const messages = prepareErrorForDiscord(error);
   const htttpClient = new HttpClient({});
   messages.forEach((message) => {
@@ -19,7 +19,7 @@ function ignoreError(e: any) {
   return e;
 }
 
-function prepareErrorForDiscord(error: LiqualityError | LiqualityErrorJSON) {
+function prepareErrorForDiscord(error: YaswapError | YaswapErrorJSON) {
   const header = `**New Error From Error Parser** \n
   ID: ${error.data.errorId} \n
   Name: ${error.name} \n

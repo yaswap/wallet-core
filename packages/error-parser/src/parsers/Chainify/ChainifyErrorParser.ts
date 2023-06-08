@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import * as ChainifyErrors from '@yaswap/errors';
-import { LiqualityError } from '../../LiqualityErrors/LiqualityError';
+import { YaswapError } from '../../YaswapErrors/YaswapError';
 import { ErrorParser } from '../ErrorParser';
 import { ChainifyErrorSource } from '.';
-import { InternalError, LowSpeedupFeeError, UnknownError } from '../../LiqualityErrors';
+import { InternalError, LowSpeedupFeeError, UnknownError } from '../../YaswapErrors';
 import { LedgerErrorParser } from './LedgerErrorParser';
 import { getErrorParser } from '../../factory';
 import { JsonRPCNodeErrorParser } from './JsonRPCNodeErrorParser';
@@ -11,8 +11,8 @@ import { UniswapV2SwapErroParser } from '../UniswapV2/UniswapV2SwapErrorParser';
 export class ChainifyErrorParser extends ErrorParser<Error, null> {
   public static readonly errorSource = ChainifyErrorSource;
 
-  protected _parseError(error: Error, data: ChainifyParserDataType): LiqualityError {
-    let liqError: LiqualityError;
+  protected _parseError(error: Error, data: ChainifyParserDataType): YaswapError {
+    let liqError: YaswapError;
 
     switch (error.name) {
       case ChainifyErrors.NodeError.prototype.name:

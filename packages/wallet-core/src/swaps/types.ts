@@ -6,7 +6,7 @@ export interface BaseSwapProviderConfig extends SwapProviderDefinition {
   providerId: string;
 }
 
-export interface LiqualityBoostSwapProviderConfig extends BaseSwapProviderConfig {
+export interface YaswapBoostSwapProviderConfig extends BaseSwapProviderConfig {
   network: Network;
   supportedBridgeAssets: Asset[];
 }

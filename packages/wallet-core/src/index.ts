@@ -1,4 +1,4 @@
-import { LiqualityErrorJSON, updateErrorReporterConfig } from '@yaswap/error-parser';
+import { YaswapErrorJSON, updateErrorReporterConfig } from '@yaswap/error-parser';
 import buildConfig from './build.config';
 import store from './store';
 import * as migrations from './store/migrations';
@@ -8,7 +8,7 @@ import { walletOptionsStore } from './walletOptions';
 function setupWallet(options: WalletOptions) {
   walletOptionsStore.setOptions(options);
   if (options.initialState) store.commit.SET_STATE({ newState: options.initialState });
-  updateErrorReporterConfig({ callback: (error: LiqualityErrorJSON) => store.dispatch.logError(error) });
+  updateErrorReporterConfig({ callback: (error: YaswapErrorJSON) => store.dispatch.logError(error) });
 
   // to update enabled assets with default assets in case that can be updated not need a new migration
   const { enabledAssets, activeWalletId } = store.state;

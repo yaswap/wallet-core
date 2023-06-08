@@ -9,17 +9,17 @@
 </pre>
 
 ![](https://img.shields.io/npm/v/@yaswap/wallet-core?label=wallet-core)
-![master](https://github.com/liquality/wallet-core/actions/workflows/build-test.yml/badge.svg?branch=master)
+![master](https://github.com/yaswap/wallet-core/actions/workflows/build-test.yml/badge.svg?branch=master)
 
 Wallet Core is a cryptocurrency wallet library in Typescript. It provides an abstracted interface that handles all the necessary internals of a muilti chain wallet. Featuring:
 
 - State management
 - Seed management and security
 - Account management
-- Blockchain communication under a common interface, powered by [Chainify](https://github.com/liquality/chainify)
+- Blockchain communication under a common interface, powered by [Chainify](https://github.com/yaswap/chainify)
 - Retriving balances
 - Sending transactions
-- Intra and cross chain swaps supporting a host of decentralised exchanges - Liquality, Thorchain, Uniswap, 1inch, Sovryn, Astroport etc.
+- Intra and cross chain swaps supporting a host of decentralised exchanges - Yaswap, Thorchain, Uniswap, 1inch, Sovryn, Astroport etc.
 - Hardware wallet support
 
 # Install
@@ -70,11 +70,11 @@ See `WalletOptions` in [types](src/types.ts)
 
 ## Examples
 
-- [Add Custom Token](https://github.com/liquality/wallet-core/blob/develop/packages/wallet-core/src/store/actions/addCustomToken.test.ts)
-- [Export Private Key](https://github.com/liquality/wallet-core/blob/develop/packages/wallet-core/src/store/actions/exportPrivateKey.test.ts)
-- [Send Transaction](https://github.com/liquality/wallet-core/blob/develop/packages/wallet-core/src/store/actions/sendTransaction.test.ts)
-- [Update Fees](https://github.com/liquality/wallet-core/blob/develop/packages/wallet-core/src/store/actions/updateFees.test.ts)
-- [Update Balance](https://github.com/liquality/wallet-core/blob/develop/packages/wallet-core/src/store/actions/updateBalances.test.ts)
+- [Add Custom Token](https://github.com/yaswap/wallet-core/blob/develop/packages/wallet-core/src/store/actions/addCustomToken.test.ts)
+- [Export Private Key](https://github.com/yaswap/wallet-core/blob/develop/packages/wallet-core/src/store/actions/exportPrivateKey.test.ts)
+- [Send Transaction](https://github.com/yaswap/wallet-core/blob/develop/packages/wallet-core/src/store/actions/sendTransaction.test.ts)
+- [Update Fees](https://github.com/yaswap/wallet-core/blob/develop/packages/wallet-core/src/store/actions/updateFees.test.ts)
+- [Update Balance](https://github.com/yaswap/wallet-core/blob/develop/packages/wallet-core/src/store/actions/updateBalances.test.ts)
 
 ## How to run tests
 
@@ -90,9 +90,9 @@ yarn test
 
 **To add a new swap provider, you should clone this repo first and then use the develop branch as a base.**
 
-1. Add the New Swap Provider type: https://github.com/liquality/wallet-core/blob/develop/packages/wallet-core/src/store/types.ts
+1. Add the New Swap Provider type: https://github.com/yaswap/wallet-core/blob/develop/packages/wallet-core/src/store/types.ts
 
-2. Add the config or settings that you need inside the [build.config](https://github.com/liquality/wallet-core/blob/develop/packages/wallet-core/src/build.config.ts) file using the new type added in `SwapProviderType` enum, this should be inside the field `swapProviders` and then you can add different settings for `testnet` and `mainnet`. For example, if your swap provider will need to make some http calls and if you want to set the root url for it.
+2. Add the config or settings that you need inside the [build.config](https://github.com/yaswap/wallet-core/blob/develop/packages/wallet-core/src/build.config.ts) file using the new type added in `SwapProviderType` enum, this should be inside the field `swapProviders` and then you can add different settings for `testnet` and `mainnet`. For example, if your swap provider will need to make some http calls and if you want to set the root url for it.
 
 3. Create a new folder for your new provider inside `packages/wallet-core/src/swaps`, then add a new file named `info.json` whith a content like (you can check the other providers to get an example):
 
@@ -108,12 +108,12 @@ yarn test
     "Fast"
   ],
   "cons": ["Slippage"],
-  "fees": ["Additional aggregator fees", "Slippage (up to 0.6% in Liquality)"]
+  "fees": ["Additional aggregator fees", "Slippage (up to 0.6% in Yaswap)"]
 }
 
 ```
 
-4. Add the swap provider info for your new provider, editing the file [/packages/wallet-core/src/swaps/utils.ts](https://github.com/liquality/wallet-core/blob/develop/packages/wallet-core/src/swaps/utils.ts).
+4. Add the swap provider info for your new provider, editing the file [/packages/wallet-core/src/swaps/utils.ts](https://github.com/yaswap/wallet-core/blob/develop/packages/wallet-core/src/swaps/utils.ts).
 
 - You should import the json file first `import yourProviderInfo from '../swaps/YOUR_PROVIDER/info.json';`
 - Then add it to the `swapProviderInfo` variable
@@ -122,7 +122,7 @@ This will add metadata/info for your new provider to the available providers inf
 
 5. Create a new file for your new provider inside `packages/wallet-core/src/swaps/YOUR_PROVIDER`. You can create any separated clases or files if you need. Please check the folder `packages/wallet-core/src/swaps/` and the other providers to get an example.
 
-6. Implement the provider: your new provider should extend the class [SwapProvider](https://github.com/liquality/wallet-core/blob/develop/packages/wallet-core/src/swaps/SwapProvider.ts), it is an abtract class so you should implement at least these methods:
+6. Implement the provider: your new provider should extend the class [SwapProvider](https://github.com/yaswap/wallet-core/blob/develop/packages/wallet-core/src/swaps/SwapProvider.ts), it is an abtract class so you should implement at least these methods:
 
 - \_getStatuses(): Record<string, SwapStatus>;
 - \_txTypes(): Record<string, string | null>;
@@ -152,11 +152,11 @@ This will add metadata/info for your new provider to the available providers inf
   return;
   }
 
-7. Add the new provider to the list of providers [/packages/wallet-core/src/factory/swap/index.ts]https://github.com/liquality/wallet-core/blob/develop/packages/wallet-core/src/factory/swap/index.ts) and map it with the `SwapProviderType` enum. This will add the provider to the available providers when the user wants to swap.
+7. Add the new provider to the list of providers [/packages/wallet-core/src/factory/swap/index.ts]https://github.com/yaswap/wallet-core/blob/develop/packages/wallet-core/src/factory/swap/index.ts) and map it with the `SwapProviderType` enum. This will add the provider to the available providers when the user wants to swap.
 
 8. Test using the local wallet environment:
 
-- Clone the wallet repo and use the develop branch [https://github.com/liquality/wallet](https://github.com/liquality/wallet)
+- Clone the wallet repo and use the develop branch [https://github.com/yaswap/wallet](https://github.com/yaswap/wallet)
 - Select the node version using nvm and install all dependencies. Run `nvm use && yarn`
 - Link your local wallet-core package. Run `yarn link ../wallet-core --all`.
 - Open the package.json file and replace the `portal` protocol inside the `resolutions` field at the end of the file, to use `link` (instead of `portal:...`, should be `link:`) then run `yarn`

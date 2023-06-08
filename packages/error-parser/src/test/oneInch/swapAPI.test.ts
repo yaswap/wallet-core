@@ -1,6 +1,6 @@
 import { OneInchError, ONE_INCH_ERRORS } from '../../parsers/OneInchAPI';
 import { FAKE_ERROR, getError, getErrorAsync } from '..';
-import { LiqualityError } from '../../LiqualityErrors/LiqualityError';
+import { YaswapError } from '../../YaswapErrors/YaswapError';
 import RandExp = require('randexp');
 import {
   getErrorParser,
@@ -70,7 +70,7 @@ describe('OneInchSwapAPI parser', () => {
       name: 'NodeError',
     };
 
-    const error: LiqualityError = getError(() => {
+    const error: YaswapError = getError(() => {
       parser.wrap(() => {
         throw validError;
       }, data);
@@ -81,7 +81,7 @@ describe('OneInchSwapAPI parser', () => {
     expect(error.devMsg.data).toBe(data);
     expect(error.rawError).toBe(validError);
 
-    const error1: LiqualityError = await getErrorAsync(async () => {
+    const error1: YaswapError = await getErrorAsync(async () => {
       await parser.wrapAsync(async () => {
         throw validError;
       }, data);
@@ -104,7 +104,7 @@ describe('OneInchSwapAPI parser', () => {
       name: errorName,
     };
 
-    const error: LiqualityError = getError(() => {
+    const error: YaswapError = getError(() => {
       parser.wrap(() => {
         throw validError;
       }, data);
@@ -134,14 +134,14 @@ describe('OneInchSwapAPI parser', () => {
     ],
   ];
   it.each(wrongErrors)('Should return unknown error when %s', async (_test, error) => {
-    const liqError: LiqualityError = getError(() => {
+    const liqError: YaswapError = getError(() => {
       parser.wrap(() => {
         throw error;
       }, data);
     });
     expect(liqError.name).toBe(UnknownError.name);
 
-    const liqError1: LiqualityError = await getErrorAsync(async () => {
+    const liqError1: YaswapError = await getErrorAsync(async () => {
       await parser.wrapAsync(() => {
         throw error;
       }, data);

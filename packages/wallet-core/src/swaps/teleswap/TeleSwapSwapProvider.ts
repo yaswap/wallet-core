@@ -1116,7 +1116,7 @@ class TeleSwapSwapProvider extends SwapProvider {
     quote: TeleSwapSwapHistoryItem,
     requestType: TeleSwapTxTypes,
     network: Network,
-    recipientAddress: string // user's evm address on liquality
+    recipientAddress: string // user's evm address on yaswap
   ) {
     const api = new ethers.providers.InfuraProvider(this.getChainIdNumber(quote.to, network), buildConfig.infuraApiKey);
 

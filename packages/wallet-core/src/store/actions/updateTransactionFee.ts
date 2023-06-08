@@ -3,7 +3,7 @@ import { CUSTOM_ERRORS, createInternalError } from '@yaswap/error-parser';
 import { isObject } from 'lodash';
 import { ActionContext, rootActionContext } from '..';
 import { getSwapProvider } from '../../factory/swap';
-import { LiqualitySwapHistoryItem, LiqualitySwapProvider } from '../../swaps/liquality/LiqualitySwapProvider';
+import { YaswapSwapHistoryItem, YaswapSwapProvider } from '../../swaps/yaswap/YaswapSwapProvider';
 import { Asset, HistoryItem, Network, TransactionType, WalletId } from '../types';
 import { unlockAsset } from '../utils';
 
@@ -92,8 +92,8 @@ export const updateTransactionFee = async (
       throw createInternalError(CUSTOM_ERRORS.Invalid.Default);
     }
     // TODO: this should be the function of any swap? Should be able to bump any tx
-    const swapProvider = getSwapProvider(network, item.provider) as LiqualitySwapProvider;
-    await swapProvider.updateOrder(item as LiqualitySwapHistoryItem);
+    const swapProvider = getSwapProvider(network, item.provider) as YaswapSwapProvider;
+    await swapProvider.updateOrder(item as YaswapSwapHistoryItem);
   }
 
   return newTx;

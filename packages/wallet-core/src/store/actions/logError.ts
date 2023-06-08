@@ -1,7 +1,7 @@
-import { LiqualityErrorJSON } from '@yaswap/error-parser';
+import { YaswapErrorJSON } from '@yaswap/error-parser';
 import { ActionContext, rootActionContext } from '..';
 
-export const logError = (context: ActionContext, error: LiqualityErrorJSON) => {
+export const logError = (context: ActionContext, error: YaswapErrorJSON) => {
   const { commit } = rootActionContext(context);
   commit.LOG_ERROR(error);
 };

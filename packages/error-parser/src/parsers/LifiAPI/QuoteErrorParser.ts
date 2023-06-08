@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { LiqualityError, UserActivity } from '../../LiqualityErrors/LiqualityError';
+import { YaswapError, UserActivity } from '../../YaswapErrors/YaswapError';
 import { ErrorParser } from '../ErrorParser';
 
 import {
@@ -18,14 +18,14 @@ import {
   PairNotSupportedError,
   ThirdPartyError,
   UnknownError,
-} from '../../LiqualityErrors';
+} from '../../YaswapErrors';
 import { is1001ValidationError } from '../../utils';
 
 export class LifiQuoteErrorParser extends ErrorParser<LifiQuoteError, LifiQuoteErrorParserDataType> {
   public static readonly errorSource = lifiQuoteErrorSource;
 
-  protected _parseError(error: LifiQuoteError, data: LifiQuoteErrorParserDataType): LiqualityError {
-    let liqError: LiqualityError;
+  protected _parseError(error: LifiQuoteError, data: LifiQuoteErrorParserDataType): YaswapError {
+    let liqError: YaswapError;
     let devDesc = '';
     if (is1001ValidationError(error)) {
       liqError = new PairNotSupportedError();

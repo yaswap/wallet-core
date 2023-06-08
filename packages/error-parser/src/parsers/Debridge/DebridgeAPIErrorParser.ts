@@ -3,18 +3,18 @@
 import {
   InsufficientInputAmountError,
   InternalError,
-  LiqualityError,
+  YaswapError,
   PairNotSupportedError,
   ThirdPartyError,
   UnknownError,
-} from '../../LiqualityErrors';
+} from '../../YaswapErrors';
 import { DEBRIDGE_ERROR_SOURCE_NAME, DEBRIDGE_ERRORS, DebridgeError } from '.';
 import { ErrorParser } from '../ErrorParser';
 export class DebridgeAPIErrorParser extends ErrorParser<DebridgeError, DebridgeAPIErrorParserDataType> {
   public static readonly errorSource = DEBRIDGE_ERROR_SOURCE_NAME;
 
-  protected _parseError(error: DebridgeError): LiqualityError {
-    let liqError: LiqualityError;
+  protected _parseError(error: DebridgeError): YaswapError {
+    let liqError: YaswapError;
     let desc = '';
     switch (error.errorId) {
       case DEBRIDGE_ERRORS.INVALID_QUERY_PARAMETERS:

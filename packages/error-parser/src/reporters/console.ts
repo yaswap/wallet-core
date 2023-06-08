@@ -1,11 +1,11 @@
-import { LiqualityErrorJSON } from '../types';
-import { LiqualityError } from '../LiqualityErrors/LiqualityError';
+import { YaswapErrorJSON } from '../types';
+import { YaswapError } from '../YaswapErrors/YaswapError';
 
-export function reportToConsole(error: LiqualityError | LiqualityErrorJSON) {
+export function reportToConsole(error: YaswapError | YaswapErrorJSON) {
   console.error(prepareErrorForConsole(error));
 }
 
-function prepareErrorForConsole(error: LiqualityError | LiqualityErrorJSON) {
+function prepareErrorForConsole(error: YaswapError | YaswapErrorJSON) {
   return `New Error From Error Parser \n
           ID: ${error.data.errorId} \n
           Name: ${error.name} \n

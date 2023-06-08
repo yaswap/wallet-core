@@ -3,7 +3,7 @@ import { ChainId } from '@yaswap/cryptoassets';
 import { Step } from '@lifi/sdk';
 import { SwapProviderError } from '../swaps/types';
 import BN from 'bignumber.js';
-import { LiqualityErrorJSON } from '@yaswap/error-parser';
+import { YaswapErrorJSON } from '@yaswap/error-parser';
 import { ChainifyNetwork } from '../types';
 export type NetworkWalletIdMap<T> = Partial<Record<Network, Record<WalletId, T>>>;
 export type WalletIdNetworkMap<T> = Partial<Record<WalletId, Record<Network, T>>>;
@@ -118,9 +118,9 @@ export enum TransactionType {
 }
 
 export enum SwapProviderType {
-  Liquality = 'liquality',
-  LiqualityBoostNativeToERC20 = 'liqualityBoostNativeToERC20',
-  LiqualityBoostERC20ToNative = 'liqualityBoostERC20toNative',
+  Yaswap = 'yaswap',
+  YaswapBoostNativeToERC20 = 'yaswapBoostNativeToERC20',
+  YaswapBoostERC20ToNative = 'yaswapBoostERC20toNative',
   UniswapV2 = 'uniswapV2',
   FastBTCDeposit = 'fastBTC',
   FastBTCWithdraw = 'fastBTCWithdraw',
@@ -265,7 +265,7 @@ export interface RootState {
   whatsNewModalVersion: string;
   enabledChains: WalletIdNetworkMap<ChainId[]>;
 
-  errorLog: LiqualityErrorJSON[];
+  errorLog: YaswapErrorJSON[];
   customChainSeetings: NetworkWalletIdMap<Record<ChainId, ChainifyNetwork>>;
 }
 

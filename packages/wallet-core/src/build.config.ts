@@ -128,10 +128,10 @@ const config: WalletCoreConfig = {
   },
   swapProviders: {
     testnet: {
-      [SwapProviderType.Liquality]: {
-        name: 'Liquality',
-        icon: 'liquality.svg',
-        type: SwapProviderType.Liquality,
+      [SwapProviderType.Yaswap]: {
+        name: 'Yaswap',
+        icon: 'yaswap.svg',
+        type: SwapProviderType.Yaswap,
         agent: 'http://192.168.0.220:3030',
       },
       [SwapProviderType.UniswapV2]: {
@@ -165,10 +165,10 @@ const config: WalletCoreConfig = {
       // },
     },
     mainnet: {
-      [SwapProviderType.Liquality]: {
-        name: 'Liquality',
-        icon: 'liquality.svg',
-        type: SwapProviderType.Liquality,
+      [SwapProviderType.Yaswap]: {
+        name: 'Yaswap',
+        icon: 'yaswap.svg',
+        type: SwapProviderType.Yaswap,
         agent: 'http://192.168.0.220:3030',
       },
       [SwapProviderType.UniswapV2]: {

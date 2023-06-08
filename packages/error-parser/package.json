@@ -1,8 +1,8 @@
 {
   "name": "@yaswap/error-parser",
   "version": "2.0.0",
-  "description": "Error Parsing Library for liquality",
-  "repository": "git@github.com:liquality/wallet-core.git",
+  "description": "Error Parsing Library for yaswap",
+  "repository": "git@github.com:yaswap/wallet-core.git",
   "author": "koderholic <meetenebelioluchi@gmail.com>",
   "license": "MIT",
   "main": "./dist/src/index.js",

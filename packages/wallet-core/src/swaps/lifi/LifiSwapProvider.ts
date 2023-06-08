@@ -55,7 +55,7 @@ class LifiSwapProvider extends EvmSwapProvider {
          * keep the "RECOMMENDED" as a default
          */
         order: config.order ?? Orders[0], // 'RECOMMENDED'
-        integrator: 'Liquality Wallet',
+        integrator: 'Yaswap Wallet',
         /*
          * Connext adds additional 8 seconds to fetching quote time. Disable it for now.
          */
@@ -239,7 +239,7 @@ class LifiSwapProvider extends EvmSwapProvider {
    * 'Swap' -> single chain (for example: uniswap)
    * 'Cross' -> multi chain / bridging (for example: hop)
    * 'LiFi' -> some combination of the previous 2 types
-   * (its close to Liquality Boost but more advanced
+   * (its close to Yaswap Boost but more advanced
    * for example: LiFi swap can include 2 `Swap` actions and 1 `Cross` action)
    */
   private isCrossSwap(swap: LifiSwapHistoryItem) {

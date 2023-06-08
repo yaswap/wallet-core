@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { LiqualityError, UserActivity } from '../../LiqualityErrors/LiqualityError';
+import { YaswapError, UserActivity } from '../../YaswapErrors/YaswapError';
 import { ErrorParser } from '../ErrorParser';
 import { oneInchInternalErrReason, OneInchError, ONE_INCH_ERRORS, oneInchSwapSourceName } from '.';
 import {
@@ -10,14 +10,14 @@ import {
   PairNotSupportedError,
   ThirdPartyError,
   UnknownError,
-} from '../../LiqualityErrors';
+} from '../../YaswapErrors';
 import { is1001ValidationError, is1006NotFoundError } from '../../utils';
 
 export class OneInchSwapErrorParser extends ErrorParser<OneInchError, OneInchSwapParserDataType> {
   public static readonly errorSource = oneInchSwapSourceName;
 
-  protected _parseError(error: OneInchError, data: OneInchSwapParserDataType): LiqualityError {
-    let liqError: LiqualityError;
+  protected _parseError(error: OneInchError, data: OneInchSwapParserDataType): YaswapError {
+    let liqError: YaswapError;
     let devDesc = '';
 
     if (is1001ValidationError(error) || is1006NotFoundError(error)) {

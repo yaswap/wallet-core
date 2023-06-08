@@ -2,7 +2,7 @@ import { Client } from '@yaswap/client';
 import { Transaction } from '@yaswap/types';
 import { getSwapProvider } from '../factory';
 import { Asset, Network, SwapHistoryItem, WalletId } from '../store/types';
-import { LiqualitySwapHistoryItem } from '../swaps/liquality/LiqualitySwapProvider';
+import { YaswapSwapHistoryItem } from '../swaps/yaswap/YaswapSwapProvider';
 import { ThorchainSwapHistoryItem } from '../swaps/thorchain/ThorchainSwapProvider';
 import { UniswapSwapHistoryItem } from '../swaps/uniswap/UniswapSwapProvider';
 import { getTransactionExplorerLink, isERC20 } from './asset';
@@ -80,14 +80,14 @@ export interface TimelineTransaction extends Transaction {
 
 export async function getSwapTimeline(item: SwapHistoryItem, getClient: GetClientFunction) {
   function getToAssetWhenSwappingFromNative() {
-    if (item.provider.includes('liqualityBoost') && !isERC20(item.from)) {
+    if (item.provider.includes('yaswapBoost') && !isERC20(item.from)) {
       return item.bridgeAsset!;
     }
     return item.to;
   }
-  // get from asset when liquality boost provider is swapping from ERC20 to Native
+  // get from asset when yaswap boost provider is swapping from ERC20 to Native
   function getFromAssetWhenSwappingFromERC20() {
-    if (item.provider.includes('liqualityBoost') && isERC20(item.from)) {
+    if (item.provider.includes('yaswapBoost') && isERC20(item.from)) {
       return item.bridgeAsset!;
     }
     return item.from;
@@ -143,8 +143,8 @@ export async function getSwapTimeline(item: SwapHistoryItem, getClient: GetClien
       completed,
       pending,
       side,
-      (item as LiqualitySwapHistoryItem).fromFundHash,
-      (item as LiqualitySwapHistoryItem).fromFundTx,
+      (item as YaswapSwapHistoryItem).fromFundHash,
+      (item as YaswapSwapHistoryItem).fromFundTx,
       getFromAssetWhenSwappingFromERC20(),
       TimelineAction.LOCK
     );
@@ -154,20 +154,20 @@ export async function getSwapTimeline(item: SwapHistoryItem, getClient: GetClien
       completed,
       pending,
       side,
-      (item as LiqualitySwapHistoryItem).toFundHash,
+      (item as YaswapSwapHistoryItem).toFundHash,
       null,
       getToAssetWhenSwappingFromNative(),
       TimelineAction.LOCK
     );
   }
   async function getClaimRefundStep(completed: boolean, pending: boolean, side: TimelineSide) {
-    return (item as LiqualitySwapHistoryItem).refundHash
+    return (item as YaswapSwapHistoryItem).refundHash
       ? getTransactionStep(
           completed,
           pending,
           side,
-          (item as LiqualitySwapHistoryItem).refundHash,
-          (item as LiqualitySwapHistoryItem).refundTx,
+          (item as YaswapSwapHistoryItem).refundHash,
+          (item as YaswapSwapHistoryItem).refundTx,
           item.from,
           TimelineAction.REFUND
         )
@@ -175,8 +175,8 @@ export async function getSwapTimeline(item: SwapHistoryItem, getClient: GetClien
           completed,
           pending,
           side,
-          (item as LiqualitySwapHistoryItem).toClaimHash,
-          (item as LiqualitySwapHistoryItem).toClaimTx,
+          (item as YaswapSwapHistoryItem).toClaimHash,
+          (item as YaswapSwapHistoryItem).toClaimTx,
           getToAssetWhenSwappingFromNative(),
           TimelineAction.CLAIM
         );
@@ -193,7 +193,7 @@ export async function getSwapTimeline(item: SwapHistoryItem, getClient: GetClien
     );
   }
   async function getSwapStep(completed: boolean, pending: boolean, side: TimelineSide) {
-    return (item as LiqualitySwapHistoryItem).refundHash
+    return (item as YaswapSwapHistoryItem).refundHash
       ? {
           side: TimelineSide.RIGHT,
           pending: false,

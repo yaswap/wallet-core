@@ -1,4 +1,4 @@
-import { errorToLiqualityErrorString } from '@yaswap/error-parser/dist/src/utils';
+import { errorToYaswapErrorString } from '@yaswap/error-parser/dist/src/utils';
 import { ActionContext, rootActionContext } from '../..';
 import { getSwapProvider } from '../../../factory/swap';
 import { createHistoryNotification } from '../../broker/notification';
@@ -42,7 +42,7 @@ export const performNextAction = async (
       });
     }
   } catch (e) {
-    updates = { error: errorToLiqualityErrorString(e) };
+    updates = { error: errorToYaswapErrorString(e) };
   }
   if (updates) {
     if (!updates.error) {

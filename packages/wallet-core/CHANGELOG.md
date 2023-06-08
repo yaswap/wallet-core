@@ -261,7 +261,7 @@
 - 7f192b5: fix: add error parser for uniswapV2
   fix: split messages going to discord
 - 4b3b100: test: bump pre release version
-- a9ffd93: fix: add new liquality error, LedgerDeviceSmartContractTransactionDisabledError
+- a9ffd93: fix: add new yaswap error, LedgerDeviceSmartContractTransactionDisabledError
   fix: make chainify proxy work after transpilation. sendTransaction, an async function is made into a regular function and causes undesireable effects
 - 9e5ff10: fix: report error iff users wish to
 - Updated dependencies [25567cb]
@@ -302,7 +302,7 @@
 
 - 839c9eb: test: bump to next pre release version
 - 366cf25: fix NFTs without token_id
-- a9ffd93: fix: add new liquality error, LedgerDeviceSmartContractTransactionDisabledError
+- a9ffd93: fix: add new yaswap error, LedgerDeviceSmartContractTransactionDisabledError
   fix: make chainify proxy work after transpilation. sendTransaction, an async function is made into a regular function and causes undesireable effects
 - Updated dependencies [839c9eb]
 - Updated dependencies [196dd88]
