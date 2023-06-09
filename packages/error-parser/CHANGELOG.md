@@ -1,5 +1,16 @@
 # @yaswap/error-parser
 
+## 2.1.0
+
+### Minor Changes
+
+- Use CAL packages which support batch request for Yacoin
+
+### Patch Changes
+
+- Updated dependencies
+  - @yaswap/cryptoassets@2.1.0
+
 ## 2.0.1
 
 ### Patch Changes
