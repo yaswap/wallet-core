@@ -1,5 +1,11 @@
 # @yaswap/cryptoassets
 
+## 2.2.0
+
+### Minor Changes
+
+- Support to configure evm scraper URL
+
 ## 2.1.0
 
 ### Minor Changes

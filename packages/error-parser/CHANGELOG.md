@@ -1,5 +1,16 @@
 # @yaswap/error-parser
 
+## 2.2.0
+
+### Minor Changes
+
+- Support to configure evm scraper URL
+
+### Patch Changes
+
+- Updated dependencies
+  - @yaswap/cryptoassets@2.2.0
+
 ## 2.1.0
 
 ### Minor Changes
