@@ -38,6 +38,9 @@ export interface WalletCoreConfig {
   btcBatchEsploraApis: {
     [key in Network]: string;
   };
+  evmScraperUrls: {
+    [key in Network]: string;
+  };
   nameResolvers: {
     uns: {
       resolutionService: string;
@@ -125,6 +128,10 @@ const config: WalletCoreConfig = {
   btcBatchEsploraApis: {
     testnet: 'https://electrs-batch-testnet-api.liq-chainhub.net/',
     mainnet: 'https://electrs-batch-mainnet-api.liq-chainhub.net/',
+  },
+  evmScraperUrls: {
+    testnet: 'http://192.168.0.220:8080',
+    mainnet: 'http://192.168.0.220:8081',
   },
   swapProviders: {
     testnet: {

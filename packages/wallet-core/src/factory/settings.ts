@@ -37,6 +37,12 @@ export const defaultChainSettings: Record<Network, Record<ChainId, ChainifyNetwo
           feeProviderUrl: 'https://liquality.io/swap/mempool/v1/fees/recommended',
         };
       }
+      if (chain.isEVM) {
+        chainifyNetwork = {
+          ...chainifyNetwork,
+          scraperUrl: buildConfig.evmScraperUrls[currNetwork],
+        };
+      }
       return {
         ...prevChain,
         [currChain]: chainifyNetwork,

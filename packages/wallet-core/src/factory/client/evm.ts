@@ -28,10 +28,10 @@ export function createEvmClient(
   const walletProvider = getEvmWalletProvider(settings.chainifyNetwork, accountInfo, chainProvider, mnemonic);
 
   // Add EVM swap provider
-  // const { chainifyNetwork } = settings;
+  const { chainifyNetwork } = settings;
   const swapProvider = new EvmSwapProvider({
     // contractAddress: undefined, // TODO Deploy a specialized contract address used for atomic swap
-    scraperUrl: 'http://192.168.0.220:8080' // TODO pass from chainifyNetwork.scraperUrl
+    scraperUrl: chainifyNetwork.scraperUrl,
   });
   swapProvider.setWallet(walletProvider);
   const client = new Client().connect(swapProvider);
