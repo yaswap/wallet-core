@@ -130,8 +130,8 @@ const config: WalletCoreConfig = {
     mainnet: 'https://electrs-batch-mainnet-api.liq-chainhub.net/',
   },
   evmScraperUrls: {
-    testnet: 'http://192.168.0.220:8080',
-    mainnet: 'http://192.168.0.220:8081',
+    testnet: 'https://yaswap.yacoin.org/ethscraper_testnet/',
+    mainnet: 'https://yaswap.yacoin.org/ethscraper_mainnet/',
   },
   swapProviders: {
     testnet: {
@@ -139,7 +139,7 @@ const config: WalletCoreConfig = {
         name: 'Yaswap',
         icon: 'yaswap.svg',
         type: SwapProviderType.Yaswap,
-        agent: 'http://192.168.0.220:3030',
+        agent: 'https://yaswap.yacoin.org/atomicagent_testnet',
       },
       [SwapProviderType.UniswapV2]: {
         name: 'Uniswap V2',
@@ -176,7 +176,7 @@ const config: WalletCoreConfig = {
         name: 'Yaswap',
         icon: 'yaswap.svg',
         type: SwapProviderType.Yaswap,
-        agent: 'http://192.168.0.220:3031',
+        agent: 'https://yaswap.yacoin.org/atomicagent_mainnet',
       },
       [SwapProviderType.UniswapV2]: {
         name: 'Uniswap V2',
