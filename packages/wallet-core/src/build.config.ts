@@ -176,7 +176,7 @@ const config: WalletCoreConfig = {
         name: 'Yaswap',
         icon: 'yaswap.svg',
         type: SwapProviderType.Yaswap,
-        agent: 'http://192.168.0.220:3030',
+        agent: 'http://192.168.0.220:3031',
       },
       [SwapProviderType.UniswapV2]: {
         name: 'Uniswap V2',
