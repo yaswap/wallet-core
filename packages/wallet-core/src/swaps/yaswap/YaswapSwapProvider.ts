@@ -666,21 +666,20 @@ export class YaswapSwapProvider extends EvmSwapProvider {
         );
 
         // ERC20 swaps have separate funding tx. Ensures funding tx has enough confirmations
-        const fundingTransaction = await toClient.swap.findFundSwapTransaction(
-          {
-            asset,
-            value: BN(swap.toAmount),
-            recipientAddress: swap.toAddress,
-            refundAddress: swap.toCounterPartyAddress,
-            secretHash: swap.secretHash,
-            expiration: swap.nodeSwapExpiration
-          },
-          toFundHash
-        )
-
         let fundingConfirmed = false;
-        if (fundingTransaction) { // Handle ERC20 tokens
-          if (fundingTransaction.confirmations && fundingTransaction.confirmations >=
+        if (asset.type === 'erc20') {
+          const fundingTransaction = await toClient.swap.findFundSwapTransaction(
+            {
+              asset,
+              value: BN(swap.toAmount),
+              recipientAddress: swap.toAddress,
+              refundAddress: swap.toCounterPartyAddress,
+              secretHash: swap.secretHash,
+              expiration: swap.nodeSwapExpiration
+            },
+            toFundHash
+          )
+          if (fundingTransaction?.confirmations && fundingTransaction?.confirmations >=
             getChain(network, cryptoassets[swap.to].chain).safeConfirmations) {
               fundingConfirmed = true
             }
