@@ -1,5 +1,11 @@
 # @yaswap/cryptoassets
 
+## 2.2.1
+
+### Patch Changes
+
+- Fix issue failed to find ETH transaction
+
 ## 2.2.0
 
 ### Minor Changes

@@ -1,5 +1,14 @@
 # @yaswap/wallet-core
 
+## 2.2.1
+
+### Patch Changes
+
+- Fix issue failed to find ETH transaction
+- Updated dependencies
+  - @yaswap/cryptoassets@2.2.1
+  - @yaswap/error-parser@2.2.1
+
 ## 2.2.0
 
 ### Minor Changes
