@@ -20,7 +20,7 @@ export const updateBalances = async (context: ActionContext, request: UpdateBala
   const { walletId, network } = request;
   const { state, commit, getters } = rootActionContext(context);
   const accounts = state.accounts[walletId]?.[network];
-
+  console.log('TACA ===> [wallet-core] updateBalances, walletId = ', walletId, ', network = ', network, ', accounts = ', accounts)
   if (accounts) {
     const accountIds =
       request.accountIds ||
@@ -47,6 +47,7 @@ export const updateBalances = async (context: ActionContext, request: UpdateBala
 
           const client = getters.client({ network, walletId, chainId: chain, accountId: account.id });
 
+          console.log('TACA ===> [wallet-core] updateBalances, client = ', client)
           const addresses: Address[] = await client.wallet.getUsedAddresses();
           updateAccountAddresses(context, account, addresses, network, walletId);
 
@@ -197,6 +198,8 @@ const updateEVMBalances = async (
             .wallet.getUsedAddresses();
         })
       );
+
+      console.log('TACA ===> [wallet-core] updateEVMBalances, addressesForAllAccounts = ', addressesForAllAccounts)
 
       // update address for each account
       accounts.map((acc, index) => {
