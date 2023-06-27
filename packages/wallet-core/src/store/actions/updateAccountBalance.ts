@@ -13,19 +13,41 @@ export const updateAccountBalance = async (
   const index = accounts?.findIndex((a) => a.id === accountId);
   if (index >= 0) {
     const account = accounts[index];
-    const { assets } = account;
-    await Bluebird.map(assets, async (asset) => {
+    const { assets, chain } = account;
+    console.log('TACA ===> updateAccountBalance, chain = ', chain, ', assets = ', assets, ', account = ', account)
+    if (chain === 'yacoin') {
+      const asset = 'YAC'
       const chainId = getters.cryptoassets[asset].chain;
       const _client = getters.client({ network, walletId, chainId, accountId });
-      console.log('TACA ===> updateAccountBalance, asset = ', asset, ', _client = ', _client)
+
       if (_client && _client.wallet) {
+        // Update YAC balance
         const addresses = await _client.wallet.getUsedAddresses();
 
         const _assets = assetsAdapter(asset);
         const balance = addresses.length === 0 ? '0' : (await _client.chain.getBalance(addresses, _assets)).toString();
-
         commit.UPDATE_BALANCE({ network, accountId, walletId, asset, balance });
+
+        // Update token balance (only for tokens which the wallet already knows about)
+        const tokenBalances = addresses.length === 0 ? null : await _client.chain.getTokenBalance(addresses)
+        tokenBalances?.filter(({ name }) => assets.includes(name)).forEach(async ({ name, balance }) => {
+          commit.UPDATE_BALANCE({ network, accountId, walletId, asset: name, balance: balance.toString() });
+        });
       }
-    });
+    } else {
+      await Bluebird.map(assets, async (asset) => {
+        const chainId = getters.cryptoassets[asset].chain;
+        const _client = getters.client({ network, walletId, chainId, accountId });
+        console.log('TACA ===> updateAccountBalance, asset = ', asset, ', _client = ', _client)
+        if (_client && _client.wallet) {
+          const addresses = await _client.wallet.getUsedAddresses();
+  
+          const _assets = assetsAdapter(asset);
+          const balance = addresses.length === 0 ? '0' : (await _client.chain.getBalance(addresses, _assets)).toString();
+  
+          commit.UPDATE_BALANCE({ network, accountId, walletId, asset, balance });
+        }
+      });
+    }
   }
 };

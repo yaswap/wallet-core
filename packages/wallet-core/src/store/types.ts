@@ -47,6 +47,9 @@ export interface CustomToken {
   contractAddress: string;
   decimals: number;
   chain: ChainId;
+  // For Yacoin only
+  reissuable?: boolean;
+  ipfsHash?: string;
 }
 
 export enum AccountType {

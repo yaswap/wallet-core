@@ -200,6 +200,7 @@ export default {
           balances,
         };
 
+        console.log('TACA ===> mutations.ts, UPDATE_BALANCE, asset = ', asset, ', updatedAccount = ', updatedAccount)
         Vue.set(state.accounts[walletId]![network], index, updatedAccount);
       }
     }
@@ -357,7 +358,7 @@ export default {
           ..._account,
           assets: [..._account.assets.filter((asset) => !assets.includes(asset)), ...assets],
         };
-
+        console.log('TACA ===> mutations.ts, ENABLE_ACCOUNT_ASSETS, assets = ', assets, ', updatedAccount = ', updatedAccount)
         Vue.set(state.accounts[walletId]![network], index, updatedAccount);
       }
     }

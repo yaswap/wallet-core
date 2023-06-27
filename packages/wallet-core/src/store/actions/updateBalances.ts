@@ -18,7 +18,7 @@ type EvmAccountsMap = Record<ChainId, Array<Account>>;
 
 export const updateBalances = async (context: ActionContext, request: UpdateBalanceRequestType) => {
   const { walletId, network } = request;
-  const { state, commit, getters } = rootActionContext(context);
+  const { state, commit, getters, dispatch } = rootActionContext(context);
   const accounts = state.accounts[walletId]?.[network];
   console.log('TACA ===> [wallet-core] updateBalances, walletId = ', walletId, ', network = ', network, ', accounts = ', accounts)
   if (accounts) {
@@ -43,11 +43,11 @@ export const updateBalances = async (context: ActionContext, request: UpdateBala
 
         // skip all EVM chains, because they are handled in a different way (multicall for all accounts & assets)
         if (account && !evmAccounts[account.chain]) {
-          const { assets, chain } = account;
+          const { assets, chain, balances } = account;
 
           const client = getters.client({ network, walletId, chainId: chain, accountId: account.id });
 
-          console.log('TACA ===> [wallet-core] updateBalances, client = ', client)
+          console.log('TACA ===> [wallet-core] updateBalances, chain = ', chain, ', assets = ', assets, ', balances = ', balances)
           const addresses: Address[] = await client.wallet.getUsedAddresses();
           updateAccountAddresses(context, account, addresses, network, walletId);
 
@@ -60,31 +60,74 @@ export const updateBalances = async (context: ActionContext, request: UpdateBala
           // fetch balances
           else {
             try {
-              const chainifyAssets = assetsAdapter(assets);
-              // split into chunks of 25 to avoid gas limitations of static calls
-              const assetsChunks = chunk(chainifyAssets, 25);
-              // run all balance queries concurrently
-              const balances = await Promise.all(
-                assetsChunks.map((chunk) => client.chain.getBalance(addresses, chunk))
-              );
-              // update each asset in state
-              assetsChunks.forEach((_assets, index) =>
-                _assets.forEach((asset, innerIndex) => {
-                  // if balance is `null` there was a problem while fetching
-                  const balance = balances[index][innerIndex];
-                  if (balance) {
-                    commit.UPDATE_BALANCE({
+              if (chain === 'yacoin') {
+                const yacAsset = 'YAC'
+                const _assets = assetsAdapter(yacAsset);
+
+                // Update YAC balance
+                const balance = await client.chain.getBalance(addresses, _assets)
+                commit.UPDATE_BALANCE({ network, accountId, walletId, asset: yacAsset, balance: balance.toString() });
+
+                // Update token balance
+                const tokenBalances = await client.chain.getTokenBalance(addresses)
+                console.log('TACA ===> [wallet-core] updateBalances, chain = yacoin, get balance = ', balance, ', get tokenBalances = ', tokenBalances)
+
+                tokenBalances?.forEach(async ({ name, balance, units, reissuable, blockHash, ipfsHash }) => {
+                  // Enable token in case this is the first time the wallet sees this token
+                  if (!assets.includes(name)) {
+                    console.log('TACA ===> [wallet-core] updateBalances, enable token = ', name)
+                    await dispatch.addCustomToken({
                       network,
-                      accountId: account.id,
                       walletId,
-                      asset: assets[innerIndex],
-                      balance: balance.toString(),
+                      chain,
+                      contractAddress: blockHash,
+                      name,
+                      symbol: name,
+                      decimals: units,
+                      reissuable,
+                      ipfsHash
+                    })
+
+                    await dispatch.enableAssets({
+                      network,
+                      walletId,
+                      assets: [name]
                     });
                   } else {
-                    console.debug(`Balance not fetched: ${asset.code}`);
+                    console.log('TACA ===> [wallet-core] updateBalances, update balance for token = ', name, ', new balance = ', balance)
+                    commit.UPDATE_BALANCE({ network, accountId, walletId, asset: name, balance: balance.toString() });
                   }
-                })
-              );
+                });
+              } else {
+                const chainifyAssets = assetsAdapter(assets);
+                // split into chunks of 25 to avoid gas limitations of static calls
+                const assetsChunks = chunk(chainifyAssets, 25);
+
+                // run all balance queries concurrently  
+                const balances = await Promise.all(
+                  assetsChunks.map((chunk) => client.chain.getBalance(addresses, chunk))
+                );
+
+                console.log('TACA ===> [wallet-core] updateBalances, chain = ', chain, ', balances = ', balances, ', assetsChunks = ', assetsChunks)
+                // update each asset in state
+                assetsChunks.forEach((_assets, index) =>
+                  _assets.forEach((asset, innerIndex) => {
+                    // if balance is `null` there was a problem while fetching
+                    const balance = balances[index][innerIndex];
+                    if (balance) {
+                      commit.UPDATE_BALANCE({
+                        network,
+                        accountId: account.id,
+                        walletId,
+                        asset: assets[innerIndex],
+                        balance: balance.toString(),
+                      });
+                    } else {
+                      console.debug(`Balance not fetched: ${asset.code}`);
+                    }
+                  })
+                );
+              }
             } catch (err) {
               console.debug('Connected network ', client.chain.getNetwork());
               console.debug(`Chain: ${chain} Balance update error:  `, err.message);

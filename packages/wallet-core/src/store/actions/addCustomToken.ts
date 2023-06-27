@@ -12,6 +12,8 @@ export const addCustomToken = async (
     name,
     contractAddress,
     decimals,
+    reissuable,
+    ipfsHash,
   }: {
     network: Network;
     walletId: WalletId;
@@ -20,9 +22,11 @@ export const addCustomToken = async (
     name: string;
     contractAddress: string;
     decimals: number;
+    reissuable?: boolean;
+    ipfsHash?: string;
   }
 ) => {
   const { commit } = rootActionContext(context);
-  const customToken = { symbol, name, contractAddress, decimals, chain: chain };
+  const customToken = { symbol, name, contractAddress, decimals, chain: chain, reissuable, ipfsHash};
   commit.ADD_CUSTOM_TOKEN({ network, walletId, customToken });
 };
