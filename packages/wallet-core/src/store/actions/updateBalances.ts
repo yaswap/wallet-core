@@ -72,7 +72,7 @@ export const updateBalances = async (context: ActionContext, request: UpdateBala
                 const tokenBalances = await client.chain.getTokenBalance(addresses)
                 console.log('TACA ===> [wallet-core] updateBalances, chain = yacoin, get balance = ', balance, ', get tokenBalances = ', tokenBalances)
 
-                tokenBalances?.forEach(async ({ name, balance, units, reissuable, blockHash, ipfsHash }) => {
+                tokenBalances?.forEach(async ({ name, balance, totalSupply, units, reissuable, blockHash, ipfsHash }) => {
                   // Enable token in case this is the first time the wallet sees this token
                   if (!assets.includes(name)) {
                     console.log('TACA ===> [wallet-core] updateBalances, enable token = ', name)
@@ -84,6 +84,7 @@ export const updateBalances = async (context: ActionContext, request: UpdateBala
                       name,
                       symbol: name,
                       decimals: units,
+                      totalSupply,
                       reissuable,
                       ipfsHash
                     })

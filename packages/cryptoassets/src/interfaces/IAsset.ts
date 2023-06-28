@@ -17,4 +17,9 @@ export interface IAsset {
   contractAddress?: string;
   matchingAsset?: string;
   feeAsset?: string;
+
+  // For Yacoin only
+  totalSupply?: number;
+  reissuable?: boolean;
+  ipfsHash?: string;
 }

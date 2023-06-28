@@ -12,6 +12,7 @@ export const addCustomToken = async (
     name,
     contractAddress,
     decimals,
+    totalSupply,
     reissuable,
     ipfsHash,
   }: {
@@ -22,11 +23,13 @@ export const addCustomToken = async (
     name: string;
     contractAddress: string;
     decimals: number;
+    totalSupply?: number;
     reissuable?: boolean;
     ipfsHash?: string;
   }
 ) => {
   const { commit } = rootActionContext(context);
-  const customToken = { symbol, name, contractAddress, decimals, chain: chain, reissuable, ipfsHash};
+  const customToken = { symbol, name, contractAddress, decimals, chain: chain, totalSupply, reissuable, ipfsHash};
+  console.log('TACA ===> addCustomToken, customToken = ', customToken);
   commit.ADD_CUSTOM_TOKEN({ network, walletId, customToken });
 };

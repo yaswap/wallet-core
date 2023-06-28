@@ -47,7 +47,9 @@ export interface CustomToken {
   contractAddress: string;
   decimals: number;
   chain: ChainId;
+
   // For Yacoin only
+  totalSupply?: number;
   reissuable?: boolean;
   ipfsHash?: string;
 }

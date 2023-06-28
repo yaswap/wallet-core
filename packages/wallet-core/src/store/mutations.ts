@@ -369,6 +369,7 @@ export default {
   ) {
     ensureNetworkWalletTree(state.customTokens, network, walletId, []);
     state.customTokens[network]![walletId].push(customToken);
+    console.log('TACA ===> mutations.ts, ADD_CUSTOM_TOKEN, state.customTokens = ', state.customTokens)
   },
   REMOVE_CUSTOM_TOKEN(
     state: RootState,
