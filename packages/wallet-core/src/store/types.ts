@@ -41,6 +41,12 @@ export interface Wallet {
   imported: boolean;
 }
 
+export interface TokenMetadata {
+  name?: string;
+  description?: string;
+  imageURL?: string;
+}
+
 export interface CustomToken {
   symbol: string;
   name: string;
@@ -52,6 +58,7 @@ export interface CustomToken {
   totalSupply?: number;
   reissuable?: boolean;
   ipfsHash?: string;
+  tokenMetadata?: TokenMetadata;
 }
 
 export enum AccountType {

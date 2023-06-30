@@ -4,6 +4,12 @@ export type PriceSources = {
   coinGeckoId?: string;
 };
 
+export interface TokenMetadata {
+  name?: string;
+  description?: string;
+  imageURL?: string;
+}
+
 export interface IAsset {
   name: string;
   chain: ChainId;
@@ -22,4 +28,5 @@ export interface IAsset {
   totalSupply?: number;
   reissuable?: boolean;
   ipfsHash?: string;
+  tokenMetadata?: TokenMetadata;
 }

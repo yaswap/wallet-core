@@ -1,6 +1,6 @@
 import { ChainId } from '@yaswap/cryptoassets';
 import { ActionContext, rootActionContext } from '..';
-import { Network, WalletId } from '../types';
+import { Network, WalletId, TokenMetadata } from '../types';
 
 export const addCustomToken = async (
   context: ActionContext,
@@ -15,6 +15,7 @@ export const addCustomToken = async (
     totalSupply,
     reissuable,
     ipfsHash,
+    tokenMetadata,
   }: {
     network: Network;
     walletId: WalletId;
@@ -26,10 +27,11 @@ export const addCustomToken = async (
     totalSupply?: number;
     reissuable?: boolean;
     ipfsHash?: string;
+    tokenMetadata?: TokenMetadata;
   }
 ) => {
   const { commit } = rootActionContext(context);
-  const customToken = { symbol, name, contractAddress, decimals, chain: chain, totalSupply, reissuable, ipfsHash};
+  const customToken = { symbol, name, contractAddress, decimals, chain: chain, totalSupply, reissuable, ipfsHash, tokenMetadata};
   console.log('TACA ===> addCustomToken, customToken = ', customToken);
   commit.ADD_CUSTOM_TOKEN({ network, walletId, customToken });
 };

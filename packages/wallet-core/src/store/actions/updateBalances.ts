@@ -6,6 +6,7 @@ import Bluebird from 'bluebird';
 import { chunk } from 'lodash';
 import { ActionContext, rootActionContext } from '..';
 import { assetsAdapter } from '../../utils/chainify';
+import { getTokenMetadata } from '../../utils/asset';
 import { Account, AccountId, Network, WalletId } from '../types';
 
 type UpdateBalanceRequestType = {
@@ -75,7 +76,8 @@ export const updateBalances = async (context: ActionContext, request: UpdateBala
                 tokenBalances?.forEach(async ({ name, balance, totalSupply, units, reissuable, blockHash, ipfsHash }) => {
                   // Enable token in case this is the first time the wallet sees this token
                   if (!assets.includes(name)) {
-                    console.log('TACA ===> [wallet-core] updateBalances, enable token = ', name)
+                    const tokenMetadata = await getTokenMetadata(ipfsHash)
+                    console.log('TACA ===> [wallet-core] updateBalances, enable token = ', name, ', tokenMetadata = ', tokenMetadata)
                     await dispatch.addCustomToken({
                       network,
                       walletId,
@@ -86,7 +88,8 @@ export const updateBalances = async (context: ActionContext, request: UpdateBala
                       decimals: units,
                       totalSupply,
                       reissuable,
-                      ipfsHash
+                      ipfsHash,
+                      tokenMetadata
                     })
 
                     await dispatch.enableAssets({
