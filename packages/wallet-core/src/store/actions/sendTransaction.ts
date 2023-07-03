@@ -42,7 +42,7 @@ export const sendTransaction = async (
 
   const _asset = assetsAdapter(asset)[0];
   const _feeAsset = assetsAdapter(feeAsset)[0] || _asset;
-
+  console.log('TACA ===> [wallet-core] sendTransaction.ts, asset = ', asset, ', _asset = ', _asset, ', feeAsset = ', feeAsset, ', _feeAsset = ', _feeAsset, ', fee = ', fee)
   const tx = await client.wallet.sendTransaction({
     to: getChain(network, chainId).formatAddress(to),
     value: new BN(amount),
