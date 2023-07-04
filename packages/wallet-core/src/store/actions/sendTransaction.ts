@@ -1,4 +1,5 @@
-import { getChain } from '@yaswap/cryptoassets';
+import { unitToCurrency, currencyToUnit, getChain } from '@yaswap/cryptoassets';
+import { getNativeAsset, getFeeAsset } from '../../utils/asset';
 import BN, { BigNumber } from 'bignumber.js';
 import { v4 as uuidv4 } from 'uuid';
 import { ActionContext, rootActionContext } from '..';
@@ -42,10 +43,23 @@ export const sendTransaction = async (
 
   const _asset = assetsAdapter(asset)[0];
   const _feeAsset = assetsAdapter(feeAsset)[0] || _asset;
+
+  // Convert from displayed amount to the amount in satoshis
+  let value: BigNumber;
+  let amountToSend = new BN(0);
+  const assetChain = getFeeAsset(asset) || getNativeAsset(asset)
+  if (assetChain === 'YAC') {
+    amountToSend = unitToCurrency(getters.cryptoassets[asset], new BN(amount))
+    value = currencyToUnit(getters.cryptoassets[assetChain], amountToSend)
+  } else {
+    value = new BN(amount)
+  }
+  console.log('TACA ===> [wallet-core] sendTransaction.ts, asset = ', asset, ', _asset = ', _asset, ', amount = ', amount, ', amountToSend = ', amountToSend.toString(), ', value = ', value.toString())
   console.log('TACA ===> [wallet-core] sendTransaction.ts, asset = ', asset, ', _asset = ', _asset, ', feeAsset = ', feeAsset, ', _feeAsset = ', _feeAsset, ', fee = ', fee)
+
   const tx = await client.wallet.sendTransaction({
     to: getChain(network, chainId).formatAddress(to),
-    value: new BN(amount),
+    value,
     data,
     gasLimit: gas,
     fee,
