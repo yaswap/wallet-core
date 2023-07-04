@@ -1,4 +1,5 @@
 import { BitcoinBaseWalletProvider, BitcoinEsploraApiProvider } from '@yaswap/bitcoin';
+import { YacoinBaseWalletProvider, YacoinEsploraApiProvider } from '@yaswap/yacoin';
 import { Client } from '@yaswap/client';
 import { EvmUtils } from '@yaswap/evm';
 import { ChainId, EIP1559Fee, FeeDetail, FeeDetails, FeeType } from '@yaswap/types';
@@ -79,6 +80,7 @@ function getSendFee(asset: Asset, feePrice: number, l1FeePrice?: number, network
       throw createInternalError(CUSTOM_ERRORS.NotFound.Chain.GasLimit(assetInfo.chain));
     }
     const fee = new BN(gasLimitL).times(feePriceInUnit(nativeAssetInfo.code, feePrice, network));
+    console.log('TACA ===> fees.ts, getSendFee, asset = ', asset, ', gasLimitL = ', gasLimitL, ', feePrice = ', feePrice, ', fee = ', fee)
     return unitToCurrency(nativeAssetInfo, fee);
   }
 }
@@ -171,9 +173,14 @@ async function getSendTxFees(accountId: AccountId, asset: Asset, amount?: BN, cu
     _suggestedGasFees.custom = { fee: customFee };
   }
 
+  console.log('TACA ===> fees.ts, getSendTxFees, asset = ', asset, ', assetChain = ', assetChain, ', customFee = ', customFee)
   if (assetChain === 'bitcoin') {
     //ChainId.Bitcoin
     return sendBitcoinTxFees(accountId, asset, _suggestedGasFees, amount);
+  }
+  else if (assetChain === 'yacoin') {
+    //ChainId.Yacoin
+    return sendYacoinTxFees(accountId, asset, _suggestedGasFees, amount);
   } else {
     return sendTxFeesInNativeAsset(asset, _suggestedGasFees);
   }
@@ -188,12 +195,10 @@ function sendTxFeesInNativeAsset(asset: Asset, suggestedGasFees: FeeDetailsWithC
 
   for (const [speed, fee] of Object.entries(suggestedGasFees)) {
     const _speed = speed as keyof FeeDetailsWithCustom;
-
     const _fee: number = feePerUnit(fee.fee, assetChain as any);
-
     _sendFees[_speed] = _sendFees[_speed].plus(getSendFee(asset, _fee, fee.multilayerFee?.l1));
   }
-
+  console.log('TACA ===> fees.ts, sendTxFeesInNativeAsset, asset = ', asset, ', suggestedGasFees = ', suggestedGasFees, ', _sendFees = ', _sendFees)
   return _sendFees;
 }
 
@@ -207,19 +212,17 @@ async function sendBitcoinTxFees(
   amount?: BN,
   sendFees?: SendFees
 ) {
-  if (asset != 'BTC') {
-    throw createInternalError(CUSTOM_ERRORS.Invalid.Default);
-  }
   const isMax: boolean = amount === undefined; // checking if it is a max send
   const _sendFees = sendFees ?? newSendFees();
 
   const account = store.getters.accountItem(accountId)!;
+
   const client = store.getters.client({
-    network: store.state.activeNetwork,
-    walletId: store.state.activeWalletId,
-    chainId: account.chain,
-    accountId: accountId,
-  }) as Client<BitcoinEsploraApiProvider, BitcoinBaseWalletProvider>;
+      network: store.state.activeNetwork,
+      walletId: store.state.activeWalletId,
+      chainId: account.chain,
+      accountId: accountId,
+    }) as Client<BitcoinEsploraApiProvider, BitcoinBaseWalletProvider>;
 
   const feePerBytes = Object.values(suggestedGasFees).map((fee) => fee.fee);
   const value = isMax ? undefined : currencyToUnit(cryptoassets[asset], amount as BN);
@@ -230,6 +233,49 @@ async function sendBitcoinTxFees(
     const totalFees = await client.wallet.getTotalFees(txs, isMax);
     for (const [speed, fee] of Object.entries(suggestedGasFees)) {
       const totalFee = unitToCurrency(cryptoassets[asset], totalFees[fee.fee]);
+      _sendFees[speed as keyof FeeDetailsWithCustom] = totalFee;
+    }
+  } catch (e) {
+    console.error(e);
+  }
+
+  return _sendFees;
+}
+
+/*
+ * Send fee estimation method for YAC and its token
+ */
+async function sendYacoinTxFees(
+  accountId: AccountId,
+  asset: Asset,
+  suggestedGasFees: FeeDetailsWithCustom,
+  amount?: BN,
+  sendFees?: SendFees
+) {
+  const feeAsset = getFeeAsset(asset) || getNativeAsset(asset);
+  console.log('TACA ===> fees.ts, sendYacoinTxFees, asset = ', asset, ', feeAsset = ', feeAsset);
+  const isMax: boolean = amount === undefined; // checking if it is a max send
+  const _sendFees = sendFees ?? newSendFees();
+
+  const account = store.getters.accountItem(accountId)!;
+
+  const client = store.getters.client({
+      network: store.state.activeNetwork,
+      walletId: store.state.activeWalletId,
+      chainId: account.chain,
+      accountId: accountId,
+    }) as Client<YacoinEsploraApiProvider, YacoinBaseWalletProvider>;
+
+  const feePerBytes = Object.values(suggestedGasFees).map((fee) => fee.fee);
+  const value = isMax ? undefined : currencyToUnit(cryptoassets[feeAsset], amount as BN);
+
+  try {
+    const txs = feePerBytes.map((fee) => ({ value, fee }));
+
+    // TODO: add implementation to get total fees in case of token transaction
+    const totalFees = await client.wallet.getTotalFees(txs, isMax);
+    for (const [speed, fee] of Object.entries(suggestedGasFees)) {
+      const totalFee = unitToCurrency(cryptoassets[feeAsset], totalFees[fee.fee]);
       _sendFees[speed as keyof FeeDetailsWithCustom] = totalFee;
     }
   } catch (e) {
@@ -318,6 +364,7 @@ export {
   getSendTxFees,
   sendTxFeesInNativeAsset,
   sendBitcoinTxFees,
+  sendYacoinTxFees,
   probableFeePerUnitEIP1559,
   maxFeePerUnitEIP1559,
   feePerUnit,

@@ -55,7 +55,7 @@ export default new YacoinChain({
   EIP1559: false,
   gasLimit: {
     send: {
-      native: 290,
+      native: 10,
     },
   },
   fees: {
