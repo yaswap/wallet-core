@@ -13,6 +13,7 @@ import {
 import { CUSTOM_ERRORS, createInternalError } from '@yaswap/error-parser';
 import BN from 'bignumber.js';
 import store from '../store';
+import { assetsAdapter } from './chainify';
 import { Account, AccountId, Asset, Network, NFT } from '../store/types';
 import { getFeeAsset, getNativeAsset, isChainEvmCompatible, isERC20 } from './asset';
 import cryptoassets from './cryptoassets';
@@ -270,9 +271,12 @@ async function sendYacoinTxFees(
   const value = isMax ? undefined : currencyToUnit(cryptoassets[feeAsset], amount as BN);
 
   try {
-    const txs = feePerBytes.map((fee) => ({ value, fee }));
+    const result = await client.wallet.getUnusedAddress();
+    const to = result.address;
+    const _asset = assetsAdapter(asset)[0];
 
-    // TODO: add implementation to get total fees in case of token transaction
+    const txs = feePerBytes.map((fee) => ({ asset: _asset, to, value, fee }));
+
     const totalFees = await client.wallet.getTotalFees(txs, isMax);
     for (const [speed, fee] of Object.entries(suggestedGasFees)) {
       const totalFee = unitToCurrency(cryptoassets[feeAsset], totalFees[fee.fee]);
