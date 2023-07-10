@@ -4,6 +4,9 @@ export class InternalError extends YaswapError {
   reportable = true;
   constructor(rawError?: any) {
     super(ERROR_NAMES.InternalError);
-    if (rawError) this.rawError = rawError;
+    if (rawError) {
+      this.rawError = rawError;
+      this.data.errorId = this.rawError;
+    }
   }
 }
