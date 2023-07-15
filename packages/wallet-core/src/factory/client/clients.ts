@@ -11,6 +11,7 @@ import {
   YacoinFeeApiProvider,
   YacoinHDWalletProvider,
   YacoinSwapEsploraProvider,
+  YacoinNftProvider,
   YacoinTypes,
 } from '@yaswap/yacoin';
 import { BitcoinLedgerProvider, CreateBitcoinLedgerApp } from '@yaswap/bitcoin-ledger';
@@ -92,6 +93,7 @@ export function createYacClient(
 ): Client<Chain<any, Network>, Wallet<any, any>, Swap<any, any, Wallet<any, any>>> {
   const isMainnet = settings.network === 'mainnet';
   const { chainifyNetwork } = settings;
+  // Create Chain provider
   const chainProvider = new YacoinEsploraApiProvider({
     batchUrl: chainifyNetwork.yacoinEsploraApis!,
     url: chainifyNetwork.yacoinEsploraApis!,
@@ -104,11 +106,13 @@ export function createYacClient(
     chainProvider.setFeeProvider(feeProvider);
   }
 
+  // Create swap provider
   const swapProvider = new YacoinSwapEsploraProvider({
     network: chainifyNetwork as YacoinTypes.YacoinNetwork,
     scraperUrl: chainifyNetwork.yacoinEsploraSwapApis,
   });
 
+  // Create wallet provider
   const walletOptions = {
     network: chainifyNetwork as YacoinTypes.YacoinNetwork,
     baseDerivationPath: accountInfo.derivationPath,
@@ -116,8 +120,18 @@ export function createYacClient(
   };
   const walletProvider = new YacoinHDWalletProvider(walletOptions, chainProvider);
   swapProvider.setWallet(walletProvider);
+  const client = new Client().connect(swapProvider);
 
-  return new Client().connect(swapProvider);
+  // Create nft provider
+  const nftProvider = new YacoinNftProvider(
+    walletProvider as any,
+    {
+      url: chainifyNetwork.yacoinEsploraApis!
+    }
+  );
+  client.connect(nftProvider);
+
+  return client;
 }
 
 export function createNearClient(

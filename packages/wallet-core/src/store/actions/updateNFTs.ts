@@ -49,6 +49,8 @@ export const updateNFTs = async (
         };
       });
 
+      console.log('TACA ===> [wallet-core] updateNFTs, chain = ', account.chain, ', account.nfts = ', account.nfts, ', nftAssetsFetched = ', nftAssetsFetched, ', nfts = ', nfts)
+
       commit.UPDATE_NFTS({ network, walletId, accountId: account.id, nfts });
 
       return nfts;
