@@ -3,7 +3,7 @@ import { CUSTOM_ERRORS, createInternalError } from '@yaswap/error-parser';
 import * as ethers from 'ethers';
 import { Asset, Network, TokenMetadata } from '../store/types';
 import cryptoassets from './cryptoassets';
-import { HttpClient } from '@yaswap/client';
+import { YacoinUtils } from '@yaswap/yacoin';
 
 function getChainExplorer(chainId: ChainId, network: Network) {
   const chain = getChain(network, chainId);
@@ -36,23 +36,8 @@ export const isAssetEvmNativeAsset = (asset: Asset, network = Network.Mainnet) =
   return false;
 };
 
-export async function getTokenMetadata(ipfsHash: string) {
-  const ipfsHashUrl = `https://ipfs.io/ipfs/${ipfsHash}`
-  const headers = await HttpClient.head(ipfsHashUrl)
-  let metadata: TokenMetadata = {}
-  console.log('TACA ===> getTokenMetadata, ipfsHash = ', ipfsHash, ', headers = ', headers)
-  if (headers['content-type'] === 'application/json') {
-    const { name, description, image } = await HttpClient.get(ipfsHashUrl)
-    metadata = {
-      name,
-      description,
-      imageURL: image.replace('ipfs://', 'https://ipfs.io/ipfs/')
-    }
-  } else if (headers['content-type']?.startsWith('image')) {
-    metadata.imageURL = ipfsHashUrl
-  }
-  console.log('TACA ===> getTokenMetadata, headers = ', headers, ', metadata = ', metadata)
-  return metadata
+export async function getTokenMetadata(ipfsHash: string): Promise<TokenMetadata> {
+  return YacoinUtils.getTokenMetadata(ipfsHash)
 }
 
 export const getNativeAsset = (asset: Asset, network = Network.Mainnet) => {
