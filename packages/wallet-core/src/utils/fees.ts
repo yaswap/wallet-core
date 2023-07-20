@@ -2,7 +2,7 @@ import { BitcoinBaseWalletProvider, BitcoinEsploraApiProvider } from '@yaswap/bi
 import { YacoinBaseWalletProvider, YacoinEsploraApiProvider } from '@yaswap/yacoin';
 import { Client } from '@yaswap/client';
 import { EvmUtils } from '@yaswap/evm';
-import { ChainId, EIP1559Fee, FeeDetail, FeeDetails, FeeType } from '@yaswap/types';
+import { ChainId, EIP1559Fee, FeeDetail, FeeDetails, FeeType, AssetTypes } from '@yaswap/types';
 import {
   currencyToUnit,
   getAssetSendGasLimit,
@@ -244,7 +244,7 @@ async function sendBitcoinTxFees(
 }
 
 /*
- * Send fee estimation method for YAC and its token
+ * Send fee estimation method for YAC and its tokens/NFTs
  */
 async function sendYacoinTxFees(
   accountId: AccountId,
@@ -253,7 +253,7 @@ async function sendYacoinTxFees(
   amount?: BN,
   sendFees?: SendFees
 ) {
-  const feeAsset = getFeeAsset(asset) || getNativeAsset(asset);
+  const feeAsset = 'YAC'
   console.log('TACA ===> fees.ts, sendYacoinTxFees, asset = ', asset, ', feeAsset = ', feeAsset);
   const isMax: boolean = amount === undefined; // checking if it is a max send
   const _sendFees = sendFees ?? newSendFees();
@@ -273,10 +273,21 @@ async function sendYacoinTxFees(
   try {
     const result = await client.wallet.getUnusedAddress();
     const to = result.address;
-    const _asset = assetsAdapter(asset)[0];
+
+    let _asset = assetsAdapter(asset)[0];
+    console.log('TACA ===> sendYacoinTxFees, _asset = ', _asset, ', !!_asset = ', !!_asset)
+    if (_asset === undefined) {
+      _asset = {
+        name: asset,
+        code: asset,
+        chain: ChainId.Yacoin,
+        type: AssetTypes.nft,
+        decimals: 0,
+      }
+    }
 
     const txs = feePerBytes.map((fee) => ({ asset: _asset, to, value, fee }));
-
+    console.log('TACA ===> sendYacoinTxFees, feePerBytes = ', feePerBytes, ', _asset = ', _asset, ', txs = ', txs)
     const totalFees = await client.wallet.getTotalFees(txs, isMax);
     for (const [speed, fee] of Object.entries(suggestedGasFees)) {
       const totalFee = unitToCurrency(cryptoassets[feeAsset], totalFees[fee.fee]);
@@ -329,33 +340,40 @@ async function estimateTransferNFT(
   }
 
   const _sendFees = newSendFees();
-  try {
-    const estimation = await client.nft.estimateTransfer(
-      nft.asset_contract!.address!,
-      _receiver,
-      [nft.token_id!],
-      values
-    );
 
-    for (const [speed, fee] of Object.entries(suggestedGasFees)) {
-      const _speed = speed as keyof FeeDetailsWithCustom;
-      const _fee: number = feePerUnit(fee.fee, account.chain as any);
-      _sendFees[_speed] = new BN(estimation).times(_fee).div(1e9);
-    }
+  if (account.chain === 'yacoin') {
+    console.log('TACA ===> [wallet-core], fees.ts, estimateTransferNFT, calling sendYacoinTxFees')
+    return sendYacoinTxFees(accountId, nft.token_id!, _suggestedGasFees, new BN(1));
+  } else { // EVM Chains
+    try {
+      const estimation = await client.nft.estimateTransfer(
+        nft.asset_contract!.address!,
+        _receiver,
+        [nft.token_id!],
+        values
+      );
 
-    return _sendFees;
-  } catch (e) {
-    // in case method is not implemented (like in Solana), return fee without estimations
-    if (e.name === 'UnsupportedMethodError' || e.rawError?.name === 'UnsupportedMethodError') {
       for (const [speed, fee] of Object.entries(suggestedGasFees)) {
         const _speed = speed as keyof FeeDetailsWithCustom;
-        _sendFees[_speed] = new BN(feePerUnit(fee.fee, account.chain as any));
+        const _fee: number = feePerUnit(fee.fee, account.chain as any);
+        _sendFees[_speed] = new BN(estimation).times(_fee).div(1e9);
       }
 
+      console.log('TACA ===> [wallet-core], fees.ts, estimateTransferNFT, estimation = ', estimation, ', _suggestedGasFees = ', _suggestedGasFees, ', _sendFees = ', _sendFees)
       return _sendFees;
+    } catch (e) {
+      // in case method is not implemented (like in Solana), return fee without estimations
+      if (e.name === 'UnsupportedMethodError' || e.rawError?.name === 'UnsupportedMethodError') {
+        for (const [speed, fee] of Object.entries(suggestedGasFees)) {
+          const _speed = speed as keyof FeeDetailsWithCustom;
+          _sendFees[_speed] = new BN(feePerUnit(fee.fee, account.chain as any));
+        }
+  
+        console.log('TACA ===> [wallet-core], fees.ts, estimateTransferNFT, cant get estimation', ', _suggestedGasFees = ', _suggestedGasFees, ', _sendFees = ', _sendFees)
+        return _sendFees;
+      }
+      throw e;
     }
-
-    throw e;
   }
 }
 
