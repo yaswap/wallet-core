@@ -124,10 +124,7 @@ export function createYacClient(
 
   // Create nft provider
   const nftProvider = new YacoinNftProvider(
-    walletProvider as any,
-    {
-      url: chainifyNetwork.yacoinEsploraApis!
-    }
+    walletProvider as any
   );
   client.connect(nftProvider);
 
