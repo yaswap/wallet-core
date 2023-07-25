@@ -3662,7 +3662,7 @@ __metadata:
 
 "@yaswap/bitcoin-ledger@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/bitcoin-ledger::locator=yaswap%40workspace%3A.":
   version: 2.1.0
-  resolution: "@yaswap/bitcoin-ledger@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/bitcoin-ledger#/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/bitcoin-ledger::hash=edbd82&locator=yaswap%40workspace%3A."
+  resolution: "@yaswap/bitcoin-ledger@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/bitcoin-ledger#/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/bitcoin-ledger::hash=0c4f0e&locator=yaswap%40workspace%3A."
   dependencies:
     "@ledgerhq/hw-app-btc": 9.1.2
     "@yaswap/bitcoin": "workspace:*"
@@ -3673,13 +3673,13 @@ __metadata:
     "@yaswap/utils": "workspace:*"
     bip32: 2.0.6
     bitcoinjs-lib: 5.2.0
-  checksum: 7261ac61c824b58e0f3307e742a16d50847fb3185d21118ea1ab4ff16274ea877b3cc9568bae8d604edb37019ef470cb8de0d5345df6e7d03972c737549969aa
+  checksum: 3b16438be130a23c911365b4ee6540420497490fac603de7b2480c48ec199c694278ae3ed3fba0f2d35525daa41f7ef9f3b67d6a3144ca9d5269a00ee515b87a
   languageName: node
   linkType: hard
 
 "@yaswap/bitcoin@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/bitcoin::locator=yaswap%40workspace%3A.":
   version: 2.1.0
-  resolution: "@yaswap/bitcoin@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/bitcoin#/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/bitcoin::hash=a8f24f&locator=yaswap%40workspace%3A."
+  resolution: "@yaswap/bitcoin@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/bitcoin#/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/bitcoin::hash=a34333&locator=yaswap%40workspace%3A."
   dependencies:
     "@types/bip32": ^2.0.0
     "@types/bip39": ^3.0.0
@@ -3698,20 +3698,20 @@ __metadata:
     coinselect: ^3.1.12
     lodash: 4.17.21
     memoizee: ^0.4.15
-  checksum: c39eea2387ccb95bb6d33b84d04ceb03f8566ea34a068b280271af67cccb1f758b53fc88a1b271c6184465d4b21750d2ddf9a2d041674f3c9cd1848d5f7fc3d1
+  checksum: edec4c6dc1353282c49741c87441b5146780520a050323d6217c87d2c3ce78b5e9c0c1f78229b461eabeed5318970daa55c4731222593491e11244b84ee2817b
   languageName: node
   linkType: hard
 
 "@yaswap/client@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/client::locator=yaswap%40workspace%3A.":
   version: 2.1.0
-  resolution: "@yaswap/client@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/client#/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/client::hash=154fcf&locator=yaswap%40workspace%3A."
+  resolution: "@yaswap/client@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/client#/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/client::hash=dc45dd&locator=yaswap%40workspace%3A."
   dependencies:
     "@yaswap/errors": "workspace:*"
     "@yaswap/logger": "workspace:*"
     "@yaswap/types": "workspace:*"
     "@yaswap/utils": "workspace:*"
     axios: ^0.25.0
-  checksum: 2a25dfb5137984fb4605748780f73123170540acc48832125c59339ec995b4dbc0d0dd24b97b03101c68f2a9f69432b74870bb8a71bd4a8a029b23ef735a7716
+  checksum: a3f760713e98422bb2ea35b88dbe5469916889ac97053d856665c08557c5e4db2bfd113e9cc2171122420172d1d63f4a8c1b374c40c2bea22eb6f73a61f80432
   languageName: node
   linkType: hard
 
@@ -3746,16 +3746,16 @@ __metadata:
 
 "@yaswap/errors@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/errors::locator=yaswap%40workspace%3A.":
   version: 2.1.0
-  resolution: "@yaswap/errors@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/errors#/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/errors::hash=e61961&locator=yaswap%40workspace%3A."
+  resolution: "@yaswap/errors@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/errors#/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/errors::hash=16d4e5&locator=yaswap%40workspace%3A."
   dependencies:
     standard-error: ^1.1.0
-  checksum: c013f0a8abb161a6e8aea0f1a5c22a6a147129946126d79c58f2958e118aaa7d1a2581998c61f4f3978b92469327ba5be8e948099d45432750b04ca1b30c440a
+  checksum: b477ca917f573a8ef8017c95e70da99b9ecba83dc101b33deb40c9a29cc3103aefc8ea937e7a2fb829dbc490a574dbab02169b4a8be51d3bfb6538af13038f67
   languageName: node
   linkType: hard
 
 "@yaswap/evm-ledger@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/evm-ledger::locator=yaswap%40workspace%3A.":
   version: 2.1.0
-  resolution: "@yaswap/evm-ledger@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/evm-ledger#/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/evm-ledger::hash=a89ac0&locator=yaswap%40workspace%3A."
+  resolution: "@yaswap/evm-ledger@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/evm-ledger#/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/evm-ledger::hash=03f68c&locator=yaswap%40workspace%3A."
   dependencies:
     "@ethersproject/abstract-provider": 5.7.0
     "@ethersproject/abstract-signer": 5.7.0
@@ -3773,13 +3773,13 @@ __metadata:
     "@yaswap/hw-ledger": "workspace:*"
     "@yaswap/types": "workspace:*"
     "@yaswap/utils": "workspace:*"
-  checksum: 9bfe5b66540c1a0945df7441d3a26994ad0b5792d65f46ded05f8417e70bee6d7cb61bdaa82f62b386dfea60cf3cce1863a41e839d78ffcdeb0d7ea59c41aea6
+  checksum: a21d92e3af381532024ad1dee23c2cb2553f308f96529f1ca7b2a4e9243edc077028c7e3b4caa44719b86d36ce87439559bd3364280746f904c0fd002159bfd5
   languageName: node
   linkType: hard
 
 "@yaswap/evm@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/evm::locator=yaswap%40workspace%3A.":
   version: 2.1.0
-  resolution: "@yaswap/evm@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/evm#/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/evm::hash=3817c8&locator=yaswap%40workspace%3A."
+  resolution: "@yaswap/evm@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/evm#/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/evm::hash=9e4e2a&locator=yaswap%40workspace%3A."
   dependencies:
     "@eth-optimism/sdk": 1.1.5
     "@ethersproject/abi": 5.7.0
@@ -3799,13 +3799,13 @@ __metadata:
     "@yaswap/types": "workspace:*"
     "@yaswap/utils": "workspace:*"
     ethers: 5.7.0
-  checksum: cd53f692565d939d8b6f0659e046b87cc66b0affe6c3b187d2ef611b8ce9ef6a12a71fa5d2f4980c259f60389c7315e459da40cfc5880a3b042dc44b00a909ea
+  checksum: c3ed0827eb95397fdaad7006a317ebcec0042cc582c631c4fec94463b5d404cda8cdd49864006cc852ec738ddb55c67356e58a5e962e759f3f7a5b9594558a1d
   languageName: node
   linkType: hard
 
 "@yaswap/hw-ledger@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/hw-ledger::locator=yaswap%40workspace%3A.":
   version: 2.1.0
-  resolution: "@yaswap/hw-ledger@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/hw-ledger#/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/hw-ledger::hash=277629&locator=yaswap%40workspace%3A."
+  resolution: "@yaswap/hw-ledger@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/hw-ledger#/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/hw-ledger::hash=a3429e&locator=yaswap%40workspace%3A."
   dependencies:
     "@ledgerhq/hw-transport": 6.27.10
     "@ledgerhq/hw-transport-webhid": 6.27.10
@@ -3813,20 +3813,20 @@ __metadata:
     "@yaswap/logger": "workspace:*"
     "@yaswap/types": "workspace:*"
     "@yaswap/utils": "workspace:*"
-  checksum: 2da54791347f3964defd98a494f5fe78a0447e10656c8398f5d4d1c39cf1fb7587eabe21c3b3b0f13a0a58fe4b397c49c93e3ef11314a58fd751b36a8a5706e2
+  checksum: 4c96858b6387e5f6b8796a4e40de28d76574f6651e4057d9fd59a4bee6e627690425be18af9e0429d4ef887be5fe94af14f3fde59e68218278977f1be2fdbcef
   languageName: node
   linkType: hard
 
 "@yaswap/logger@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/logger::locator=yaswap%40workspace%3A.":
   version: 2.1.0
-  resolution: "@yaswap/logger@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/logger#/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/logger::hash=625b60&locator=yaswap%40workspace%3A."
-  checksum: daecd61fb9605002e09397982a83fc3de1d80b136d177e3a2656c0a77207f7916a0fe2d76d1866a5f73945656e792da1f6390252b979b8d584160248d02e5e6f
+  resolution: "@yaswap/logger@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/logger#/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/logger::hash=14878d&locator=yaswap%40workspace%3A."
+  checksum: 6a8ad55ceebe6fb31feb512cff109db455b01621687d1beec511fdf37e9c45af36136e490ac1a6cf61d206e73e49999319feb9ec8c77438bfe3a2b2cf40a93d1
   languageName: node
   linkType: hard
 
 "@yaswap/near@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/near::locator=yaswap%40workspace%3A.":
   version: 2.1.0
-  resolution: "@yaswap/near@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/near#/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/near::hash=0251a2&locator=yaswap%40workspace%3A."
+  resolution: "@yaswap/near@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/near#/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/near::hash=c1c7e9&locator=yaswap%40workspace%3A."
   dependencies:
     "@yaswap/client": "workspace:*"
     "@yaswap/errors": "workspace:*"
@@ -3835,13 +3835,13 @@ __metadata:
     bn.js: ^5.2.0
     near-api-js: ^0.44.2
     near-seed-phrase: ^0.2.0
-  checksum: 74612cf4e37c8df6262575b63c4af9f173b03b52b3dc24fda1cb2af2eff7ee8747ae92d32b10151fad9c2a511f6860b1a33c38f2979dc705df6479a4067c8fa5
+  checksum: 1f9f8117fc94855b104b8e323924a986a8f4df30c75bfcc8811944a6e89002c3a6bbc450b4c94403ca4949c8616efefbb824c34ca11c5cc40e29f16735077b1d
   languageName: node
   linkType: hard
 
 "@yaswap/solana@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/solana::locator=yaswap%40workspace%3A.":
   version: 2.1.0
-  resolution: "@yaswap/solana@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/solana#/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/solana::hash=50682b&locator=yaswap%40workspace%3A."
+  resolution: "@yaswap/solana@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/solana#/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/solana::hash=e3f9ed&locator=yaswap%40workspace%3A."
   dependencies:
     "@solana/spl-token": 0.2.0
     "@solana/spl-token-registry": 0.2.4574
@@ -3854,13 +3854,13 @@ __metadata:
     bip39: ^3.0.4
     ed25519-hd-key: ^1.2.0
     tweetnacl: ^1.0.3
-  checksum: 4f01ac59410b3f0d4a55c1a4992db21a39c2098a6509c6eebda89af55c61894fa2dc219aa90ca2f90a007bd8df029250c46c65c9fab6692991795096db297d92
+  checksum: 51d649624a524550796506a3286d89807dd3cf276fb846bbcc839c3861e0d800b2bd1fa254a782c118c7e06cdcbcdc99f31882593b8898bc19219f941e3522d9
   languageName: node
   linkType: hard
 
 "@yaswap/terra@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/terra::locator=yaswap%40workspace%3A.":
   version: 2.1.0
-  resolution: "@yaswap/terra@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/terra#/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/terra::hash=605110&locator=yaswap%40workspace%3A."
+  resolution: "@yaswap/terra@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/terra#/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/terra::hash=9d2bab&locator=yaswap%40workspace%3A."
   dependencies:
     "@terra-money/terra.js": 3.1.6
     "@types/luxon": ^2.0.9
@@ -3871,24 +3871,24 @@ __metadata:
     "@yaswap/utils": "workspace:*"
     lodash: 4.17.21
     luxon: ^2.3.1
-  checksum: 867adafc7a8423a13a6e6a620e78347d5c96db9e4abfdbcd4cb2681eb18244a8db099f9ca3d3d3913d041f96060156bf7a4e737525439ed217a10a73f1db05de
+  checksum: 1c7fd63d22e9cea462c725d94c7471fc2e8e713afc38372c2c31b38cf665d97ea4c52429bc377b65c505f987f9aa082d0d7a0a05c7d3972446df15f1cc924e41
   languageName: node
   linkType: hard
 
 "@yaswap/types@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/types::locator=yaswap%40workspace%3A.":
   version: 2.1.0
-  resolution: "@yaswap/types@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/types#/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/types::hash=e90b68&locator=yaswap%40workspace%3A."
+  resolution: "@yaswap/types@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/types#/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/types::hash=abcc28&locator=yaswap%40workspace%3A."
   dependencies:
     "@ethersproject/bignumber": 5.7.0
     "@yaswap/cryptoassets": 2.2.1
     bignumber.js: ^9.0.2
-  checksum: 006177cca38c3f085b2c6724764f2d829b0ed1d565a4d44688dd49fc3af2788bf0afed010f3cbc97735293197294c967626beb29af5342f536a040830e9c90e4
+  checksum: d8fd75cf1586ce83c49c541263a8764065a88f0583c767b436b0eda8aebbdd43d0c1886082fdce78cd9c3adfba2abb879fb2214326afb46525f737e7d85ecf48
   languageName: node
   linkType: hard
 
 "@yaswap/utils@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/utils::locator=yaswap%40workspace%3A.":
   version: 2.1.0
-  resolution: "@yaswap/utils@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/utils#/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/utils::hash=4194a5&locator=yaswap%40workspace%3A."
+  resolution: "@yaswap/utils@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/utils#/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/utils::hash=36119e&locator=yaswap%40workspace%3A."
   dependencies:
     "@ethersproject/sha2": 5.7.0
     "@yaswap/errors": "workspace:*"
@@ -3897,7 +3897,7 @@ __metadata:
     bs58: 5.0.0
     crypto-hashing: ^1.0.0
     setimmediate: ^1.0.5
-  checksum: 16928fdb2cf84324ea54cb409717298cb49533744acd8c8444adda449787af99a97f77c23a56da59ca722e22d8c647fc88eaae036bb079b96fa9ac72f947bcc7
+  checksum: 678890d86f2e046cb41f1231648a6cc4e64784b1dc513e7982e9957390315a12d1ffc07d9940f8bb29c4e3590349f7db19bcaf2e6eef8515fe09b6bec7e8d659
   languageName: node
   linkType: hard
 
@@ -3962,7 +3962,7 @@ __metadata:
 
 "@yaswap/yacoin@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/yacoin::locator=yaswap%40workspace%3A.":
   version: 2.1.0
-  resolution: "@yaswap/yacoin@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/yacoin#/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/yacoin::hash=6b2a5b&locator=yaswap%40workspace%3A."
+  resolution: "@yaswap/yacoin@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/yacoin#/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/yacoin::hash=ad4c5d&locator=yaswap%40workspace%3A."
   dependencies:
     "@types/bip32": ^2.0.0
     "@types/bip39": ^3.0.0
@@ -3973,28 +3973,28 @@ __metadata:
     "@yaswap/errors": "workspace:*"
     "@yaswap/types": "workspace:*"
     "@yaswap/utils": "workspace:*"
-    "@yaswap/yacoinjs-coinselect": "file:/home/chaunguyen/projects/yacoin/yaswap/yacoinjs-coinselect"
-    "@yaswap/yacoinjs-lib": "file:/home/chaunguyen/projects/yacoin/yaswap/yacoinjs-lib"
+    "@yaswap/yacoinjs-coinselect": ^1.0.1
+    "@yaswap/yacoinjs-lib": ^1.2.0
     bip174: ^2.0.1
     bip32: 2.0.6
     bip39: ^3.0.4
     bitcoinjs-message: 2.2.0
     lodash: 4.17.21
     memoizee: ^0.4.15
-  checksum: 0b9881baa75f75da20975968482d6993c327494588f796037b84873a0d85fa91d5c2c574707d5aad530a1bb3039cea962f1658ed804bc6c56b5d706f352c9d53
+  checksum: 691e48031a0220e4d33edcce40f5ec4312be93047bbd345e453f20cdafa4c7b4ad4f6ab5087f5fc15b616a35913665f78d15b41db5161258f913181c5cdd0b1a
   languageName: node
   linkType: hard
 
-"@yaswap/yacoinjs-coinselect@file:/home/chaunguyen/projects/yacoin/yaswap/yacoinjs-coinselect::locator=%40yaswap%2Fyacoin%40file%3A%2Fhome%2Fchaunguyen%2Fprojects%2Fyacoin%2Fyaswap%2Fchainabstractionlayer%2Fpackages%2Fyacoin%23%2Fhome%2Fchaunguyen%2Fprojects%2Fyacoin%2Fyaswap%2Fchainabstractionlayer%2Fpackages%2Fyacoin%3A%3Ahash%3D6b2a5b%26locator%3Dyaswap%2540workspace%253A.":
-  version: 1.0.0
-  resolution: "@yaswap/yacoinjs-coinselect@file:/home/chaunguyen/projects/yacoin/yaswap/yacoinjs-coinselect#/home/chaunguyen/projects/yacoin/yaswap/yacoinjs-coinselect::hash=8403af&locator=%40yaswap%2Fyacoin%40file%3A%2Fhome%2Fchaunguyen%2Fprojects%2Fyacoin%2Fyaswap%2Fchainabstractionlayer%2Fpackages%2Fyacoin%23%2Fhome%2Fchaunguyen%2Fprojects%2Fyacoin%2Fyaswap%2Fchainabstractionlayer%2Fpackages%2Fyacoin%3A%3Ahash%3D6b2a5b%26locator%3Dyaswap%2540workspace%253A."
-  checksum: a4cbe7763a7facc2dec17072a44fcd6f5153b5ee7caf439cd4c39c80205f8b90de38a3831827bdcdac2e505bfb2b06455989fa3c39411c9aa95c6c7ca04a164e
+"@yaswap/yacoinjs-coinselect@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@yaswap/yacoinjs-coinselect@npm:1.0.1"
+  checksum: 87f979d8d73c3a8b77027fef83c17e01e4641a24589f8f03823f342eb519b119e1866db0203f65df621c7887c8798acade1aca4c4d54795edabed121b6ab6262
   languageName: node
   linkType: hard
 
-"@yaswap/yacoinjs-lib@file:/home/chaunguyen/projects/yacoin/yaswap/yacoinjs-lib::locator=%40yaswap%2Fyacoin%40file%3A%2Fhome%2Fchaunguyen%2Fprojects%2Fyacoin%2Fyaswap%2Fchainabstractionlayer%2Fpackages%2Fyacoin%23%2Fhome%2Fchaunguyen%2Fprojects%2Fyacoin%2Fyaswap%2Fchainabstractionlayer%2Fpackages%2Fyacoin%3A%3Ahash%3D6b2a5b%26locator%3Dyaswap%2540workspace%253A.":
-  version: 1.1.0
-  resolution: "@yaswap/yacoinjs-lib@file:/home/chaunguyen/projects/yacoin/yaswap/yacoinjs-lib#/home/chaunguyen/projects/yacoin/yaswap/yacoinjs-lib::hash=fa7b1f&locator=%40yaswap%2Fyacoin%40file%3A%2Fhome%2Fchaunguyen%2Fprojects%2Fyacoin%2Fyaswap%2Fchainabstractionlayer%2Fpackages%2Fyacoin%23%2Fhome%2Fchaunguyen%2Fprojects%2Fyacoin%2Fyaswap%2Fchainabstractionlayer%2Fpackages%2Fyacoin%3A%3Ahash%3D6b2a5b%26locator%3Dyaswap%2540workspace%253A."
+"@yaswap/yacoinjs-lib@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "@yaswap/yacoinjs-lib@npm:1.2.0"
   dependencies:
     bech32: ^1.1.2
     bip174: ^2.0.1
@@ -4011,7 +4011,7 @@ __metadata:
     typeforce: ^1.11.3
     varuint-bitcoin: ^1.0.4
     wif: ^2.0.1
-  checksum: 4560ff5b50781606fb2da73424824ae3a30a4fed45e752bd0b2b5924aceab69ffd0314b9496a3b33c7824aeecc183cd5f0790d5aa7b75fcce671ba03df1f6c2c
+  checksum: 1eca32b24b17e79b16b280d412c37f8675ce45d169c0b051c4eefc1165194f09b73b22bdbcc5faa3bfe154a0d1f5d0cb6541f6215c1fe94e03f463433d912f6f
   languageName: node
   linkType: hard
 
