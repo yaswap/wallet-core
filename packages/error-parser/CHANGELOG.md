@@ -1,5 +1,13 @@
 # @yaswap/error-parser
 
+## 2.3.1
+
+### Patch Changes
+
+- Change yacoin explorer URL
+- Updated dependencies
+  - @yaswap/cryptoassets@2.3.1
+
 ## 2.3.0
 
 ### Minor Changes
