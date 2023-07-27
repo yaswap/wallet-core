@@ -32,6 +32,5 @@ export const addCustomToken = async (
 ) => {
   const { commit } = rootActionContext(context);
   const customToken = { symbol, name, contractAddress, decimals, chain: chain, totalSupply, reissuable, ipfsHash, tokenMetadata};
-  console.log('TACA ===> addCustomToken, customToken = ', customToken);
   commit.ADD_CUSTOM_TOKEN({ network, walletId, customToken });
 };

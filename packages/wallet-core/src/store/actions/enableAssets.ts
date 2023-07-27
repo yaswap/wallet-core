@@ -47,7 +47,6 @@ export const enableAssets = async (
     await Promise.all(accountsToCreate);
   }
 
-  console.log('TACA ===> [wallet-core] enableAssets, assets = ', assets)
   accounts.forEach(async (account) => {
     const accountId = account.id;
     const _assets = assets.filter((asset) => getters.cryptoassets[asset]?.chain === account.chain);

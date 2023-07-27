@@ -21,7 +21,6 @@ export const updateBalances = async (context: ActionContext, request: UpdateBala
   const { walletId, network } = request;
   const { state, commit, getters, dispatch } = rootActionContext(context);
   const accounts = state.accounts[walletId]?.[network];
-  console.log('TACA ===> [wallet-core] updateBalances, walletId = ', walletId, ', network = ', network, ', accounts = ', accounts)
   if (accounts) {
     const accountIds =
       request.accountIds ||
@@ -44,11 +43,10 @@ export const updateBalances = async (context: ActionContext, request: UpdateBala
 
         // skip all EVM chains, because they are handled in a different way (multicall for all accounts & assets)
         if (account && !evmAccounts[account.chain]) {
-          const { assets, chain, balances } = account;
+          const { assets, chain } = account;
 
           const client = getters.client({ network, walletId, chainId: chain, accountId: account.id });
 
-          console.log('TACA ===> [wallet-core] updateBalances, chain = ', chain, ', assets = ', assets, ', balances = ', balances)
           const addresses: Address[] = await client.wallet.getUsedAddresses();
           updateAccountAddresses(context, account, addresses, network, walletId);
 
@@ -71,13 +69,11 @@ export const updateBalances = async (context: ActionContext, request: UpdateBala
 
                 // Update token balance
                 const tokenBalances = await client.chain.getTokenBalance(addresses)
-                console.log('TACA ===> [wallet-core] updateBalances, chain = yacoin, get balance = ', balance, ', get tokenBalances = ', tokenBalances)
 
                 tokenBalances?.forEach(async ({ name, balance, totalSupply, units, reissuable, blockHash, ipfsHash }) => {
                   // Enable token in case this is the first time the wallet sees this token
                   if (!assets.includes(name)) {
                     const tokenMetadata = await getTokenMetadata(ipfsHash)
-                    console.log('TACA ===> [wallet-core] updateBalances, enable token = ', name, ', tokenMetadata = ', tokenMetadata)
                     await dispatch.addCustomToken({
                       network,
                       walletId,
@@ -98,7 +94,6 @@ export const updateBalances = async (context: ActionContext, request: UpdateBala
                       assets: [name]
                     });
                   } else {
-                    console.log('TACA ===> [wallet-core] updateBalances, update balance for token = ', name, ', new balance = ', balance)
                     commit.UPDATE_BALANCE({ network, accountId, walletId, asset: name, balance: balance.toString() });
                   }
                 });
@@ -112,7 +107,6 @@ export const updateBalances = async (context: ActionContext, request: UpdateBala
                   assetsChunks.map((chunk) => client.chain.getBalance(addresses, chunk))
                 );
 
-                console.log('TACA ===> [wallet-core] updateBalances, chain = ', chain, ', balances = ', balances, ', assetsChunks = ', assetsChunks)
                 // update each asset in state
                 assetsChunks.forEach((_assets, index) =>
                   _assets.forEach((asset, innerIndex) => {
@@ -245,8 +239,6 @@ const updateEVMBalances = async (
             .wallet.getUsedAddresses();
         })
       );
-
-      console.log('TACA ===> [wallet-core] updateEVMBalances, addressesForAllAccounts = ', addressesForAllAccounts)
 
       // update address for each account
       accounts.map((acc, index) => {

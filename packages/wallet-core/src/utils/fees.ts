@@ -81,7 +81,6 @@ function getSendFee(asset: Asset, feePrice: number, l1FeePrice?: number, network
       throw createInternalError(CUSTOM_ERRORS.NotFound.Chain.GasLimit(assetInfo.chain));
     }
     const fee = new BN(gasLimitL).times(feePriceInUnit(nativeAssetInfo.code, feePrice, network));
-    console.log('TACA ===> fees.ts, getSendFee, asset = ', asset, ', gasLimitL = ', gasLimitL, ', feePrice = ', feePrice, ', fee = ', fee)
     return unitToCurrency(nativeAssetInfo, fee);
   }
 }
@@ -174,7 +173,6 @@ async function getSendTxFees(accountId: AccountId, asset: Asset, amount?: BN, cu
     _suggestedGasFees.custom = { fee: customFee };
   }
 
-  console.log('TACA ===> fees.ts, getSendTxFees, asset = ', asset, ', assetChain = ', assetChain, ', customFee = ', customFee)
   if (assetChain === 'bitcoin') {
     //ChainId.Bitcoin
     return sendBitcoinTxFees(accountId, asset, _suggestedGasFees, amount);
@@ -199,7 +197,6 @@ function sendTxFeesInNativeAsset(asset: Asset, suggestedGasFees: FeeDetailsWithC
     const _fee: number = feePerUnit(fee.fee, assetChain as any);
     _sendFees[_speed] = _sendFees[_speed].plus(getSendFee(asset, _fee, fee.multilayerFee?.l1));
   }
-  console.log('TACA ===> fees.ts, sendTxFeesInNativeAsset, asset = ', asset, ', suggestedGasFees = ', suggestedGasFees, ', _sendFees = ', _sendFees)
   return _sendFees;
 }
 
@@ -254,7 +251,6 @@ async function sendYacoinTxFees(
   sendFees?: SendFees
 ) {
   const feeAsset = 'YAC'
-  console.log('TACA ===> fees.ts, sendYacoinTxFees, asset = ', asset, ', feeAsset = ', feeAsset);
   const isMax: boolean = amount === undefined; // checking if it is a max send
   const _sendFees = sendFees ?? newSendFees();
 
@@ -275,7 +271,6 @@ async function sendYacoinTxFees(
     const to = result.address;
 
     let _asset = assetsAdapter(asset)[0];
-    console.log('TACA ===> sendYacoinTxFees, _asset = ', _asset, ', !!_asset = ', !!_asset)
     if (_asset === undefined) {
       _asset = {
         name: asset,
@@ -287,7 +282,6 @@ async function sendYacoinTxFees(
     }
 
     const txs = feePerBytes.map((fee) => ({ asset: _asset, to, value, fee }));
-    console.log('TACA ===> sendYacoinTxFees, feePerBytes = ', feePerBytes, ', _asset = ', _asset, ', txs = ', txs)
     const totalFees = await client.wallet.getTotalFees(txs, isMax);
     for (const [speed, fee] of Object.entries(suggestedGasFees)) {
       const totalFee = unitToCurrency(cryptoassets[feeAsset], totalFees[fee.fee]);
@@ -342,7 +336,6 @@ async function estimateTransferNFT(
   const _sendFees = newSendFees();
 
   if (account.chain === 'yacoin') {
-    console.log('TACA ===> [wallet-core], fees.ts, estimateTransferNFT, calling sendYacoinTxFees')
     return sendYacoinTxFees(accountId, nft.token_id!, _suggestedGasFees, new BN(1));
   } else { // EVM Chains
     try {
@@ -359,7 +352,6 @@ async function estimateTransferNFT(
         _sendFees[_speed] = new BN(estimation).times(_fee).div(1e9);
       }
 
-      console.log('TACA ===> [wallet-core], fees.ts, estimateTransferNFT, estimation = ', estimation, ', _suggestedGasFees = ', _suggestedGasFees, ', _sendFees = ', _sendFees)
       return _sendFees;
     } catch (e) {
       // in case method is not implemented (like in Solana), return fee without estimations
@@ -369,7 +361,6 @@ async function estimateTransferNFT(
           _sendFees[_speed] = new BN(feePerUnit(fee.fee, account.chain as any));
         }
   
-        console.log('TACA ===> [wallet-core], fees.ts, estimateTransferNFT, cant get estimation', ', _suggestedGasFees = ', _suggestedGasFees, ', _sendFees = ', _sendFees)
         return _sendFees;
       }
       throw e;
