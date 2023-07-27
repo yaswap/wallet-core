@@ -3715,7 +3715,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yaswap/cryptoassets@2.2.1, @yaswap/cryptoassets@workspace:*, @yaswap/cryptoassets@workspace:packages/cryptoassets":
+"@yaswap/cryptoassets@npm:2.2.1":
+  version: 2.2.1
+  resolution: "@yaswap/cryptoassets@npm:2.2.1"
+  dependencies:
+    "@ethersproject/address": 5.7.0
+    "@types/bs58": 4.0.1
+    base58-js: ^1.0.0
+    bignumber.js: ^9.0.2
+    bitcoin-address-validation: 2.2.1
+    bs58: 5.0.0
+    ethereumjs-util: 7.1.5
+    lodash: 4.17.21
+    sha256-uint8array: ^0.10.3
+  checksum: d36cbe85fc5190c3584572ee1c1c9522a7c794c49812c92d37c9ac13dc3d56274d6e31c398cb2f59b1741578fee25682fcea05b0d1b159ffdbb56d7cc2b78fbc
+  languageName: node
+  linkType: hard
+
+"@yaswap/cryptoassets@workspace:*, @yaswap/cryptoassets@workspace:packages/cryptoassets":
   version: 0.0.0-use.local
   resolution: "@yaswap/cryptoassets@workspace:packages/cryptoassets"
   dependencies:
