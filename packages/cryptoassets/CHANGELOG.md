@@ -1,5 +1,11 @@
 # @yaswap/cryptoassets
 
+## 2.3.0
+
+### Minor Changes
+
+- Integrate YA-token/YA-NFT
+
 ## 2.2.1
 
 ### Patch Changes
