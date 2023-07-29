@@ -3968,7 +3968,9 @@ __metadata:
     human-standard-token-abi: ^2.0.0
     lodash: ^4.17.21
     moment: ^2.29.1
+    multiformats: ^9.7.1
     react: ^18.1.0
+    runes2: ^1.0.7
     socket.io-client: 4.6.1
     tslib: ^2.3.1
     urql: ^2.2.0
@@ -11092,6 +11094,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"multiformats@npm:^9.7.1":
+  version: 9.9.0
+  resolution: "multiformats@npm:9.9.0"
+  checksum: d3e8c1be400c09a014f557ea02251a2710dbc9fca5aa32cc702ff29f636c5471e17979f30bdcb0a9cbb556f162a8591dc2e1219c24fc21394a56115b820bb84e
+  languageName: node
+  linkType: hard
+
 "multihashes@npm:^0.4.15, multihashes@npm:~0.4.15":
   version: 0.4.21
   resolution: "multihashes@npm:0.4.21"
@@ -12793,6 +12802,13 @@ __metadata:
   dependencies:
     queue-microtask: ^1.2.2
   checksum: cb4f97ad25a75ebc11a8ef4e33bb962f8af8516bb2001082ceabd8902e15b98f4b84b4f8a9b222e5d57fc3bd1379c483886ed4619367a7680dad65316993021d
+  languageName: node
+  linkType: hard
+
+"runes2@npm:^1.0.7":
+  version: 1.1.2
+  resolution: "runes2@npm:1.1.2"
+  checksum: e65f49fd0352e32c2f4233c6d69692084e52aab66823b3728b1ec65edc1b5b30bd6dd5b2c0d1c3b93c0c43dd5f185306cb16171e774446be59b4182ee620c825
   languageName: node
   linkType: hard
 
