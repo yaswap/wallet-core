@@ -74,6 +74,9 @@ export const updateBalances = async (context: ActionContext, request: UpdateBala
                   // Enable token in case this is the first time the wallet sees this token
                   if (!assets.includes(name)) {
                     const tokenMetadata = await getTokenMetadata(ipfsHash)
+                    if (name.endsWith('!')) {
+                      tokenMetadata.description = 'This is the owner token of ' + name.slice(0, -1)
+                    }
                     await dispatch.addCustomToken({
                       network,
                       walletId,
