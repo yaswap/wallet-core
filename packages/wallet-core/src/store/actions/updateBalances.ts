@@ -69,37 +69,41 @@ export const updateBalances = async (context: ActionContext, request: UpdateBala
 
                 // Update token balance
                 const tokenBalances = await client.chain.getTokenBalance(addresses)
+                console.log('TACA ===> updateBalances.ts, tokenBalances = ', tokenBalances)
+                if (tokenBalances) {
+                  const results = tokenBalances.map(async ({ name, balance, totalSupply, units, reissuable, blockHash, ipfsHash }) => {
+                    // Enable token in case this is the first time the wallet sees this token
+                    if (!assets.includes(name)) {
+                      const tokenMetadata = await getTokenMetadata(ipfsHash)
+                      if (name.endsWith('!')) {
+                        tokenMetadata.description = 'This is the owner token of ' + name.slice(0, -1)
+                      }
+                      await dispatch.addCustomToken({
+                        network,
+                        walletId,
+                        chain,
+                        contractAddress: blockHash,
+                        name,
+                        symbol: name,
+                        decimals: units,
+                        totalSupply,
+                        reissuable,
+                        ipfsHash,
+                        tokenMetadata
+                      })
 
-                tokenBalances?.forEach(async ({ name, balance, totalSupply, units, reissuable, blockHash, ipfsHash }) => {
-                  // Enable token in case this is the first time the wallet sees this token
-                  if (!assets.includes(name)) {
-                    const tokenMetadata = await getTokenMetadata(ipfsHash)
-                    if (name.endsWith('!')) {
-                      tokenMetadata.description = 'This is the owner token of ' + name.slice(0, -1)
+                      await dispatch.enableAssets({
+                        network,
+                        walletId,
+                        assets: [name]
+                      });
+                    } else {
+                      commit.UPDATE_BALANCE({ network, accountId, walletId, asset: name, balance: balance.toString() });
                     }
-                    await dispatch.addCustomToken({
-                      network,
-                      walletId,
-                      chain,
-                      contractAddress: blockHash,
-                      name,
-                      symbol: name,
-                      decimals: units,
-                      totalSupply,
-                      reissuable,
-                      ipfsHash,
-                      tokenMetadata
-                    })
-
-                    await dispatch.enableAssets({
-                      network,
-                      walletId,
-                      assets: [name]
-                    });
-                  } else {
-                    commit.UPDATE_BALANCE({ network, accountId, walletId, asset: name, balance: balance.toString() });
-                  }
-                });
+                    return
+                  });
+                  await Promise.all(results)
+                }
               } else {
                 const chainifyAssets = assetsAdapter(assets);
                 // split into chunks of 25 to avoid gas limitations of static calls
