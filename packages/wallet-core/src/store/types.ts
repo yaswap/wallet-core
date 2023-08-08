@@ -127,6 +127,7 @@ export enum TransactionType {
   Send = 'SEND',
   Swap = 'SWAP',
   NFT = 'NFT',
+  Create = 'CREATE',
 }
 
 export enum SwapProviderType {
@@ -217,7 +218,22 @@ export interface SwapHistoryItem extends BaseHistoryItem {
   swapProviderError?: SwapProviderError;
 }
 
-export type HistoryItem = NFTSendHistoryItem | SendHistoryItem | SwapHistoryItem;
+export interface CreateTokenHistoryItem extends BaseHistoryItem {
+  type: TransactionType.Create;
+  accountId: AccountId;
+  status: SendStatus;
+  toAddress: string;
+  tx: Transaction;
+  txHash: string;
+  tokenType: string;
+  tokenName: string;
+  tokenAmount: number;
+  decimals: number;
+  reissuable: boolean;
+  ipfsHash?: string;
+}
+
+export type HistoryItem = NFTSendHistoryItem | SendHistoryItem | SwapHistoryItem | CreateTokenHistoryItem;
 
 export enum ExperimentType {
   ManageAccounts = 'manageAccounts',

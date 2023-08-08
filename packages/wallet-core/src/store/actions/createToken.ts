@@ -5,7 +5,7 @@ import BN, { BigNumber } from 'bignumber.js';
 import { v4 as uuidv4 } from 'uuid';
 import { ActionContext, rootActionContext } from '..';
 import { createHistoryNotification } from '../broker/notification';
-import { AccountId, Asset, FeeLabel, Network, SendHistoryItem, SendStatus, TransactionType, WalletId } from '../types';
+import { AccountId, Asset, FeeLabel, Network, CreateTokenHistoryItem, SendStatus, TransactionType, WalletId } from '../types';
 
 export const createToken = async (
   context: ActionContext,
@@ -34,7 +34,7 @@ export const createToken = async (
     reissuable: boolean;
     ipfsHash: string;
   }
-): Promise<SendHistoryItem> => {
+): Promise<CreateTokenHistoryItem> => {
   const { dispatch, commit, getters } = rootActionContext(context);
   const chainId = getters.cryptoassets[asset].chain;
   const client = getters.client({ network, walletId, chainId, accountId });
@@ -60,28 +60,59 @@ export const createToken = async (
     ipfsHash,
   });
 
-  const transaction: SendHistoryItem = {
+  // const transaction: SendHistoryItem = {
+  //   id: uuidv4(),
+  //   type: TransactionType.Send,
+  //   network,
+  //   walletId,
+  //   to: asset,
+  //   from: asset,
+  //   toAddress: to.toString(),
+  //   amount: new BN(tokenAmount).toFixed(),
+  //   fee,
+  //   // @ts-ignore TODO: support token creation for other chains
+  //   tx,
+  //   // @ts-ignore TODO: support token creation for other chains
+  //   txHash: tx.hash,
+  //   startTime: Date.now(),
+  //   status: SendStatus.WAITING_FOR_CONFIRMATIONS,
+  //   accountId,
+  //   feeLabel: FeeLabel.Average,
+  //   fiatRate: 0,
+  //   tokenType,
+  //   tokenName,
+  //   tokenAmount: value.toNumber(),
+  //   decimals,
+  //   reissuable,
+  //   ipfsHash,
+  // };
+
+  const transaction: CreateTokenHistoryItem = {
     id: uuidv4(),
-    type: TransactionType.Send,
+    type: TransactionType.Create,
     network,
     walletId,
-    to: asset,
-    from: asset,
-    toAddress: to.toString(),
-    amount: new BN(tokenAmount).toFixed(),
+    accountId,
     fee,
+    feeLabel: FeeLabel.Average,
+    startTime: Date.now(),
+    status: SendStatus.WAITING_FOR_CONFIRMATIONS,
+    from: asset,
+    to: tokenName,
+    toAddress: to.toString(),
     // @ts-ignore TODO: support token creation for other chains
     tx,
     // @ts-ignore TODO: support token creation for other chains
     txHash: tx.hash,
-    startTime: Date.now(),
-    status: SendStatus.WAITING_FOR_CONFIRMATIONS,
-    accountId,
-    feeLable: FeeLabel.Average,
-    fiatRate: 0,
+    tokenType,
+    tokenName,
+    tokenAmount,
+    decimals,
+    reissuable,
+    ipfsHash,
   };
 
-  commit.NEW_TRASACTION({ network, walletId, transaction });
+  commit.CREATE_TOKEN_TRANSACTION({ network, walletId, transaction });
 
   dispatch.performNextAction({ network, walletId, id: transaction.id });
 

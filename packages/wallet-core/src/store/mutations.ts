@@ -25,6 +25,7 @@ import {
   RootState,
   SendHistoryItem,
   SwapHistoryItem,
+  CreateTokenHistoryItem,
   Wallet,
   WalletId,
 } from './types';
@@ -133,6 +134,14 @@ export default {
   NEW_NFT_TRASACTION(
     state: RootState,
     { network, walletId, transaction }: { network: Network; walletId: WalletId; transaction: NFTSendHistoryItem }
+  ) {
+    ensureNetworkWalletTree(state.history, network, walletId, []);
+
+    state.history[network]![walletId].push(transaction);
+  },
+  CREATE_TOKEN_TRANSACTION(
+    state: RootState,
+    { network, walletId, transaction }: { network: Network; walletId: WalletId; transaction: CreateTokenHistoryItem }
   ) {
     ensureNetworkWalletTree(state.history, network, walletId, []);
 

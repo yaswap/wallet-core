@@ -5,6 +5,7 @@ import { createHistoryNotification } from '../../broker/notification';
 import { HistoryItem, Network, TransactionType, WalletId } from '../../types';
 import { performNextTransactionAction } from './send';
 import { performNextNFTTransactionAction } from './sendNFT';
+import { performNextCreateTokenTransactionAction } from './createToken';
 
 export const performNextAction = async (
   context: ActionContext,
@@ -41,9 +42,17 @@ export const performNextAction = async (
         transaction: item,
       });
     }
+    if (item.type === TransactionType.Create) {
+      updates = await performNextCreateTokenTransactionAction(context, {
+        network,
+        walletId,
+        transaction: item,
+      });
+    }
   } catch (e) {
     updates = { error: errorToYaswapErrorString(e) };
   }
+  console.log('TACA ===> [wallet-core], performNextAction, item = ', item, ', updates = ', updates);
   if (updates) {
     if (!updates.error) {
       // if no error accured overwrite previous errors in history

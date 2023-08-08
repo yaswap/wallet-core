@@ -25,6 +25,7 @@ async function waitForConfirmations(
   const client = getters.client({ network, walletId, chainId: chain, accountId });
   try {
     const tx = await client.chain.getTransactionByHash(transaction.txHash);
+    console.log('TACA ===> [wallet-core] send.ts, waitForConfirmations, tx = ', tx);
     if (tx && tx.confirmations && tx.confirmations > 0) {
       dispatch.updateBalances({
         network,
