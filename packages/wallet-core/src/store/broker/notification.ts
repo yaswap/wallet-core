@@ -3,7 +3,7 @@ import { getSwapProvider } from '../../factory/swap';
 import { Notification } from '../../types';
 import { prettyBalance } from '../../utils/coinFormatter';
 import { walletOptionsStore } from '../../walletOptions';
-import { HistoryItem, NFTSendHistoryItem, SendHistoryItem, SwapHistoryItem } from '../types';
+import { HistoryItem, NFTSendHistoryItem, SendHistoryItem, SwapHistoryItem, CreateTokenHistoryItem } from '../types';
 
 const SEND_STATUS_MAP = {
   WAITING_FOR_CONFIRMATIONS(item: SendHistoryItem) {
@@ -49,6 +49,27 @@ const NFT_SEND_STATUS_MAP = {
   },
 };
 
+const CREATE_TOKEN_STATUS_MAP = {
+  WAITING_FOR_CONFIRMATIONS(item: CreateTokenHistoryItem) {
+    return {
+      title: `Create ${item.tokenName} Transaction`,
+      message: `Creating ${item.tokenAmount} ${item.tokenName}`,
+    };
+  },
+  FAILED(item: CreateTokenHistoryItem) {
+    return {
+      title: `Create ${item.from} Transaction Failed`,
+      message: `Failed to create ${item.tokenAmount} ${item.tokenName}`,
+    };
+  },
+  SUCCESS(item: CreateTokenHistoryItem) {
+    return {
+      title: `Create ${item.from} Transaction Confirmed`,
+      message: `Created ${item.tokenAmount} ${item.tokenName} successfully`,
+    };
+  },
+};
+
 export const createNotification = async (config: Notification) =>
   walletOptionsStore.walletOptions.createNotification(config);
 
@@ -84,6 +105,15 @@ const createSendNFTNotification = (item: NFTSendHistoryItem) => {
   });
 };
 
+const createCreateTokenNotification = (item: CreateTokenHistoryItem) => {
+  if (!(item.status in CREATE_TOKEN_STATUS_MAP)) return;
+  const notification = CREATE_TOKEN_STATUS_MAP[item.status](item);
+
+  return createNotification({
+    ...notification,
+  });
+};
+
 export const createHistoryNotification = (item: HistoryItem) => {
   if (item.type === 'SEND') {
     return createSendNotification(item);
@@ -91,5 +121,7 @@ export const createHistoryNotification = (item: HistoryItem) => {
     return createSwapNotification(item);
   } else if (item.type === 'NFT') {
     return createSendNFTNotification(item);
+  } else if (item.type === 'CREATE') {
+    return createCreateTokenNotification(item);
   }
 };
