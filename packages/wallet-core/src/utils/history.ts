@@ -31,6 +31,9 @@ export function getStatusLabel(item: HistoryItem) {
         .replace('{bridgeAsset}', item.bridgeAsset || '') || ''
     );
   }
+  if (item.type === TransactionType.Create) {
+    return SEND_STATUS_LABEL_MAP[item.status] || '';
+  }
 }
 
 export function getStep(item: HistoryItem) {
@@ -45,7 +48,9 @@ export function getStep(item: HistoryItem) {
     const swapProvider = getSwapProvider(item.network, item.provider);
     return swapProvider.statuses[item.status].step;
   }
-
+  if (itemType === TransactionType.Create) {
+    return SEND_STATUS_STEP_MAP[item.status];
+  }
   throw createInternalError(CUSTOM_ERRORS.Invalid.TransactionType(itemType));
 }
 
@@ -65,6 +70,10 @@ export const ACTIVITY_FILTER_TYPES = {
   RECEIVE: {
     label: 'Receive',
     icon: 'receive',
+  },
+  CREATE: {
+    label: 'Create',
+    icon: 'create',
   },
 };
 
@@ -116,7 +125,7 @@ export const applyActivityFilters = (
         return statuses.includes(swapProvider.statuses[i.status].filterStatus);
       }
 
-      if (i.type === 'SEND') {
+      if (i.type === 'SEND' || i.type === 'CREATE') {
         return statuses.includes(SEND_STATUS_FILTER_MAP[i.status]);
       }
 

@@ -173,6 +173,7 @@ export default {
     const { state } = rootGetterContext(context);
 
     return (asset: AssetType): FeeDetails | undefined => {
+      console.log('TACA ===> suggestedFeePrices, state.fees = ', state.fees)
       const assetFees = state.fees?.[state.activeNetwork]?.[state.activeWalletId]?.[asset];
 
       if (cryptoassets[asset]?.chain !== ChainId.Polygon) {
