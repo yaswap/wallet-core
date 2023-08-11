@@ -296,3 +296,15 @@ export const getNftLink = (asset: Asset, network: Network) => {
 export const openseaLink = (network: Network) => {
   return `https://${network === 'testnet' ? 'testnets.' : ''}opensea.io/`;
 };
+
+export const timelockFeeDuration = () => {
+  return YacoinUtils.timelockFeeDuration()
+}
+
+export const timelockFeeAmountInSatoshis = () => {
+  return YacoinUtils.timelockFeeAmountInSatoshis()
+}
+
+export const timelockFeeAmount = () => {
+  return YacoinUtils.timelockFeeAmount()
+}
