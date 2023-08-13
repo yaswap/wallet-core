@@ -3702,19 +3702,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yaswap/client@npm:2.2.0":
-  version: 2.2.0
-  resolution: "@yaswap/client@npm:2.2.0"
-  dependencies:
-    "@yaswap/errors": 2.2.0
-    "@yaswap/logger": 2.2.0
-    "@yaswap/types": 2.2.0
-    "@yaswap/utils": 2.2.0
-    axios: ^0.25.0
-  checksum: d6dcdcf32e6c7051c1ca73dbcab680151d8b47862b772fe282f6c9fd5c7324576c832190232dc7f8806a1a0bccb68e9fd1b1264c87e68aa963447e96ca4870d1
-  languageName: node
-  linkType: hard
-
 "@yaswap/client@npm:2.3.0":
   version: 2.3.0
   resolution: "@yaswap/client@npm:2.3.0"
@@ -3766,22 +3753,13 @@ __metadata:
   resolution: "@yaswap/error-parser@workspace:packages/error-parser"
   dependencies:
     "@types/randombytes": ^2.0.0
-    "@yaswap/client": 2.2.0
+    "@yaswap/client": 2.3.0
     "@yaswap/cryptoassets": "workspace:*"
-    "@yaswap/errors": 2.2.0
+    "@yaswap/errors": 2.3.0
     randexp: ^0.5.3
     randombytes: ^2.1.0
   languageName: unknown
   linkType: soft
-
-"@yaswap/errors@npm:2.2.0":
-  version: 2.2.0
-  resolution: "@yaswap/errors@npm:2.2.0"
-  dependencies:
-    standard-error: ^1.1.0
-  checksum: 4c0aa6db5bf77c28682d69d7a2ad45942879f81ddb2164081152322355569c4152ba22ebc5c555c1a41cc350ac00e6cef78a458081d8f95b913ed729fc302060
-  languageName: node
-  linkType: hard
 
 "@yaswap/errors@npm:2.3.0":
   version: 2.3.0
@@ -3856,13 +3834,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yaswap/logger@npm:2.2.0":
-  version: 2.2.0
-  resolution: "@yaswap/logger@npm:2.2.0"
-  checksum: c57431e7fbd6b8189a3e415739c0ebbaf4a559fb8b27486b43cb5a7d05a438f12cb5a5dcbb30a96c2fb57318c332c88a17cbe705afd437dacdaa900caa923f86
-  languageName: node
-  linkType: hard
-
 "@yaswap/logger@npm:2.3.0":
   version: 2.3.0
   resolution: "@yaswap/logger@npm:2.3.0"
@@ -3921,17 +3892,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yaswap/types@npm:2.2.0":
-  version: 2.2.0
-  resolution: "@yaswap/types@npm:2.2.0"
-  dependencies:
-    "@ethersproject/bignumber": 5.7.0
-    "@yaswap/cryptoassets": 2.2.1
-    bignumber.js: ^9.0.2
-  checksum: 55a17d539a64fe7a4112e37ea185b1b963313dc77960014fbd9e0ea90516c0d4ba34e93be84fd1ce9d3e3dc8048a25ee28ca74961d58ada30c3541905ec0d5e8
-  languageName: node
-  linkType: hard
-
 "@yaswap/types@npm:2.3.0":
   version: 2.3.0
   resolution: "@yaswap/types@npm:2.3.0"
@@ -3940,21 +3900,6 @@ __metadata:
     "@yaswap/cryptoassets": 2.2.1
     bignumber.js: ^9.0.2
   checksum: c763a899ff53cba84698fc0f97beb47c8f0a8204555319c015ba7c60c6e270f2f58ffbcd9ff622742af4a4795f1b399fc7069fe72a620ca24c2c2f846282d1ff
-  languageName: node
-  linkType: hard
-
-"@yaswap/utils@npm:2.2.0":
-  version: 2.2.0
-  resolution: "@yaswap/utils@npm:2.2.0"
-  dependencies:
-    "@ethersproject/sha2": 5.7.0
-    "@yaswap/errors": 2.2.0
-    "@yaswap/types": 2.2.0
-    bech32: ^2.0.0
-    bs58: 5.0.0
-    crypto-hashing: ^1.0.0
-    setimmediate: ^1.0.5
-  checksum: 00cd53b99d00c2a1adde52642a7a0170ab0212f5b3272e6b621b47fe807e35b3cf7ceab375beb00e6aeef86ff2460a1548777da3d057f73a4722285316f57e10
   languageName: node
   linkType: hard
 
