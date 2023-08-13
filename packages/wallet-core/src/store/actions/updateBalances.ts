@@ -69,13 +69,10 @@ export const updateBalances = async (context: ActionContext, request: UpdateBala
 
                 // Update token balance
                 const tokenBalances = await client.chain.getTokenBalance(addresses)
-                console.log('TACA ===> updateBalances.ts, tokenBalances = ', tokenBalances)
-                console.log('TACA ===> updateBalances.ts, assets = ', assets)
                 let tokenNameArr: string[] = [];
                 if (tokenBalances) {
                   let results = tokenBalances.map(async ({ name, balance, totalSupply, units, reissuable, blockHash, ipfsHash }) => {
                     // Enable token in case this is the first time the wallet sees this token
-                    console.log('TACA ===> updateBalances.ts, name = ', name)
                     tokenNameArr.push(name)
                     if (!assets.includes(name)) {
                       const tokenMetadata = await getTokenMetadata(ipfsHash)
@@ -110,7 +107,6 @@ export const updateBalances = async (context: ActionContext, request: UpdateBala
 
                   // Remove token with balance = 0
                   const removedToken = assets.filter(token => token !== 'YAC' && !tokenNameArr.includes(token));
-                  console.log('TACA ===> updateBalances.ts, removedToken = ', removedToken)
                   if (removedToken) {
                     results = removedToken.map(async (token) => {
                       await dispatch.disableAssets({
