@@ -1,5 +1,17 @@
 # @yaswap/wallet-core
 
+## 2.4.0
+
+### Minor Changes
+
+- Support to create YA-Token/YA-NFT
+
+### Patch Changes
+
+- Updated dependencies
+  - @yaswap/cryptoassets@2.4.0
+  - @yaswap/error-parser@2.4.0
+
 ## 2.3.2
 
 ### Patch Changes
