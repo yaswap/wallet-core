@@ -113,12 +113,12 @@ const config: WalletCoreConfig = {
   infuraApiKey: 'da99ebc8c0964bb8bb757b6f8cc40f1f',
   yacEsploraApis: {
     esploraUrl: {
-      testnet: 'http://192.168.0.102:3001/api',
-      mainnet: 'http://192.168.0.102:3001/api'
+      testnet: 'http://192.168.0.101:3001/api',
+      mainnet: 'http://192.168.0.101:3001/api'
     },
     esploraSwapUrl: {
-      testnet: 'http://192.168.0.102:3001',
-      mainnet: 'http://192.168.0.102:3001'
+      testnet: 'http://192.168.0.101:3001',
+      mainnet: 'http://192.168.0.101:3001'
     }
   },
   btcEsploraApis: {

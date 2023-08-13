@@ -1,5 +1,23 @@
 # @yaswap/wallet-core
 
+## 2.4.2
+
+### Patch Changes
+
+- Change YAC explorer URL
+- Updated dependencies
+  - @yaswap/cryptoassets@2.4.2
+  - @yaswap/error-parser@2.4.2
+
+## 2.4.1
+
+### Patch Changes
+
+- Change YAC explorer URL
+- Updated dependencies
+  - @yaswap/cryptoassets@2.4.1
+  - @yaswap/error-parser@2.4.1
+
 ## 2.4.0
 
 ### Minor Changes
