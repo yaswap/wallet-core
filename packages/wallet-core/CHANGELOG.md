@@ -1,5 +1,14 @@
 # @yaswap/wallet-core
 
+## 2.4.4
+
+### Patch Changes
+
+- Use latest chainify packages
+- Updated dependencies
+  - @yaswap/cryptoassets@2.4.4
+  - @yaswap/error-parser@2.4.4
+
 ## 2.4.3
 
 ### Patch Changes

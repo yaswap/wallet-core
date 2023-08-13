@@ -1,5 +1,11 @@
 # @yaswap/cryptoassets
 
+## 2.4.4
+
+### Patch Changes
+
+- Use latest chainify packages
+
 ## 2.4.3
 
 ### Patch Changes
