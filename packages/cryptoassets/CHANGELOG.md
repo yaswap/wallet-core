@@ -1,5 +1,11 @@
 # @yaswap/cryptoassets
 
+## 2.4.3
+
+### Patch Changes
+
+- Remove debug lo
+
 ## 2.4.2
 
 ### Patch Changes

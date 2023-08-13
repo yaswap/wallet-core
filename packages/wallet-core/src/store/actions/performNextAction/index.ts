@@ -52,7 +52,6 @@ export const performNextAction = async (
   } catch (e) {
     updates = { error: errorToYaswapErrorString(e) };
   }
-  console.log('TACA ===> [wallet-core], performNextAction, item = ', item, ', updates = ', updates);
   if (updates) {
     if (!updates.error) {
       // if no error accured overwrite previous errors in history

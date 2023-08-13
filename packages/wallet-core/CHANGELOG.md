@@ -1,5 +1,14 @@
 # @yaswap/wallet-core
 
+## 2.4.3
+
+### Patch Changes
+
+- Remove debug lo
+- Updated dependencies
+  - @yaswap/cryptoassets@2.4.3
+  - @yaswap/error-parser@2.4.3
+
 ## 2.4.2
 
 ### Patch Changes

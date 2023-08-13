@@ -10,7 +10,6 @@ export const updateFees = async (context: ActionContext, { asset }: { asset: Ass
   const chainId = getters.cryptoassets[asset].chain;
   const fees = await getters.client({ network, walletId, chainId }).chain.getFees();
 
-  console.log('TACA ===> [wallet-core] updateFees, fees = ', fees)
   commit.UPDATE_FEES({ network, walletId, asset, fees });
 
   return fees;
