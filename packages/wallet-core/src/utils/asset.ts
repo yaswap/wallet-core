@@ -144,6 +144,19 @@ export const isAvailableTokenName = async (tokenName: string, network: Network) 
   return true
 };
 
+export async function isImageURL(imageURL: string) {
+  try {
+    const headers = await HttpClient.head(imageURL)
+    if (headers['content-type']?.startsWith('image')) {
+      return true
+    }
+  } catch (err) {
+    // Do nothing
+  };
+
+  return false
+}
+
 export const getAssetColorStyle = (asset: Asset) => {
   const assetData = cryptoassets[asset];
   if (assetData && assetData.color) {
