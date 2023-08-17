@@ -1,5 +1,11 @@
 # @yaswap/cryptoassets
 
+## 2.4.5
+
+### Patch Changes
+
+- Add function to verify image URL
+
 ## 2.4.4
 
 ### Patch Changes

@@ -1,5 +1,14 @@
 # @yaswap/wallet-core
 
+## 2.4.5
+
+### Patch Changes
+
+- Add function to verify image URL
+- Updated dependencies
+  - @yaswap/cryptoassets@2.4.5
+  - @yaswap/error-parser@2.4.5
+
 ## 2.4.4
 
 ### Patch Changes
