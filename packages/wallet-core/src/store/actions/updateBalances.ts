@@ -6,7 +6,7 @@ import Bluebird from 'bluebird';
 import { chunk } from 'lodash';
 import { ActionContext, rootActionContext } from '..';
 import { assetsAdapter } from '../../utils/chainify';
-import { getTokenMetadata } from '../../utils/asset';
+import { getTokenMetadata, getTokenMetadataErr } from '../../utils/asset';
 import { Account, AccountId, Network, WalletId } from '../types';
 
 type UpdateBalanceRequestType = {
@@ -99,6 +99,37 @@ export const updateBalances = async (context: ActionContext, request: UpdateBala
                         assets: [name]
                       });
                     } else {
+                      let tokenMetadata = getters.tokenMetadata(network, walletId, name);
+
+                      // Retry getting token metadata from ipfs
+                      if (ipfsHash && tokenMetadata && tokenMetadata.description === getTokenMetadataErr) {
+                        console.log('Retry getting token metadata from ipfs for token ', name)
+                        tokenMetadata = await getTokenMetadata(ipfsHash)
+                        if (tokenMetadata && tokenMetadata.description !== getTokenMetadataErr) {
+                          console.log('Update token metadata for token ', name)
+                          // Getting successfully, update new token metadata for token
+                          await dispatch.removeCustomToken({
+                            network,
+                            walletId,
+                            symbol: name,
+                          })
+                          await dispatch.addCustomToken({
+                            network,
+                            walletId,
+                            chain,
+                            contractAddress: blockHash,
+                            name,
+                            symbol: name,
+                            decimals: units,
+                            totalSupply,
+                            reissuable,
+                            ipfsHash,
+                            tokenMetadata
+                          })
+                        }
+                      }
+
+                      // Update balance
                       commit.UPDATE_BALANCE({ network, accountId, walletId, asset: name, balance: balance.toString() });
                     }
                     return

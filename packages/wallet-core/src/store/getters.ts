@@ -25,6 +25,7 @@ import {
   NFT,
   NFTCollections,
   NFTWithAccount,
+  TokenMetadata,
   WalletId,
 } from './types';
 import { clientCache, orderAssets, orderChains } from './utils';
@@ -459,5 +460,16 @@ export default {
         const asset = getNativeAssetCode(activeNetwork, c as ChainId);
         return { chain: c, asset, network };
       });
+  },
+  tokenMetadata(...context: GetterContext) {
+    const { state } = rootGetterContext(context);
+    return (network: Network, walletId: WalletId, tokenName: string): TokenMetadata | undefined => {
+      const customToken = state.customTokens[network]![walletId].find((token) => token.name === tokenName);
+      console.log('TACA ===> getters.ts, tokenName = ', tokenName, ', customToken = ', customToken)
+      if (customToken) {
+        return customToken.tokenMetadata
+      }
+      return undefined;
+    };
   },
 };

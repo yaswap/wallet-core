@@ -18,6 +18,8 @@ function getChainExplorer(chainId: ChainId, network: Network) {
   }
   return chainExplorer;
 }
+const getTokenMetadataErr = YacoinUtils.getTokenMetadataErr
+export { getTokenMetadataErr }
 
 export const isERC20 = (asset: Asset) => {
   return cryptoassets[asset]?.type === AssetTypes.erc20;
