@@ -32,11 +32,9 @@ export const updateNFTs = async (
       }
 
       const nftAssetsStoredInState = account.nfts || [];
-      console.log('TACA ===> updateNFTs.ts, account.chain = ', account.chain)
       let nfts: NFT[] = []
       try {
         const nftAssetsFetched = await client.nft.fetch();
-        console.log('TACA ===> updateNFTs.ts, account.chain = ', account.chain, ', nftAssetsFetched = ', nftAssetsFetched)
         nfts = nftAssetsFetched.map((nftAsset: NFT) => {
           const nftAssetStoredInState = nftAssetsStoredInState.find((asset: NFT) => asset.token_id === nftAsset.token_id);
           const starred = nftAssetStoredInState ? nftAssetStoredInState.starred : false;
@@ -55,7 +53,7 @@ export const updateNFTs = async (
   
         commit.UPDATE_NFTS({ network, walletId, accountId: account.id, nfts });
       } catch (err) {
-        console.log('TACA ===> updateNFTs.ts, account.chain = ', account.chain, ', err = ', err)
+        console.warn('Failed to update NFTs, err = ', err)
       }
 
       return nfts;

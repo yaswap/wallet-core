@@ -465,7 +465,6 @@ export default {
     const { state } = rootGetterContext(context);
     return (network: Network, walletId: WalletId, tokenName: string): TokenMetadata | undefined => {
       const customToken = state.customTokens[network]![walletId].find((token) => token.name === tokenName);
-      console.log('TACA ===> getters.ts, tokenName = ', tokenName, ', customToken = ', customToken)
       if (customToken) {
         return customToken.tokenMetadata
       }
