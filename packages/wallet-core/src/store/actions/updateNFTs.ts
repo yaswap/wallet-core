@@ -32,24 +32,31 @@ export const updateNFTs = async (
       }
 
       const nftAssetsStoredInState = account.nfts || [];
-      const nftAssetsFetched = await client.nft.fetch();
-      const nfts = nftAssetsFetched.map((nftAsset: NFT) => {
-        const nftAssetStoredInState = nftAssetsStoredInState.find((asset: NFT) => asset.token_id === nftAsset.token_id);
-        const starred = nftAssetStoredInState ? nftAssetStoredInState.starred : false;
-        if (!nftAsset.token_id && nftAsset.name) {
-          const hash = nftAsset.name.match(/#(\d+)/);
-          if (hash) {
-            nftAsset.token_id = hash[1];
+      console.log('TACA ===> updateNFTs.ts, account.chain = ', account.chain)
+      let nfts: NFT[] = []
+      try {
+        const nftAssetsFetched = await client.nft.fetch();
+        console.log('TACA ===> updateNFTs.ts, account.chain = ', account.chain, ', nftAssetsFetched = ', nftAssetsFetched)
+        nfts = nftAssetsFetched.map((nftAsset: NFT) => {
+          const nftAssetStoredInState = nftAssetsStoredInState.find((asset: NFT) => asset.token_id === nftAsset.token_id);
+          const starred = nftAssetStoredInState ? nftAssetStoredInState.starred : false;
+          if (!nftAsset.token_id && nftAsset.name) {
+            const hash = nftAsset.name.match(/#(\d+)/);
+            if (hash) {
+              nftAsset.token_id = hash[1];
+            }
           }
-        }
-
-        return {
-          ...nftAsset,
-          starred,
-        };
-      });
-
-      commit.UPDATE_NFTS({ network, walletId, accountId: account.id, nfts });
+  
+          return {
+            ...nftAsset,
+            starred,
+          };
+        });
+  
+        commit.UPDATE_NFTS({ network, walletId, accountId: account.id, nfts });
+      } catch (err) {
+        console.log('TACA ===> updateNFTs.ts, account.chain = ', account.chain, ', err = ', err)
+      }
 
       return nfts;
     },
