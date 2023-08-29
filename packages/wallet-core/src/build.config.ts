@@ -272,12 +272,12 @@ const config: WalletCoreConfig = {
           },
         },
       },
-      [SwapProviderType.LiFi]: {
-        name: 'LiFi',
-        icon: 'lifi.svg',
-        type: SwapProviderType.LiFi,
-        apiURL: 'https://li.quest/v1/',
-      },
+      // [SwapProviderType.LiFi]: {
+      //   name: 'LiFi',
+      //   icon: 'lifi.svg',
+      //   type: SwapProviderType.LiFi,
+      //   apiURL: 'https://li.quest/v1/',
+      // },
       // [SwapProviderType.TeleSwap]: {
       //   name: 'TeleSwap',
       //   icon: 'teleswap.png',

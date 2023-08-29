@@ -65,6 +65,15 @@ export const getQuotes = async (
           return null;
         }
 
+        /*
+          quote contains
+          {
+            fromAmount: fromAmount.toFixed(),
+            toAmount: toAmount.toFixed(),
+            min: new BN(market.min),
+            max: new BN(market.max),
+          };
+        */
         const result = { ...quote, from, to, provider, fromAccountId, toAccountId };
 
         if (quote) {
