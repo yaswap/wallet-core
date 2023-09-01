@@ -139,7 +139,16 @@ const config: WalletCoreConfig = {
         name: 'Yaswap',
         icon: 'yaswap.svg',
         type: SwapProviderType.Yaswap,
-        agent: 'https://yaswap.yacoin.org/atomicagent_testnet',
+        agents: [
+          {
+              name: "Ben",
+              url: "https://yaswap.yacoin.org/atomicagent_mainnet"
+          },
+          {
+              name: "Chau",
+              url: "https://96.32.210.58/atomicagent_mainnet"
+          }
+        ]
       },
       [SwapProviderType.UniswapV2]: {
         name: 'Uniswap V2',
@@ -176,7 +185,16 @@ const config: WalletCoreConfig = {
         name: 'Yaswap',
         icon: 'yaswap.svg',
         type: SwapProviderType.Yaswap,
-        agent: 'https://yaswap.yacoin.org/atomicagent_mainnet',
+        agents: [
+          {
+              name: "Ben",
+              url: "https://yaswap.yacoin.org/atomicagent_mainnet"
+          },
+          {
+              name: "Chau",
+              url: "https://96.32.210.58/atomicagent_mainnet"
+          }
+        ]
       },
       [SwapProviderType.UniswapV2]: {
         name: 'Uniswap V2',
