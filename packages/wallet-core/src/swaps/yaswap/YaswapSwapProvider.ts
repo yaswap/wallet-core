@@ -73,25 +73,38 @@ export interface YaswapSwapHistoryItem extends EvmSwapHistoryItem {
   toFundHash: string;
 }
 
+export interface AgentInfo {
+  name: string;
+  url: string;
+}
+
 export interface YaswapSwapProviderConfig extends EvmSwapProviderConfig {
-  agent: string;
+  agents: AgentInfo[];
 }
 
 export class YaswapSwapProvider extends EvmSwapProvider {
   public config: YaswapSwapProviderConfig;
-  private _httpClient: HttpClient;
+  private _httpClient: { [agentName: string]: HttpClient };
 
   constructor(config: YaswapSwapProviderConfig) {
     super(config);
-    this._httpClient = new HttpClient({ baseURL: this.config.agent });
+    this._httpClient = {}
+    console.log('TACA ===> YaswapSwapProvider.ts, constructor, config = ', config)
+    for (const agent of config.agents) {
+      const agentURL = new URL(agent.url)
+      const agentName = agent.name + '-' + agentURL.hostname
+      console.log('TACA ===> YaswapSwapProvider.ts, constructor, agentName = ', agentName, ', agentURL = ', agent.url)
+      this._httpClient[agentName] = new HttpClient({ baseURL: agent.url });
+    }
+    console.log('TACA ===> YaswapSwapProvider.ts, constructor, this._httpClient = ', this._httpClient)
   }
 
   private async getMarketInfo(): Promise<YaswapMarketData[]> {
-    return this._httpClient.nodeGet('/api/swap/marketinfo', null, { headers });
+    return Object.values(this._httpClient)[0].nodeGet('/api/swap/marketinfo', null, { headers });
   }
 
   async getAssetLiquidity(asset: string): Promise<number> {
-    const assetsInfo = await this._httpClient.nodeGet('api/swap/assetinfo');
+    const assetsInfo = await Object.values(this._httpClient)[0].nodeGet('api/swap/assetinfo');
     const assetInfo = assetsInfo.find(({ code }: { code: string }) => code === asset);
 
     if (!assetInfo) {
@@ -279,7 +292,7 @@ export class YaswapSwapProvider extends EvmSwapProvider {
   }
 
   public async updateOrder(order: YaswapSwapHistoryItem) {
-    return this._httpClient.nodePost(
+    return Object.values(this._httpClient)[0].nodePost(
       `/api/swap/order/${order.orderId}`,
       {
         fromAddress: order.fromAddress,
@@ -497,7 +510,7 @@ export class YaswapSwapProvider extends EvmSwapProvider {
 
   private async _getQuote({ from, to, amount }: { from: Asset; to: Asset; amount: string }) {
     try {
-      return this._httpClient.nodePost('/api/swap/order', { from, to, fromAmount: amount }, { headers });
+      return Object.values(this._httpClient)[0].nodePost('/api/swap/order', { from, to, fromAmount: amount }, { headers });
     } catch (e) {
       if (e?.response?.data?.error) {
         throw new Error(e.response.data.error);
