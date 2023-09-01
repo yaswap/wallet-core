@@ -146,7 +146,7 @@ const config: WalletCoreConfig = {
           },
           {
               name: "Chau",
-              url: "https://96.32.210.58/atomicagent_mainnet"
+              url: "https://yaswap.yacoin.org/atomicagent_mainnet"
           }
         ]
       },
@@ -192,7 +192,7 @@ const config: WalletCoreConfig = {
           },
           {
               name: "Chau",
-              url: "https://96.32.210.58/atomicagent_mainnet"
+              url: "https://yaswap.yacoin.org/atomicagent_mainnet"
           }
         ]
       },

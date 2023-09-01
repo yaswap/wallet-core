@@ -51,6 +51,7 @@ export interface YaswapMarketData {
   min: number;
   minConf: number;
   rate: number;
+  agentName: string;
 }
 
 export interface YaswapSwapHistoryItem extends EvmSwapHistoryItem {
@@ -91,16 +92,34 @@ export class YaswapSwapProvider extends EvmSwapProvider {
     this._httpClient = {}
     console.log('TACA ===> YaswapSwapProvider.ts, constructor, config = ', config)
     for (const agent of config.agents) {
-      const agentURL = new URL(agent.url)
-      const agentName = agent.name + '-' + agentURL.hostname
+      const agentName = this.getAgentName(agent)
       console.log('TACA ===> YaswapSwapProvider.ts, constructor, agentName = ', agentName, ', agentURL = ', agent.url)
       this._httpClient[agentName] = new HttpClient({ baseURL: agent.url });
     }
     console.log('TACA ===> YaswapSwapProvider.ts, constructor, this._httpClient = ', this._httpClient)
   }
 
+  private getAgentName(agentInfo: AgentInfo): string {
+    const agentURL = new URL(agentInfo.url)
+    if (!agentInfo.name) {
+      return agentURL.hostname
+    }
+    return agentInfo.name + '-' + agentURL.hostname
+  }
+
   private async getMarketInfo(): Promise<YaswapMarketData[]> {
-    return Object.values(this._httpClient)[0].nodeGet('/api/swap/marketinfo', null, { headers });
+    const yaswapMarketData = await Promise.all(Object.entries(this._httpClient).map( async (httpClient) => {
+      const [name, client] = httpClient
+      let marketData: YaswapMarketData[] = await client.nodeGet('/api/swap/marketinfo', null, { headers });
+      marketData = marketData.map((item) => {
+        return {
+          ...item,
+          agentname: name
+        }
+      })
+      return marketData
+    }))
+    return yaswapMarketData.flat(1);
   }
 
   async getAssetLiquidity(asset: string): Promise<number> {
@@ -116,6 +135,8 @@ export class YaswapSwapProvider extends EvmSwapProvider {
 
   public async getSupportedPairs() {
     const markets = await this.getMarketInfo();
+    console.log('TACA ===>  YaswapSwapProvider.ts, getSupportedPairs, markets = ', markets)
+
     const pairs = markets
       .filter((market) => cryptoassets[market.from] && cryptoassets[market.to])
       .map((market) => ({
@@ -124,8 +145,10 @@ export class YaswapSwapProvider extends EvmSwapProvider {
         min: new BN(unitToCurrency(cryptoassets[market.from], market.min)).toFixed(),
         max: new BN(unitToCurrency(cryptoassets[market.from], market.max)).toFixed(),
         rate: new BN(market.rate).toFixed(),
+        agentName: market.agentName,
       }));
 
+    console.log('TACA ===>  YaswapSwapProvider.ts, getSupportedPairs, pairs = ', pairs)
     return pairs;
   }
 
