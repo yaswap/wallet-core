@@ -204,7 +204,7 @@ class HopSwapProvider extends SwapProvider {
     const bridge = hop.bridge(bridgeAsset);
     const sendData = await bridge.getSendData(fromAmountInUnit.toString(), chainFrom, chainTo);
     if (!sendData) return null;
-    return {
+    return [{
       fromAmount: fromAmountInUnit.toFixed(),
       toAmount: new BN(sendData.amountOut.toString()).toFixed(),
       hopAsset: bridgeAsset,
@@ -213,7 +213,7 @@ class HopSwapProvider extends SwapProvider {
       receiveFee: new BN(sendData.adjustedBonderFee.toString())
         .plus(new BN(sendData.adjustedDestinationTxFee.toString()))
         .toString(),
-    };
+    }];
   }
 
   _formatFee(fee: EIP1559Fee | number, networkName: string, type: string) {

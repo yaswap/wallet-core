@@ -118,11 +118,11 @@ class FastBTCWithdrawSwapProvider extends SwapProvider {
     const fromAmountInUnit = currencyToUnit(cryptoassets[from], new BN(amount));
     const toAmountInUnit = fromAmountInSatoshi.minus(new BN(feeSatoshi.toString()));
 
-    return {
+    return [{
       // TODO: Why is from amount being set in every quote call? It should be in one place only (getQuotes action)
       fromAmount: fromAmountInUnit.toFixed(),
       toAmount: toAmountInUnit.toFixed(),
-    };
+    }];
   }
 
   async buildSwapTx({ network, walletId, quote }: BuildSwapOptions) {

@@ -79,13 +79,13 @@ class AstroportSwapProvider extends SwapProvider {
       return null;
     }
 
-    return {
+    return [{
       fromAmount: fromAmountInUnit,
       toAmount: rate.amount?.toString() || rate.return_amount?.toString(),
       fromTokenAddress,
       toTokenAddress,
       pairAddress,
-    };
+    }];
   }
 
   async newSwap({ network, walletId, quote }: SwapRequest<AstroportSwapHistoryItem>) {

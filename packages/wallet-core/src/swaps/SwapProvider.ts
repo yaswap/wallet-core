@@ -50,7 +50,7 @@ export abstract class SwapProvider {
   /**
    * Get a quote for the specified parameters
    */
-  public abstract getQuote(quoteRequest: QuoteRequest): Promise<GetQuoteResult | null>;
+  public abstract getQuote(quoteRequest: QuoteRequest): Promise<GetQuoteResult[] | null>;
 
   /**
    * Create a new swap for the given quote

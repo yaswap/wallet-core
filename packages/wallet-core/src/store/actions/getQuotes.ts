@@ -74,17 +74,17 @@ export const getQuotes = async (
             max: new BN(market.max),
           };
         */
-        const result = { ...quote, from, to, provider, fromAccountId, toAccountId };
-
-        if (quote) {
+       console.log('TACA ===> getQuotes.ts, provider = ', provider, ', quote = ', quote);
+        quote.forEach((item) => {
+          const result = { ...item, from, to, provider, fromAccountId, toAccountId };
           if (hasSlowQuotes) {
             slowQuotes.push(result);
           } else {
             quotes.push(result);
           }
-        }
+        })
 
-        return result;
+        return quote;
       },
       { concurrency: 5 }
     );

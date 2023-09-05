@@ -118,12 +118,12 @@ class DeBridgeSwapProvider extends SwapProvider {
         null
       )) as any;
 
-      return {
+      return [{
         from,
         to,
         fromAmount: fromAmountInUnit.toFixed(),
         toAmount: BN(trade.data.estimation.dstChainTokenOut.amount).toFixed(),
-      };
+      }];
     } catch (e) {
       return null;
     }

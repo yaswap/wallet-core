@@ -108,7 +108,7 @@ class LifiSwapProvider extends EvmSwapProvider {
         fromAmount: quoteRequest.fromAmount,
       })) as Step;
 
-      return { from, to, fromAmount: fromAmountInUnit, toAmount: lifiRoute.estimate.toAmount, lifiRoute };
+      return [{ from, to, fromAmount: fromAmountInUnit, toAmount: lifiRoute.estimate.toAmount, lifiRoute }];
     } catch (e) {
       return null;
     }

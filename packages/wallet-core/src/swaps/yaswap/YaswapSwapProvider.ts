@@ -25,6 +25,7 @@ import {
   QuoteRequest,
   SwapRequest,
   SwapStatus,
+  GetQuoteResult,
 } from '../types';
 
 const VERSION_STRING = `Wallet ${pkg.version} (Chainify ${pkg.dependencies['@yaswap/client']
@@ -116,7 +117,7 @@ export class YaswapSwapProvider extends EvmSwapProvider {
       marketData = marketData.map((item) => {
         return {
           ...item,
-          agentname: name
+          agentName: name
         }
       })
       return marketData
@@ -166,21 +167,30 @@ export class YaswapSwapProvider extends EvmSwapProvider {
   public async getQuote({ network, from, to, amount }: QuoteRequest) {
     const marketData = this.getMarketData(network);
     // Quotes are retrieved using market data because direct quotes take a long time for BTC swaps (agent takes long to generate new address)
-    const market = marketData.find(
+    const markets = marketData.filter(
       (market) => market.provider === this.config.providerId && market.to === to && market.from === from
     );
 
-    if (!market) return null;
+    if (markets === undefined || markets.length == 0) {
+      // markets does not exist or is empty
+      return null;
+    }
 
-    const fromAmount = currencyToUnit(cryptoassets[from], amount);
-    const toAmount = currencyToUnit(cryptoassets[to], new BN(amount).times(new BN(market.rate)));
+    console.log('TACA ===> YaswapSwapProvider.ts, getQuote, markets = ', markets)
+    let result: GetQuoteResult[] = [];
+    markets.forEach((market) => {
+      const fromAmount = currencyToUnit(cryptoassets[from], amount);
+      const toAmount = currencyToUnit(cryptoassets[to], new BN(amount).times(new BN(market.rate)));
+      result.push({
+        fromAmount: fromAmount.toFixed(),
+        toAmount: toAmount.toFixed(),
+        // min: new BN(market.min),
+        // max: new BN(market.max),
+        agentName: market.agentName,
+      })
+    })
 
-    return {
-      fromAmount: fromAmount.toFixed(),
-      toAmount: toAmount.toFixed(),
-      min: new BN(market.min),
-      max: new BN(market.max),
-    };
+    return result
   }
 
   public async newSwap(swapRequest: SwapRequest<YaswapSwapHistoryItem>) {

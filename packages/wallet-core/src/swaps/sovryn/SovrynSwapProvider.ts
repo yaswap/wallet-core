@@ -91,11 +91,11 @@ class SovrynSwapProvider extends SwapProvider {
     // calculate rates
     const rate: ethers.BigNumber = await ssnContract.rateByPath(path, fromAmountInUnit);
 
-    return {
+    return [{
       fromAmount: fromAmountInUnit,
       toAmount: rate.toString(),
       path: path,
-    };
+    }];
   }
 
   async newSwap({ network, walletId, quote }: SwapRequest<SovrynSwapHistoryItem>) {

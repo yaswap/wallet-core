@@ -153,10 +153,10 @@ class UniswapSwapProvider extends SwapProvider {
     const trade = new Trade(route, tokenAmount, TradeType.EXACT_INPUT);
 
     const toAmountInUnit = currencyToUnit(cryptoassets[to], new BN(trade.outputAmount.toExact()));
-    return {
+    return [{
       fromAmount: fromAmountInUnit.toFixed(),
       toAmount: toAmountInUnit.toFixed(),
-    };
+    }];
   }
 
   async requiresApproval({ network, walletId, quote }: { network: Network; walletId: WalletId; quote: SwapQuote }) {

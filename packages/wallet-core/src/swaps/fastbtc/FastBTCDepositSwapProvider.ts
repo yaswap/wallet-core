@@ -154,10 +154,10 @@ class FastBTCDepositSwapProvider extends SwapProvider {
     const toAmountInUnit = new BN(
       currencyToUnit(cryptoassets[to], new BN(amount).minus(unitToCurrency(cryptoassets[from], FAST_BTC_SATOSHI_FEE)))
     ).times(1 - FAST_BTC_PERCENTAGE_FEE / 100);
-    return {
+    return [{
       fromAmount: fromAmountInUnit.toFixed(),
       toAmount: toAmountInUnit.toFixed(),
-    };
+    }];
   }
 
   async sendSwap({ network, walletId, quote }: SwapRequest) {

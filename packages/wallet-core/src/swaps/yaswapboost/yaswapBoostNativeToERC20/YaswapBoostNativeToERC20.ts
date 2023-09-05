@@ -1,10 +1,11 @@
-import { getAsset, unitToCurrency } from '@yaswap/cryptoassets';
+// import { getAsset, unitToCurrency } from '@yaswap/cryptoassets';
 import BN from 'bignumber.js';
 import { getSwapProvider } from '../../../factory';
 import { ActionContext } from '../../../store';
 import { withInterval } from '../../../store/actions/performNextAction/utils';
 import { Asset, Network, SwapHistoryItem, SwapProviderType, WalletId } from '../../../store/types';
-import { getNativeAsset, isERC20 } from '../../../utils/asset';
+// import { getNativeAsset, isERC20 } from '../../../utils/asset';
+import { getNativeAsset } from '../../../utils/asset';
 import { prettyBalance } from '../../../utils/coinFormatter';
 import { AstroportSwapProvider } from '../../astroport/AstroportSwapProvider';
 import {
@@ -78,53 +79,55 @@ class YaswapBoostNativeToERC20 extends SwapProvider {
     return [];
   }
 
-  async getQuote({ network, from, to, amount }: QuoteRequest) {
-    if (isERC20(from) || !isERC20(to) || amount.lte(0)) {
-      return null;
-    }
+  // async getQuote({ network, from, to, amount }: QuoteRequest) {
+  async getQuote() {
+    return null;
+    // if (isERC20(from) || !isERC20(to) || amount.lte(0)) {
+    //   return null;
+    // }
 
-    const bridgeAsset = getNativeAsset(to);
+    // const bridgeAsset = getNativeAsset(to);
 
-    if (!this.supportedBridgeAssets.includes(bridgeAsset)) {
-      return null;
-    }
+    // if (!this.supportedBridgeAssets.includes(bridgeAsset)) {
+    //   return null;
+    // }
 
-    const quote = await this.yaswapSwapProvider.getQuote({
-      network,
-      from,
-      to: bridgeAsset,
-      amount,
-    });
+    // const quote = await this.yaswapSwapProvider.getQuote({
+    //   network,
+    //   from,
+    //   to: bridgeAsset,
+    //   amount,
+    // });
 
-    if (!quote) {
-      return null;
-    }
+    // if (!quote) {
+    //   return null;
+    // }
 
-    const bridgeAssetQuantity = unitToCurrency(getAsset(network, bridgeAsset), new BN(quote.toAmount));
+    // const bridgeAssetQuantity = unitToCurrency(getAsset(network, bridgeAsset), new BN(quote.toAmount));
 
-    const finalQuote = (await this.bridgeAssetToAutomatedMarketMaker[bridgeAsset].getQuote({
-      network,
-      from: bridgeAsset,
-      to,
-      amount: bridgeAssetQuantity,
-    })) as BoostNativeToERC20SwapQuote;
+    // const finalQuote = (await this.bridgeAssetToAutomatedMarketMaker[bridgeAsset].getQuote({
+    //   network,
+    //   from: bridgeAsset,
+    //   to,
+    //   amount: bridgeAssetQuantity,
+    // })) as BoostNativeToERC20SwapQuote;
 
-    if (!finalQuote) {
-      return null;
-    }
+    // if (!finalQuote) {
+    //   return null;
+    // }
 
-    return {
-      from,
-      to,
-      fromAmount: quote.fromAmount,
-      toAmount: finalQuote.toAmount,
-      min: quote.min,
-      max: quote.max,
-      bridgeAsset,
-      bridgeAssetAmount: quote.toAmount,
-      path: finalQuote.path,
-      fromTokenAddress: finalQuote.fromTokenAddress, // for Terra ERC20
-    };
+    // return {
+    //   from,
+    //   to,
+    //   fromAmount: quote.fromAmount,
+    //   toAmount: finalQuote.toAmount,
+    //   min: quote.min,
+    //   max: quote.max,
+    //   bridgeAsset,
+    //   bridgeAssetAmount: quote.toAmount,
+    //   path: finalQuote.path,
+    //   fromTokenAddress: finalQuote.fromTokenAddress, // for Terra ERC20
+    // };
   }
 
   async newSwap({ network, walletId, quote: _quote }: SwapRequest<BoostHistoryItem>) {

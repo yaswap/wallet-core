@@ -297,11 +297,11 @@ class ThorchainSwapProvider extends SwapProvider {
       return null;
     }
 
-    return {
+    return [{
       fromAmount: fromAmountInUnit.toFixed(),
       toAmount: toAmountInUnit.toFixed(),
       slippage: slippage * 1000, // Convert to bips
-    };
+    }];
   }
 
   async networkFees(asset: Asset, network: Network) {

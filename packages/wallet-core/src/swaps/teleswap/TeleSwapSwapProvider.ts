@@ -119,10 +119,10 @@ class TeleSwapSwapProvider extends SwapProvider {
         toAmountInUnit = amountAfterFeeInUnit;
       }
 
-      return {
+      return [{
         fromAmount: fromAmountInUnit.toFixed(), // input amount
         toAmount: toAmountInUnit.toFixed(), // output amount (TODO: wrong number)
-      };
+      }];
     } else {
       // this request is evm -> btc
       if (from != 'TELEBTC') {
@@ -148,19 +148,19 @@ class TeleSwapSwapProvider extends SwapProvider {
         amountAfterFee = teleBTCAmount.minus(fees.totalFeeInBTC);
         amountAfterFeeInUnit = currencyToUnit(cryptoassets['TELEBTC'], amountAfterFee);
 
-        return {
+        return [{
           fromAmount: fromAmountInUnit.toFixed(),
           toAmount: amountAfterFeeInUnit.toFixed(),
-        };
+        }];
       } else {
         // unwrap
         fees = await this.getFees({ network, from, to, amount });
         amountAfterFee = BN(amount).minus(fees.totalFeeInBTC);
         amountAfterFeeInUnit = currencyToUnit(cryptoassets[from], amountAfterFee);
-        return {
+        return [{
           fromAmount: fromAmountInUnit.toFixed(),
           toAmount: amountAfterFeeInUnit.toFixed(),
-        };
+        }];
       }
     }
   }

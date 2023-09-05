@@ -104,7 +104,7 @@ class JupiterSwapProvider extends SwapProvider {
 
     const info = data.data[0];
 
-    return {
+    return [{
       from,
       to,
       fromAmount: fromAmountInUnit.toString(),
@@ -113,7 +113,7 @@ class JupiterSwapProvider extends SwapProvider {
         ...info,
         toAddress,
       },
-    };
+    }];
   }
 
   public async newSwap(quoteInput: SwapRequest<JupiterSwapHistoryItem>) {

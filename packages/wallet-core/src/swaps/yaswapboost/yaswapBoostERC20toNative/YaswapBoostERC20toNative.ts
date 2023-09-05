@@ -1,10 +1,10 @@
-import { getAsset, unitToCurrency } from '@yaswap/cryptoassets';
+// import { getAsset, unitToCurrency } from '@yaswap/cryptoassets';
 import BN from 'bignumber.js';
 import { getSwapProvider } from '../../../factory';
 import { ActionContext } from '../../../store';
 import { withInterval } from '../../../store/actions/performNextAction/utils';
 import { Asset, Network, SwapHistoryItem, SwapProviderType, WalletId } from '../../../store/types';
-import { getNativeAsset, isERC20 } from '../../../utils/asset';
+// import { getNativeAsset, isERC20 } from '../../../utils/asset';
 import { prettyBalance } from '../../../utils/coinFormatter';
 import { AstroportSwapProvider } from '../../astroport/AstroportSwapProvider';
 import {
@@ -20,7 +20,7 @@ import {
   EstimateFeeResponse,
   YaswapBoostSwapProviderConfig,
   NextSwapActionRequest,
-  QuoteRequest,
+  // QuoteRequest,
   SwapQuote,
   SwapRequest,
   SwapStatus,
@@ -81,48 +81,50 @@ class YaswapBoostERC20toNative extends SwapProvider {
     return [];
   }
 
-  async getQuote({ network, from, to, amount }: QuoteRequest) {
-    if (!isERC20(from) || isERC20(to) || amount.lte(0)) return null;
+  // async getQuote({ network, from, to, amount }: QuoteRequest) {
+  async getQuote() {
+    return null
+    // if (!isERC20(from) || isERC20(to) || amount.lte(0)) return null;
 
-    // get native asset of ERC20 network
-    const bridgeAsset = getNativeAsset(from);
-    if (!this.supportedBridgeAssets.includes(bridgeAsset)) return null;
+    // // get native asset of ERC20 network
+    // const bridgeAsset = getNativeAsset(from);
+    // if (!this.supportedBridgeAssets.includes(bridgeAsset)) return null;
 
-    // get rate between ERC20 and it's native token (aka bridge asset)
-    const quote = (await this.bridgeAssetToAutomatedMarketMaker[bridgeAsset].getQuote({
-      network,
-      from,
-      to: bridgeAsset,
-      amount,
-    })) as BoostNativeERC20toNativeSwapQuote;
-    if (!quote) return null;
+    // // get rate between ERC20 and it's native token (aka bridge asset)
+    // const quote = (await this.bridgeAssetToAutomatedMarketMaker[bridgeAsset].getQuote({
+    //   network,
+    //   from,
+    //   to: bridgeAsset,
+    //   amount,
+    // })) as BoostNativeERC20toNativeSwapQuote;
+    // if (!quote) return null;
 
-    // get rate between native asset and 'to' asset (which is native too)
-    const bridgeAssetQuantity = unitToCurrency(getAsset(network, bridgeAsset), new BN(quote.toAmount));
-    const finalQuote = await this.yaswapSwapProvider.getQuote({
-      network,
-      from: bridgeAsset,
-      to,
-      amount: bridgeAssetQuantity,
-    });
-    if (!finalQuote) return null;
+    // // get rate between native asset and 'to' asset (which is native too)
+    // const bridgeAssetQuantity = unitToCurrency(getAsset(network, bridgeAsset), new BN(quote.toAmount));
+    // const finalQuote = await this.yaswapSwapProvider.getQuote({
+    //   network,
+    //   from: bridgeAsset,
+    //   to,
+    //   amount: bridgeAssetQuantity,
+    // });
+    // if (!finalQuote) return null;
 
-    // increase minimum amount with 5% to minimize calculation
-    // error and price fluctuation
-    const min = finalQuote.min.times(1.05);
+    // // increase minimum amount with 5% to minimize calculation
+    // // error and price fluctuation
+    // const min = finalQuote.min.times(1.05);
 
-    return {
-      from,
-      to,
-      fromAmount: quote.fromAmount,
-      toAmount: finalQuote.toAmount,
-      minInBridgeAsset: min,
-      maxInBridgeAsset: finalQuote.max,
-      bridgeAsset,
-      bridgeAssetAmount: quote.toAmount,
-      path: quote.path,
-      fromTokenAddress: quote.fromTokenAddress, // for Terra ERC20
-    };
+    // return {
+    //   from,
+    //   to,
+    //   fromAmount: quote.fromAmount,
+    //   toAmount: finalQuote.toAmount,
+    //   minInBridgeAsset: min,
+    //   maxInBridgeAsset: finalQuote.max,
+    //   bridgeAsset,
+    //   bridgeAssetAmount: quote.toAmount,
+    //   path: quote.path,
+    //   fromTokenAddress: quote.fromTokenAddress, // for Terra ERC20
+    // };
   }
 
   async newSwap({ network, walletId, quote: _quote }: SwapRequest<BoostHistoryItem>) {
@@ -195,26 +197,28 @@ class YaswapBoostERC20toNative extends SwapProvider {
     }
   }
 
-  async getMin(quoteRequest: QuoteRequest) {
-    try {
-      const amountInNative = await this.yaswapSwapProvider.getMin({
-        ...quoteRequest,
-        from: getNativeAsset(quoteRequest.from),
-      });
-      const quote = (await this.bridgeAssetToAutomatedMarketMaker[getNativeAsset(quoteRequest.from)].getQuote({
-        network: quoteRequest.network,
-        from: getNativeAsset(quoteRequest.from),
-        to: quoteRequest.from,
-        amount: new BN(amountInNative),
-      })) as BoostNativeERC20toNativeSwapQuote;
-      const fromMinAmount = unitToCurrency(getAsset(quoteRequest.network, quoteRequest.from), new BN(quote.toAmount));
-      // increase minimum amount with 50% to minimize calculation error and price fluctuation.
-      // When the quote is to small - 1-2$ AMMs are returning less than min and value is incorrect
-      return new BN(fromMinAmount).times(1.5);
-    } catch (err) {
-      console.warn(err);
-      return new BN(0);
-    }
+  // async getMin(quoteRequest: QuoteRequest) {
+  async getMin() {
+    return new BN(0)
+    // try {
+    //   const amountInNative = await this.yaswapSwapProvider.getMin({
+    //     ...quoteRequest,
+    //     from: getNativeAsset(quoteRequest.from),
+    //   });
+    //   const quote = (await this.bridgeAssetToAutomatedMarketMaker[getNativeAsset(quoteRequest.from)].getQuote({
+    //     network: quoteRequest.network,
+    //     from: getNativeAsset(quoteRequest.from),
+    //     to: quoteRequest.from,
+    //     amount: new BN(amountInNative),
+    //   })) as BoostNativeERC20toNativeSwapQuote;
+    //   const fromMinAmount = unitToCurrency(getAsset(quoteRequest.network, quoteRequest.from), new BN(quote.toAmount));
+    //   // increase minimum amount with 50% to minimize calculation error and price fluctuation.
+    //   // When the quote is to small - 1-2$ AMMs are returning less than min and value is incorrect
+    //   return new BN(fromMinAmount).times(1.5);
+    // } catch (err) {
+    //   console.warn(err);
+    //   return new BN(0);
+    // }
   }
 
   async finalizeAutomatedMarketMakerAndStartYaswapSwap({
