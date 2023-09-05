@@ -36,6 +36,8 @@ const headers = {
   'x-yaswap-user-agent': VERSION_STRING,
 };
 
+const GET_INFO_TIMEOUT = 10000 // 10s
+
 export enum YaswapTxTypes {
   SWAP_INITIATION = 'SWAP_INITIATION',
   SWAP_CLAIM = 'SWAP_CLAIM',
@@ -108,9 +110,9 @@ export class YaswapSwapProvider extends EvmSwapProvider {
   }
 
   private async getMarketInfo(): Promise<YaswapMarketData[]> {
-    const yaswapMarketData = await Promise.all(Object.entries(this._httpClient).map( async (httpClient) => {
+    const marketDataResponses = await Promise.allSettled(Object.entries(this._httpClient).map( async (httpClient) => {
       const [name, client] = httpClient
-      let marketData: YaswapMarketData[] = await client.nodeGet('/api/swap/marketinfo', null, { headers });
+      let marketData: YaswapMarketData[] = await client.nodeGet('/api/swap/marketinfo', null, { headers, timeout: GET_INFO_TIMEOUT });
       marketData = marketData.map((item) => {
         return {
           ...item,
@@ -119,7 +121,16 @@ export class YaswapSwapProvider extends EvmSwapProvider {
       })
       return marketData
     }))
-    return yaswapMarketData.flat(1);
+
+    let yaswapMarketData: YaswapMarketData[] = [];
+    marketDataResponses.forEach((response) => {
+      if (response.status === 'fulfilled') {
+        yaswapMarketData = [...yaswapMarketData, ...response.value];
+      } else {
+        console.error('Fetching market info failed', response.reason);
+      }
+    });
+    return yaswapMarketData;
   }
 
   async getAssetLiquidity(asset: string): Promise<number> {
