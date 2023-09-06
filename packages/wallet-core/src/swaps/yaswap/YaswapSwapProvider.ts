@@ -110,6 +110,29 @@ export class YaswapSwapProvider extends EvmSwapProvider {
     return agentInfo.name + '-' + agentURL.hostname
   }
 
+  private async getMarketInfoFromAgent(agentName: string): Promise<YaswapMarketData[]> {
+    return this._httpClient[agentName].nodeGet('/api/swap/marketinfo', null, { headers, timeout: GET_INFO_TIMEOUT });
+  }
+
+  private async getSupportedPairsFromAgent(agentName: string) {
+    const markets = await this.getMarketInfoFromAgent(agentName);
+    console.log('TACA ===>  YaswapSwapProvider.ts, getSupportedPairsFromAgent, agentName = ', agentName, ', markets = ', markets)
+
+    const pairs = markets
+      .filter((market) => cryptoassets[market.from] && cryptoassets[market.to])
+      .map((market) => ({
+        from: market.from,
+        to: market.to,
+        min: new BN(unitToCurrency(cryptoassets[market.from], market.min)).toFixed(),
+        max: new BN(unitToCurrency(cryptoassets[market.from], market.max)).toFixed(),
+        rate: new BN(market.rate).toFixed(),
+        agentName: market.agentName,
+      }));
+
+    console.log('TACA ===>  YaswapSwapProvider.ts, getSupportedPairsFromAgent, agentName = ', agentName, ', pairs = ', pairs)
+    return pairs;
+  }
+
   private async getMarketInfo(): Promise<YaswapMarketData[]> {
     const marketDataResponses = await Promise.allSettled(Object.entries(this._httpClient).map( async (httpClient) => {
       const [name, client] = httpClient
@@ -329,14 +352,20 @@ export class YaswapSwapProvider extends EvmSwapProvider {
   }
 
   async getMin(quoteRequest: QuoteRequest) {
-    if (quoteRequest) {
-      const pairs = await this.getSupportedPairs();
-      for (const pair of pairs) {
-        if (pair.from == quoteRequest.from && pair.to == quoteRequest.to) {
-          return new BN(pair.min);
+    console.log('TACA ===> YaswapSwapProvider.ts, getMin, quoteRequest = ', quoteRequest)
+    try {
+      if (quoteRequest) {
+        const pairs = await this.getSupportedPairsFromAgent(quoteRequest.agentName!);
+        for (const pair of pairs) {
+          if (pair.from == quoteRequest.from && pair.to == quoteRequest.to) {
+            return new BN(pair.min);
+          }
         }
       }
+    } catch (err) {
+      console.error('Fetching market data failed', err);
     }
+
     return new BN(0);
   }
 
