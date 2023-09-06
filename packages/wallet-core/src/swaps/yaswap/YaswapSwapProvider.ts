@@ -290,7 +290,12 @@ export class YaswapSwapProvider extends EvmSwapProvider {
         YacoinBaseWalletProvider
       >;
       const value = max ? undefined : new BN(quote.fromAmount);
-      const txs = feePrices.map((fee) => ({ to: '', value, fee }));
+
+      // Need address to get correct estimate fees
+      const result = await client.wallet.getUnusedAddress();
+      const to = result.address;
+
+      const txs = feePrices.map((fee) => ({ to, value, fee }));
       const totalFees = await client.wallet.getTotalFees(txs, max);
       return mapValues(totalFees, (f) => unitToCurrency(cryptoassets[asset], f));
     }

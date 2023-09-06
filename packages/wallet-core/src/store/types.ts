@@ -111,7 +111,7 @@ export interface PairData {
   rate: string;
   max: string;
   min: string;
-  agentName?: string; // for only Yaswap
+  agentName?: string; // for Yaswap only
 }
 
 export interface MarketData extends PairData {

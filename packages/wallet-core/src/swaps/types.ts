@@ -35,6 +35,7 @@ export type QuoteRequest = {
   walletId?: string;
   fromAccountId?: AccountId;
   toAccountId?: AccountId;
+  agentName?: string; // for Yaswap only
 };
 
 export type GetQuotesRequest = {
