@@ -76,7 +76,7 @@ export const getQuotes = async (
         */
        console.log('TACA ===> getQuotes.ts, provider = ', provider, ', quote = ', quote);
         quote.forEach((item) => {
-          const result = { ...item, from, to, provider, fromAccountId, toAccountId };
+          const result = { ...item, from, to, provider, fromAccountId, toAccountId, agentName: item.agentName ? item.agentName : provider};
           if (hasSlowQuotes) {
             slowQuotes.push(result);
           } else {
