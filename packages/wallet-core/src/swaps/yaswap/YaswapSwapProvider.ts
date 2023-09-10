@@ -207,8 +207,8 @@ export class YaswapSwapProvider extends EvmSwapProvider {
       result.push({
         fromAmount: fromAmount.toFixed(),
         toAmount: toAmount.toFixed(),
-        // min: new BN(market.min),
-        // max: new BN(market.max),
+        min: new BN(market.min),
+        max: new BN(market.max),
         agentName: market.agentName,
       })
     })

@@ -14,6 +14,8 @@ export interface YaswapBoostSwapProviderConfig extends BaseSwapProviderConfig {
 export interface GetQuoteResult {
   fromAmount: string;
   toAmount: string;
+  min?: BigNumber;
+  max?: BigNumber;
   agentName?: string; // for Yaswap only
 }
 

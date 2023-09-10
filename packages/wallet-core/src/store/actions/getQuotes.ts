@@ -75,14 +75,22 @@ export const getQuotes = async (
           };
         */
        console.log('TACA ===> getQuotes.ts, provider = ', provider, ', quote = ', quote);
-        quote.forEach((item) => {
-          const result = { ...item, from, to, provider, fromAccountId, toAccountId, agentName: item.agentName ? item.agentName : provider};
+       await Promise.all(quote.map(async (item) => {
+          const minSwapAmount = await swapProvider.getMin({
+            network,
+            from,
+            to,
+            amount: new BigNumber(amount),
+            agentName: item.agentName,
+          }).catch(console.error);
+
+          const result = { ...item, from, to, provider, fromAccountId, toAccountId, agentName: item.agentName ? item.agentName : provider, min: minSwapAmount ? minSwapAmount : BigNumber(0)};
           if (hasSlowQuotes) {
             slowQuotes.push(result);
           } else {
             quotes.push(result);
           }
-        })
+        }))
 
         return quote;
       },
