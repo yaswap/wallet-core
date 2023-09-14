@@ -16,7 +16,7 @@ export interface GetQuoteResult {
   toAmount: string;
   min?: BigNumber;
   max?: BigNumber;
-  agentName?: string; // for Yaswap only
+  agentName?: string;
 }
 
 export interface SwapQuote extends GetQuoteResult {
@@ -37,7 +37,7 @@ export type QuoteRequest = {
   walletId?: string;
   fromAccountId?: AccountId;
   toAccountId?: AccountId;
-  agentName?: string; // for Yaswap only
+  agentName?: string;
 };
 
 export type GetQuotesRequest = {

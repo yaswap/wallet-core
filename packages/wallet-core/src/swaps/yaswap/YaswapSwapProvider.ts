@@ -227,9 +227,11 @@ export class YaswapSwapProvider extends EvmSwapProvider {
       from: _quote.from,
       to: _quote.to,
       amount: _quote.fromAmount,
+      agent: _quote.agentName!,
     });
 
     // Do not override the id that was created during approve step
+    console.log('TACA ===> YaswapSwapProvider.ts, initiateSwap, lockedQuote = ', lockedQuote)
     delete lockedQuote.id;
 
     if (new BN(lockedQuote.toAmount).lt(new BN(_quote.toAmount).times(0.995))) {
@@ -240,6 +242,8 @@ export class YaswapSwapProvider extends EvmSwapProvider {
       ..._quote,
       ...lockedQuote,
     };
+    console.log('TACA ===> YaswapSwapProvider.ts, initiateSwap, quote = ', quote)
+
     if (await this.hasQuoteExpired(quote)) {
       throw new Error('The quote is expired.');
     }
@@ -276,6 +280,8 @@ export class YaswapSwapProvider extends EvmSwapProvider {
       },
       quote.fee
     );
+
+    console.log('TACA ===> YaswapSwapProvider.ts, initiateSwap, fromFundTx = ', fromFundTx)
 
     return {
       ...quote,
@@ -370,7 +376,7 @@ export class YaswapSwapProvider extends EvmSwapProvider {
   }
 
   public async updateOrder(order: YaswapSwapHistoryItem) {
-    return Object.values(this._httpClient)[0].nodePost(
+    return this._httpClient[order.agentName!].nodePost(
       `/api/swap/order/${order.orderId}`,
       {
         fromAddress: order.fromAddress,
@@ -586,9 +592,9 @@ export class YaswapSwapProvider extends EvmSwapProvider {
     return 5;
   }
 
-  private async _getQuote({ from, to, amount }: { from: Asset; to: Asset; amount: string }) {
+  private async _getQuote({ from, to, amount, agent }: { from: Asset; to: Asset; amount: string; agent: string}) {
     try {
-      return Object.values(this._httpClient)[0].nodePost('/api/swap/order', { from, to, fromAmount: amount }, { headers });
+      return this._httpClient[agent].nodePost('/api/swap/order', { from, to, fromAmount: amount }, { headers });
     } catch (e) {
       if (e?.response?.data?.error) {
         throw new Error(e.response.data.error);

@@ -217,6 +217,7 @@ export interface SwapHistoryItem extends BaseHistoryItem {
   path?: string[];
   lifiRoute?: Step; // LiFi
   swapProviderError?: SwapProviderError;
+  agentName?: string;
 }
 
 export interface CreateTokenHistoryItem extends BaseHistoryItem {
