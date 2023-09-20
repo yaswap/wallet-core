@@ -84,6 +84,7 @@ export interface AgentInfo {
 
 export interface YaswapSwapProviderConfig extends EvmSwapProviderConfig {
   agents: AgentInfo[];
+  extraAgentsEndpoint: string;
 }
 
 export class YaswapSwapProvider extends EvmSwapProvider {
@@ -168,7 +169,47 @@ export class YaswapSwapProvider extends EvmSwapProvider {
     return assetInfo.balance;
   }
 
+  private async updateAgentList() {
+    try {
+      if (!this.config.extraAgentsEndpoint) {
+        return;
+      }
+      console.log('TACA ===> YaswapSwapProvider.ts, updateAgentList, extraAgentsEndpoint = ', this.config.extraAgentsEndpoint)
+
+      const agents: AgentInfo[] = await HttpClient.get(this.config.extraAgentsEndpoint, null, { headers, timeout: GET_INFO_TIMEOUT });
+      console.log('TACA ===> YaswapSwapProvider.ts, updateAgentList, agents = ', agents)
+      let mergedAgents: { [agentName: string]: string } = {}
+
+      // Add all default agents to the agent list
+      for (const agent of this.config.agents) {
+        const agentName = this.getAgentName(agent)
+        mergedAgents[agentName] = agent.url
+      }
+
+      // Merge with new agents (if the agent is duplicated, the value in new agent list has more precedence)
+      for (const agent of agents) {
+        const agentName = this.getAgentName(agent)
+        mergedAgents[agentName] = agent.url
+      }
+
+      let newHttpClient: { [agentName: string]: HttpClient } = {}
+      Object.entries(mergedAgents).forEach(mergedAgent => {
+        const [name, url] = mergedAgent
+        newHttpClient[name] = new HttpClient({ baseURL: url });
+      })
+
+      console.log('TACA ===> YaswapSwapProvider.ts, updateAgentList, old = ', this._httpClient, ', new = ', newHttpClient)
+      this._httpClient = newHttpClient
+    } catch (error) {
+      console.error('Failed to update agent list with error: ', error)
+    }
+  }
+
   public async getSupportedPairs() {
+    // Update agent list
+    await this.updateAgentList();
+
+    // Get market info from all agents
     const markets = await this.getMarketInfo();
     console.log('TACA ===>  YaswapSwapProvider.ts, getSupportedPairs, markets = ', markets)
 

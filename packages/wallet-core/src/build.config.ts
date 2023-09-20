@@ -143,12 +143,9 @@ const config: WalletCoreConfig = {
           {
               name: "Ben",
               url: "https://yaswap.yacoin.org/atomicagent_testnet"
-          },
-          {
-              name: "Chau",
-              url: "http://192.168.0.101:3030"
           }
-        ]
+        ],
+        extraAgentsEndpoint: 'https://yaswap.yacoin.org/extra_agents_testnet',
       },
       [SwapProviderType.UniswapV2]: {
         name: 'Uniswap V2',
@@ -189,12 +186,9 @@ const config: WalletCoreConfig = {
           {
               name: "Ben",
               url: "https://yaswap.yacoin.org/atomicagent_mainnet"
-          },
-          {
-              name: "Chau",
-              url: "http://192.168.0.101:3030"
           }
-        ]
+        ],
+        extraAgentsEndpoint: 'https://yaswap.yacoin.org/extra_agents_mainnet',
       },
       [SwapProviderType.UniswapV2]: {
         name: 'Uniswap V2',
