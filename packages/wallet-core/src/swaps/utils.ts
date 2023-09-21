@@ -1,5 +1,4 @@
 import buildConfig from '../build.config';
-import { getSwapProvider } from '../factory';
 import { Network, SwapProviderType } from '../store/types';
 import astroportInfo from './astroport/info.json';
 import fastbtcInfo from './fastbtc/info.json';
@@ -15,7 +14,6 @@ import thorchainInfo from './thorchain/info.json';
 import uniswapInfo from './uniswap/info.json';
 import debridgeInfo from './debridge/info.json';
 import teleswapInfo from './teleswap/info.json';
-import { YaswapSwapProvider } from './yaswap/YaswapSwapProvider';
 import { CUSTOM_ERRORS, createInternalError } from '@yaswap/error-parser';
 
 const swapProviderInfo = {
@@ -48,16 +46,4 @@ function getSwapProviderInfo(network: Network, providerId: SwapProviderType) {
   return swapProviderInfo[config.type];
 }
 
-const getYaswapLiquidityForAsset = async ({
-  asset,
-  network,
-}: {
-  asset: string;
-  network: Network;
-}): Promise<number> => {
-  const swapProvider = getSwapProvider(network, SwapProviderType.Yaswap) as YaswapSwapProvider;
-
-  return swapProvider.getAssetLiquidity(asset);
-};
-
-export { getSwapProviderConfig, getSwapProviderInfo, getYaswapLiquidityForAsset };
+export { getSwapProviderConfig, getSwapProviderInfo };

@@ -111,7 +111,20 @@ export class YaswapSwapProvider extends EvmSwapProvider {
     return agentInfo.name + '-' + agentURL.hostname
   }
 
+  private isAgentAvailable(agentName: string) {
+    if (agentName in this._httpClient) {
+      return true;
+    }
+    return false;
+  }
+
   private async getMarketInfoFromAgent(agentName: string): Promise<YaswapMarketData[]> {
+    console.log('TACA ===> getMarketInfoFromAgent, agentName = ', agentName, ', this._httpClient = ', this._httpClient)
+    // Force update agent list in case agent isn't available yet
+    if (!this.isAgentAvailable(agentName)) {
+      console.log('Force update agent list because agent ', agentName, " isn't available yet")
+      await this.updateAgentList();
+    }
     return this._httpClient[agentName].nodeGet('/api/swap/marketinfo', null, { headers, timeout: GET_INFO_TIMEOUT });
   }
 
@@ -135,6 +148,9 @@ export class YaswapSwapProvider extends EvmSwapProvider {
   }
 
   private async getMarketInfo(): Promise<YaswapMarketData[]> {
+    // Update agent list
+    await this.updateAgentList();
+
     const marketDataResponses = await Promise.allSettled(Object.entries(this._httpClient).map( async (httpClient) => {
       const [name, client] = httpClient
       let marketData: YaswapMarketData[] = await client.nodeGet('/api/swap/marketinfo', null, { headers, timeout: GET_INFO_TIMEOUT });
@@ -156,17 +172,6 @@ export class YaswapSwapProvider extends EvmSwapProvider {
       }
     });
     return yaswapMarketData;
-  }
-
-  async getAssetLiquidity(asset: string): Promise<number> {
-    const assetsInfo = await Object.values(this._httpClient)[0].nodeGet('api/swap/assetinfo');
-    const assetInfo = assetsInfo.find(({ code }: { code: string }) => code === asset);
-
-    if (!assetInfo) {
-      return 0;
-    }
-
-    return assetInfo.balance;
   }
 
   private async updateAgentList() {
@@ -196,19 +201,31 @@ export class YaswapSwapProvider extends EvmSwapProvider {
       Object.entries(mergedAgents).forEach(mergedAgent => {
         const [name, url] = mergedAgent
         newHttpClient[name] = new HttpClient({ baseURL: url });
+        // Log warning messages about agents which are newly added or changed
+        if (!this.isAgentAvailable(name)) {
+          console.warn(`Add new Yaswap atomic agent ${name}`)
+        } else if (this._httpClient[name].getBaseURL() !== url) {
+          console.warn(`Change endpoint for Yaswap atomic agent ${name} to ${url}`)
+        }
       })
 
-      console.log('TACA ===> YaswapSwapProvider.ts, updateAgentList, old = ', this._httpClient, ', new = ', newHttpClient)
+      Object.entries(this._httpClient).forEach(agent => {
+        const [name, _] = agent
+        // Log warning messages about agents which are removed
+        if (!(name in mergedAgents)) {
+          console.warn(`Remove Yaswap atomic agent ${name}`)
+        }
+      })
+
+      console.log('TACA ===> YaswapSwapProvider.ts, updateAgentList, old = ', this._httpClient)
       this._httpClient = newHttpClient
+      console.log('TACA ===> YaswapSwapProvider.ts, updateAgentList, new = ', this._httpClient)
     } catch (error) {
       console.error('Failed to update agent list with error: ', error)
     }
   }
 
   public async getSupportedPairs() {
-    // Update agent list
-    await this.updateAgentList();
-
     // Get market info from all agents
     const markets = await this.getMarketInfo();
     console.log('TACA ===>  YaswapSwapProvider.ts, getSupportedPairs, markets = ', markets)
@@ -400,6 +417,7 @@ export class YaswapSwapProvider extends EvmSwapProvider {
 
   async getMin(quoteRequest: QuoteRequest) {
     console.log('TACA ===> YaswapSwapProvider.ts, getMin, quoteRequest = ', quoteRequest)
+
     try {
       if (quoteRequest) {
         const pairs = await this.getSupportedPairsFromAgent(quoteRequest.agentName!);
@@ -410,13 +428,19 @@ export class YaswapSwapProvider extends EvmSwapProvider {
         }
       }
     } catch (err) {
-      console.error('Fetching market data failed', err);
+      console.error('Failed to get min swap amount with error = ', err);
     }
 
     return new BN(0);
   }
 
   public async updateOrder(order: YaswapSwapHistoryItem) {
+    // Force update agent list in case agent isn't available yet
+    if (!this.isAgentAvailable(order.agentName!)) {
+      console.log('Force update agent list because agent ', order.agentName!, " isn't available yet")
+      await this.updateAgentList();
+    }
+
     return this._httpClient[order.agentName!].nodePost(
       `/api/swap/order/${order.orderId}`,
       {
@@ -634,6 +658,12 @@ export class YaswapSwapProvider extends EvmSwapProvider {
   }
 
   private async _getQuote({ from, to, amount, agent }: { from: Asset; to: Asset; amount: string; agent: string}) {
+    // Force update agent list in case agent isn't available yet
+    if (!this.isAgentAvailable(agent)) {
+      console.log('Force update agent list because agent ', agent, " isn't available yet")
+      await this.updateAgentList();
+    }
+
     try {
       return this._httpClient[agent].nodePost('/api/swap/order', { from, to, fromAmount: amount }, { headers });
     } catch (e) {
