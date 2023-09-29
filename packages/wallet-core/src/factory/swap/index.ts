@@ -61,7 +61,6 @@ function getSwapProvider(network: Network, providerId: SwapProviderType): SwapPr
 
   const cachedSwapProvider = swapProviderCache[cacheKey];
   if (cachedSwapProvider) return cachedSwapProvider;
-  console.log('TACA ===> getSwapProvider, create swap provider ', providerId)
 
   const swapProvider = createSwapProvider(network, supportedProviderId);
   swapProviderCache[cacheKey] = swapProvider;

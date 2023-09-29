@@ -94,13 +94,10 @@ export class YaswapSwapProvider extends EvmSwapProvider {
   constructor(config: YaswapSwapProviderConfig) {
     super(config);
     this._httpClient = {}
-    console.log('TACA ===> YaswapSwapProvider.ts, constructor, config = ', config)
     for (const agent of config.agents) {
       const agentName = this.getAgentName(agent)
-      console.log('TACA ===> YaswapSwapProvider.ts, constructor, agentName = ', agentName, ', agentURL = ', agent.url)
       this._httpClient[agentName] = new HttpClient({ baseURL: agent.url });
     }
-    console.log('TACA ===> YaswapSwapProvider.ts, constructor, this._httpClient = ', this._httpClient)
   }
 
   private getAgentName(agentInfo: AgentInfo): string {
@@ -119,7 +116,6 @@ export class YaswapSwapProvider extends EvmSwapProvider {
   }
 
   private async getMarketInfoFromAgent(agentName: string): Promise<YaswapMarketData[]> {
-    console.log('TACA ===> getMarketInfoFromAgent, agentName = ', agentName, ', this._httpClient = ', this._httpClient)
     // Force update agent list in case agent isn't available yet
     if (!this.isAgentAvailable(agentName)) {
       console.log('Force update agent list because agent ', agentName, " isn't available yet")
@@ -130,7 +126,6 @@ export class YaswapSwapProvider extends EvmSwapProvider {
 
   private async getSupportedPairsFromAgent(agentName: string) {
     const markets = await this.getMarketInfoFromAgent(agentName);
-    console.log('TACA ===>  YaswapSwapProvider.ts, getSupportedPairsFromAgent, agentName = ', agentName, ', markets = ', markets)
 
     const pairs = markets
       .filter((market) => cryptoassets[market.from] && cryptoassets[market.to])
@@ -143,7 +138,6 @@ export class YaswapSwapProvider extends EvmSwapProvider {
         agentName: market.agentName,
       }));
 
-    console.log('TACA ===>  YaswapSwapProvider.ts, getSupportedPairsFromAgent, agentName = ', agentName, ', pairs = ', pairs)
     return pairs;
   }
 
@@ -179,10 +173,8 @@ export class YaswapSwapProvider extends EvmSwapProvider {
       if (!this.config.extraAgentsEndpoint) {
         return;
       }
-      console.log('TACA ===> YaswapSwapProvider.ts, updateAgentList, extraAgentsEndpoint = ', this.config.extraAgentsEndpoint)
 
       const agents: AgentInfo[] = await HttpClient.get(this.config.extraAgentsEndpoint, null, { headers, timeout: GET_INFO_TIMEOUT });
-      console.log('TACA ===> YaswapSwapProvider.ts, updateAgentList, agents = ', agents)
       let mergedAgents: { [agentName: string]: string } = {}
 
       // Add all default agents to the agent list
@@ -217,9 +209,7 @@ export class YaswapSwapProvider extends EvmSwapProvider {
         }
       })
 
-      console.log('TACA ===> YaswapSwapProvider.ts, updateAgentList, old = ', this._httpClient)
       this._httpClient = newHttpClient
-      console.log('TACA ===> YaswapSwapProvider.ts, updateAgentList, new = ', this._httpClient)
     } catch (error) {
       console.error('Failed to update agent list with error: ', error)
     }
@@ -228,7 +218,6 @@ export class YaswapSwapProvider extends EvmSwapProvider {
   public async getSupportedPairs() {
     // Get market info from all agents
     const markets = await this.getMarketInfo();
-    console.log('TACA ===>  YaswapSwapProvider.ts, getSupportedPairs, markets = ', markets)
 
     const pairs = markets
       .filter((market) => cryptoassets[market.from] && cryptoassets[market.to])
@@ -241,7 +230,6 @@ export class YaswapSwapProvider extends EvmSwapProvider {
         agentName: market.agentName,
       }));
 
-    console.log('TACA ===>  YaswapSwapProvider.ts, getSupportedPairs, pairs = ', pairs)
     return pairs;
   }
 
@@ -257,7 +245,6 @@ export class YaswapSwapProvider extends EvmSwapProvider {
       return null;
     }
 
-    console.log('TACA ===> YaswapSwapProvider.ts, getQuote, markets = ', markets)
     let result: GetQuoteResult[] = [];
     markets.forEach((market) => {
       const fromAmount = currencyToUnit(cryptoassets[from], amount);
@@ -289,7 +276,6 @@ export class YaswapSwapProvider extends EvmSwapProvider {
     });
 
     // Do not override the id that was created during approve step
-    console.log('TACA ===> YaswapSwapProvider.ts, initiateSwap, lockedQuote = ', lockedQuote)
     delete lockedQuote.id;
 
     if (new BN(lockedQuote.toAmount).lt(new BN(_quote.toAmount).times(0.995))) {
@@ -300,7 +286,6 @@ export class YaswapSwapProvider extends EvmSwapProvider {
       ..._quote,
       ...lockedQuote,
     };
-    console.log('TACA ===> YaswapSwapProvider.ts, initiateSwap, quote = ', quote)
 
     if (await this.hasQuoteExpired(quote)) {
       throw new Error('The quote is expired.');
@@ -339,7 +324,6 @@ export class YaswapSwapProvider extends EvmSwapProvider {
       quote.fee
     );
 
-    console.log('TACA ===> YaswapSwapProvider.ts, initiateSwap, fromFundTx = ', fromFundTx)
 
     return {
       ...quote,
@@ -416,8 +400,6 @@ export class YaswapSwapProvider extends EvmSwapProvider {
   }
 
   async getMin(quoteRequest: QuoteRequest) {
-    console.log('TACA ===> YaswapSwapProvider.ts, getMin, quoteRequest = ', quoteRequest)
-
     try {
       if (quoteRequest) {
         const pairs = await this.getSupportedPairsFromAgent(quoteRequest.agentName!);

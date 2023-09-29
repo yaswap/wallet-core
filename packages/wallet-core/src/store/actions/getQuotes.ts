@@ -74,7 +74,6 @@ export const getQuotes = async (
             max: new BN(market.max),
           };
         */
-       console.log('TACA ===> getQuotes.ts, provider = ', provider, ', quote = ', quote);
        await Promise.all(quote.map(async (item) => {
           const minSwapAmount = provider === SwapProviderType.Yaswap ? item.min : await swapProvider.getMin({
             network,
