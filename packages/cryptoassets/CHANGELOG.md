@@ -1,5 +1,11 @@
 # @yaswap/cryptoassets
 
+## 2.5.0
+
+### Minor Changes
+
+- Support multiple atomic agents
+
 ## 2.4.6
 
 ### Patch Changes

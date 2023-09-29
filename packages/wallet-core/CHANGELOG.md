@@ -1,5 +1,17 @@
 # @yaswap/wallet-core
 
+## 2.5.0
+
+### Minor Changes
+
+- Support multiple atomic agents
+
+### Patch Changes
+
+- Updated dependencies
+  - @yaswap/cryptoassets@2.5.0
+  - @yaswap/error-parser@2.5.0
+
 ## 2.4.6
 
 ### Patch Changes
