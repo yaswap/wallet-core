@@ -1,5 +1,11 @@
 # @yaswap/cryptoassets
 
+## 2.5.1
+
+### Patch Changes
+
+- Retry publish package
+
 ## 2.5.0
 
 ### Minor Changes

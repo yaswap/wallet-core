@@ -1,5 +1,14 @@
 # @yaswap/wallet-core
 
+## 2.5.1
+
+### Patch Changes
+
+- Retry publish package
+- Updated dependencies
+  - @yaswap/cryptoassets@2.5.1
+  - @yaswap/error-parser@2.5.1
+
 ## 2.5.0
 
 ### Minor Changes
