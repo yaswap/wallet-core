@@ -180,6 +180,8 @@ export class YaswapSwapProvider extends EvmSwapProvider {
         const agentName = agent.name;
         if (agent.url) {
           mergedAgents[agentName] = agent.url
+        } else if (agentName in mergedAgents) {
+          delete mergedAgents[agentName]
         }
       }
 
