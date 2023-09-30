@@ -143,6 +143,10 @@ const config: WalletCoreConfig = {
           {
               name: "Ben",
               url: "https://yaswap.yacoin.org/atomicagent_testnet"
+          },
+          {
+              name: "Jester",
+              url: "http://99.11.242.124:3030"
           }
         ],
         extraAgentsEndpoint: 'https://yaswap.yacoin.org/extra_agents_testnet',
@@ -186,6 +190,10 @@ const config: WalletCoreConfig = {
           {
               name: "Ben",
               url: "https://yaswap.yacoin.org/atomicagent_mainnet"
+          },
+          {
+              name: "Jester",
+              url: "http://99.11.242.124:3031"
           }
         ],
         extraAgentsEndpoint: 'https://yaswap.yacoin.org/extra_agents_mainnet',
