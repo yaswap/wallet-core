@@ -95,17 +95,9 @@ export class YaswapSwapProvider extends EvmSwapProvider {
     super(config);
     this._httpClient = {}
     for (const agent of config.agents) {
-      const agentName = this.getAgentName(agent)
+      const agentName = agent.name;
       this._httpClient[agentName] = new HttpClient({ baseURL: agent.url });
     }
-  }
-
-  private getAgentName(agentInfo: AgentInfo): string {
-    const agentURL = new URL(agentInfo.url)
-    if (!agentInfo.name) {
-      return agentURL.hostname
-    }
-    return agentInfo.name + '-' + agentURL.hostname
   }
 
   private isAgentAvailable(agentName: string) {
@@ -179,14 +171,16 @@ export class YaswapSwapProvider extends EvmSwapProvider {
 
       // Add all default agents to the agent list
       for (const agent of this.config.agents) {
-        const agentName = this.getAgentName(agent)
+        const agentName = agent.name;
         mergedAgents[agentName] = agent.url
       }
 
       // Merge with new agents (if the agent is duplicated, the value in new agent list has more precedence)
       for (const agent of agents) {
-        const agentName = this.getAgentName(agent)
-        mergedAgents[agentName] = agent.url
+        const agentName = agent.name;
+        if (agent.url) {
+          mergedAgents[agentName] = agent.url
+        }
       }
 
       let newHttpClient: { [agentName: string]: HttpClient } = {}
