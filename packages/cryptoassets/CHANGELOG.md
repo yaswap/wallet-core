@@ -1,5 +1,11 @@
 # @yaswap/cryptoassets
 
+## 2.5.2
+
+### Patch Changes
+
+- Add logic to remove atomic agent
+
 ## 2.5.1
 
 ### Patch Changes
