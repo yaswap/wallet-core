@@ -1,5 +1,11 @@
 # @yaswap/cryptoassets
 
+## 2.5.3
+
+### Patch Changes
+
+- Only enable YAC, BTC, ETH, USDC, and USDT by default
+
 ## 2.5.2
 
 ### Patch Changes
