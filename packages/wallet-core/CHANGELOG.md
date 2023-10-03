@@ -1,5 +1,14 @@
 # @yaswap/wallet-core
 
+## 2.5.4
+
+### Patch Changes
+
+- Only enable YAC, BTC, ETH, USDC, USDT, BNB, SOL and MATIC by default
+- Updated dependencies
+  - @yaswap/cryptoassets@2.5.4
+  - @yaswap/error-parser@2.5.4
+
 ## 2.5.3
 
 ### Patch Changes

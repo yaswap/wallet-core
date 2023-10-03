@@ -1,5 +1,11 @@
 # @yaswap/cryptoassets
 
+## 2.5.4
+
+### Patch Changes
+
+- Only enable YAC, BTC, ETH, USDC, USDT, BNB, SOL and MATIC by default
+
 ## 2.5.3
 
 ### Patch Changes
