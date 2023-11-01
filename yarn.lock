@@ -3690,7 +3690,7 @@ __metadata:
 
 "@yaswap/bitcoin-ledger@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/bitcoin-ledger::locator=yaswap%40workspace%3A.":
   version: 2.4.0
-  resolution: "@yaswap/bitcoin-ledger@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/bitcoin-ledger#/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/bitcoin-ledger::hash=f52a62&locator=yaswap%40workspace%3A."
+  resolution: "@yaswap/bitcoin-ledger@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/bitcoin-ledger#/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/bitcoin-ledger::hash=1cba53&locator=yaswap%40workspace%3A."
   dependencies:
     "@ledgerhq/hw-app-btc": 9.1.2
     "@yaswap/bitcoin": "workspace:*"
@@ -3701,13 +3701,13 @@ __metadata:
     "@yaswap/utils": "workspace:*"
     bip32: 2.0.6
     bitcoinjs-lib: 5.2.0
-  checksum: 7a2fc7dfe0e5e106d573e2e77ccdcb2b0e9fe1314b8c7c0ed78d290acbf754491ebeb6fa4f229036d4f9bf719a978531cf297a708cfec3b1e57e66e46b845c26
+  checksum: d07674ee93c11fd6d27f92a101051f119df4f308a921aaeda2135a8d5edee4ccded415346ccb9a5efb3e085e934c315c3247e905bc1d1b5200271aa0c1d72c43
   languageName: node
   linkType: hard
 
 "@yaswap/bitcoin@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/bitcoin::locator=yaswap%40workspace%3A.":
   version: 2.4.0
-  resolution: "@yaswap/bitcoin@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/bitcoin#/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/bitcoin::hash=81b9c0&locator=yaswap%40workspace%3A."
+  resolution: "@yaswap/bitcoin@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/bitcoin#/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/bitcoin::hash=231be4&locator=yaswap%40workspace%3A."
   dependencies:
     "@types/bip32": ^2.0.0
     "@types/bip39": ^3.0.0
@@ -3726,7 +3726,7 @@ __metadata:
     coinselect: ^3.1.12
     lodash: 4.17.21
     memoizee: ^0.4.15
-  checksum: 67efe3cf66e777d077524298619ef6da6bf1f6c613a9a11f01db81860b53d7283690d28946fb60fe38fc7cbac110203e8b6ca0956dbb99cc4e2e36ded5e7b13e
+  checksum: 6806d9870c27fb8bb100c61057f7240185f96f1193ed40b30a8189859d12ad3b68a68f856e5942ed93332ca113a45945fad5e8841dc78014aedce7a9ddf270c9
   languageName: node
   linkType: hard
 
@@ -3866,7 +3866,7 @@ __metadata:
 
 "@yaswap/litecoin@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/litecoin::locator=yaswap%40workspace%3A.":
   version: 2.4.0
-  resolution: "@yaswap/litecoin@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/litecoin#/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/litecoin::hash=4afe23&locator=yaswap%40workspace%3A."
+  resolution: "@yaswap/litecoin@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/litecoin#/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/litecoin::hash=cf2076&locator=yaswap%40workspace%3A."
   dependencies:
     "@types/bip32": ^2.0.0
     "@types/bip39": ^3.0.0
@@ -3885,7 +3885,7 @@ __metadata:
     coinselect: ^3.1.12
     lodash: 4.17.21
     memoizee: ^0.4.15
-  checksum: 8117203c9cbb2453e15dc41c0bae23795473334e38b1ca6337799ace61534d7c706369492070dae3f3e0bf5dee23bda8abf42c58f12e24504353f5e22fabbbf8
+  checksum: bb31149f29b6bc72c1a208c251adebcf748ae74bbcb29e1b8200f65354234660a8655e8cbdf4734cff231804ac298e4e9a2fe7e0fab0c80b71427a320531b13d
   languageName: node
   linkType: hard
 

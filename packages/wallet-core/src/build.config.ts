@@ -89,12 +89,12 @@ const config: WalletCoreConfig = {
     }
   },
   btcEsploraApis: {
-    testnet: 'https://electrs-testnet-api.liq-chainhub.net/',
-    mainnet: 'https://electrs-mainnet-api.liq-chainhub.net/',
+    testnet: 'https://mempool.space/testnet/api',
+    mainnet: 'https://mempool.space/api',
   },
   btcBatchEsploraApis: {
-    testnet: 'https://electrs-batch-testnet-api.liq-chainhub.net/',
-    mainnet: 'https://electrs-batch-mainnet-api.liq-chainhub.net/',
+    testnet: 'https://mempool.space/testnet/api',
+    mainnet: 'https://mempool.space/api',
   },
   ltcEsploraApis: {
     testnet: 'https://litecoinspace.org/api',
