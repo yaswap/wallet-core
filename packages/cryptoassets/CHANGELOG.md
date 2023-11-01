@@ -1,5 +1,11 @@
 # @yaswap/cryptoassets
 
+## 2.6.0
+
+### Minor Changes
+
+- Support litecoin chain
+
 ## 2.5.4
 
 ### Patch Changes

@@ -1,5 +1,17 @@
 # @yaswap/wallet-core
 
+## 2.6.0
+
+### Minor Changes
+
+- Support litecoin chain
+
+### Patch Changes
+
+- Updated dependencies
+  - @yaswap/cryptoassets@2.6.0
+  - @yaswap/error-parser@2.6.0
+
 ## 2.5.4
 
 ### Patch Changes
