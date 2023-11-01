@@ -1,4 +1,5 @@
 import validateBitcoinAddress from 'bitcoin-address-validation';
+import WAValidator from 'multicoin-address-validator';
 import { ensure0x } from '../utils';
 import { BaseChain } from './BaseChain';
 import { base58_to_binary } from 'base58-js'
@@ -23,6 +24,16 @@ export class BitcoinChain extends UtxoChain {
   public isValidAddress(address: string): boolean {
     // networkId = mainnet | testnet | regtest
     return !!validateBitcoinAddress(address, String(this.network.networkId));
+  }
+}
+
+export class LitecoinChain extends UtxoChain {
+  public isValidAddress(address: string): boolean {
+    // networkId = mainnet | testnet | regtest
+    if (this.network.networkId === 'mainnet') {
+      return WAValidator.validate(address, 'litecoin');
+    }
+    return WAValidator.validate(address, 'litecoin', 'testnet');
   }
 }
 
