@@ -72,22 +72,6 @@
     "@ledgerhq/hw-transport-webhid": "6.27.10",
     "@ledgerhq/cryptoassets": "7.3.0",
     "@ledgerhq/hw-app-eth": "6.30.5",
-    "@ledgerhq/hw-app-btc": "9.1.2",
-    "@yaswap/bitcoin": "file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/bitcoin",
-    "@yaswap/bitcoin-ledger": "file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/bitcoin-ledger",
-    "@yaswap/client": "file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/client",
-    "@yaswap/errors": "file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/errors",
-    "@yaswap/evm": "file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/evm",
-    "@yaswap/evm-contracts": "file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/evm-contracts",
-    "@yaswap/evm-ledger": "file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/evm-ledger",
-    "@yaswap/hw-ledger": "file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/hw-ledger",
-    "@yaswap/litecoin": "file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/litecoin",
-    "@yaswap/logger": "file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/logger",
-    "@yaswap/near": "file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/near",
-    "@yaswap/solana": "file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/solana",
-    "@yaswap/terra": "file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/terra",
-    "@yaswap/types": "file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/types",
-    "@yaswap/utils": "file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/utils",
-    "@yaswap/yacoin": "file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/yacoin"
+    "@ledgerhq/hw-app-btc": "9.1.2"
   }
 }
