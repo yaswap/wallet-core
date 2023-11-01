@@ -1,6 +1,6 @@
 import validateBitcoinAddress from 'bitcoin-address-validation';
 import WAValidator from 'multicoin-address-validator';
-import { ensure0x } from '../utils';
+import { remove0x } from '../utils';
 import { BaseChain } from './BaseChain';
 import { base58_to_binary } from 'base58-js'
 import { createHash } from 'sha256-uint8array'
@@ -16,7 +16,7 @@ export abstract class UtxoChain extends BaseChain {
   }
 
   public formatTransactionHash(hash: string) {
-    return ensure0x(hash).toLowerCase();
+    return remove0x(hash).toLowerCase();
   }
 }
 
