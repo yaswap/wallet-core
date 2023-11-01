@@ -14,6 +14,13 @@ import {
   YacoinNftProvider,
   YacoinTypes,
 } from '@yaswap/yacoin';
+import {
+  LitecoinEsploraApiProvider,
+  LitecoinFeeApiProvider,
+  LitecoinHDWalletProvider,
+  LitecoinSwapEsploraProvider,
+  LitecoinTypes,
+} from '@yaswap/litecoin';
 import { BitcoinLedgerProvider, CreateBitcoinLedgerApp } from '@yaswap/bitcoin-ledger';
 import { ChainifyNetwork } from '../../types';
 import { NearChainProvider, NearSwapProvider, NearTypes, NearWalletProvider } from '@yaswap/near';
@@ -82,6 +89,45 @@ export function createBtcClient(
     const walletProvider = new BitcoinHDWalletProvider(walletOptions, chainProvider);
     swapProvider.setWallet(walletProvider);
   }
+
+  return new Client().connect(swapProvider);
+}
+
+export function createLtcClient(
+  settings: ClientSettings<ChainifyNetwork>,
+  mnemonic: string,
+  accountInfo: AccountInfo
+): Client<Chain<any, Network>, Wallet<any, any>, Swap<any, any, Wallet<any, any>>> {
+  const isMainnet = settings.network === 'mainnet';
+  const { chainifyNetwork } = settings;
+  // Create Chain provider
+  const chainProvider = new LitecoinEsploraApiProvider({
+    batchUrl: chainifyNetwork.batchScraperUrl!,
+    url: chainifyNetwork.scraperUrl!,
+    network: chainifyNetwork as LitecoinTypes.LitecoinNetwork,
+    numberOfBlockConfirmation: 2,
+  });
+
+  if (isMainnet) {
+    const feeProvider = new LitecoinFeeApiProvider(chainifyNetwork.feeProviderUrl);
+    chainProvider.setFeeProvider(feeProvider);
+  }
+
+  // Create Swap provider
+  const swapProvider = new LitecoinSwapEsploraProvider({
+    network: chainifyNetwork as LitecoinTypes.LitecoinNetwork,
+    scraperUrl: chainifyNetwork.scraperUrl,
+  });
+
+  // Create Wallet provider
+  // TODO: Add logic for Ledger
+  const walletOptions = {
+    network: chainifyNetwork as LitecoinTypes.LitecoinNetwork,
+    baseDerivationPath: accountInfo.derivationPath,
+    mnemonic,
+  };
+  const walletProvider = new LitecoinHDWalletProvider(walletOptions, chainProvider);
+  swapProvider.setWallet(walletProvider);
 
   return new Client().connect(swapProvider);
 }

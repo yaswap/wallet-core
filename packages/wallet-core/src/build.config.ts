@@ -38,6 +38,9 @@ export interface WalletCoreConfig {
   btcBatchEsploraApis: {
     [key in Network]: string;
   };
+  ltcEsploraApis: {
+    [key in Network]: string;
+  };
   evmScraperUrls: {
     [key in Network]: string;
   };
@@ -55,6 +58,7 @@ const config: WalletCoreConfig = {
     mainnet: [
       'YAC',
       'BTC',
+      'LTC',
       'ETH',
       'USDC',
       'USDT',
@@ -65,6 +69,7 @@ const config: WalletCoreConfig = {
     testnet: [
       'YAC',
       'BTC',
+      'LTC',
       'ETH',
       'DAI',
       'BNB',
@@ -90,6 +95,10 @@ const config: WalletCoreConfig = {
   btcBatchEsploraApis: {
     testnet: 'https://electrs-batch-testnet-api.liq-chainhub.net/',
     mainnet: 'https://electrs-batch-mainnet-api.liq-chainhub.net/',
+  },
+  ltcEsploraApis: {
+    testnet: 'https://litecoinspace.org/api',
+    mainnet: 'https://litecoinspace.org/api',
   },
   evmScraperUrls: {
     testnet: 'https://yaswap.yacoin.org/ethscraper_testnet/',

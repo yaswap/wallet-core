@@ -42,6 +42,7 @@
     "@yaswap/evm": "2.4.0",
     "@yaswap/evm-ledger": "2.4.0",
     "@yaswap/hw-ledger": "2.4.0",
+    "@yaswap/litecoin": "2.4.0",
     "@yaswap/near": "2.4.0",
     "@yaswap/solana": "2.4.0",
     "@yaswap/terra": "2.4.0",

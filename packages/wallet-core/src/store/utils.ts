@@ -157,8 +157,10 @@ export async function getCurrenciesInfo(baseCurrencies: string[]): Promise<Curre
 export function getPriority(chain: string) {
     switch (chain) {
       case 'yacoin':
-        return 3
+        return 4
       case 'bitcoin':
+        return 3
+      case 'litecoin':
         return 2
       case 'ethereum':
         return 1
@@ -168,7 +170,7 @@ export function getPriority(chain: string) {
 }
 /*
   Sort chains
-  Always display first 3 coins: YAC, BTC, ETH. Other coins will be displayed based on following conditions:
+  Always display first 4 coins: YAC, BTC, LTC, ETH. Other coins will be displayed based on following conditions:
     First criteria: Total fiat balance - descending
     Second criteria: Market cap of their native asset - descending
     Third criteria: Alphabetical - (A - Z)

@@ -1,8 +1,9 @@
 import { BitcoinTypes } from '@yaswap/bitcoin';
+import { LitecoinTypes } from '@yaswap/litecoin';
 import { ChainId, getChain } from '@yaswap/cryptoassets';
 import { CUSTOM_ERRORS, createInternalError } from '@yaswap/error-parser';
 import { AccountType, Network } from '../store/types';
-import { BTC_ADDRESS_TYPE_TO_PREFIX } from './address';
+import { BTC_ADDRESS_TYPE_TO_PREFIX, LTC_ADDRESS_TYPE_TO_PREFIX } from './address';
 import { LEDGER_BITCOIN_OPTIONS } from './ledger';
 
 export type DerivationPathCreator = {
@@ -43,6 +44,10 @@ const derivationPaths: DerivationPathCreator = {
     const coinType = getChain(network, ChainId.Bitcoin).network.coinType;
     return getBitcoinDerivationPath(accountType, coinType, index);
   },
+  [ChainId.Litecoin]: (network: Network, index: number) => {
+    const coinType = getChain(network, ChainId.Litecoin).network.coinType;
+    return getLitecoinDerivationPath(coinType, index);
+  },
   [ChainId.Yacoin]: (network: Network, index: number) => {
     const coinType = getChain(network, ChainId.Yacoin).network.coinType;
     return `84'/${coinType}'/${index}'`
@@ -79,4 +84,9 @@ const getBitcoinDerivationPath = (accountType: AccountType, coinType: string, in
   } else {
     return `${BTC_ADDRESS_TYPE_TO_PREFIX[BitcoinTypes.AddressType.BECH32]}'/${coinType}'/${index}'`;
   }
+};
+
+const getLitecoinDerivationPath = (coinType: string, index: number) => {
+  // TODO: Add logic for ledger
+  return `${LTC_ADDRESS_TYPE_TO_PREFIX[LitecoinTypes.AddressType.BECH32]}'/${coinType}'/${index}'`;
 };

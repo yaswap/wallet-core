@@ -1,4 +1,5 @@
 import { BitcoinBaseWalletProvider, BitcoinEsploraApiProvider } from '@yaswap/bitcoin';
+import { LitecoinBaseWalletProvider, LitecoinEsploraApiProvider } from '@yaswap/litecoin';
 import { YacoinBaseWalletProvider, YacoinEsploraApiProvider } from '@yaswap/yacoin';
 import { Client, HttpClient } from '@yaswap/client';
 import { Transaction } from '@yaswap/types';
@@ -344,6 +345,17 @@ export class YaswapSwapProvider extends EvmSwapProvider {
       const client = this.getClient(network, walletId, asset, quote.fromAccountId) as Client<
         BitcoinEsploraApiProvider,
         BitcoinBaseWalletProvider
+      >;
+      const value = max ? undefined : new BN(quote.fromAmount);
+      const txs = feePrices.map((fee) => ({ to: '', value, fee }));
+      const totalFees = await client.wallet.getTotalFees(txs, max);
+      return mapValues(totalFees, (f) => unitToCurrency(cryptoassets[asset], f));
+    }
+
+    if (txType === this._txTypes().SWAP_INITIATION && asset === 'LTC') {
+      const client = this.getClient(network, walletId, asset, quote.fromAccountId) as Client<
+        LitecoinEsploraApiProvider,
+        LitecoinBaseWalletProvider
       >;
       const value = max ? undefined : new BN(quote.fromAmount);
       const txs = feePrices.map((fee) => ({ to: '', value, fee }));
@@ -1005,6 +1017,7 @@ export class YaswapSwapProvider extends EvmSwapProvider {
     },
     [YaswapTxTypes.SWAP_CLAIM]: {
       BTC: 143,
+      LTC: 143, // TODO: Need to check this
       ETH: 90_000,
       RBTC: 90_000,
       BNB: 90_000,

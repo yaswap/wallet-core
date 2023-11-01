@@ -37,6 +37,14 @@ export const defaultChainSettings: Record<Network, Record<ChainId, ChainifyNetwo
           feeProviderUrl: 'https://liquality.io/swap/mempool/v1/fees/recommended',
         };
       }
+      if (currChain === ChainId.Litecoin) {
+        chainifyNetwork = {
+          ...chainifyNetwork,
+          scraperUrl: buildConfig.ltcEsploraApis[currNetwork],
+          batchScraperUrl: buildConfig.ltcEsploraApis[currNetwork],
+          feeProviderUrl: 'https://litecoinspace.org/api/v1/fees/recommended',
+        };
+      }
       if (chain.isEVM) {
         chainifyNetwork = {
           ...chainifyNetwork,
