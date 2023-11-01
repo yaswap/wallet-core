@@ -1,5 +1,14 @@
 # @yaswap/wallet-core
 
+## 2.6.1
+
+### Patch Changes
+
+- Correct formatTransactionHash for UtxoChain
+- Updated dependencies
+  - @yaswap/cryptoassets@2.6.1
+  - @yaswap/error-parser@2.6.1
+
 ## 2.6.0
 
 ### Minor Changes

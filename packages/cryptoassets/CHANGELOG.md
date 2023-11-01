@@ -1,5 +1,11 @@
 # @yaswap/cryptoassets
 
+## 2.6.1
+
+### Patch Changes
+
+- Correct formatTransactionHash for UtxoChain
+
 ## 2.6.0
 
 ### Minor Changes
