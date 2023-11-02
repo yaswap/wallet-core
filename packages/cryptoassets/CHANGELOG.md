@@ -1,5 +1,11 @@
 # @yaswap/cryptoassets
 
+## 2.6.2
+
+### Patch Changes
+
+- Fix various issue relating to atomic swap
+
 ## 2.6.1
 
 ### Patch Changes

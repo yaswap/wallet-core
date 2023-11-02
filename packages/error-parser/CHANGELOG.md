@@ -1,5 +1,13 @@
 # @yaswap/error-parser
 
+## 2.6.2
+
+### Patch Changes
+
+- Fix various issue relating to atomic swap
+- Updated dependencies
+  - @yaswap/cryptoassets@2.6.2
+
 ## 2.6.1
 
 ### Patch Changes
