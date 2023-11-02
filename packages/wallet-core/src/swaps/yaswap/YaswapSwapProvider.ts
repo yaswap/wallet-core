@@ -853,7 +853,7 @@ export class YaswapSwapProvider extends EvmSwapProvider {
         }
       }
     } catch (e) {
-      if (['BlockNotFoundError', 'PendingTxError', 'TxNotFoundError'].includes(e.name)) console.warn(e);
+      if (['BlockNotFoundError', 'PendingTxError', 'TxNotFoundError', 'InvalidDestinationAddressError'].includes(e.name)) console.warn(e);
       else throw e;
     }
 
