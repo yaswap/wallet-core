@@ -58,6 +58,7 @@ const config: WalletCoreConfig = {
     mainnet: [
       'YAC',
       'BTC',
+      'LTC',
       'ETH',
       'USDC',
       'USDT',
@@ -68,6 +69,7 @@ const config: WalletCoreConfig = {
     testnet: [
       'YAC',
       'BTC',
+      'LTC',
       'ETH',
       'DAI',
       'BNB',
