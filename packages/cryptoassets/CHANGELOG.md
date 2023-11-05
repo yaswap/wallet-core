@@ -1,5 +1,11 @@
 # @yaswap/cryptoassets
 
+## 2.6.3
+
+### Patch Changes
+
+- Enable LTC by default
+
 ## 2.6.2
 
 ### Patch Changes

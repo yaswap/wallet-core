@@ -1,5 +1,14 @@
 # @yaswap/wallet-core
 
+## 2.6.3
+
+### Patch Changes
+
+- Enable LTC by default
+- Updated dependencies
+  - @yaswap/cryptoassets@2.6.3
+  - @yaswap/error-parser@2.6.3
+
 ## 2.6.2
 
 ### Patch Changes
