@@ -1,5 +1,14 @@
 # @yaswap/wallet-core
 
+## 2.6.4
+
+### Patch Changes
+
+- Support documents field in token metadata
+- Updated dependencies
+  - @yaswap/cryptoassets@2.6.4
+  - @yaswap/error-parser@2.6.4
+
 ## 2.6.3
 
 ### Patch Changes
