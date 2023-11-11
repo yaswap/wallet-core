@@ -45,6 +45,7 @@ export interface TokenMetadata {
   name?: string;
   description?: string;
   imageURL?: string;
+  documents?: string[];
 }
 
 export interface CustomToken {
