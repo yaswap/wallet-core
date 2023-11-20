@@ -37,6 +37,7 @@
     "@yaswap/bitcoin-ledger": "2.5.3",
     "@yaswap/client": "2.5.3",
     "@yaswap/cryptoassets": "workspace:*",
+    "@yaswap/dogecoin": "2.5.3",
     "@yaswap/error-parser": "workspace:*",
     "@yaswap/errors": "2.5.3",
     "@yaswap/evm": "2.5.3",

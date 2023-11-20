@@ -45,6 +45,13 @@ export const defaultChainSettings: Record<Network, Record<ChainId, ChainifyNetwo
           feeProviderUrl: 'https://litecoinspace.org/api/v1/fees/recommended',
         };
       }
+      if (currChain === ChainId.Dogecoin) {
+        chainifyNetwork = {
+          ...chainifyNetwork,
+          scraperUrl: buildConfig.dogeEsploraApis[currNetwork],
+          batchScraperUrl: buildConfig.dogeEsploraApis[currNetwork],
+        };
+      }
       if (chain.isEVM) {
         chainifyNetwork = {
           ...chainifyNetwork,

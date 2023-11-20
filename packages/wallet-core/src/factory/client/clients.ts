@@ -21,6 +21,12 @@ import {
   LitecoinSwapEsploraProvider,
   LitecoinTypes,
 } from '@yaswap/litecoin';
+import {
+  DogecoinEsploraApiProvider,
+  DogecoinHDWalletProvider,
+  DogecoinSwapEsploraProvider,
+  DogecoinTypes,
+} from '@yaswap/dogecoin';
 import { BitcoinLedgerProvider, CreateBitcoinLedgerApp } from '@yaswap/bitcoin-ledger';
 import { ChainifyNetwork } from '../../types';
 import { NearChainProvider, NearSwapProvider, NearTypes, NearWalletProvider } from '@yaswap/near';
@@ -127,6 +133,39 @@ export function createLtcClient(
     mnemonic,
   };
   const walletProvider = new LitecoinHDWalletProvider(walletOptions, chainProvider);
+  swapProvider.setWallet(walletProvider);
+
+  return new Client().connect(swapProvider);
+}
+
+export function createDogeClient(
+  settings: ClientSettings<ChainifyNetwork>,
+  mnemonic: string,
+  accountInfo: AccountInfo
+): Client<Chain<any, Network>, Wallet<any, any>, Swap<any, any, Wallet<any, any>>> {
+  const { chainifyNetwork } = settings;
+  // Create Chain provider
+  const chainProvider = new DogecoinEsploraApiProvider({
+    batchUrl: chainifyNetwork.batchScraperUrl!,
+    url: chainifyNetwork.scraperUrl!,
+    network: chainifyNetwork as DogecoinTypes.DogecoinNetwork,
+    numberOfBlockConfirmation: 2,
+  });
+
+  // Create Swap provider
+  const swapProvider = new DogecoinSwapEsploraProvider({
+    network: chainifyNetwork as DogecoinTypes.DogecoinNetwork,
+    scraperUrl: chainifyNetwork.scraperUrl,
+  });
+
+  // Create Wallet provider
+  // TODO: Add logic for Ledger
+  const walletOptions = {
+    network: chainifyNetwork as DogecoinTypes.DogecoinNetwork,
+    baseDerivationPath: accountInfo.derivationPath,
+    mnemonic,
+  };
+  const walletProvider = new DogecoinHDWalletProvider(walletOptions, chainProvider);
   swapProvider.setWallet(walletProvider);
 
   return new Client().connect(swapProvider);

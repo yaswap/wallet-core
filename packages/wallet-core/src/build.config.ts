@@ -41,6 +41,9 @@ export interface WalletCoreConfig {
   ltcEsploraApis: {
     [key in Network]: string;
   };
+  dogeEsploraApis: {
+    [key in Network]: string;
+  };
   evmScraperUrls: {
     [key in Network]: string;
   };
@@ -59,6 +62,7 @@ const config: WalletCoreConfig = {
       'YAC',
       'BTC',
       'LTC',
+      'DOGE',
       'ETH',
       'USDC',
       'USDT',
@@ -70,6 +74,7 @@ const config: WalletCoreConfig = {
       'YAC',
       'BTC',
       'LTC',
+      'DOGE',
       'ETH',
       'DAI',
       'BNB',
@@ -99,6 +104,10 @@ const config: WalletCoreConfig = {
   ltcEsploraApis: {
     testnet: 'https://litecoinspace.org/api',
     mainnet: 'https://litecoinspace.org/api',
+  },
+  dogeEsploraApis: {
+    testnet: 'https://dogechain.info/api/v1',
+    mainnet: 'https://dogechain.info/api/v1',
   },
   evmScraperUrls: {
     testnet: 'https://yaswap.yacoin.org/ethscraper_testnet/',

@@ -2689,6 +2689,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@samouraiwallet/electrum-client@npm:^1.4.0":
+  version: 1.4.0
+  resolution: "@samouraiwallet/electrum-client@npm:1.4.0"
+  checksum: 2e9787689c9bffeb24378c6c16a48cb517bf2dd771e33a6564e528fed904ff5e7a19813943c8ed88cff5332b0b39f733f43881c14345448d5d0d9e0914aec127
+  languageName: node
+  linkType: hard
+
 "@sideway/address@npm:^4.1.3":
   version: 4.1.4
   resolution: "@sideway/address@npm:4.1.4"
@@ -3778,6 +3785,32 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@yaswap/dogecoin@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/dogecoin::locator=yaswap%40workspace%3A.":
+  version: 2.5.3
+  resolution: "@yaswap/dogecoin@file:/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/dogecoin#/home/chaunguyen/projects/yacoin/yaswap/chainabstractionlayer/packages/dogecoin::hash=e09c8e&locator=yaswap%40workspace%3A."
+  dependencies:
+    "@samouraiwallet/electrum-client": ^1.4.0
+    "@types/bip32": ^2.0.0
+    "@types/bip39": ^3.0.0
+    "@types/bitcoinjs-lib": ^5.0.0
+    "@types/lodash": ^4.14.178
+    "@types/memoizee": ^0.4.7
+    "@yaswap/client": "workspace:*"
+    "@yaswap/errors": "workspace:*"
+    "@yaswap/types": "workspace:*"
+    "@yaswap/utils": "workspace:*"
+    bip174: ^2.0.1
+    bip32: 2.0.6
+    bip39: ^3.0.4
+    bitcoinjs-lib: 5.2.0
+    bitcoinjs-message: 2.2.0
+    coinselect: ^3.1.12
+    lodash: 4.17.21
+    memoizee: ^0.4.15
+  checksum: 47ab19d9db079e4eea7e23908a4b9bad4a8c336665972af53bd90b9140242d1f06d29868172d0a167f5b728554c372c3364f3b2861d03331afd2dbe49b0add7c
+  languageName: node
+  linkType: hard
+
 "@yaswap/error-parser@workspace:*, @yaswap/error-parser@workspace:packages/error-parser":
   version: 0.0.0-use.local
   resolution: "@yaswap/error-parser@workspace:packages/error-parser"
@@ -4003,6 +4036,7 @@ __metadata:
     "@yaswap/bitcoin-ledger": 2.5.3
     "@yaswap/client": 2.5.3
     "@yaswap/cryptoassets": "workspace:*"
+    "@yaswap/dogecoin": 2.5.3
     "@yaswap/error-parser": "workspace:*"
     "@yaswap/errors": 2.5.3
     "@yaswap/evm": 2.5.3

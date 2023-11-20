@@ -1,6 +1,7 @@
 import { BitcoinNetworks } from '@yaswap/bitcoin';
 import { YacoinNetworks } from '@yaswap/yacoin';
 import { LitecoinNetworks } from '@yaswap/litecoin';
+import { DogecoinNetworks } from '@yaswap/dogecoin';
 import { NearNetworks } from '@yaswap/near';
 import { SolanaNetworks } from '@yaswap/solana';
 import { TerraNetworks } from '@yaswap/terra';
@@ -21,6 +22,10 @@ export const ChainNetworks: ChainNetworksType = {
   [ChainId.Litecoin]: {
     testnet: LitecoinNetworks.litecoin_testnet,
     mainnet: LitecoinNetworks.litecoin,
+  },
+  [ChainId.Dogecoin]: {
+    testnet: DogecoinNetworks.dogecoin_testnet,
+    mainnet: DogecoinNetworks.dogecoin,
   },
   [ChainId.Yacoin]: {
     testnet: YacoinNetworks.yacoin_testnet,

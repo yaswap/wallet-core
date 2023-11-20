@@ -48,6 +48,10 @@ const derivationPaths: DerivationPathCreator = {
     const coinType = getChain(network, ChainId.Litecoin).network.coinType;
     return getLitecoinDerivationPath(coinType, index);
   },
+  [ChainId.Dogecoin]: (network: Network, index: number) => {
+    const coinType = getChain(network, ChainId.Dogecoin).network.coinType;
+    return `44'/${coinType}'/${index}'`
+  },
   [ChainId.Yacoin]: (network: Network, index: number) => {
     const coinType = getChain(network, ChainId.Yacoin).network.coinType;
     return `84'/${coinType}'/${index}'`

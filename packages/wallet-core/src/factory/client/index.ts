@@ -1,7 +1,7 @@
 import { ChainId, getChain } from '@yaswap/cryptoassets';
 import { CUSTOM_ERRORS, createInternalError } from '@yaswap/error-parser';
 import { AccountInfo, ClientSettings } from '../../store/types';
-import { createBtcClient, createLtcClient, createYacClient, createNearClient, createSolanaClient, createTerraClient } from './clients';
+import { createBtcClient, createLtcClient, createDogeClient, createYacClient, createNearClient, createSolanaClient, createTerraClient } from './clients';
 import { createEvmClient } from './evm';
 import { Network as ChainifyNetwork } from '@yaswap/types';
 import { NearTypes } from '@yaswap/near';
@@ -9,6 +9,7 @@ import { TerraTypes } from '@yaswap/terra';
 import { BitcoinTypes } from '@yaswap/bitcoin';
 import { YacoinTypes } from '@yaswap/yacoin';
 import { LitecoinTypes } from '@yaswap/litecoin';
+import { DogecoinTypes } from '@yaswap/dogecoin';
 
 export const createClient = ({
   chainId,
@@ -36,6 +37,9 @@ export const createClient = ({
         break;
       case ChainId.Litecoin:
         client = createLtcClient(settings as ClientSettings<LitecoinTypes.LitecoinNetwork>, mnemonic, accountInfo);
+        break;
+      case ChainId.Dogecoin:
+        client = createDogeClient(settings as ClientSettings<DogecoinTypes.DogecoinNetwork>, mnemonic, accountInfo);
         break;
       case ChainId.Near:
         client = createNearClient(settings as ClientSettings<NearTypes.NearNetwork>, mnemonic, accountInfo);
