@@ -37,6 +37,16 @@ export class LitecoinChain extends UtxoChain {
   }
 }
 
+export class DogecoinChain extends UtxoChain {
+  public isValidAddress(address: string): boolean {
+    // networkId = mainnet | testnet | regtest
+    if (this.network.networkId === 'mainnet') {
+      return WAValidator.validate(address, 'dogecoin');
+    }
+    return WAValidator.validate(address, 'dogecoin', 'testnet');
+  }
+}
+
 export class YacoinChain extends UtxoChain {
   public isValidAddress(address: string): boolean {
     const validVersions = [0x4d, 0x8b, 0x6f, 0xc4]

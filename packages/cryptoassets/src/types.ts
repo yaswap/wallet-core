@@ -12,6 +12,7 @@ export enum ChainId {
   Yacoin = 'yacoin',
   Bitcoin = 'bitcoin',
   Litecoin = 'litecoin',
+  Dogecoin = 'dogecoin',
   Ethereum = 'ethereum',
   Rootstock = 'rsk',
   BinanceSmartChain = 'bsc',
