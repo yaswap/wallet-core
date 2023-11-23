@@ -39,7 +39,10 @@ async function waitForConfirmations(
     }
   } catch (e) {
     if (isTransactionNotFoundError(e)) console.warn(e);
-    else throw e;
+    else {
+      console.warn("send.ts, error = ", e)
+      throw e;
+    }
   }
 }
 

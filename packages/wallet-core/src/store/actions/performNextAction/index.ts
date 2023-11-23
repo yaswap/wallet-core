@@ -50,6 +50,7 @@ export const performNextAction = async (
       });
     }
   } catch (e) {
+    console.warn("performNextAction/index.ts, error = ", e)
     updates = { error: errorToYaswapErrorString(e) };
   }
   if (updates) {

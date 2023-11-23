@@ -21,7 +21,7 @@ export function createInternalError(customError: any): InternalError {
 export function errorToYaswapErrorString(error: any): string {
   if (error instanceof YaswapError) return error.toString();
   else if (error instanceof Error && isYaswapErrorString(error.message)) return error.message;
-  else return createInternalError(CUSTOM_ERRORS.Unknown(error)).toString();
+  else return createInternalError(CUSTOM_ERRORS.Unknown(error.error ? error.error : error)).toString();
 }
 
 /// @dev gets the name of the error if it's a yaswap error and returns '' otherwise

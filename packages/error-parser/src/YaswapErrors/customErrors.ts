@@ -91,5 +91,5 @@ export const CUSTOM_ERRORS = {
     Default: 'Something is unimplemented',
     Method: 'Method is not implemented',
   },
-  Unknown: (err?: any) => `An unknown error occured, ${err}`,
+  Unknown: (err?: any) => `An error occured, ${err}`,
 };
