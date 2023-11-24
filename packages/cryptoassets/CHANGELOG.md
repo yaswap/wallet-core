@@ -1,5 +1,11 @@
 # @yaswap/cryptoassets
 
+## 2.7.0
+
+### Minor Changes
+
+- Support dogecoin chain
+
 ## 2.6.4
 
 ### Patch Changes

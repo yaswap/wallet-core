@@ -1,5 +1,16 @@
 # @yaswap/error-parser
 
+## 2.7.0
+
+### Minor Changes
+
+- Support dogecoin chain
+
+### Patch Changes
+
+- Updated dependencies
+  - @yaswap/cryptoassets@2.7.0
+
 ## 2.6.4
 
 ### Patch Changes
