@@ -1030,7 +1030,7 @@ export class YaswapSwapProvider extends EvmSwapProvider {
     [YaswapTxTypes.SWAP_CLAIM]: {
       BTC: 143,
       LTC: 143,
-      DOGE: 5000,
+      DOGE: 2000,
       ETH: 90_000,
       RBTC: 90_000,
       BNB: 90_000,
