@@ -23,7 +23,7 @@ export default new DogecoinChain({
   isMultiLayered: false,
 
   averageBlockTime: 60,
-  safeConfirmations: 10,
+  safeConfirmations: 2,
   txFailureTimeoutMs: 10_800_000, // 3 hours
   network: {
     name: 'dogecoin',
