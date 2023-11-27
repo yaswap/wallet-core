@@ -888,16 +888,21 @@ export class YaswapSwapProvider extends EvmSwapProvider {
   }: NextSwapActionRequest<YaswapSwapHistoryItem>) {
     const toClient = this.getClient(network, walletId, swap.to, swap.toAccountId);
 
-    const tx = await toClient.chain.getTransactionByHash(swap.toFundHash);
+    try {
+      const tx = await toClient.chain.getTransactionByHash(swap.toFundHash);
 
-    if (
-      tx &&
-      tx.confirmations &&
-      tx.confirmations >= getChain(network, cryptoassets[swap.to].chain).safeConfirmations
-    ) {
-      return {
-        status: 'READY_TO_CLAIM',
-      };
+      if (
+        tx &&
+        tx.confirmations &&
+        tx.confirmations >= getChain(network, cryptoassets[swap.to].chain).safeConfirmations
+      ) {
+        return {
+          status: 'READY_TO_CLAIM',
+        };
+      }
+    } catch (e) {
+      if (e.name === 'TxNotFoundError') console.warn(e);
+      else throw e;
     }
 
     // Expiration check should only happen if tx not found
