@@ -516,9 +516,12 @@ export class YaswapSwapProvider extends EvmSwapProvider {
         return withInterval(async () => this.confirmCounterPartyInitiation({ swap, network, walletId }));
 
       case 'READY_TO_CLAIM':
-        return withLock(store, { item: swap, network, walletId, asset: swap.to }, async () =>
+        return withInterval(async () =>
           this.claimSwap({ swap, network, walletId })
-        );
+        )
+        // return withLock(store, { item: swap, network, walletId, asset: swap.to }, async () =>
+        //   this.claimSwap({ swap, network, walletId })
+        // );
 
       case 'WAITING_FOR_CLAIM_CONFIRMATIONS':
         return withInterval(async () => this.waitForClaimConfirmations({ swap, network, walletId }));
@@ -932,25 +935,30 @@ export class YaswapSwapProvider extends EvmSwapProvider {
 
     const asset = assetsAdapter(swap.to)[0];
 
-    const toClaimTx = await toClient.swap.claimSwap(
-      {
-        asset,
-        value: new BN(swap.toAmount),
-        recipientAddress: swap.toAddress,
-        refundAddress: swap.toCounterPartyAddress,
-        secretHash: swap.secretHash,
-        expiration: swap.nodeSwapExpiration,
-      },
-      swap.toFundHash,
-      swap.secret,
-      swap.claimFee
-    );
-
-    return {
-      toClaimHash: toClaimTx.hash,
-      toClaimTx,
-      status: 'WAITING_FOR_CLAIM_CONFIRMATIONS',
-    };
+    try {
+      const toClaimTx = await toClient.swap.claimSwap(
+        {
+          asset,
+          value: new BN(swap.toAmount),
+          recipientAddress: swap.toAddress,
+          refundAddress: swap.toCounterPartyAddress,
+          secretHash: swap.secretHash,
+          expiration: swap.nodeSwapExpiration,
+        },
+        swap.toFundHash,
+        swap.secret,
+        swap.claimFee
+      );
+  
+      return {
+        toClaimHash: toClaimTx.hash,
+        toClaimTx,
+        status: 'WAITING_FOR_CLAIM_CONFIRMATIONS',
+      };
+    } catch (e) {
+      if (e.name === 'TxNotFoundError') console.warn(e);
+      else throw e;
+    }
   }
 
   private async hasQuoteExpired(swap: YaswapSwapHistoryItem) {
