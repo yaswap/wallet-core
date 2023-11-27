@@ -975,8 +975,14 @@ export class YaswapSwapProvider extends EvmSwapProvider {
         return latestBlock.timestamp > timestamp;
       } catch (e) {
         tries++;
-        if (tries >= maxTries) throw e;
-        else {
+        if (tries >= maxTries) {
+          // If it is BlockNotFoundError, it can be that we can't get the latest block from external explorer due to request rate limit
+          // Try again next time
+          if (['BlockNotFoundError'].includes(e.name)) {
+            console.warn(e);
+            return false;
+          } else throw e;
+        } else {
           console.warn(e);
           await wait(2000);
         }
