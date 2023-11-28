@@ -46,6 +46,17 @@ export enum YaswapTxTypes {
   SWAP_CLAIM = 'SWAP_CLAIM',
 }
 
+const RETRY_ON = [
+  'TxNotFoundError',
+  'PendingTxError',
+  'BlockNotFoundError',
+  'InsufficientBalanceError',
+  'RescheduleError',
+  'PossibleTimelockError',
+  'NodeError',
+  'InvalidDestinationAddressError'
+]
+
 export interface YaswapMarketData {
   from: string;
   to: string;
@@ -731,7 +742,7 @@ export class YaswapSwapProvider extends EvmSwapProvider {
         status: 'WAITING_FOR_REFUND_CONFIRMATIONS',
       };
     } catch (e) {
-      if (e.name === 'TxNotFoundError') console.warn(e);
+      if (RETRY_ON.includes(e.name)) console.warn(e);
       else throw e;
     }
   }
@@ -956,7 +967,7 @@ export class YaswapSwapProvider extends EvmSwapProvider {
         status: 'WAITING_FOR_CLAIM_CONFIRMATIONS',
       };
     } catch (e) {
-      if (e.name === 'TxNotFoundError') console.warn(e);
+      if (RETRY_ON.includes(e.name)) console.warn(e);
       else throw e;
     }
   }
