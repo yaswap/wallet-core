@@ -1,5 +1,11 @@
 # @yaswap/cryptoassets
 
+## 2.7.2
+
+### Patch Changes
+
+- Improve error handling
+
 ## 2.7.1
 
 ### Patch Changes

@@ -1,5 +1,13 @@
 # @yaswap/error-parser
 
+## 2.7.2
+
+### Patch Changes
+
+- Improve error handling
+- Updated dependencies
+  - @yaswap/cryptoassets@2.7.2
+
 ## 2.7.1
 
 ### Patch Changes
