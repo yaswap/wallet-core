@@ -1,5 +1,14 @@
 # @yaswap/wallet-core
 
+## 2.7.4
+
+### Patch Changes
+
+- Use electrumClient to get transaction hex
+- Updated dependencies
+  - @yaswap/cryptoassets@2.7.4
+  - @yaswap/error-parser@2.7.4
+
 ## 2.7.3
 
 ### Patch Changes

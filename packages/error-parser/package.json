@@ -1,6 +1,6 @@
 {
   "name": "@yaswap/error-parser",
-  "version": "2.7.3",
+  "version": "2.7.4",
   "description": "Error Parsing Library for yaswap",
   "repository": "git@github.com:yaswap/wallet-core.git",
   "author": "koderholic <meetenebelioluchi@gmail.com>",
