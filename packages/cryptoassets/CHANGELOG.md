@@ -1,5 +1,11 @@
 # @yaswap/cryptoassets
 
+## 2.7.3
+
+### Patch Changes
+
+- Fix issue relating to integrate electrumClient
+
 ## 2.7.2
 
 ### Patch Changes
