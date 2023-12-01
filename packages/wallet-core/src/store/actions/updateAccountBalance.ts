@@ -35,7 +35,6 @@ export const updateAccountBalance = async (
       }
     } else {
       await Bluebird.map(assets, async (asset) => {
-        console.log('TACA ===> updateAccountBalance.ts, chain = ', chain, ', assets = ', assets)
         const chainId = getters.cryptoassets[asset].chain;
         const _client = getters.client({ network, walletId, chainId, accountId });
         if (_client && _client.wallet) {
