@@ -1,5 +1,14 @@
 # @yaswap/wallet-core
 
+## 2.7.5
+
+### Patch Changes
+
+- Use latest CAL v2.6.6 and remove debug info
+- Updated dependencies
+  - @yaswap/cryptoassets@2.7.5
+  - @yaswap/error-parser@2.7.5
+
 ## 2.7.4
 
 ### Patch Changes
