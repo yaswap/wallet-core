@@ -127,10 +127,6 @@ const config: WalletCoreConfig = {
           {
               name: "Jester",
               url: "http://99.11.242.124:3030"
-          },
-          {
-            name: "Chau",
-            url: "http://127.0.0.1:3030"
           }
         ],
         extraAgentsEndpoint: 'https://yaswap.yacoin.org/extra_agents_testnet',
@@ -178,10 +174,6 @@ const config: WalletCoreConfig = {
           {
               name: "Jester",
               url: "http://99.11.242.124:3031"
-          },
-          {
-            name: "Chau",
-            url: "http://127.0.0.1:3030"
           }
         ],
         extraAgentsEndpoint: 'https://yaswap.yacoin.org/extra_agents_mainnet',

@@ -98,73 +98,15 @@ export async function getYacPrices() {
 }
 
 export async function getPrices(baseCurrencies: string[], toCurrency: string) {
-  // const coindIds = baseCurrencies
-  //   .filter((currency) => cryptoassets[currency]?.priceSource?.coinGeckoId)
-  //   .map((currency) => cryptoassets[currency].priceSource?.coinGeckoId);
-
-  const data = {
-    binancecoin: {
-      usd: 235.4,
-      btc: 0.0062699,
-      eth: 0.11301958,
-      ltc: 3.374407
-    },
-    bitcoin: { usd: 37532, btc: 1.0, eth: 18.019984, ltc: 538.02 },
-    dai: { usd: 1.0, btc: 2.664e-5, eth: 0.00048003, ltc: 0.01433739 },
-    dogecoin: {
-      usd: 0.077694,
-      btc: 2.07e-6,
-      eth: 3.73e-5,
-      ltc: 0.00111374
-    },
-    ethereum: {
-      usd: 2082.87,
-      btc: 0.05547811,
-      eth: 1.0,
-      ltc: 29.857872
-    },
-    litecoin: {
-      usd: 69.76,
-      btc: 0.00185795,
-      eth: 0.03349103,
-      ltc: 1.0
-    },
-    'matic-network': {
-      usd: 0.783336,
-      btc: 2.086e-5,
-      eth: 0.0003761,
-      ltc: 0.01122911
-    },
-    solana: {
-      usd: 57.47,
-      btc: 0.00153072,
-      eth: 0.02759234,
-      ltc: 0.82382003
-    },
-    tether: {
-      usd: 1.001,
-      btc: 2.666e-5,
-      eth: 0.0004803,
-      ltc: 0.01434568
-    },
-    'usd-coin': {
-      usd: 0.999927,
-      btc: 2.663e-5,
-      eth: 0.00048009,
-      ltc: 0.01433392
-    },
-    yacoin: {
-      usd: 0.00073114,
-      btc: 2.0e-8,
-      eth: 3.73198e-7,
-      ltc: 1.049e-5
-    }
-  }
-
+  const coindIds = baseCurrencies
+    .filter((currency) => cryptoassets[currency]?.priceSource?.coinGeckoId)
+    .map((currency) => cryptoassets[currency].priceSource?.coinGeckoId);
+  const data = await HttpClient.get(
+    `${COIN_GECKO_API}/simple/price?ids=${coindIds.join(',')}&vs_currencies=${toCurrency}`
+  );
   let prices = mapKeys(data, (_, coinGeckoId) =>
     findKey(cryptoassets, (asset) => asset.priceSource?.coinGeckoId === coinGeckoId)
   );
-  // @ts-ignore
   prices = mapValues(prices, (rates) => mapKeys(rates, (_, k) => k.toUpperCase()));
   for (const baseCurrency of baseCurrencies) {
     if (!prices[baseCurrency] && cryptoassets[baseCurrency]?.matchingAsset) {
@@ -173,9 +115,7 @@ export async function getPrices(baseCurrencies: string[], toCurrency: string) {
   }
   const symbolPrices = mapValues(prices, (rates, key) => {
     const _toCurrency = toCurrency.toUpperCase();
-    // @ts-ignore
     if (rates && rates[_toCurrency]) {
-      // @ts-ignore
       return rates[_toCurrency];
     } else {
       console.error(`${_toCurrency} rate is missing for ${key}`);
