@@ -1,5 +1,13 @@
 # @yaswap/error-parser
 
+## 2.7.6
+
+### Patch Changes
+
+- Use latest CAL v2.7.1 + modify get send fees logic
+- Updated dependencies
+  - @yaswap/cryptoassets@2.7.6
+
 ## 2.7.5
 
 ### Patch Changes
