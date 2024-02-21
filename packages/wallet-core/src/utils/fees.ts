@@ -225,11 +225,22 @@ async function sendBitcoinTxFees(
   const feePerBytes = Object.values(suggestedGasFees).map((fee) => fee.fee);
   const value = isMax ? undefined : currencyToUnit(cryptoassets[asset], amount as BN);
 
-  try {
-    const txs = feePerBytes.map((fee) => ({ value, fee }));
 
+  try {
+    const result = await client.wallet.getUnusedAddress();
+    const to = result.address;
+
+    const txs = feePerBytes.map((fee) => ({ to, value, fee }));
+    // const txs = feePerBytes.map((fee) => ({ value, fee }));
     const totalFees = await client.wallet.getTotalFees(txs, isMax);
     for (const [speed, fee] of Object.entries(suggestedGasFees)) {
+      // Null fee means that the remaining change can't cover the fee, get the max total fee instead.
+      if (totalFees[fee.fee] === null) {
+        const maxTotalFees = await client.wallet.getTotalFees(txs, true);
+        const maxTotalFee = unitToCurrency(cryptoassets[asset], maxTotalFees[fee.fee]);
+        _sendFees[speed as keyof FeeDetailsWithCustom] = maxTotalFee;
+        continue;
+      }
       const totalFee = unitToCurrency(cryptoassets[asset], totalFees[fee.fee]);
       _sendFees[speed as keyof FeeDetailsWithCustom] = totalFee;
     }
