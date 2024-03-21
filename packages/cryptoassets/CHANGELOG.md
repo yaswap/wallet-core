@@ -1,5 +1,11 @@
 # @yaswap/cryptoassets
 
+## 2.7.7
+
+### Patch Changes
+
+- Use latest CAL v2.7.4
+
 ## 2.7.6
 
 ### Patch Changes
