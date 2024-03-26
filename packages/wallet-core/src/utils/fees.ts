@@ -293,7 +293,6 @@ async function sendYacoinTxFees(
     }
 
     const txs = feePerBytes.map((fee) => ({ asset: _asset, to, value, fee }));
-    console.log("TACA ===> sendYacoinTxFees, txs = ", txs , ", isMax = ", isMax)
     const totalFees = await client.wallet.getTotalFees(txs, isMax);
     for (const [speed, fee] of Object.entries(suggestedGasFees)) {
       const totalFee = unitToCurrency(cryptoassets[feeAsset], totalFees[fee.fee]);
