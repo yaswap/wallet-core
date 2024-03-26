@@ -1,5 +1,11 @@
 # @yaswap/cryptoassets
 
+## 2.7.8
+
+### Patch Changes
+
+- Use latest CAL v2.7.7 + Remove debug log
+
 ## 2.7.7
 
 ### Patch Changes
