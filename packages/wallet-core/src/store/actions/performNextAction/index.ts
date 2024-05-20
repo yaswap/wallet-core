@@ -28,7 +28,7 @@ export const performNextAction = async (
         swap: item,
       });
     }
-    if (item.type === TransactionType.Send) {
+    if (item.type === TransactionType.Send || item.type === TransactionType.Timelock) {
       updates = await performNextTransactionAction(context, {
         network,
         walletId,

@@ -19,7 +19,7 @@ export function getStatusLabel(item: HistoryItem) {
   if (item.type === TransactionType.NFT) {
     return SEND_STATUS_LABEL_MAP[item.status] || '';
   }
-  if (item.type === TransactionType.Send) {
+  if (item.type === TransactionType.Send || item.type === TransactionType.Timelock) {
     return SEND_STATUS_LABEL_MAP[item.status] || '';
   }
   if (item.type === TransactionType.Swap) {
@@ -41,7 +41,7 @@ export function getStep(item: HistoryItem) {
   if (itemType === TransactionType.NFT) {
     return SEND_STATUS_STEP_MAP[item.status];
   }
-  if (itemType === TransactionType.Send) {
+  if (itemType === TransactionType.Send || item.type === TransactionType.Timelock) {
     return SEND_STATUS_STEP_MAP[item.status];
   }
   if (itemType === TransactionType.Swap) {
@@ -75,6 +75,10 @@ export const ACTIVITY_FILTER_TYPES = {
     label: 'Create',
     icon: 'create',
   },
+  TIMELOCK: {
+    label: 'Timelock',
+    icon: 'lock',
+  }
 };
 
 export const ACTIVITY_STATUSES = {
@@ -125,7 +129,7 @@ export const applyActivityFilters = (
         return statuses.includes(swapProvider.statuses[i.status].filterStatus);
       }
 
-      if (i.type === 'SEND' || i.type === 'CREATE') {
+      if (i.type === 'SEND' || i.type === 'TIMELOCK' || i.type === 'CREATE') {
         return statuses.includes(SEND_STATUS_FILTER_MAP[i.status]);
       }
 

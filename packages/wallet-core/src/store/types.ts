@@ -130,6 +130,7 @@ export enum TransactionType {
   Swap = 'SWAP',
   NFT = 'NFT',
   Create = 'CREATE',
+  Timelock = 'TIMELOCK',
 }
 
 export enum SwapProviderType {
@@ -184,7 +185,7 @@ export enum SendStatus {
 }
 
 export interface SendHistoryItem extends BaseHistoryItem {
-  type: TransactionType.Send;
+  type: TransactionType.Send | TransactionType.Timelock;
   toAddress: string;
   amount: string;
   tx: Transaction;

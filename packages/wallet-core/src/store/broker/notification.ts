@@ -7,24 +7,47 @@ import { HistoryItem, NFTSendHistoryItem, SendHistoryItem, SwapHistoryItem, Crea
 
 const SEND_STATUS_MAP = {
   WAITING_FOR_CONFIRMATIONS(item: SendHistoryItem) {
-    return {
-      title: `New ${item.from} Transaction`,
-      message: `Sending ${prettyBalance(new BigNumber(item.amount), item.from)} ${item.from} to ${item.toAddress}`,
-    };
+    if (item.timelockDuration == null) {
+      return {
+        title: `New ${item.from} Transaction`,
+        message: `Sending ${prettyBalance(new BigNumber(item.amount), item.from)} ${item.from} to ${item.toAddress}`,
+      };
+    } else {
+      return {
+        title: `New ${item.from} Transaction`,
+        message: `Timelock ${prettyBalance(new BigNumber(item.amount), item.from)} ${item.from} at ${item.toAddress}`,
+      };
+    }
   },
   FAILED(item: SendHistoryItem) {
-    return {
-      title: `${item.from} Transaction Failed`,
-      message: `Failed to send ${prettyBalance(new BigNumber(item.amount), item.from)} ${item.from} to ${
-        item.toAddress
-      }`,
-    };
+    if (item.timelockDuration == null) {
+      return {
+        title: `${item.from} Transaction Failed`,
+        message: `Failed to send ${prettyBalance(new BigNumber(item.amount), item.from)} ${item.from} to ${
+          item.toAddress
+        }`,
+      };
+    } else {
+      return {
+        title: `${item.from} Transaction Failed`,
+        message: `Failed to timelock ${prettyBalance(new BigNumber(item.amount), item.from)} ${item.from} at ${
+          item.toAddress
+        }`,
+      };
+    }
   },
   SUCCESS(item: SendHistoryItem) {
-    return {
-      title: `${item.from} Transaction Confirmed`,
-      message: `Sent ${prettyBalance(new BigNumber(item.amount), item.from)} ${item.from} to ${item.toAddress}`,
-    };
+    if (item.timelockDuration == null) {
+      return {
+        title: `${item.from} Transaction Confirmed`,
+        message: `Sent ${prettyBalance(new BigNumber(item.amount), item.from)} ${item.from} to ${item.toAddress}`,
+      };
+    } else {
+      return {
+        title: `${item.from} Transaction Confirmed`,
+        message: `Timelocked ${prettyBalance(new BigNumber(item.amount), item.from)} ${item.from} at ${item.toAddress}`,
+      };
+    }
   },
 };
 
@@ -115,7 +138,7 @@ const createCreateTokenNotification = (item: CreateTokenHistoryItem) => {
 };
 
 export const createHistoryNotification = (item: HistoryItem) => {
-  if (item.type === 'SEND') {
+  if (item.type === 'SEND' || item.type === 'TIMELOCK') {
     return createSendNotification(item);
   } else if (item.type === 'SWAP') {
     return createSwapNotification(item);

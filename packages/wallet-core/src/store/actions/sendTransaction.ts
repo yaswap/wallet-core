@@ -68,9 +68,10 @@ export const sendTransaction = async (
     timelockDuration
   });
 
+  const transactionType = timelockDuration == null ? TransactionType.Send : TransactionType.Timelock;
   const transaction: SendHistoryItem = {
     id: uuidv4(),
-    type: TransactionType.Send,
+    type: transactionType,
     network,
     walletId,
     to: asset,
