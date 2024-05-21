@@ -1,5 +1,17 @@
 # @yaswap/wallet-core
 
+## 2.8.0
+
+### Minor Changes
+
+- Integrate with self-hosted IPFS node
+
+### Patch Changes
+
+- Updated dependencies
+  - @yaswap/cryptoassets@2.8.0
+  - @yaswap/error-parser@2.8.0
+
 ## 2.7.8
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @yaswap/cryptoassets
 
+## 2.8.0
+
+### Minor Changes
+
+- Integrate with self-hosted IPFS node
+
 ## 2.7.8
 
 ### Patch Changes
