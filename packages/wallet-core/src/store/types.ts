@@ -194,6 +194,7 @@ export interface SendHistoryItem extends BaseHistoryItem {
   fiatRate: number;
   status: SendStatus;
   timelockDuration?: number;
+  timelockReason?: string;
 }
 
 export interface NFTSendHistoryItem extends BaseHistoryItem {

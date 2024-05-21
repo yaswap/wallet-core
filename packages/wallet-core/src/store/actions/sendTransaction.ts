@@ -23,6 +23,7 @@ export const sendTransaction = async (
     feeLabel,
     fiatRate,
     timelockDuration,
+    timelockReason,
   }: {
     network: Network;
     walletId: WalletId;
@@ -37,6 +38,7 @@ export const sendTransaction = async (
     feeLabel: FeeLabel;
     fiatRate: number;
     timelockDuration: number;
+    timelockReason: string;
   }
 ): Promise<SendHistoryItem> => {
   const { dispatch, commit, getters } = rootActionContext(context);
@@ -86,7 +88,8 @@ export const sendTransaction = async (
     accountId,
     feeLabel,
     fiatRate,
-    timelockDuration
+    timelockDuration,
+    timelockReason
   };
 
   commit.NEW_TRASACTION({ network, walletId, transaction });
