@@ -1,5 +1,11 @@
 # @yaswap/cryptoassets
 
+## 2.8.2
+
+### Patch Changes
+
+- Support HEAD request
+
 ## 2.8.1
 
 ### Patch Changes

@@ -1,5 +1,14 @@
 # @yaswap/wallet-core
 
+## 2.8.2
+
+### Patch Changes
+
+- Support HEAD request
+- Updated dependencies
+  - @yaswap/cryptoassets@2.8.2
+  - @yaswap/error-parser@2.8.2
+
 ## 2.8.1
 
 ### Patch Changes
