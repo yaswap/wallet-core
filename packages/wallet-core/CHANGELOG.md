@@ -1,5 +1,14 @@
 # @yaswap/wallet-core
 
+## 2.8.1
+
+### Patch Changes
+
+- Reset metadata before fetching from ipfs gateway
+- Updated dependencies
+  - @yaswap/cryptoassets@2.8.1
+  - @yaswap/error-parser@2.8.1
+
 ## 2.8.0
 
 ### Minor Changes

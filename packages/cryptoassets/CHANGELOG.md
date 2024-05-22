@@ -1,5 +1,11 @@
 # @yaswap/cryptoassets
 
+## 2.8.1
+
+### Patch Changes
+
+- Reset metadata before fetching from ipfs gateway
+
 ## 2.8.0
 
 ### Minor Changes
