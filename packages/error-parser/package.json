@@ -11,9 +11,9 @@
     "dist/**"
   ],
   "dependencies": {
-    "@yaswap/client": "2.9.2",
+    "@yaswap/client": "2.9.3",
     "@yaswap/cryptoassets": "workspace:*",
-    "@yaswap/errors": "2.9.2",
+    "@yaswap/errors": "2.9.3",
     "randombytes": "^2.1.0"
   },
   "devDependencies": {
