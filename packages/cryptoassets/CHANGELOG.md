@@ -1,5 +1,11 @@
 # @yaswap/cryptoassets
 
+## 2.8.3
+
+### Patch Changes
+
+- Change API endpoint for bitcoin and litecoin
+
 ## 2.8.2
 
 ### Patch Changes

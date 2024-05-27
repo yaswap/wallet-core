@@ -1,5 +1,13 @@
 # @yaswap/error-parser
 
+## 2.8.3
+
+### Patch Changes
+
+- Change API endpoint for bitcoin and litecoin
+- Updated dependencies
+  - @yaswap/cryptoassets@2.8.3
+
 ## 2.8.2
 
 ### Patch Changes
