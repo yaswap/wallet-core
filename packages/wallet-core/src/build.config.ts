@@ -95,15 +95,15 @@ const config: WalletCoreConfig = {
   },
   btcEsploraApis: {
     testnet: 'https://mempool.space/testnet/api',
-    mainnet: 'https://mempool.space/api',
+    mainnet: 'https://cb.yacoin.org/bitcoin_api',
   },
   btcBatchEsploraApis: {
     testnet: 'https://mempool.space/testnet/api',
-    mainnet: 'https://mempool.space/api',
+    mainnet: 'https://cb.yacoin.org/bitcoin_api',
   },
   ltcEsploraApis: {
-    testnet: 'https://litecoinspace.org/api',
-    mainnet: 'https://litecoinspace.org/api',
+    testnet: 'https://cb.yacoin.org/litecoin_api',
+    mainnet: 'https://cb.yacoin.org/litecoin_api',
   },
   dogeEsploraApis: {
     testnet: 'https://dogechain.info/api/v1',
