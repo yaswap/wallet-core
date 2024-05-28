@@ -1,5 +1,13 @@
 # @yaswap/error-parser
 
+## 2.8.4
+
+### Patch Changes
+
+- Use latest CAL v2.9.4
+- Updated dependencies
+  - @yaswap/cryptoassets@2.8.4
+
 ## 2.8.3
 
 ### Patch Changes
