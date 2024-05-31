@@ -37,6 +37,7 @@ export interface Wallet {
   id: WalletId;
   name: string;
   mnemonic: string;
+  derivationPath?: string;
   at: number;
   imported: boolean;
 }

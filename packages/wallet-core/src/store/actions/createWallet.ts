@@ -8,13 +8,13 @@ import { AccountType, Network, Wallet } from '../types';
 
 export const createWallet = async (
   context: ActionContext,
-  { key, mnemonic, imported = false }: { key: string; mnemonic: string; imported?: boolean }
+  { key, mnemonic, imported = false, derivationPath = undefined }: { key: string; mnemonic: string; imported?: boolean, derivationPath?: string }
 ): Promise<Wallet> => {
   const { commit } = rootActionContext(context);
   const id = uuidv4();
   const at = Date.now();
   const name = 'Account 1';
-  const wallet = { id, name, mnemonic, at, imported };
+  const wallet = { id, name, mnemonic, derivationPath, at, imported };
   const { networks, defaultAssets } = buildConfig;
   const { encrypted: encryptedWallets, keySalt } = await encrypt(JSON.stringify([wallet]), key);
 
@@ -57,6 +57,7 @@ export const createWallet = async (
           balances: {},
           type: AccountType.Default,
           index: 0,
+          derivationPath: derivationPath ? derivationPath : undefined,
           color: getNextAccountColor(chainId, 0),
           enabled: true,
         },
