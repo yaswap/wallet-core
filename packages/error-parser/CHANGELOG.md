@@ -1,5 +1,16 @@
 # @yaswap/error-parser
 
+## 2.9.0
+
+### Minor Changes
+
+- Support custom derivation path
+
+### Patch Changes
+
+- Updated dependencies
+  - @yaswap/cryptoassets@2.9.0
+
 ## 2.8.4
 
 ### Patch Changes

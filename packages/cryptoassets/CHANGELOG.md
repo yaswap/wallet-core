@@ -1,5 +1,11 @@
 # @yaswap/cryptoassets
 
+## 2.9.0
+
+### Minor Changes
+
+- Support custom derivation path
+
 ## 2.8.4
 
 ### Patch Changes
