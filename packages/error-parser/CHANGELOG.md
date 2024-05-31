@@ -1,5 +1,13 @@
 # @yaswap/error-parser
 
+## 2.9.1
+
+### Patch Changes
+
+- Change bitcoin fee API endpoint
+- Updated dependencies
+  - @yaswap/cryptoassets@2.9.1
+
 ## 2.9.0
 
 ### Minor Changes

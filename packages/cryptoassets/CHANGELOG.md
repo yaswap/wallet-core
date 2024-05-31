@@ -1,5 +1,11 @@
 # @yaswap/cryptoassets
 
+## 2.9.1
+
+### Patch Changes
+
+- Change bitcoin fee API endpoint
+
 ## 2.9.0
 
 ### Minor Changes
