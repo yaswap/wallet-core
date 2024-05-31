@@ -26,7 +26,7 @@ export const defaultChainSettings: Record<Network, Record<ChainId, ChainifyNetwo
           ...chainifyNetwork,
           scraperUrl: buildConfig.btcEsploraApis[currNetwork],
           batchScraperUrl: buildConfig.btcBatchEsploraApis[currNetwork],
-          feeProviderUrl: 'https://liquality.io/swap/mempool/v1/fees/recommended',
+          feeProviderUrl: 'https://cb.yacoin.org/bitcoin_fee_api/api/v1/fees/recommended',
         };
       }
       if (currChain === ChainId.Yacoin) {
@@ -34,7 +34,7 @@ export const defaultChainSettings: Record<Network, Record<ChainId, ChainifyNetwo
           ...chainifyNetwork,
           yacoinEsploraApis: buildConfig.yacEsploraApis.esploraUrl[currNetwork],
           yacoinEsploraSwapApis: buildConfig.yacEsploraApis.esploraSwapUrl[currNetwork],
-          feeProviderUrl: 'https://liquality.io/swap/mempool/v1/fees/recommended',
+          feeProviderUrl: 'https://cb.yacoin.org/bitcoin_fee_api/api/v1/fees/recommended',
         };
       }
       if (currChain === ChainId.Litecoin) {
