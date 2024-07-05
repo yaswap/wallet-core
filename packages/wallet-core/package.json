@@ -1,6 +1,6 @@
 {
   "name": "@yaswap/wallet-core",
-  "version": "2.10.3",
+  "version": "2.10.4",
   "description": "Common library for yaswap wallet",
   "repository": "git@github.com:yaswap/wallet-core.git",
   "author": "monokh <mnokhb@gmail.com>",
