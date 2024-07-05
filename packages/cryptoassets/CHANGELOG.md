@@ -1,5 +1,11 @@
 # @yaswap/cryptoassets
 
+## 2.10.8
+
+### Patch Changes
+
+- Pump to version v2.10.8
+
 ## 2.10.7
 
 ### Patch Changes
