@@ -3688,36 +3688,36 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yaswap/bitcoin-ledger@npm:3.0.0":
-  version: 3.0.0
-  resolution: "@yaswap/bitcoin-ledger@npm:3.0.0"
+"@yaswap/bitcoin-ledger@npm:3.0.1":
+  version: 3.0.1
+  resolution: "@yaswap/bitcoin-ledger@npm:3.0.1"
   dependencies:
     "@ledgerhq/hw-app-btc": 9.1.2
-    "@yaswap/bitcoin": 3.0.0
-    "@yaswap/client": 3.0.0
-    "@yaswap/errors": 3.0.0
-    "@yaswap/hw-ledger": 3.0.0
-    "@yaswap/types": 3.0.0
-    "@yaswap/utils": 3.0.0
+    "@yaswap/bitcoin": 3.0.1
+    "@yaswap/client": 3.0.1
+    "@yaswap/errors": 3.0.1
+    "@yaswap/hw-ledger": 3.0.1
+    "@yaswap/types": 3.0.1
+    "@yaswap/utils": 3.0.1
     bip32: 2.0.6
     bitcoinjs-lib: 5.2.0
-  checksum: 129dd51dd2075006aabb215cb1baef014a4d78f807801913d594d0cf209455e6f621d7949304137f3fcf08211a0ef0891b28909be82fb8ba454185ba61aee8cb
+  checksum: 07e865651a9fc4938f6adbbd0ecebfc3617a9ba61b2b1c0a6f7e7f70d3ae61fb294da9145174e22bd090c7b4b4e67d2a97107a83d201cddc8e79b37a851f37b8
   languageName: node
   linkType: hard
 
-"@yaswap/bitcoin@npm:3.0.0":
-  version: 3.0.0
-  resolution: "@yaswap/bitcoin@npm:3.0.0"
+"@yaswap/bitcoin@npm:3.0.1":
+  version: 3.0.1
+  resolution: "@yaswap/bitcoin@npm:3.0.1"
   dependencies:
     "@types/bip32": ^2.0.0
     "@types/bip39": ^3.0.0
     "@types/bitcoinjs-lib": ^5.0.0
     "@types/lodash": ^4.14.178
     "@types/memoizee": ^0.4.7
-    "@yaswap/client": 3.0.0
-    "@yaswap/errors": 3.0.0
-    "@yaswap/types": 3.0.0
-    "@yaswap/utils": 3.0.0
+    "@yaswap/client": 3.0.1
+    "@yaswap/errors": 3.0.1
+    "@yaswap/types": 3.0.1
+    "@yaswap/utils": 3.0.1
     bip174: ^2.0.1
     bip32: 2.0.6
     bip39: ^3.0.4
@@ -3727,20 +3727,20 @@ __metadata:
     coinselect: ^3.1.12
     lodash: 4.17.21
     memoizee: ^0.4.15
-  checksum: 2fe93109f1306d7ccb77827baa29058440c6fd0da45eb3b31a54457b51530ad02b343a4f3a2820f5710bdc1a84635873821e7076f7c124401747d0522f798349
+  checksum: 9fad71a3be087208115b12c76262aca13f03c02abb4c1275ef8479848a71011fd15f6adf56a511a8525a2ab81b7a89074f6a0b170821f73a387c082e65260e29
   languageName: node
   linkType: hard
 
-"@yaswap/client@npm:3.0.0":
-  version: 3.0.0
-  resolution: "@yaswap/client@npm:3.0.0"
+"@yaswap/client@npm:3.0.1":
+  version: 3.0.1
+  resolution: "@yaswap/client@npm:3.0.1"
   dependencies:
-    "@yaswap/errors": 3.0.0
-    "@yaswap/logger": 3.0.0
-    "@yaswap/types": 3.0.0
-    "@yaswap/utils": 3.0.0
+    "@yaswap/errors": 3.0.1
+    "@yaswap/logger": 3.0.1
+    "@yaswap/types": 3.0.1
+    "@yaswap/utils": 3.0.1
     axios: ^1.7.2
-  checksum: 94aad9ad36d875e15f6f35e7ca70ade0bd37787401fec2c07a4d3cb9d1d6e3b2c51dd8f1ce1552a2a11ca752d8aaba8972c2dc57804ca27a49dc9b414507d97e
+  checksum: 86eb897efb59e5803c53a0045ca3dac2140e5140a45ed79bc541b5365b4af0b8b68389d2b4a239dcd40bccf0c3a48eacbe0117f46367c8a37924dd0c125cfe9a
   languageName: node
   linkType: hard
 
@@ -3779,19 +3779,19 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@yaswap/dogecoin@npm:3.0.0":
-  version: 3.0.0
-  resolution: "@yaswap/dogecoin@npm:3.0.0"
+"@yaswap/dogecoin@npm:3.0.1":
+  version: 3.0.1
+  resolution: "@yaswap/dogecoin@npm:3.0.1"
   dependencies:
     "@types/bip32": ^2.0.0
     "@types/bip39": ^3.0.0
     "@types/bitcoinjs-lib": ^5.0.0
     "@types/lodash": ^4.14.178
     "@types/memoizee": ^0.4.7
-    "@yaswap/client": 3.0.0
-    "@yaswap/errors": 3.0.0
-    "@yaswap/types": 3.0.0
-    "@yaswap/utils": 3.0.0
+    "@yaswap/client": 3.0.1
+    "@yaswap/errors": 3.0.1
+    "@yaswap/types": 3.0.1
+    "@yaswap/utils": 3.0.1
     "@yaswap/ws-electrumx-client": ^1.0.0
     bip174: ^2.0.1
     bip32: 2.0.6
@@ -3801,7 +3801,7 @@ __metadata:
     coinselect: ^3.1.12
     lodash: 4.17.21
     memoizee: ^0.4.15
-  checksum: 13336c97ff800565baad1ef4764602910586d0dfc842d70d4d4bd8cfb3ed68cb8dd83f02fd98aa9326dedaca67d257c1052923c0871f1cafea3fb808a3c8321c
+  checksum: 4d4de298a5732d4eaa5a800c6b528ab0652ac2510e3ffee8271c70dc46332f3562860234a7aad7cac31f5602119dcfdcb8936da7cc13afc762087ded4009d78d
   languageName: node
   linkType: hard
 
@@ -3810,26 +3810,26 @@ __metadata:
   resolution: "@yaswap/error-parser@workspace:packages/error-parser"
   dependencies:
     "@types/randombytes": ^2.0.0
-    "@yaswap/client": 3.0.0
+    "@yaswap/client": 3.0.1
     "@yaswap/cryptoassets": "workspace:*"
-    "@yaswap/errors": 3.0.0
+    "@yaswap/errors": 3.0.1
     randexp: ^0.5.3
     randombytes: ^2.1.0
   languageName: unknown
   linkType: soft
 
-"@yaswap/errors@npm:3.0.0":
-  version: 3.0.0
-  resolution: "@yaswap/errors@npm:3.0.0"
+"@yaswap/errors@npm:3.0.1":
+  version: 3.0.1
+  resolution: "@yaswap/errors@npm:3.0.1"
   dependencies:
     standard-error: ^1.1.0
-  checksum: a18e2e5e92708181ffcfa07eb4695c1ecd5e397d696a7810055159bdb6a42b4579f37c4844874f5006a22ad8a826f917a224ce58d27092799855d88d915d1360
+  checksum: 4bbf53fe67a5b4cef35f995d937b3269d9ab187f3d56b115b2673918a508cd253018345ab3fa0eb9434706e6f896830009d6b19bfcc9adc30c00b2acee3d3809
   languageName: node
   linkType: hard
 
-"@yaswap/evm-ledger@npm:3.0.0":
-  version: 3.0.0
-  resolution: "@yaswap/evm-ledger@npm:3.0.0"
+"@yaswap/evm-ledger@npm:3.0.1":
+  version: 3.0.1
+  resolution: "@yaswap/evm-ledger@npm:3.0.1"
   dependencies:
     "@ethersproject/abstract-provider": 5.7.0
     "@ethersproject/abstract-signer": 5.7.0
@@ -3841,19 +3841,19 @@ __metadata:
     "@ethersproject/strings": 5.7.0
     "@ethersproject/transactions": 5.7.0
     "@ledgerhq/hw-app-eth": 6.30.5
-    "@yaswap/client": 3.0.0
-    "@yaswap/errors": 3.0.0
-    "@yaswap/evm": 3.0.0
-    "@yaswap/hw-ledger": 3.0.0
-    "@yaswap/types": 3.0.0
-    "@yaswap/utils": 3.0.0
-  checksum: 2dc54eafda761c888277caf2369f258830f978754bd87017a7428cdfe60cabd73284c9eca51a16b470f178788b49e8b3a87990fea98daa6cb7cf8f94c15c6067
+    "@yaswap/client": 3.0.1
+    "@yaswap/errors": 3.0.1
+    "@yaswap/evm": 3.0.1
+    "@yaswap/hw-ledger": 3.0.1
+    "@yaswap/types": 3.0.1
+    "@yaswap/utils": 3.0.1
+  checksum: 3675badef4d3903b5ed576f10b9893ce8af081927bf212e581631c5ab4390066668515d23f9c0122e4e8393888fbfcdd4a1d4f392ef47b629edd1bdb4fff9308
   languageName: node
   linkType: hard
 
-"@yaswap/evm@npm:3.0.0":
-  version: 3.0.0
-  resolution: "@yaswap/evm@npm:3.0.0"
+"@yaswap/evm@npm:3.0.1":
+  version: 3.0.1
+  resolution: "@yaswap/evm@npm:3.0.1"
   dependencies:
     "@eth-optimism/sdk": 1.1.5
     "@ethersproject/abi": 5.7.0
@@ -3867,44 +3867,44 @@ __metadata:
     "@ethersproject/wallet": 5.7.0
     "@liquality/fee-suggestions": 2.0.2
     "@metamask/eth-sig-util": 4.0.1
-    "@yaswap/client": 3.0.0
-    "@yaswap/errors": 3.0.0
-    "@yaswap/logger": 3.0.0
-    "@yaswap/types": 3.0.0
-    "@yaswap/utils": 3.0.0
+    "@yaswap/client": 3.0.1
+    "@yaswap/errors": 3.0.1
+    "@yaswap/logger": 3.0.1
+    "@yaswap/types": 3.0.1
+    "@yaswap/utils": 3.0.1
     ethers: 5.7.0
-  checksum: 428162b6475f9e0814f93e7120764da7c4abdb989c435d31b9660da6d03150934577d5adc0b5959fc638af91f555f5a51a66c08e06cee34aa8a8e81a2bc1f52f
+  checksum: 232b649435a803f3f382f6d66221a101552f1793d6b9dc9c6177f94cdc1f9c787864a037d2956d3fdcff23f45dcdd5ffeb8739805802c74d2b5ccb319dccbb24
   languageName: node
   linkType: hard
 
-"@yaswap/hw-ledger@npm:3.0.0":
-  version: 3.0.0
-  resolution: "@yaswap/hw-ledger@npm:3.0.0"
+"@yaswap/hw-ledger@npm:3.0.1":
+  version: 3.0.1
+  resolution: "@yaswap/hw-ledger@npm:3.0.1"
   dependencies:
     "@ledgerhq/hw-transport": 6.27.10
     "@ledgerhq/hw-transport-webhid": 6.27.10
-    "@yaswap/errors": 3.0.0
-    "@yaswap/logger": 3.0.0
-    "@yaswap/types": 3.0.0
-    "@yaswap/utils": 3.0.0
-  checksum: d0771146a7d0d9b1e5820d9a66fbcebec3cec7b6304960a9f3fdc3a01236c510116f5577cc74cd245628be807c1b483e2d39a45a001bb04987092b44073c2946
+    "@yaswap/errors": 3.0.1
+    "@yaswap/logger": 3.0.1
+    "@yaswap/types": 3.0.1
+    "@yaswap/utils": 3.0.1
+  checksum: c50f43e2c5e8931ff7aca7411eebc45b8def98fc70740a43d4ebef00c667125ad48508a6527efb54bbcc3ec35671ad2d039fad2e0de626f3c94d825fd05d6b1a
   languageName: node
   linkType: hard
 
-"@yaswap/litecoin@npm:3.0.0":
-  version: 3.0.0
-  resolution: "@yaswap/litecoin@npm:3.0.0"
+"@yaswap/litecoin@npm:3.0.1":
+  version: 3.0.1
+  resolution: "@yaswap/litecoin@npm:3.0.1"
   dependencies:
     "@types/bip32": ^2.0.0
     "@types/bip39": ^3.0.0
     "@types/bitcoinjs-lib": ^5.0.0
     "@types/lodash": ^4.14.178
     "@types/memoizee": ^0.4.7
-    "@yaswap/client": 3.0.0
-    "@yaswap/errors": 3.0.0
+    "@yaswap/client": 3.0.1
+    "@yaswap/errors": 3.0.1
     "@yaswap/litecoinselect": 1.0.0
-    "@yaswap/types": 3.0.0
-    "@yaswap/utils": 3.0.0
+    "@yaswap/types": 3.0.1
+    "@yaswap/utils": 3.0.1
     bip174: ^2.0.1
     bip32: 2.0.6
     bip39: ^3.0.4
@@ -3913,7 +3913,7 @@ __metadata:
     coinselect: ^3.1.12
     lodash: 4.17.21
     memoizee: ^0.4.15
-  checksum: 5f9b61f2517e37518f465d2e6371cf5b4fe1eda677f4d6a69c79760faec1592ba002a2b96b8faadbe6bbd2e8b887f26c6f45d2e5a232b51e1f1862fa654938a5
+  checksum: 5b269b8c66968e022573acef57d5b91a67be51dbf9cfcb1b5cfbb5a6d8c8cdb6e5b43a48205c5b462186fe2c280628c9a038c902b58d9c8f2ab6269a7cc7d0e1
   languageName: node
   linkType: hard
 
@@ -3924,87 +3924,87 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yaswap/logger@npm:3.0.0":
-  version: 3.0.0
-  resolution: "@yaswap/logger@npm:3.0.0"
-  checksum: edf79753cad14bf1c120816183c9afeaf3463a98fc8c080fc6588083ad943c758f6b439f73c0404995fbfe028156574a38e627e2ea80d3784957d2d097ea361a
+"@yaswap/logger@npm:3.0.1":
+  version: 3.0.1
+  resolution: "@yaswap/logger@npm:3.0.1"
+  checksum: ffc2257e3b279bf8e38e605f3c4106f8ef6cc5b95262c72726f4b08dce964ec49cc4f17e941207ff9e02ada4b794276cce5003013a7f459f9ccc7ed9e65ea93e
   languageName: node
   linkType: hard
 
-"@yaswap/near@npm:3.0.0":
-  version: 3.0.0
-  resolution: "@yaswap/near@npm:3.0.0"
+"@yaswap/near@npm:3.0.1":
+  version: 3.0.1
+  resolution: "@yaswap/near@npm:3.0.1"
   dependencies:
-    "@yaswap/client": 3.0.0
-    "@yaswap/errors": 3.0.0
-    "@yaswap/types": 3.0.0
-    "@yaswap/utils": 3.0.0
+    "@yaswap/client": 3.0.1
+    "@yaswap/errors": 3.0.1
+    "@yaswap/types": 3.0.1
+    "@yaswap/utils": 3.0.1
     bn.js: ^5.2.0
     near-api-js: ^0.44.2
     near-seed-phrase: ^0.2.0
-  checksum: bf4c9d343a324ff5e3bb0a27a64b9f14e605035c42e5374785ab0bf20e82496743cec0f6934e275c529625a54aedbf4fea458783c075ab3ed7865fcb2d9c60ea
+  checksum: 250cc0f9601d61ceff47acaa8a80c81277785d52ef284fd9b2d200f75ee0d9c9f1944e040a20310c8745a34f5099c7dc44e1faaaa2fe58d92b4376ad365bcda1
   languageName: node
   linkType: hard
 
-"@yaswap/solana@npm:3.0.0":
-  version: 3.0.0
-  resolution: "@yaswap/solana@npm:3.0.0"
+"@yaswap/solana@npm:3.0.1":
+  version: 3.0.1
+  resolution: "@yaswap/solana@npm:3.0.1"
   dependencies:
     "@solana/spl-token": 0.2.0
     "@solana/spl-token-registry": 0.2.4574
     "@solana/web3.js": 1.50.1
-    "@yaswap/client": 3.0.0
-    "@yaswap/errors": 3.0.0
-    "@yaswap/logger": 3.0.0
-    "@yaswap/types": 3.0.0
-    "@yaswap/utils": 3.0.0
+    "@yaswap/client": 3.0.1
+    "@yaswap/errors": 3.0.1
+    "@yaswap/logger": 3.0.1
+    "@yaswap/types": 3.0.1
+    "@yaswap/utils": 3.0.1
     bip39: ^3.0.4
     ed25519-hd-key: ^1.2.0
     tweetnacl: ^1.0.3
-  checksum: f3892f5ef8ed71da32dad6317562441c242bf4def05e507f1045b8a2b16c845809519d87b9db8bb2b4cf80c69680d7fcf3115095068b1e8064a5716fb816288e
+  checksum: 9af5654edd9f63a38316424bf864069a1e4272ba29fc2eb3506349dce2272ae8f6a160b1bcada80b88e0c97823f70c81c6a7ab3d863e2fefe88d10b927a6f0e6
   languageName: node
   linkType: hard
 
-"@yaswap/terra@npm:3.0.0":
-  version: 3.0.0
-  resolution: "@yaswap/terra@npm:3.0.0"
+"@yaswap/terra@npm:3.0.1":
+  version: 3.0.1
+  resolution: "@yaswap/terra@npm:3.0.1"
   dependencies:
     "@terra-money/terra.js": 3.1.6
     "@types/luxon": ^2.0.9
-    "@yaswap/client": 3.0.0
-    "@yaswap/errors": 3.0.0
-    "@yaswap/logger": 3.0.0
-    "@yaswap/types": 3.0.0
-    "@yaswap/utils": 3.0.0
+    "@yaswap/client": 3.0.1
+    "@yaswap/errors": 3.0.1
+    "@yaswap/logger": 3.0.1
+    "@yaswap/types": 3.0.1
+    "@yaswap/utils": 3.0.1
     lodash: 4.17.21
     luxon: ^2.3.1
-  checksum: 4266ca8347d3cb1671fb5cccc0ffc6acd0b1159ddc161556b817309b814b16ce0d7e5245884c58ac343162504056810b86ac4686acb83feb6d41bc0717e3d885
+  checksum: 133e7ced4713a3584a1e9efa161a8e068759722b0c82a7f1897477bb7380a21eda990360a37168526703259ceb4708914b43d6f34419cf5a8ba873093b98d850
   languageName: node
   linkType: hard
 
-"@yaswap/types@npm:3.0.0":
-  version: 3.0.0
-  resolution: "@yaswap/types@npm:3.0.0"
+"@yaswap/types@npm:3.0.1":
+  version: 3.0.1
+  resolution: "@yaswap/types@npm:3.0.1"
   dependencies:
     "@ethersproject/bignumber": 5.7.0
     "@yaswap/cryptoassets": 2.2.1
     bignumber.js: ^9.0.2
-  checksum: 7c9cbe86ef8820da93f97726679e0b8c63396bea7c2d7e44b8f4b7f26fa3d052c1752af26b5b986e9cd05bc11bb5f9af6d54ed166ec4c7a550f82a796f6be6d5
+  checksum: c8bf37a90fac46e2f592411bf36af2b22b42741302a85f1dbc7468d19dea6cded64c5a57d10550ebd5514f756fd7e2656ec27b8fe959a5b2ef2bf2546fc30634
   languageName: node
   linkType: hard
 
-"@yaswap/utils@npm:3.0.0":
-  version: 3.0.0
-  resolution: "@yaswap/utils@npm:3.0.0"
+"@yaswap/utils@npm:3.0.1":
+  version: 3.0.1
+  resolution: "@yaswap/utils@npm:3.0.1"
   dependencies:
     "@ethersproject/sha2": 5.7.0
-    "@yaswap/errors": 3.0.0
-    "@yaswap/types": 3.0.0
+    "@yaswap/errors": 3.0.1
+    "@yaswap/types": 3.0.1
     bech32: ^2.0.0
     bs58: 5.0.0
     crypto-hashing: ^1.0.0
     setimmediate: ^1.0.5
-  checksum: 03a160c24fb90c9825415a5c8f13f68dd9984c49d5975692650c25043c184bb6a7e3985628d16f6b6c237c3d3838c4ab921ea109e6a8413040c488af0af9a8bd
+  checksum: 1347a6183218d6bb9efe1b5f35865640c080b9e61df02262e4de1ea5241447d55465b5a8dc31484e838534844ee4ae2b74c0fb861441273bb9427d9240400c7c
   languageName: node
   linkType: hard
 
@@ -4034,23 +4034,23 @@ __metadata:
     "@uniswap/v2-sdk": ^3.0.1
     "@unstoppabledomains/resolution": 8.3.1
     "@xchainjs/xchain-util": ^0.6.0
-    "@yaswap/bitcoin": 3.0.0
-    "@yaswap/bitcoin-ledger": 3.0.0
-    "@yaswap/client": 3.0.0
+    "@yaswap/bitcoin": 3.0.1
+    "@yaswap/bitcoin-ledger": 3.0.1
+    "@yaswap/client": 3.0.1
     "@yaswap/cryptoassets": "workspace:*"
-    "@yaswap/dogecoin": 3.0.0
+    "@yaswap/dogecoin": 3.0.1
     "@yaswap/error-parser": "workspace:*"
-    "@yaswap/errors": 3.0.0
-    "@yaswap/evm": 3.0.0
-    "@yaswap/evm-ledger": 3.0.0
-    "@yaswap/hw-ledger": 3.0.0
-    "@yaswap/litecoin": 3.0.0
-    "@yaswap/near": 3.0.0
-    "@yaswap/solana": 3.0.0
-    "@yaswap/terra": 3.0.0
-    "@yaswap/types": 3.0.0
-    "@yaswap/utils": 3.0.0
-    "@yaswap/yacoin": 3.0.0
+    "@yaswap/errors": 3.0.1
+    "@yaswap/evm": 3.0.1
+    "@yaswap/evm-ledger": 3.0.1
+    "@yaswap/hw-ledger": 3.0.1
+    "@yaswap/litecoin": 3.0.1
+    "@yaswap/near": 3.0.1
+    "@yaswap/solana": 3.0.1
+    "@yaswap/terra": 3.0.1
+    "@yaswap/types": 3.0.1
+    "@yaswap/utils": 3.0.1
+    "@yaswap/yacoin": 3.0.1
     amplitude-js: 8.18.2
     bignumber.js: ^9.0.2
     detect-circular-deps: ^3.0.0
@@ -4081,19 +4081,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yaswap/yacoin@npm:3.0.0":
-  version: 3.0.0
-  resolution: "@yaswap/yacoin@npm:3.0.0"
+"@yaswap/yacoin@npm:3.0.1":
+  version: 3.0.1
+  resolution: "@yaswap/yacoin@npm:3.0.1"
   dependencies:
     "@types/bip32": ^2.0.0
     "@types/bip39": ^3.0.0
     "@types/bitcoinjs-lib": ^5.0.0
     "@types/lodash": ^4.14.178
     "@types/memoizee": ^0.4.7
-    "@yaswap/client": 3.0.0
-    "@yaswap/errors": 3.0.0
-    "@yaswap/types": 3.0.0
-    "@yaswap/utils": 3.0.0
+    "@yaswap/client": 3.0.1
+    "@yaswap/errors": 3.0.1
+    "@yaswap/types": 3.0.1
+    "@yaswap/utils": 3.0.1
     "@yaswap/yacoinjs-coinselect": ^1.1.0
     "@yaswap/yacoinjs-lib": ^1.3.0
     bip174: ^2.0.1
@@ -4102,7 +4102,7 @@ __metadata:
     bitcoinjs-message: 2.2.0
     lodash: 4.17.21
     memoizee: ^0.4.15
-  checksum: 4c93ac54e7eff443e5e0251be419f34d582dfc793d868711118b5a4cd04ad232a14df3d9a6aff18ed36e6dcf059a7fbea369d87163b3dfa9887e735cd7f44a6b
+  checksum: ead115af546a6e394edb6d98f6782131b169c28ec54785f25320c03bff9e286bb682c603814d19e57cc4574d8c23b9c7238497424600d724e523d82ae84cfb03
   languageName: node
   linkType: hard
 
