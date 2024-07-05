@@ -1,5 +1,11 @@
 # @yaswap/cryptoassets
 
+## 3.0.0
+
+### Major Changes
+
+- Support manifest v3
+
 ## 2.10.8
 
 ### Patch Changes

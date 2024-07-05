@@ -1,5 +1,16 @@
 # @yaswap/error-parser
 
+## 3.0.0
+
+### Major Changes
+
+- Support manifest v3
+
+### Patch Changes
+
+- Updated dependencies
+  - @yaswap/cryptoassets@3.0.0
+
 ## 2.10.8
 
 ### Patch Changes
