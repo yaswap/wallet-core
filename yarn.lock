@@ -3436,6 +3436,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/webextension-polyfill@npm:^0.10.7":
+  version: 0.10.7
+  resolution: "@types/webextension-polyfill@npm:0.10.7"
+  checksum: 372064d5e007ab7889ea4f7b634d311f85bb78b13bf174a28781699ca21e8daa61ccd371dafe6b3f4fa3c9fe1fee11a5dbe52ed66f3cf84c1738cd18a535cbb7
+  languageName: node
+  linkType: hard
+
 "@types/ws@npm:^7.4.4":
   version: 7.4.7
   resolution: "@types/ws@npm:7.4.7"
@@ -4022,6 +4029,7 @@ __metadata:
     "@terra-money/terra.js": 3.1.6
     "@thorchain/asgardex-util": ^0.10.0
     "@types/lodash": ^4.14.182
+    "@types/webextension-polyfill": ^0.10.7
     "@uniswap/sdk-core": ^3.0.1
     "@uniswap/v2-core": ^1.0.1
     "@uniswap/v2-periphery": ^1.1.0-beta.0
@@ -4062,6 +4070,7 @@ __metadata:
     urql: ^2.2.0
     vue: ^2.6.11
     vuex: ^3.1.3
+    webextension-polyfill: ^0.12.0
   languageName: unknown
   linkType: soft
 

@@ -2,6 +2,8 @@ import { random } from 'lodash';
 import { ActionContext } from '../..';
 import { Asset, Network, WalletId } from '../../types';
 import { unlockAsset } from '../../utils';
+import { isNodeJs } from '@yaswap/utils';
+import browser from "webextension-polyfill";
 
 type HistoryUpdateFunction<T> = () => Promise<Partial<T> | undefined>;
 
@@ -30,11 +32,18 @@ export async function withInterval<T>(func: HistoryUpdateFunction<T>): Promise<P
   }
   return new Promise((resolve) => {
     const interval = setInterval(async () => {
+      if (!isNodeJs()) {
+        browser.runtime.getPlatformInfo();
+      }
       const updates = await func();
+
+      if (!isNodeJs()) {
+        browser.runtime.getPlatformInfo();
+      }
       if (updates) {
         clearInterval(interval);
         resolve(updates);
       }
-    }, random(15000, 30000));
+    }, random(15000, 25000));
   });
 }

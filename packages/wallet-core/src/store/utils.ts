@@ -7,6 +7,8 @@ import { findKey, mapKeys, mapValues, random } from 'lodash';
 import cryptoassets from '../utils/cryptoassets';
 import { Asset, AssetInfo, CurrenciesInfo, Network, RootState, WalletId } from './types';
 import buildConfig from '../build.config'
+import { isNodeJs } from '@yaswap/utils';
+import browser from "webextension-polyfill";
 
 export const clientCache: { [key: string]: Client } = {};
 
@@ -14,7 +16,17 @@ export const CHAIN_LOCK: { [key: string]: boolean } = {};
 
 export const emitter = new EventEmitter();
 
-const wait = (millis: number) => new Promise<void>((resolve) => setTimeout(() => resolve(), millis));
+const wait = (millis: number) =>
+  new Promise<void>((resolve) => {
+    let sleepTime = millis;
+    if (!isNodeJs()) {
+      browser.runtime.getPlatformInfo();
+      if (sleepTime >= 30000) {
+        sleepTime = 25000;
+      }
+    }
+    setTimeout(resolve, sleepTime);
+  });
 
 export { wait };
 
