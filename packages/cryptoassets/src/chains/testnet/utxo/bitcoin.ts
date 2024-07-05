@@ -19,13 +19,13 @@ export default transformMainnetToTestnetChain(
       scriptHash: 0xc4,
       wif: 0xef,
     },
-    rpcUrls: ['https://electrs-testnet-api.liq-chainhub.net/'],
-    scraperUrls: ['https://electrs-batch-testnet-api.liq-chainhub.net/'],
+    rpcUrls: ['https://mempool.space/testnet4/api'],
+    scraperUrls: ['https://mempool.space/testnet4/api'],
   },
   [
     {
-      tx: 'https://blockstream.info/testnet/tx/{hash}',
-      address: 'https://blockstream.info/testnet/address/{address}',
+      tx: 'https://mempool.space/testnet4/tx/{hash}',
+      address: 'https://mempool.space/testnet4/address/{address}',
     },
   ],
   'https://bitcoinfaucet.uo1.net/'

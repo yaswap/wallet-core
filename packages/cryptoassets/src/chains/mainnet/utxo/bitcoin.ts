@@ -41,13 +41,13 @@ export default new BitcoinChain({
       scriptHash: 0x05,
       wif: 0x80,
     },
-    rpcUrls: ['https://electrs-mainnet-api.liq-chainhub.net/'],
-    scraperUrls: ['https://electrs-batch-mainnet-api.liq-chainhub.net/'],
+    rpcUrls: ['https://cb.yacoin.org/bitcoin_api'],
+    scraperUrls: ['https://cb.yacoin.org/bitcoin_api'],
   },
   explorerViews: [
     {
-      tx: 'https://blockstream.info/tx/{hash}',
-      address: 'https://blockstream.info/address/{address}',
+      tx: 'https://mempool.space/tx/{hash}',
+      address: 'https://mempool.space/address/{address}',
     },
   ],
   multicallSupport: false,
