@@ -1,5 +1,14 @@
 # @yaswap/wallet-core
 
+## 2.10.7
+
+### Patch Changes
+
+- Pump to version v2.10.7
+- Updated dependencies
+  - @yaswap/cryptoassets@2.10.7
+  - @yaswap/error-parser@2.10.7
+
 ## 2.10.6
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "@yaswap/error-parser",
-  "version": "2.10.6",
+  "version": "2.10.7",
   "description": "Error Parsing Library for yaswap",
   "repository": "git@github.com:yaswap/wallet-core.git",
   "author": "koderholic <meetenebelioluchi@gmail.com>",
@@ -11,9 +11,9 @@
     "dist/**"
   ],
   "dependencies": {
-    "@yaswap/client": "2.10.6",
+    "@yaswap/client": "2.10.7",
     "@yaswap/cryptoassets": "workspace:*",
-    "@yaswap/errors": "2.10.6",
+    "@yaswap/errors": "2.10.7",
     "randombytes": "^2.1.0"
   },
   "devDependencies": {
