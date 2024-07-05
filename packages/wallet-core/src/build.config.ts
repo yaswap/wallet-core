@@ -94,11 +94,11 @@ const config: WalletCoreConfig = {
     }
   },
   btcEsploraApis: {
-    testnet: 'https://mempool.space/testnet/api',
+    testnet: 'https://mempool.space/testnet4/api',
     mainnet: 'https://cb.yacoin.org/bitcoin_api',
   },
   btcBatchEsploraApis: {
-    testnet: 'https://mempool.space/testnet/api',
+    testnet: 'https://mempool.space/testnet4/api',
     mainnet: 'https://cb.yacoin.org/bitcoin_api',
   },
   ltcEsploraApis: {
