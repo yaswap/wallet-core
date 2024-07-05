@@ -145,13 +145,13 @@ const config: WalletCoreConfig = {
         routerAddressRBTC: SovrynTestnetAddresses.proxy3,
         rpcURL: 'https://testnet.sovryn.app/rpc',
       },
-      [SwapProviderType.FastBTCWithdraw]: {
-        name: 'FastBTC',
-        icon: 'sovryn.svg',
-        type: SwapProviderType.FastBTCWithdraw,
-        network: Network.Testnet,
-        routerAddress: '0x10C848e9495a32acA95F6c23C92eCA2b2bE9903A',
-      },
+      // [SwapProviderType.FastBTCWithdraw]: {
+      //   name: 'FastBTC',
+      //   icon: 'sovryn.svg',
+      //   type: SwapProviderType.FastBTCWithdraw,
+      //   network: Network.Testnet,
+      //   routerAddress: '0x10C848e9495a32acA95F6c23C92eCA2b2bE9903A',
+      // },
       // [SwapProviderType.TeleSwap]: {
       //   name: 'TeleSwap',
       //   icon: 'teleswap.png',
@@ -198,19 +198,19 @@ const config: WalletCoreConfig = {
         },
         referrerFee: 0.3,
       },
-      [SwapProviderType.FastBTCDeposit]: {
-        name: 'FastBTC',
-        icon: 'sovryn.svg',
-        type: SwapProviderType.FastBTCDeposit,
-        bridgeEndpoint: 'https://fastbtc.sovryn.app',
-      },
-      [SwapProviderType.FastBTCWithdraw]: {
-        name: 'FastBTC',
-        icon: 'sovryn.svg',
-        type: SwapProviderType.FastBTCWithdraw,
-        network: Network.Mainnet,
-        routerAddress: '0x0D5006330289336ebdF9d0AC9E0674f91b4851eA',
-      },
+      // [SwapProviderType.FastBTCDeposit]: {
+      //   name: 'FastBTC',
+      //   icon: 'sovryn.svg',
+      //   type: SwapProviderType.FastBTCDeposit,
+      //   bridgeEndpoint: 'https://fastbtc.sovryn.app',
+      // },
+      // [SwapProviderType.FastBTCWithdraw]: {
+      //   name: 'FastBTC',
+      //   icon: 'sovryn.svg',
+      //   type: SwapProviderType.FastBTCWithdraw,
+      //   network: Network.Mainnet,
+      //   routerAddress: '0x0D5006330289336ebdF9d0AC9E0674f91b4851eA',
+      // },
       [SwapProviderType.Sovryn]: {
         name: 'Sovryn',
         icon: 'sovryn.svg',

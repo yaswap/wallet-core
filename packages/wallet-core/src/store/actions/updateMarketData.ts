@@ -39,7 +39,6 @@ export const updateMarketData = async (
       const swapProvider = getSwapProvider(network, provider);
       const promise = swapProvider.getSupportedPairs({ network }).then((pairs) => pairs.map((pair) => ({ ...pair, provider })));
       const result = await withTimeout(MARKET_DATA_FETCH_TIMEOUT, provider, promise)
-      console.log("TACA ===> provider = ", provider, ", result = ", result)
       clearTimeout(providerTimeout.info[provider])
       providerTimeout.info[provider] = null;
       return result;
@@ -47,7 +46,6 @@ export const updateMarketData = async (
   );
 
   let supportedPairs: MarketData[] = [];
-  console.log("TACA ===> supportedPairResponses = ", supportedPairResponses)
   supportedPairResponses.forEach((response) => {
     if (response.status === 'fulfilled') {
       supportedPairs = [...supportedPairs, ...response.value];
