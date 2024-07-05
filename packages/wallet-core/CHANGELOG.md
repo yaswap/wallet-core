@@ -1,5 +1,14 @@
 # @yaswap/wallet-core
 
+## 3.0.1
+
+### Patch Changes
+
+- Handle AxiosError in case the transaction/block not found
+- Updated dependencies
+  - @yaswap/cryptoassets@3.0.1
+  - @yaswap/error-parser@3.0.1
+
 ## 3.0.0
 
 ### Major Changes
