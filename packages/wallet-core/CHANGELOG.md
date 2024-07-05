@@ -1,5 +1,17 @@
 # @yaswap/wallet-core
 
+## 2.10.0
+
+### Minor Changes
+
+- Use latest CAL v2.10.0
+
+### Patch Changes
+
+- Updated dependencies
+  - @yaswap/cryptoassets@2.10.0
+  - @yaswap/error-parser@2.10.0
+
 ## 2.9.1
 
 ### Patch Changes

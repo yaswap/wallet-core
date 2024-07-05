@@ -1,5 +1,11 @@
 # @yaswap/cryptoassets
 
+## 2.10.0
+
+### Minor Changes
+
+- Use latest CAL v2.10.0
+
 ## 2.9.1
 
 ### Patch Changes
