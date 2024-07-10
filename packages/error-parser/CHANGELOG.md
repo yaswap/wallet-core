@@ -1,5 +1,13 @@
 # @yaswap/error-parser
 
+## 3.1.1
+
+### Patch Changes
+
+- Remove debug log
+- Updated dependencies
+  - @yaswap/cryptoassets@3.1.1
+
 ## 3.1.0
 
 ### Minor Changes

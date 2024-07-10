@@ -1,5 +1,11 @@
 # @yaswap/cryptoassets
 
+## 3.1.1
+
+### Patch Changes
+
+- Remove debug log
+
 ## 3.1.0
 
 ### Minor Changes
