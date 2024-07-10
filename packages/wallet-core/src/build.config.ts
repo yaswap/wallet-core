@@ -106,8 +106,8 @@ const config: WalletCoreConfig = {
     mainnet: 'https://cb.yacoin.org/litecoin_api',
   },
   dogeEsploraApis: {
-    testnet: 'https://dogechain.info/api/v1',
-    mainnet: 'https://dogechain.info/api/v1',
+    testnet: 'https://cb.yacoin.org/dogecoin_api',
+    mainnet: 'https://cb.yacoin.org/dogecoin_api',
   },
   evmScraperUrls: {
     testnet: 'https://yaswap.yacoin.org/ethscraper_testnet/',

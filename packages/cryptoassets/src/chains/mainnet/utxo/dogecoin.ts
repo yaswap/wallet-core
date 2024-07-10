@@ -48,8 +48,8 @@ export default new DogecoinChain({
       // Refer https://github.com/dogecoin/dogecoin/blob/master/src/chainparams.cpp#L169
       wif: 0x9e,
     },
-    rpcUrls: ['https://dogechain.info/api/v1'],
-    scraperUrls: ['https://dogechain.info/api/v1'],
+    rpcUrls: ['https://cb.yacoin.org/dogecoin_api'],
+    scraperUrls: ['https://cb.yacoin.org/dogecoin_api'],
   },
   explorerViews: [
     {
