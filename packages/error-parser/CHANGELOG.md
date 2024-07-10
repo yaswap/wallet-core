@@ -1,5 +1,16 @@
 # @yaswap/error-parser
 
+## 3.1.0
+
+### Minor Changes
+
+- Integrate new dogecoin explorer
+
+### Patch Changes
+
+- Updated dependencies
+  - @yaswap/cryptoassets@3.1.0
+
 ## 3.0.1
 
 ### Patch Changes
