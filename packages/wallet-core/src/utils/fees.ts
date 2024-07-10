@@ -1,4 +1,6 @@
 import { BitcoinBaseWalletProvider, BitcoinEsploraApiProvider } from '@yaswap/bitcoin';
+import { LitecoinBaseWalletProvider, LitecoinEsploraApiProvider } from '@yaswap/litecoin';
+import { DogecoinBaseWalletProvider, DogecoinEsploraApiProvider } from '@yaswap/dogecoin';
 import { YacoinBaseWalletProvider, YacoinEsploraApiProvider } from '@yaswap/yacoin';
 import { Client } from '@yaswap/client';
 import { EvmUtils } from '@yaswap/evm';
@@ -173,9 +175,11 @@ async function getSendTxFees(accountId: AccountId, asset: Asset, amount?: BN, cu
     _suggestedGasFees.custom = { fee: customFee };
   }
 
-  if (assetChain === 'bitcoin') {
+  const utxoChains = ['bitcoin', 'litecoin', 'dogecoin']
+  if (utxoChains.includes(assetChain)) {
+    console.log ("TACA ===> getSendTxFees, assetChain = ", assetChain)
     //ChainId.Bitcoin
-    return sendBitcoinTxFees(accountId, asset, _suggestedGasFees, amount);
+    return sendUtxoChainTxFees(accountId, asset, _suggestedGasFees, amount);
   }
   else if (assetChain === 'yacoin') {
     //ChainId.Yacoin
@@ -201,9 +205,9 @@ function sendTxFeesInNativeAsset(asset: Asset, suggestedGasFees: FeeDetailsWithC
 }
 
 /*
- * Send fee estimation method for BTC
+ * Send fee estimation method for BTC/LTC/DOGE
  */
-async function sendBitcoinTxFees(
+async function sendUtxoChainTxFees(
   accountId: AccountId,
   asset: Asset,
   suggestedGasFees: FeeDetailsWithCustom,
@@ -220,7 +224,8 @@ async function sendBitcoinTxFees(
       walletId: store.state.activeWalletId,
       chainId: account.chain,
       accountId: accountId,
-    }) as Client<BitcoinEsploraApiProvider, BitcoinBaseWalletProvider>;
+    }) as Client<BitcoinEsploraApiProvider | LitecoinEsploraApiProvider | DogecoinEsploraApiProvider,
+                 BitcoinBaseWalletProvider | LitecoinBaseWalletProvider | DogecoinBaseWalletProvider>;
 
   const feePerBytes = Object.values(suggestedGasFees).map((fee) => fee.fee);
   const value = isMax ? undefined : currencyToUnit(cryptoassets[asset], amount as BN);
@@ -232,7 +237,9 @@ async function sendBitcoinTxFees(
 
     const txs = feePerBytes.map((fee) => ({ to, value, fee }));
     // const txs = feePerBytes.map((fee) => ({ value, fee }));
+    console.log("TACA ===> sendUtxoChainTxFees, txs = ", txs)
     const totalFees = await client.wallet.getTotalFees(txs, isMax);
+    console.log("TACA ===> sendUtxoChainTxFees, totalFees = ", totalFees)
     for (const [speed, fee] of Object.entries(suggestedGasFees)) {
       // Null fee means that the remaining change can't cover the fee, get the max total fee instead.
       if (totalFees[fee.fee] === null) {
@@ -387,7 +394,7 @@ export {
   isEIP1559Fees,
   getSendTxFees,
   sendTxFeesInNativeAsset,
-  sendBitcoinTxFees,
+  sendUtxoChainTxFees,
   sendYacoinTxFees,
   probableFeePerUnitEIP1559,
   maxFeePerUnitEIP1559,
