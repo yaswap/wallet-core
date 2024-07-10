@@ -177,7 +177,6 @@ async function getSendTxFees(accountId: AccountId, asset: Asset, amount?: BN, cu
 
   const utxoChains = ['bitcoin', 'litecoin', 'dogecoin']
   if (utxoChains.includes(assetChain)) {
-    console.log ("TACA ===> getSendTxFees, assetChain = ", assetChain)
     //ChainId.Bitcoin
     return sendUtxoChainTxFees(accountId, asset, _suggestedGasFees, amount);
   }
@@ -237,9 +236,7 @@ async function sendUtxoChainTxFees(
 
     const txs = feePerBytes.map((fee) => ({ to, value, fee }));
     // const txs = feePerBytes.map((fee) => ({ value, fee }));
-    console.log("TACA ===> sendUtxoChainTxFees, txs = ", txs)
     const totalFees = await client.wallet.getTotalFees(txs, isMax);
-    console.log("TACA ===> sendUtxoChainTxFees, totalFees = ", totalFees)
     for (const [speed, fee] of Object.entries(suggestedGasFees)) {
       // Null fee means that the remaining change can't cover the fee, get the max total fee instead.
       if (totalFees[fee.fee] === null) {
