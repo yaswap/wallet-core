@@ -1,5 +1,14 @@
 # @yaswap/wallet-core
 
+## 3.1.2
+
+### Patch Changes
+
+- Change explorer endpoint for dogecoin
+- Updated dependencies
+  - @yaswap/cryptoassets@3.1.2
+  - @yaswap/error-parser@3.1.2
+
 ## 3.1.1
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @yaswap/cryptoassets
 
+## 3.1.2
+
+### Patch Changes
+
+- Change explorer endpoint for dogecoin
+
 ## 3.1.1
 
 ### Patch Changes
