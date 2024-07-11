@@ -53,8 +53,8 @@ export default new DogecoinChain({
   },
   explorerViews: [
     {
-      tx: 'https://blockchair.com/dogecoin/transaction/{hash}',
-      address: 'https://blockchair.com/dogecoin/address/{address}',
+      tx: 'https://doge-explorer.qed.me/tx/{hash}',
+      address: 'https://doge-explorer.qed.me/address/{address}',
     },
   ],
   multicallSupport: false,
