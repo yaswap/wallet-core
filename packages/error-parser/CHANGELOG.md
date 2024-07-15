@@ -1,5 +1,13 @@
 # @yaswap/error-parser
 
+## 3.2.1
+
+### Patch Changes
+
+- Use fixed version 0.5.12 of multicoin-address-validator
+- Updated dependencies
+  - @yaswap/cryptoassets@3.2.1
+
 ## 3.2.0
 
 ### Minor Changes

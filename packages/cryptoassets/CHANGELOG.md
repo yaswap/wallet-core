@@ -1,5 +1,11 @@
 # @yaswap/cryptoassets
 
+## 3.2.1
+
+### Patch Changes
+
+- Use fixed version 0.5.12 of multicoin-address-validator
+
 ## 3.2.0
 
 ### Minor Changes
