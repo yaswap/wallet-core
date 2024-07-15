@@ -3316,10 +3316,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/multicoin-address-validator@npm:^0.5.0":
-  version: 0.5.1
-  resolution: "@types/multicoin-address-validator@npm:0.5.1"
-  checksum: 83d96494b52e6fe31d05411e8282e83379881f55123a88fe0d187a1c3483e0040634cf08168e47d4ce647b56494cfbf40a89b4d458a554c994b9e9bc6b8e3969
+"@types/multicoin-address-validator@npm:0.5.0":
+  version: 0.5.0
+  resolution: "@types/multicoin-address-validator@npm:0.5.0"
+  checksum: 94a1f9147fdc7420bd3708dbe39774072dbb9983197b11c2d93fa204387dbb98efb8caf98a0b1b34d2fe82c16992e5fe741f627e8484bd2b3a6fade42d800fa6
   languageName: node
   linkType: hard
 
@@ -3767,14 +3767,14 @@ __metadata:
   dependencies:
     "@ethersproject/address": 5.7.0
     "@types/bs58": 4.0.1
-    "@types/multicoin-address-validator": ^0.5.0
+    "@types/multicoin-address-validator": 0.5.0
     base58-js: ^1.0.0
     bignumber.js: ^9.0.2
     bitcoin-address-validation: 2.2.1
     bs58: 5.0.0
     ethereumjs-util: 7.1.5
     lodash: 4.17.21
-    multicoin-address-validator: ^0.5.12
+    multicoin-address-validator: 0.5.12
     sha256-uint8array: ^0.10.3
   languageName: unknown
   linkType: soft
@@ -11361,7 +11361,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"multicoin-address-validator@npm:^0.5.12":
+"multicoin-address-validator@npm:0.5.12":
   version: 0.5.12
   resolution: "multicoin-address-validator@npm:0.5.12"
   dependencies:
